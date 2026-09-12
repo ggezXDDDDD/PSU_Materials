@@ -1,0 +1,4724 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚙️ โลหะวิทยา (316-221) | PSU Materials Science</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX Math Renderer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="if(window.renderMathInElement) renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
+  <style>
+    :root {
+      --primary: #0071e3;
+      --primary-glow: rgba(0, 113, 227, 0.35);
+      --primary-light: rgba(0, 113, 227, 0.1);
+      --primary-border: rgba(0, 113, 227, 0.3);
+      
+      --ceramic: #ea580c;
+      --ceramic-glow: rgba(234, 88, 12, 0.35);
+      --ceramic-light: rgba(234, 88, 12, 0.1);
+      --ceramic-border: rgba(234, 88, 12, 0.3);
+      
+      --metal: #0891b2;
+      --metal-glow: rgba(8, 145, 178, 0.35);
+      --metal-light: rgba(8, 145, 178, 0.1);
+      --metal-border: rgba(8, 145, 178, 0.3);
+
+      --secondary: #2dd4bf;
+      --accent: #ff2d55;
+      --accent-bg: rgba(255, 45, 85, 0.1);
+      --warning: #f59e0b;
+      --warning-bg: rgba(245, 158, 11, 0.12);
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.12);
+      --purple: #8b5cf6;
+      --purple-bg: rgba(139, 92, 246, 0.12);
+      
+      --bg: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.75);
+      --card-border: rgba(255, 255, 255, 0.9);
+      --card-shadow: 0 16px 36px rgba(15, 23, 42, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      --subcard-bg: rgba(255, 255, 255, 0.65);
+      --subcard-border: rgba(226, 232, 240, 0.8);
+      --subcard-hover: rgba(255, 255, 255, 0.95);
+      
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: rgba(203, 213, 225, 0.7);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --nav-bg: rgba(255, 255, 255, 0.8);
+      --nav-border: rgba(255, 255, 255, 0.9);
+      
+      --table-header: rgba(241, 245, 249, 0.8);
+      --table-even: rgba(248, 250, 252, 0.5);
+      --opt-bg: rgba(255, 255, 255, 0.75);
+      --opt-border: rgba(203, 213, 225, 0.8);
+      --opt-hover: rgba(0, 113, 227, 0.08);
+      
+      --blur: blur(28px) saturate(190%);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --fluid: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.4);
+      --primary-light: rgba(56, 189, 248, 0.15);
+      --primary-border: rgba(56, 189, 248, 0.35);
+      
+      --ceramic: #fb923c;
+      --ceramic-glow: rgba(251, 146, 60, 0.4);
+      --ceramic-light: rgba(251, 146, 60, 0.15);
+      --ceramic-border: rgba(251, 146, 60, 0.35);
+      
+      --metal: #22d3ee;
+      --metal-glow: rgba(34, 211, 238, 0.4);
+      --metal-light: rgba(34, 211, 238, 0.15);
+      --metal-border: rgba(34, 211, 238, 0.35);
+
+      --secondary: #2dd4bf;
+      --accent: #f43f5e;
+      --accent-bg: rgba(244, 63, 94, 0.18);
+      --warning: #fbbf24;
+      --warning-bg: rgba(251, 191, 36, 0.18);
+      --success: #34d399;
+      --success-bg: rgba(52, 211, 153, 0.18);
+      --purple: #c084fc;
+      --purple-bg: rgba(192, 132, 252, 0.18);
+      
+      --bg: #090d16;
+      --card-bg: rgba(18, 24, 38, 0.72);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --card-shadow: 0 20px 48px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+      --subcard-bg: rgba(24, 32, 50, 0.65);
+      --subcard-border: rgba(255, 255, 255, 0.08);
+      --subcard-hover: rgba(30, 41, 65, 0.85);
+      
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+      --nav-bg: rgba(15, 23, 42, 0.78);
+      --nav-border: rgba(255, 255, 255, 0.14);
+      
+      --table-header: rgba(30, 41, 59, 0.8);
+      --table-even: rgba(24, 32, 50, 0.4);
+      --opt-bg: rgba(24, 32, 50, 0.7);
+      --opt-border: rgba(255, 255, 255, 0.1);
+      --opt-hover: rgba(56, 189, 248, 0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.68;
+      padding: 0 0 6rem 0;
+      transition: background-color 0.4s var(--fluid), color 0.4s var(--fluid);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Spatial Glow Background */
+    body::before {
+      content: ''; position: fixed; top: -15vw; left: -10vw; width: 60vw; height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 113, 227, 0.16) 0%, rgba(139, 92, 246, 0.1) 40%, transparent 70%);
+      filter: blur(70px); pointer-events: none; z-index: -1;
+    }
+    body::after {
+      content: ''; position: fixed; bottom: -15vw; right: -10vw; width: 55vw; height: 55vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.12) 0%, rgba(8, 145, 178, 0.12) 40%, transparent 70%);
+      filter: blur(75px); pointer-events: none; z-index: -1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      transition: max-width 0.45s var(--fluid);
+    }
+    .container.full-width {
+      max-width: 96% !important;
+    }
+
+    /* --- SLEEK REFINED TOP NAV BAR --- */
+    .top-nav {
+      position: sticky;
+      top: 14px;
+      z-index: 999;
+      background: var(--nav-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--nav-border);
+      border-radius: 20px;
+      padding: 10px 18px;
+      margin: 14px auto 26px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: all 0.3s var(--fluid);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-logo-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+    }
+
+    /* Navigation Links / Subject Switcher in Nav */
+    .nav-center-links {
+      display: flex;
+      align-items: center;
+      background: var(--subcard-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px;
+      gap: 4px;
+    }
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.25s var(--fluid);
+    }
+    .nav-pill:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.4);
+    }
+    .nav-pill.active {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+      font-weight: 700;
+    }
+    [data-theme="dark"] .nav-pill.active {
+      background: rgba(255, 255, 255, 0.18);
+      color: #38bdf8;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Right Tools */
+    .nav-right-tools {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tool-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--subcard-bg);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s var(--fluid);
+    }
+    .tool-btn:hover {
+      background: var(--subcard-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+    .rainbow-tool-btn {
+      background: linear-gradient(90deg, #ff0055, #ff9900, #ffee00, #00ff66, #00ccff, #7700ff, #ff00aa);
+      background-size: 300% 300%;
+      color: white !important; font-weight: 700 !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+      animation: rainbowGradientShift 3s linear infinite;
+      box-shadow: 0 3px 12px rgba(255, 0, 128, 0.35);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    .rainbow-tool-btn:hover {
+      transform: scale(1.08) rotate(-1deg) !important;
+    }
+
+    /* --- CARDS & GENERAL CONTENT STYLES --- */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.35s var(--fluid);
+    }
+    .card:hover {
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
+    }
+    .sub-card {
+      background: var(--subcard-bg);
+      border: 1px solid var(--subcard-border);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      margin-top: 1.25rem;
+      transition: all 0.25s ease;
+    }
+    .sub-card:hover {
+      background: var(--subcard-hover);
+    }
+    h1 { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.6rem; color: var(--text); }
+    h2 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--text); display: flex; align-items: center; gap: 10px; }
+    h3 { font-size: 1.18rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    p { margin-bottom: 0.8rem; }
+    
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+
+    /* Tables */
+    .table-wrapper { overflow-x: auto; margin: 1.25rem 0; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem; }
+    th { background: var(--table-header); padding: 12px 16px; font-weight: 700; color: var(--text); border-bottom: 1px solid var(--border); }
+    td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    tr:nth-child(even) { background: var(--table-even); }
+
+    /* Sub-nav inside page */
+    .page-subnav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+      padding: 8px 12px;
+      background: var(--subcard-bg);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+    .page-subnav a {
+      padding: 6px 14px;
+      border-radius: 999px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .page-subnav a:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+    .page-subnav a.quiz-btn {
+      background: var(--accent-bg);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* File Hub Repository Styles */
+    .file-hub-section {
+      background: var(--card-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin: 1.5rem 0 2.5rem;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+    .file-hub-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .file-hub-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .file-folder-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: var(--subcard-bg);
+      border: 1px solid var(--subcard-border);
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s var(--fluid);
+    }
+    .file-folder-btn:hover {
+      background: var(--subcard-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-color: var(--primary-border);
+    }
+    .file-search-input {
+      width: 100%;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--opt-bg);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      margin-bottom: 1.25rem;
+      transition: all 0.25s ease;
+    }
+    .file-search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+    .file-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.15rem;
+    }
+    .file-item-card {
+      background: var(--subcard-bg);
+      border: 1px solid var(--subcard-border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s var(--fluid);
+      position: relative;
+    }
+    .file-item-card:hover {
+      background: var(--subcard-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+      border-color: var(--primary-border);
+    }
+    .file-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: 8px;
+    }
+    .badge-type-pdf { background: rgba(255, 45, 85, 0.14); color: #ff2d55; }
+    .badge-type-pptx { background: rgba(255, 149, 0, 0.14); color: #ff9500; }
+    .badge-type-video { background: rgba(175, 82, 222, 0.14); color: #af52de; }
+    .badge-type-code { background: rgba(0, 113, 227, 0.14); color: #0071e3; }
+
+    .file-item-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+    .file-item-filename {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      word-break: break-all;
+      margin-bottom: 14px;
+    }
+    .file-item-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+    .file-item-size {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .file-btn-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: white !important;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: all 0.25s var(--fluid);
+      box-shadow: 0 4px 10px var(--primary-glow);
+    }
+    .file-btn-open:hover {
+      transform: scale(1.06);
+    }
+
+    /* Quiz Styling */
+    .quiz-card {
+      background: var(--subcard-bg);
+      border: 1px solid var(--subcard-border);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      transition: all 0.25s ease;
+    }
+    .quiz-question { font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem; }
+    .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+    .quiz-option {
+      background: var(--opt-bg);
+      border: 1px solid var(--opt-border);
+      border-radius: 12px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .quiz-option:hover { background: var(--opt-hover); }
+    .quiz-option.selected { border-color: var(--primary); background: var(--primary-light); }
+    .quiz-option.correct { background: rgba(16, 185, 129, 0.18) !important; border-color: #10b981 !important; color: #10b981; font-weight: 700; }
+    .quiz-option.incorrect { background: rgba(239, 68, 68, 0.18) !important; border-color: #ef4444 !important; color: #ef4444; }
+    .quiz-explanation {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--opt-bg);
+      font-size: 0.9rem;
+      border-left: 3px solid var(--primary);
+      display: none;
+    }
+
+    /* Ultra Cheat Sheet Card */
+    .ultra-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(241, 245, 249, 0.7) 100%);
+      border: 1.5px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      box-shadow: var(--card-shadow);
+    }
+    [data-theme="dark"] .ultra-card {
+      background: linear-gradient(135deg, rgba(24, 32, 50, 0.85) 0%, rgba(15, 23, 42, 0.8) 100%);
+    }
+    .summary-box {
+      background: var(--subcard-bg);
+      border: 1px solid var(--subcard-border);
+      border-radius: 14px;
+      padding: 1.25rem;
+    }
+    .summary-box h4 { margin-bottom: 8px; font-size: 1.05rem; }
+
+    /* Floating Notepad Component */
+    .note-fab {
+      position: fixed; bottom: 26px; right: 26px; z-index: 9999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: var(--primary); color: white; border: 2px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 10px 25px var(--primary-glow);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; transition: transform 0.35s var(--spring);
+    }
+    .note-fab:hover { transform: scale(1.12) rotate(-8deg); }
+    .note-panel {
+      position: fixed; bottom: 95px; right: 26px; z-index: 9999;
+      width: 420px; max-width: calc(100vw - 40px); height: 520px;
+      background: var(--card-bg); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+      border: 1.5px solid var(--card-border); border-radius: 22px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+      display: flex; flex-direction: column; overflow: hidden;
+      opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.95);
+      transition: all 0.35s var(--spring);
+    }
+    .note-panel.open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+    .note-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 18px; border-bottom: 1px solid var(--border); background: var(--table-header);
+    }
+    .note-body { flex: 1; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+    .note-textarea {
+      width: 100%; flex: 1; padding: 16px; border: none; outline: none; resize: none;
+      background: transparent; color: var(--text); font-family: inherit; font-size: 0.95rem; line-height: 1.6;
+    }
+    #draw-canvas {
+      width: 100%; height: 100%; touch-action: none; background: rgba(255, 255, 255, 0.85); cursor: crosshair;
+    }
+    [data-theme="dark"] #draw-canvas { background: #141a29; }
+    .draw-controls {
+      display: flex; align-items: center; justify-content: space-between; padding: 8px 14px;
+      border-top: 1px solid var(--border); background: var(--table-header); gap: 8px; flex-wrap: wrap;
+    }
+
+    /* Rainbow Animations */
+    @keyframes rainbowShift { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+    @keyframes rainbowGradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes rainbowDiscoPulse {
+      0%, 100% { transform: scale(1); filter: hue-rotate(0deg) drop-shadow(0 0 15px rgba(255,0,128,0.6)); }
+      50% { transform: scale(1.008); filter: hue-rotate(180deg) drop-shadow(0 0 25px rgba(0,255,200,0.8)); }
+    }
+    [data-rainbow="true"] body { background: #06020f !important; }
+    [data-rainbow="true"] .top-nav { animation: rainbowShift 4s linear infinite !important; }
+    [data-rainbow="true"] .card, [data-rainbow="true"] .ultra-card, [data-rainbow="true"] .file-hub-section {
+      animation: rainbowDiscoPulse 4s ease-in-out infinite !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+    }
+  
+  /* --- iOS 27 SMOOTH SIDEBAR COLLAPSE & EXPAND --- */
+  .portal-layout {
+    transition: gap 0.42s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .sidebar {
+    transition: width 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+                min-width 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+                margin-left 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.32s ease !important;
+    will-change: width, min-width, margin-left, transform, opacity !important;
+  }
+
+  .sidebar-header,
+  .sidebar-nav,
+  .sidebar-footer {
+    width: 251px !important;
+    min-width: 251px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Collapsed state: tucked cleanly into the left */
+  .portal-layout.sidebar-collapsed {
+    gap: 0px !important;
+  }
+
+  .portal-layout.sidebar-collapsed .sidebar {
+    width: 0 !important;
+    min-width: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: -16px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    border: 0 solid transparent !important;
+    transform: translateX(-50px) scale(0.94) !important;
+  }
+
+  /* Hamburger Toggle Buttons */
+  
+  .sidebar-toggle-btn {
+    height: 38px;
+    padding: 0 12px 0 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--subcard-bg);
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: all 0.22s var(--spring-bouncy);
+    flex-shrink: 0;
+    user-select: none;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+  }
+  .sidebar-toggle-btn:hover {
+    background: var(--card-bg);
+    color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  }
+  .sidebar-toggle-btn:active {
+    transform: scale(0.96);
+  }
+  [data-theme="dark"] .sidebar-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .sidebar-toggle-btn:hover {
+    background: var(--card-bg);
+    color: var(--primary);
+    transform: scale(1.08);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  }
+  .sidebar-toggle-btn:active {
+    transform: scale(0.92);
+  }
+  [data-theme="dark"] .sidebar-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  </style>
+
+
+<!-- ULTRA-SMOOTH ANIMATIONS & ASSIGNMENT HUB STYLES -->
+<style>
+  /* --- ULTRA-SMOOTH ANIMATIONS & SPRING PHYSICS --- */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @keyframes cardEntrance {
+    0% {
+      opacity: 0;
+      transform: translateY(28px) scale(0.96);
+    }
+    60% {
+      opacity: 0.9;
+      transform: translateY(-3px) scale(1.008);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes pulseAttention {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+    }
+    50% {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.55);
+    }
+  }
+
+  @keyframes shimmerShine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes floatGentle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* Smooth Staggered Micro-interactions */
+  .portal-card, .file-item-card, .assignment-card, .quiz-card, .assign-hub-section {
+    animation: cardEntrance 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    will-change: transform, opacity;
+  }
+  .portal-card:nth-child(1) { animation-delay: 0.04s; }
+  .portal-card:nth-child(2) { animation-delay: 0.10s; }
+  .portal-card:nth-child(3) { animation-delay: 0.16s; }
+  
+  .assignment-card:nth-child(1) { animation-delay: 0.05s; }
+  .assignment-card:nth-child(2) { animation-delay: 0.10s; }
+  .assignment-card:nth-child(3) { animation-delay: 0.15s; }
+  .assignment-card:nth-child(4) { animation-delay: 0.20s; }
+  .assignment-card:nth-child(5) { animation-delay: 0.25s; }
+
+  /* Tactile button & card press feedback */
+  button, .btn-lms-link, .btn-folder-direct, .btn-copy-prompt, .nav-item {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background-color 0.25s ease !important;
+  }
+  button:active, .btn-lms-link:active, .btn-folder-direct:active, .btn-copy-prompt:active {
+    transform: scale(0.94) !important;
+    transition: transform 0.08s ease !important;
+  }
+
+  /* Assignment Section Styles */
+  .assign-hub-section {
+    background: var(--card-bg);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1.5px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 2.2rem;
+    margin: 2rem 0 2.8rem;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .assign-hub-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .assign-hub-title {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .assign-filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 1.4rem;
+  }
+  .assign-filter-btn {
+    padding: 7px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--subcard-bg);
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .assign-filter-btn:hover {
+    color: var(--text);
+    background: var(--subcard-hover);
+    transform: translateY(-2px);
+  }
+  .assign-filter-btn.active {
+    background: var(--primary);
+    color: white !important;
+    border-color: var(--primary);
+    box-shadow: 0 4px 16px var(--primary-glow);
+    font-weight: 700;
+    transform: translateY(-1px);
+  }
+
+  /* Assignment Cards */
+  .assignment-card {
+    background: var(--subcard-bg);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1.5px solid var(--subcard-border);
+    border-radius: 20px;
+    padding: 1.6rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+  }
+  .assignment-card:hover {
+    transform: translateY(-5px) scale(1.008);
+    box-shadow: 0 20px 45px rgba(0, 113, 227, 0.12);
+    border-color: var(--primary-border);
+  }
+  .assign-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .assign-course-tag {
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 8px;
+    letter-spacing: 0.02em;
+  }
+  .tag-poly { background: rgba(0, 113, 227, 0.12); color: #0071e3; }
+  .tag-ceram { background: rgba(234, 88, 12, 0.12); color: #ea580c; }
+  .tag-metal { background: rgba(8, 145, 178, 0.12); color: #0891b2; }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+  .status-submitted {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+  }
+  .status-pending {
+    background: rgba(245, 158, 11, 0.16);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    animation: pulseAttention 2.6s infinite;
+  }
+  .status-graded {
+    background: rgba(139, 92, 246, 0.15);
+    color: #8b5cf6;
+    border: 1px solid rgba(139, 92, 246, 0.35);
+  }
+
+  .assign-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.35;
+  }
+  .assign-section-name {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .assign-prompt-box {
+    background: var(--opt-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 14px;
+    padding: 1.1rem 1.3rem;
+    margin: 12px 0 16px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .assign-prompt-box strong {
+    color: var(--primary);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .assign-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin: 12px 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .assign-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .assign-meta-item strong {
+    color: var(--text);
+  }
+  .assign-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .btn-lms-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: var(--primary);
+    color: white !important;
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 700;
+    transition: all 0.25s var(--fluid);
+    box-shadow: 0 4px 14px var(--primary-glow);
+  }
+  .btn-lms-link:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 20px var(--primary-glow);
+  }
+  .btn-copy-prompt {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 15px;
+    border-radius: 999px;
+    background: var(--subcard-bg);
+    border: 1px solid var(--subcard-border);
+    color: var(--text);
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-copy-prompt:hover {
+    background: var(--subcard-hover);
+    transform: translateY(-2px);
+    border-color: var(--primary-border);
+  }
+  
+  /* Toast Notification */
+  .toast-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(50px) scale(0.9);
+    background: rgba(15, 23, 42, 0.92);
+    color: white;
+    padding: 12px 26px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.35);
+    z-index: 10000;
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toast-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+</style>
+
+
+
+
+
+<!-- SUPER HYPER-RAINBOW RACING MODE STYLES -->
+<style>
+  /* Rainbow Keyframes */
+  @keyframes rainbowShift {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+
+  @keyframes rainbowFlowFast {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+
+  @keyframes rainbowBorderGlow {
+    0% {
+      box-shadow: 0 0 22px rgba(255, 0, 110, 0.6), 0 0 45px rgba(0, 240, 255, 0.35), inset 0 0 12px rgba(255, 0, 110, 0.15);
+      border-color: rgba(255, 0, 110, 0.8);
+    }
+    33% {
+      box-shadow: 0 0 28px rgba(0, 255, 160, 0.65), 0 0 55px rgba(255, 230, 0, 0.45), inset 0 0 15px rgba(0, 255, 160, 0.2);
+      border-color: rgba(0, 255, 160, 0.85);
+    }
+    66% {
+      box-shadow: 0 0 32px rgba(0, 190, 255, 0.65), 0 0 60px rgba(190, 0, 255, 0.45), inset 0 0 15px rgba(0, 190, 255, 0.2);
+      border-color: rgba(0, 190, 255, 0.85);
+    }
+    100% {
+      box-shadow: 0 0 25px rgba(255, 0, 230, 0.65), 0 0 50px rgba(255, 110, 0, 0.45), inset 0 0 12px rgba(255, 0, 230, 0.15);
+      border-color: rgba(255, 0, 230, 0.85);
+    }
+  }
+
+  @keyframes warpSpeedSpin {
+    0% { transform: rotate(0deg) scale(1); filter: hue-rotate(0deg); }
+    50% { transform: rotate(180deg) scale(1.22); filter: hue-rotate(180deg); }
+    100% { transform: rotate(360deg) scale(1); filter: hue-rotate(360deg); }
+  }
+
+  @keyframes warpSpeedSpinReverse {
+    0% { transform: rotate(360deg) scale(1.18); filter: hue-rotate(360deg); }
+    50% { transform: rotate(180deg) scale(0.92); filter: hue-rotate(180deg); }
+    100% { transform: rotate(0deg) scale(1.18); filter: hue-rotate(0deg); }
+  }
+
+  @keyframes nitroPulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255, 0, 110, 0.9)); }
+    50% { transform: scale(1.06); filter: drop-shadow(0 0 22px rgba(0, 255, 230, 1)); }
+  }
+
+  /* Tool Button in Navbar */
+  .rainbow-tool-btn {
+    background: linear-gradient(90deg, #ff0055, #ff8800, #ffee00, #00ff66, #00ccff, #7700ff, #ff00aa) !important;
+    background-size: 300% 300% !important;
+    color: #fff !important;
+    font-weight: 800 !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+    animation: rainbowFlowFast 2s linear infinite !important;
+    box-shadow: 0 4px 16px rgba(255, 0, 128, 0.45) !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+    cursor: pointer;
+  }
+  .rainbow-tool-btn:hover {
+    transform: scale(1.08) translateY(-2px) !important;
+    box-shadow: 0 6px 25px rgba(0, 255, 200, 0.75) !important;
+  }
+
+  /* Speed Banner Indicator */
+  .rainbow-speed-banner {
+    display: none;
+    text-align: center;
+    padding: 10px 24px;
+    margin: 1.2rem auto 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ff0055, #ff8800, #ffee00, #00ff66, #00ccff, #7700ff, #ff00aa);
+    background-size: 200% auto;
+    animation: rainbowFlowFast 1s linear infinite;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    box-shadow: 0 0 30px rgba(255, 0, 128, 0.7);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    width: fit-content;
+  }
+
+  /* =========================================================
+     ACTIVE HYPER TURBO RAINBOW STATE [data-rainbow="true"]
+     ========================================================= */
+  [data-rainbow="true"] body {
+    background: #05020f radial-gradient(circle at 50% 10%, #170233 0%, #060114 55%, #020008 100%) !important;
+    color: #f8fafc !important;
+  }
+
+  [data-rainbow="true"] body::before {
+    background: radial-gradient(circle, rgba(255, 0, 110, 0.5) 0%, rgba(0, 240, 255, 0.4) 45%, rgba(255, 220, 0, 0.3) 70%, transparent 85%) !important;
+    animation: warpSpeedSpin 3s linear infinite !important;
+    filter: blur(55px) !important;
+    opacity: 0.95 !important;
+  }
+
+  [data-rainbow="true"] body::after {
+    background: radial-gradient(circle, rgba(0, 255, 170, 0.45) 0%, rgba(180, 0, 255, 0.4) 50%, transparent 80%) !important;
+    animation: warpSpeedSpinReverse 2.4s linear infinite !important;
+    filter: blur(60px) !important;
+    opacity: 0.9 !important;
+  }
+
+  [data-rainbow="true"] .rainbow-speed-banner {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    animation: rainbowFlowFast 0.9s linear infinite, nitroPulse 1.8s infinite !important;
+  }
+
+  /* Turbo Navigation Bar */
+  [data-rainbow="true"] .top-nav {
+    background: rgba(12, 6, 30, 0.92) !important;
+    border-bottom: 2px solid transparent !important;
+    box-shadow: 0 8px 32px rgba(255, 0, 128, 0.45), 0 0 25px rgba(0, 255, 255, 0.3) !important;
+    animation: rainbowBorderGlow 1.8s linear infinite alternate !important;
+  }
+
+  [data-rainbow="true"] .nav-pill.active {
+    background: linear-gradient(90deg, #ff0066, #9900ff) !important;
+    color: #fff !important;
+    box-shadow: 0 0 18px rgba(255, 0, 102, 0.85) !important;
+  }
+
+  [data-rainbow="true"] .nav-pill:not(.active) {
+    color: #e2e8f0 !important;
+  }
+  [data-rainbow="true"] .nav-pill:not(.active):hover {
+    background: rgba(255, 255, 255, 0.14) !important;
+    color: #00ffff !important;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4) !important;
+  }
+
+  /* Hyper-Speed Animated Rainbow Headings */
+  [data-rainbow="true"] h1,
+  [data-rainbow="true"] h2,
+  [data-rainbow="true"] h3,
+  [data-rainbow="true"] .portal-card-title,
+  [data-rainbow="true"] .assign-title,
+  [data-rainbow="true"] .hero-welcome h1,
+  [data-rainbow="true"] .nav-logo-link span:nth-child(2) {
+    background: linear-gradient(90deg, #ff0055, #ff7700, #ffea00, #00ff66, #00e1ff, #7b00ff, #ff00d4, #ff0055) !important;
+    background-size: 200% auto !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: rainbowFlowFast 1s linear infinite !important;
+    filter: drop-shadow(0 0 12px rgba(255, 0, 119, 0.55)) !important;
+  }
+
+  /* All Cards in Rainbow Mode */
+  [data-rainbow="true"] .portal-card,
+  [data-rainbow="true"] .assignment-card,
+  [data-rainbow="true"] .assign-hub-section,
+  [data-rainbow="true"] .file-category-card,
+  [data-rainbow="true"] .file-item-card,
+  [data-rainbow="true"] .chapter-section,
+  [data-rainbow="true"] .quiz-card,
+  [data-rainbow="true"] .note-panel,
+  [data-rainbow="true"] .cheat-card,
+  [data-rainbow="true"] .summary-box,
+  [data-rainbow="true"] .formula-box,
+  [data-rainbow="true"] .table-wrap {
+    background: rgba(15, 9, 36, 0.88) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    animation: rainbowBorderGlow 1.8s ease-in-out infinite alternate !important;
+  }
+
+  [data-rainbow="true"] .portal-card::before,
+  [data-rainbow="true"] .assign-hub-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; height: 6px !important;
+    background: linear-gradient(90deg, #ff0055, #ff9900, #ffee00, #00ff66, #00ffff, #7700ff, #ff0055) !important;
+    background-size: 200% auto !important;
+    animation: rainbowFlowFast 0.8s linear infinite !important;
+    z-index: 2 !important;
+  }
+
+  [data-rainbow="true"] .portal-card:hover,
+  [data-rainbow="true"] .assignment-card:hover,
+  [data-rainbow="true"] .file-item-card:hover {
+    transform: translateY(-8px) scale(1.022) !important;
+    box-shadow: 0 0 40px rgba(255, 0, 128, 0.75), 0 0 75px rgba(0, 255, 240, 0.45) !important;
+    border-color: #00ffff !important;
+  }
+
+  /* Card Text & Inner Elements */
+  [data-rainbow="true"] p,
+  [data-rainbow="true"] .portal-card p,
+  [data-rainbow="true"] .assign-section-name,
+  [data-rainbow="true"] .file-meta,
+  [data-rainbow="true"] .hero-welcome p,
+  [data-rainbow="true"] table {
+    color: #cbd5e1 !important;
+  }
+
+  [data-rainbow="true"] .assign-prompt-box {
+    background: rgba(28, 16, 56, 0.8) !important;
+    border-left: 4px solid #00ffff !important;
+    color: #f8fafc !important;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.25) !important;
+  }
+
+  [data-rainbow="true"] .assign-prompt-box strong {
+    color: #00ffff !important;
+  }
+
+  [data-rainbow="true"] th {
+    background: rgba(45, 22, 90, 0.9) !important;
+    color: #00ffff !important;
+    border-bottom: 2px solid #ff0077 !important;
+  }
+  [data-rainbow="true"] td {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  /* Global Search Input in Rainbow Mode */
+  [data-rainbow="true"] .global-search-input {
+    background: rgba(18, 10, 42, 0.92) !important;
+    color: #fff !important;
+    border: 2px solid #ff0077 !important;
+    box-shadow: 0 0 25px rgba(255, 0, 119, 0.45), 0 0 50px rgba(0, 255, 255, 0.25) !important;
+    animation: rainbowBorderGlow 1.8s linear infinite alternate !important;
+  }
+
+  /* Action Buttons in Rainbow Mode */
+  [data-rainbow="true"] .btn-lms-link,
+  [data-rainbow="true"] .portal-btn,
+  [data-rainbow="true"] .assign-filter-btn.active {
+    background: linear-gradient(90deg, #ff0066, #ff7700, #ffea00, #00ff66, #00d4ff, #8a00ff) !important;
+    background-size: 250% 250% !important;
+    animation: rainbowFlowFast 1.2s linear infinite !important;
+    color: #fff !important;
+    box-shadow: 0 4px 20px rgba(255, 0, 119, 0.65) !important;
+    border: none !important;
+  }
+
+  [data-rainbow="true"] .btn-copy-prompt,
+  [data-rainbow="true"] .btn-folder-direct,
+  [data-rainbow="true"] .assign-filter-btn:not(.active) {
+    background: rgba(32, 20, 64, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #e2e8f0 !important;
+  }
+
+  [data-rainbow="true"] .btn-copy-prompt:hover,
+  [data-rainbow="true"] .btn-folder-direct:hover,
+  [data-rainbow="true"] .assign-filter-btn:not(.active):hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    color: #00ffff !important;
+    border-color: #00ffff !important;
+    box-shadow: 0 0 16px rgba(0, 255, 255, 0.55) !important;
+  }
+
+  /* Status Badges */
+  [data-rainbow="true"] .status-pending {
+    background: rgba(255, 0, 110, 0.25) !important;
+    color: #ff0077 !important;
+    border: 1.5px solid #ff0077 !important;
+    box-shadow: 0 0 16px rgba(255, 0, 119, 0.65) !important;
+  }
+  [data-rainbow="true"] .status-submitted,
+  [data-rainbow="true"] .status-graded {
+    background: rgba(0, 255, 200, 0.25) !important;
+    color: #00ffcc !important;
+    border: 1.5px solid #00ffcc !important;
+    box-shadow: 0 0 16px rgba(0, 255, 204, 0.65) !important;
+  }
+
+  /* Notepad & Draw Panel */
+  [data-rainbow="true"] .note-panel {
+    background: rgba(16, 10, 38, 0.95) !important;
+    border: 2px solid #ff0077 !important;
+    box-shadow: 0 0 35px rgba(255, 0, 119, 0.5) !important;
+  }
+  [data-rainbow="true"] .note-textarea {
+    background: rgba(24, 15, 54, 0.9) !important;
+    color: #f8fafc !important;
+  }
+  [data-rainbow="true"] #draw-canvas {
+    background: #0d0620 !important;
+  }
+
+  /* Canvas Overlay for Nitro Confetti */
+  #rainbow-nitro-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99999;
+  }
+</style>
+
+
+<style>
+  .tag-bio { background: rgba(16, 185, 129, 0.14) !important; color: #10b981 !important; border: 1px solid rgba(16, 185, 129, 0.3) !important; }
+  .tag-greenlove { background: rgba(5, 150, 105, 0.14) !important; color: #059669 !important; border: 1px solid rgba(5, 150, 105, 0.3) !important; }
+  .tag-cyber { background: rgba(99, 102, 241, 0.14) !important; color: #6366f1 !important; border: 1px solid rgba(99, 102, 241, 0.3) !important; }
+  .tag-biolab { background: rgba(20, 184, 166, 0.14) !important; color: #14b8a6 !important; border: 1px solid rgba(20, 184, 166, 0.3) !important; }
+  .tag-thinking { background: rgba(236, 72, 153, 0.14) !important; color: #ec4899 !important; border: 1px solid rgba(236, 72, 153, 0.3) !important; }
+  .tag-goodlife { background: rgba(249, 115, 22, 0.14) !important; color: #f97316 !important; border: 1px solid rgba(249, 115, 22, 0.3) !important; }
+  
+  .nav-center-links {
+    display: flex;
+    align-items: center;
+    background: var(--subcard-bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    gap: 4px;
+    overflow-x: auto;
+    max-width: 650px;
+    scrollbar-width: none;
+  }
+  .nav-center-links::-webkit-scrollbar { display: none; }
+  .nav-pill {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .course-cat-title {
+    font-size: 1.18rem;
+    font-weight: 800;
+    margin: 1.8rem 0 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+  }
+
+  .search-box {
+    margin-bottom: 1.2rem;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    padding: 12px 18px 12px 42px;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    background: var(--subcard-bg);
+    color: var(--text);
+    font-size: 0.95rem;
+    font-family: inherit;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .search-input:focus {
+    border-color: var(--primary);
+    background: var(--card-bg);
+    box-shadow: 0 0 0 4px var(--primary-light);
+  }
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+  .filter-group {
+    margin-bottom: 0.9rem;
+  }
+  .filter-heading {
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+</style>
+
+
+<!-- ==============================================
+     iOS 27 ULTRA-LIQUID GLASS & SPRING SYSTEM
+     ============================================== -->
+<style id="ios27-liquid-glass-system">
+  :root {
+    --ios-blur-heavy: blur(42px) saturate(195%);
+    --ios-blur-mid: blur(26px) saturate(185%);
+    --ios-blur-subtle: blur(14px) saturate(160%);
+    
+    --spring-fluid: cubic-bezier(0.19, 1, 0.22, 1);
+    --spring-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --spring-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Light Theme Glass System */
+    --glass-bg-light: rgba(255, 255, 255, 0.60);
+    --glass-border-light: rgba(255, 255, 255, 0.85);
+    --glass-shadow-light: 0 20px 48px -10px rgba(15, 23, 42, 0.08), 0 4px 14px -2px rgba(15, 23, 42, 0.03), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.02);
+    
+    --subcard-bg-light: rgba(255, 255, 255, 0.52);
+    --subcard-border-light: rgba(255, 255, 255, 0.75);
+    --subcard-hover-light: rgba(255, 255, 255, 0.88);
+
+    /* Dark Theme Glass System */
+    --glass-bg-dark: rgba(18, 24, 40, 0.62);
+    --glass-border-dark: rgba(255, 255, 255, 0.15);
+    --glass-shadow-dark: 0 26px 60px -12px rgba(0, 0, 0, 0.55), 0 4px 18px rgba(0, 0, 0, 0.3), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.24), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4);
+
+    --subcard-bg-dark: rgba(28, 38, 62, 0.48);
+    --subcard-border-dark: rgba(255, 255, 255, 0.10);
+    --subcard-hover-dark: rgba(36, 48, 76, 0.78);
+  }
+
+  /* Ambient Mesh Lighting (Genuine Liquid Glass Refraction Effect) */
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: -2;
+    opacity: 0.60;
+    transition: all 0.9s var(--spring-fluid);
+  }
+  body::before {
+    top: -10%;
+    left: 10%;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(0, 113, 227, 0.24), rgba(139, 92, 246, 0.18), transparent 70%);
+    animation: ambientFloatA 22s ease-in-out infinite alternate;
+  }
+  body::after {
+    bottom: 0%;
+    right: 5%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.20), rgba(6, 182, 212, 0.15), transparent 70%);
+    animation: ambientFloatB 26s ease-in-out infinite alternate;
+  }
+
+  [data-theme="dark"] body::before {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.30), rgba(0, 113, 227, 0.22), transparent 70%);
+    opacity: 0.65;
+  }
+  [data-theme="dark"] body::after {
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.18), rgba(139, 92, 246, 0.25), transparent 70%);
+    opacity: 0.55;
+  }
+
+  @keyframes ambientFloatA {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(70px, 45px) scale(1.12); }
+    100% { transform: translate(-45px, 80px) scale(0.92); }
+  }
+  @keyframes ambientFloatB {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-80px, -55px) scale(1.14); }
+    100% { transform: translate(60px, -35px) scale(0.90); }
+  }
+
+  /* Body & Container Smooth Morphing */
+  body {
+    transition: background-color 0.5s var(--spring-fluid), color 0.5s var(--spring-fluid) !important;
+  }
+  .container {
+    transition: max-width 0.45s var(--spring-fluid), padding 0.45s var(--spring-fluid) !important;
+  }
+
+  /* Dynamic Island Top Navigation */
+  .top-nav {
+    background: var(--glass-bg-light) !important;
+    backdrop-filter: var(--ios-blur-heavy) !important;
+    -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+    border: 1px solid var(--glass-border-light) !important;
+    box-shadow: var(--glass-shadow-light) !important;
+    border-radius: 26px !important;
+    padding: 10px 20px !important;
+    transition: all 0.4s var(--spring-fluid) !important;
+  }
+  [data-theme="dark"] .top-nav {
+    background: var(--glass-bg-dark) !important;
+    border: 1px solid var(--glass-border-dark) !important;
+    box-shadow: var(--glass-shadow-dark) !important;
+  }
+
+  .nav-center-links {
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 999px !important;
+    padding: 4px 6px !important;
+  }
+  [data-theme="dark"] .nav-center-links {
+    background: rgba(30, 41, 59, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .nav-pill {
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-radius: 999px !important;
+    padding: 7px 15px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    transition: all 0.28s var(--spring-snappy) !important;
+  }
+  .nav-pill:hover {
+    background: rgba(255, 255, 255, 0.55) !important;
+    transform: translateY(-1px) scale(1.02) !important;
+  }
+  .nav-pill.active {
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #0071e3 !important;
+    box-shadow: 0 4px 18px rgba(0, 113, 227, 0.22), inset 0 1px 1px #ffffff !important;
+    font-weight: 700 !important;
+  }
+  [data-theme="dark"] .nav-pill:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+  }
+  [data-theme="dark"] .nav-pill.active {
+    background: rgba(45, 55, 82, 0.95) !important;
+    color: #60a5fa !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.22) !important;
+  }
+
+  /* Glass Containers */
+  .card-glass, .assign-hub-section {
+    background: var(--glass-bg-light) !important;
+    backdrop-filter: var(--ios-blur-heavy) !important;
+    -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+    border: 1px solid var(--glass-border-light) !important;
+    box-shadow: var(--glass-shadow-light) !important;
+    border-radius: 28px !important;
+    transition: transform 0.4s var(--spring-fluid), box-shadow 0.4s var(--spring-fluid), border-color 0.4s ease !important;
+  }
+  [data-theme="dark"] .card-glass, [data-theme="dark"] .assign-hub-section {
+    background: var(--glass-bg-dark) !important;
+    border: 1px solid var(--glass-border-dark) !important;
+    box-shadow: var(--glass-shadow-dark) !important;
+  }
+
+  /* Interactive Cards with Specular Depth */
+  .course-card, .assignment-card {
+    background: var(--subcard-bg-light) !important;
+    backdrop-filter: var(--ios-blur-mid) !important;
+    -webkit-backdrop-filter: var(--ios-blur-mid) !important;
+    border: 1px solid var(--subcard-border-light) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.75) !important;
+    transition: transform 0.4s var(--spring-snappy), box-shadow 0.4s var(--spring-snappy), border-color 0.3s ease, background 0.3s ease !important;
+    position: relative;
+    overflow: hidden;
+  }
+  [data-theme="dark"] .course-card, [data-theme="dark"] .assignment-card {
+    background: var(--subcard-bg-dark) !important;
+    border: 1px solid var(--subcard-border-dark) !important;
+    box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.14) !important;
+  }
+
+  .course-card:hover, .assignment-card:hover {
+    transform: translateY(-6px) scale(1.012) !important;
+    background: var(--subcard-hover-light) !important;
+    border-color: rgba(0, 113, 227, 0.42) !important;
+    box-shadow: 0 24px 50px -8px rgba(15, 23, 42, 0.12), 0 4px 16px -2px rgba(0, 113, 227, 0.1), inset 0 1.5px 1px rgba(255, 255, 255, 0.95) !important;
+  }
+  [data-theme="dark"] .course-card:hover, [data-theme="dark"] .assignment-card:hover {
+    background: var(--subcard-hover-dark) !important;
+    border-color: rgba(99, 102, 241, 0.50) !important;
+    box-shadow: 0 28px 58px -8px rgba(0, 0, 0, 0.65), 0 4px 18px rgba(99, 102, 241, 0.18), inset 0 1.5px 1px rgba(255, 255, 255, 0.28) !important;
+  }
+
+  /* Tactile Elastic Spring Press Feedback */
+  button, .btn-lms-link, .btn-page-link, .tool-btn, .assign-filter-btn {
+    transition: transform 0.28s var(--spring-bouncy), box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease !important;
+  }
+  button:active, .btn-lms-link:active, .btn-page-link:active, .tool-btn:active, .assign-filter-btn:active {
+    transform: scale(0.935) !important;
+    transition: transform 0.08s ease !important;
+  }
+
+  /* Filter Buttons Glass */
+  .assign-filter-btn {
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    border: 1px solid var(--subcard-border-light) !important;
+    border-radius: 999px !important;
+    padding: 7px 16px !important;
+    font-size: 0.85rem !important;
+  }
+  [data-theme="dark"] .assign-filter-btn {
+    border: 1px solid var(--subcard-border-dark) !important;
+  }
+  .assign-filter-btn:hover {
+    transform: translateY(-1px) scale(1.02) !important;
+    background: var(--subcard-hover-light) !important;
+  }
+  .assign-filter-btn.active {
+    background: linear-gradient(135deg, #0071e3, #2563eb) !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.45) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+  }
+
+  /* Search Input Glass */
+  .search-input {
+    backdrop-filter: var(--ios-blur-mid) !important;
+    -webkit-backdrop-filter: var(--ios-blur-mid) !important;
+    border: 1.5px solid var(--subcard-border-light) !important;
+    border-radius: 18px !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.35s var(--spring-fluid) !important;
+  }
+  [data-theme="dark"] .search-input {
+    border: 1.5px solid var(--subcard-border-dark) !important;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  }
+  .search-input:focus {
+    border-color: #0071e3 !important;
+    box-shadow: 0 0 0 5px rgba(0, 113, 227, 0.18), 0 8px 24px rgba(0, 113, 227, 0.12) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* Staggered Spring Cascade Animation */
+  @keyframes iosCardEnter {
+    0% {
+      opacity: 0;
+      transform: translateY(24px) scale(0.965);
+      filter: blur(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0px);
+    }
+  }
+
+  .assignment-card, .course-card {
+    animation: iosCardEnter 0.52s var(--spring-fluid) backwards;
+    will-change: transform, opacity, filter;
+  }
+  .assignment-card:nth-child(1) { animation-delay: 0.02s; }
+  .assignment-card:nth-child(2) { animation-delay: 0.05s; }
+  .assignment-card:nth-child(3) { animation-delay: 0.08s; }
+  .assignment-card:nth-child(4) { animation-delay: 0.11s; }
+  .assignment-card:nth-child(5) { animation-delay: 0.14s; }
+  .assignment-card:nth-child(6) { animation-delay: 0.17s; }
+  .assignment-card:nth-child(7) { animation-delay: 0.20s; }
+  .assignment-card:nth-child(8) { animation-delay: 0.23s; }
+
+  /* Prompt / Notes Glass */
+  .assign-prompt-box {
+    background: rgba(255, 255, 255, 0.42) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px dashed rgba(0, 113, 227, 0.25) !important;
+    border-radius: 14px !important;
+  }
+  [data-theme="dark"] .assign-prompt-box {
+    background: rgba(15, 23, 42, 0.45) !important;
+    border: 1px dashed rgba(255, 255, 255, 0.16) !important;
+  }
+
+  /* Status Neon Glow */
+  .status-pill {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+  }
+  .status-pending {
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.22) !important;
+  }
+  .status-submitted {
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.22) !important;
+  }
+  .status-quiz {
+    box-shadow: 0 0 14px rgba(139, 92, 246, 0.22) !important;
+  }
+  .status-open {
+    box-shadow: 0 0 14px rgba(59, 130, 246, 0.22) !important;
+  }
+
+  /* Floating Note Panel Glass */
+  .note-panel {
+    background: var(--glass-bg-light) !important;
+    backdrop-filter: var(--ios-blur-heavy) !important;
+    -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+    border: 1.5px solid var(--glass-border-light) !important;
+    box-shadow: 0 32px 75px -12px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.85) !important;
+    border-radius: 28px !important;
+    transition: transform 0.42s var(--spring-bouncy), opacity 0.3s ease !important;
+  }
+  [data-theme="dark"] .note-panel {
+    background: var(--glass-bg-dark) !important;
+    border: 1.5px solid var(--glass-border-dark) !important;
+    box-shadow: 0 38px 85px -12px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.22) !important;
+  }
+  .note-fab {
+    box-shadow: 0 10px 32px rgba(0, 113, 227, 0.48) !important;
+    transition: transform 0.32s var(--spring-bouncy), box-shadow 0.3s ease !important;
+  }
+  .note-fab:hover {
+    transform: scale(1.14) rotate(8deg) !important;
+    box-shadow: 0 16px 44px rgba(0, 113, 227, 0.65) !important;
+  }
+
+  /* Rainbow Mode with Glass Specular Radiance */
+  html[data-rainbow="true"] .top-nav, 
+  html[data-rainbow="true"] .card-glass, 
+  html[data-rainbow="true"] .assign-hub-section {
+    backdrop-filter: blur(42px) saturate(230%) !important;
+    -webkit-backdrop-filter: blur(42px) saturate(230%) !important;
+  }
+</style>
+
+
+<!-- ==============================================
+     iOS 27 SIDEBAR & MULTI-PANE LAYOUT CSS
+     ============================================== -->
+<style id="ios27-sidebar-layout-css">
+  body {
+    padding: 0 16px 2.5rem 16px !important;
+    margin: 0 !important;
+  }
+  .portal-layout {
+    display: flex;
+    gap: 20px;
+    max-width: 100% !important;
+    width: 100%;
+    margin: 16px 0 !important;
+    align-items: flex-start;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  /* Left Sidebar */
+  .sidebar {
+    width: 275px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 16px;
+    height: calc(100vh - 32px);
+    max-height: calc(100vh - 32px);
+    background: var(--glass-bg-light) !important;
+    backdrop-filter: var(--ios-blur-heavy) !important;
+    -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+    border: 1px solid var(--glass-border-light) !important;
+    border-radius: 26px !important;
+    box-shadow: var(--glass-shadow-light) !important;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 12px;
+    z-index: 99;
+    overflow: hidden;
+    transition: all 0.4s var(--spring-fluid);
+  }
+  [data-theme="dark"] .sidebar {
+    background: var(--glass-bg-dark) !important;
+    border: 1px solid var(--glass-border-dark) !important;
+    box-shadow: var(--glass-shadow-dark) !important;
+  }
+
+  .sidebar-header {
+    padding: 4px 8px 14px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .sidebar-logo-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+  .sidebar-logo-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .sidebar-logo-badge {
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-border);
+    display: inline-block;
+    margin-top: 2px;
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 4px;
+    scrollbar-width: thin;
+  }
+  .sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+  }
+  .sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.1);
+    border-radius: 999px;
+  }
+  [data-theme="dark"] .sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .nav-group-heading {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    padding: 8px 8px 4px;
+  }
+
+  .side-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.86rem;
+    font-weight: 600;
+    margin-bottom: 3px;
+    transition: all 0.22s var(--spring-snappy);
+    cursor: pointer;
+  }
+  .side-item:hover {
+    background: rgba(255, 255, 255, 0.45);
+    transform: translateX(3px);
+  }
+  [data-theme="dark"] .side-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .side-item.active {
+    background: var(--primary);
+    color: #fff !important;
+    box-shadow: 0 4px 16px var(--primary-glow);
+    font-weight: 700;
+  }
+  .side-item.active .side-badge {
+    background: rgba(255, 255, 255, 0.25) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+  }
+  .side-left {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .side-icon {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+  .side-badge {
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: var(--subcard-bg);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .badge-poly { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border-color: rgba(139, 92, 246, 0.3); }
+  .badge-ceram { background: rgba(234, 88, 12, 0.15); color: #ea580c; border-color: rgba(234, 88, 12, 0.3); }
+  .badge-metal { background: rgba(8, 145, 178, 0.15); color: #0891b2; border-color: rgba(8, 145, 178, 0.3); }
+  .badge-bio { background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3); }
+  .badge-green { background: rgba(5, 150, 105, 0.15); color: #059669; border-color: rgba(5, 150, 105, 0.3); }
+  .badge-cyber { background: rgba(99, 102, 241, 0.15); color: #6366f1; border-color: rgba(99, 102, 241, 0.3); }
+  .badge-biolab { background: rgba(20, 184, 166, 0.15); color: #14b8a6; border-color: rgba(20, 184, 166, 0.3); }
+
+  /* Sidebar Footer */
+  .sidebar-footer {
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .side-tool-btn {
+    height: 38px;
+    padding: 0;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--subcard-bg);
+    color: var(--text);
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s var(--spring-bouncy);
+    font-family: inherit;
+    user-select: none;
+  }
+  .side-tool-btn:hover {
+    background: var(--card-bg);
+    transform: translateY(-1px);
+  }
+  .rainbow-btn {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.12), rgba(0, 240, 255, 0.12));
+    color: #ff0076;
+    border-color: rgba(255, 0, 110, 0.3);
+  }
+
+  /* Main Content Area */
+  .main-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Top Navigation Bar in Main Pane (Tab Switcher) */
+  .main-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: var(--glass-bg-light);
+    backdrop-filter: var(--ios-blur-heavy);
+    -webkit-backdrop-filter: var(--ios-blur-heavy);
+    border: 1px solid var(--glass-border-light);
+    border-radius: 22px;
+    padding: 10px 18px;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--glass-shadow-light);
+    position: sticky;
+    top: 16px;
+    z-index: 90;
+  }
+  [data-theme="dark"] .main-top-bar {
+    background: var(--glass-bg-dark);
+    border: 1px solid var(--glass-border-dark);
+    box-shadow: var(--glass-shadow-dark);
+  }
+
+  .main-tabs-switcher {
+    display: flex;
+    gap: 6px;
+    background: var(--subcard-bg);
+    padding: 4px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+  }
+  .main-tab-btn {
+    padding: 7px 18px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.25s var(--spring-snappy);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .main-tab-btn:hover {
+    color: var(--text);
+  }
+  .main-tab-btn.active {
+    background: var(--card-bg);
+    color: var(--primary);
+    box-shadow: 0 4px 14px rgba(0, 113, 227, 0.2), inset 0 1px 1px #ffffff;
+  }
+  [data-theme="dark"] .main-tab-btn.active {
+    background: rgba(45, 55, 82, 0.95);
+    color: #60a5fa;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.2);
+  }
+
+  /* Mobile Drawer Toggle */
+  .mobile-menu-toggle {
+    display: none;
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  @media (max-width: 960px) {
+    .portal-layout {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      max-height: none;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .sidebar.mobile-open {
+      display: flex;
+    }
+    .mobile-menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+
+  /* Section Containers */
+  .pane-section {
+    display: none;
+    animation: iosCardEnter 0.45s var(--spring-fluid) backwards;
+  }
+  .pane-section.active-pane {
+    display: block;
+  }
+</style>
+
+
+<style id="ios27-course-pages-polish">
+/* =========================================================
+   iOS 27 COURSE PAGES MASTER POLISH & TYPOGRAPHY FIX
+   ========================================================= */
+
+/* 1. Global Typography: Fix Thai letter spacing and line heights */
+body, h1, h2, h3, h4, h5, h6, p, span, a, div, button, input, label, li {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Sarabun', 'Plus Jakarta Sans', 'Noto Sans Thai', sans-serif !important;
+  letter-spacing: 0px !important;
+  word-spacing: normal !important;
+}
+
+h1, .hero-title {
+  font-size: 1.85rem !important;
+  font-weight: 800 !important;
+  line-height: 1.4 !important;
+  margin: 0 0 10px 0 !important;
+  letter-spacing: 0 !important;
+  color: var(--text) !important;
+}
+
+h2, .section-title {
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  line-height: 1.45 !important;
+  margin: 1.5rem 0 1rem !important;
+  letter-spacing: 0 !important;
+  color: var(--text) !important;
+}
+
+p, .hero-subtitle {
+  font-size: 0.98rem !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0 !important;
+  color: var(--text-muted) !important;
+}
+
+/* 2. Hero Badge Pill (Fix stretched/crooked badge) */
+.hero-badge, .course-badge, div[class*="hero-badge"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 16px !important;
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+  font-size: 0.84rem !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  width: fit-content !important;
+  max-width: fit-content !important;
+  margin-bottom: 14px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* 3. Hero Glass Container & Cards */
+header.hero, .card-glass, .card {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: var(--ios-blur-heavy) !important;
+  -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  border-radius: 26px !important;
+  padding: 1.8rem 2rem !important;
+  margin-bottom: 1.5rem !important;
+  box-shadow: var(--glass-shadow-light) !important;
+}
+[data-theme="dark"] header.hero,
+[data-theme="dark"] .card-glass,
+[data-theme="dark"] .card {
+  background: var(--glass-bg-dark) !important;
+  border: 1px solid var(--glass-border-dark) !important;
+  box-shadow: var(--glass-shadow-dark) !important;
+}
+
+/* 4. Stat Pills in Hero */
+.hero-stats {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-top: 14px !important;
+}
+.stat-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 14px !important;
+  border-radius: 12px !important;
+  background: var(--subcard-bg) !important;
+  border: 1px solid var(--border) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+}
+
+/* 5. Schedule / Bullet Lists in Hero (Structured) */
+.card-glass > div[style*="line-height"] {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+/* 6. Assignment Cards (Liquid Glass Style) */
+.assignment-card, .file-item-card {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: var(--ios-blur-heavy) !important;
+  -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  border-radius: 22px !important;
+  padding: 1.6rem 1.8rem !important;
+  margin-bottom: 1.25rem !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.assignment-card:hover, .file-item-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07) !important;
+  border-color: rgba(0, 113, 227, 0.35) !important;
+}
+[data-theme="dark"] .assignment-card,
+[data-theme="dark"] .file-item-card {
+  background: var(--glass-bg-dark) !important;
+  border: 1px solid var(--glass-border-dark) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Assignment Card Title */
+.assign-title {
+  font-size: 1.18rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.45 !important;
+  margin: 12px 0 !important;
+  color: var(--text) !important;
+}
+
+/* Assignment Description Box */
+.assign-prompt-box {
+  background: rgba(0, 113, 227, 0.04) !important;
+  border: 1px solid rgba(0, 113, 227, 0.12) !important;
+  border-left: 4px solid var(--primary) !important;
+  border-radius: 14px !important;
+  padding: 1rem 1.3rem !important;
+  margin: 12px 0 16px !important;
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0 !important;
+  color: var(--text) !important;
+}
+[data-theme="dark"] .assign-prompt-box {
+  background: rgba(0, 113, 227, 0.08) !important;
+  border-color: rgba(0, 113, 227, 0.25) !important;
+}
+
+/* Metadata Bar: Clean Flexbox Alignment */
+.assign-meta-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 12px 28px !important;
+  margin: 14px 0 16px !important;
+  padding: 10px 16px !important;
+  background: var(--subcard-bg) !important;
+  border-radius: 14px !important;
+  border: 1px solid var(--border) !important;
+  font-size: 0.86rem !important;
+  letter-spacing: 0 !important;
+  color: var(--text-muted) !important;
+}
+.assign-meta-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  letter-spacing: 0 !important;
+  line-height: 1.4 !important;
+}
+.assign-meta-item strong {
+  color: var(--text) !important;
+  font-weight: 700 !important;
+  margin-right: 4px !important;
+}
+
+/* Status Pills */
+.status-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 4px 12px !important;
+  border-radius: 999px !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.3 !important;
+}
+
+/* Actions Row & Buttons */
+.assign-actions-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: 14px !important;
+  padding-top: 14px !important;
+  border-top: 1px solid var(--border) !important;
+}
+.btn-lms-link {
+  padding: 8px 18px !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  font-size: 0.86rem !important;
+  letter-spacing: 0 !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+}
+.btn-lms-link:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16) !important;
+}
+.tool-btn {
+  padding: 8px 16px !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--border) !important;
+  background: var(--subcard-bg) !important;
+  color: var(--text) !important;
+  font-weight: 600 !important;
+  font-size: 0.86rem !important;
+  letter-spacing: 0 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.tool-btn:hover {
+  background: var(--card-bg) !important;
+  color: var(--primary) !important;
+  transform: translateY(-1px) !important;
+}
+</style>
+
+
+<style id="ios27-course-colors-and-transitions">
+/* =========================================================
+   iOS 27 COURSE COLOR THEMES & TRANSITIONS
+   ========================================================= */
+
+/* --- PAGE ENTRANCE ANIMATION --- */
+@keyframes coursePageSlideEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.988);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.main-content {
+  animation: coursePageSlideEnter 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity, filter;
+}
+
+/* --- SIDEBAR CLICK TACTILE FEEDBACK --- */
+.sidebar .side-item {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.22s ease,
+              box-shadow 0.22s ease !important;
+}
+.sidebar .side-item:hover {
+  transform: translateX(4px) scale(1.02) !important;
+}
+.sidebar .side-item:active {
+  transform: scale(0.92) translateY(1px) !important;
+}
+.sidebar .side-item.nav-switching {
+  animation: sideNavPulse 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  color: #fff !important;
+}
+@keyframes sideNavPulse {
+  0% { transform: scale(0.92); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* --- COURSE COLOR THEMES FOR HERO HEADERS --- */
+
+/* พอลิเมอร์ (Polymer): Royal Purple */
+.hero-polymer {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.02) 100%), var(--glass-bg-light) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.12) !important;
+}
+.badge-polymer {
+  background: rgba(139, 92, 246, 0.12) !important;
+  color: #8b5cf6 !important;
+  border: 1px solid rgba(139, 92, 246, 0.35) !important;
+}
+[data-theme="dark"] .hero-polymer {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.18) 0%, rgba(139, 92, 246, 0.04) 100%), var(--glass-bg-dark) !important;
+  border-color: rgba(139, 92, 246, 0.45) !important;
+}
+
+/* เซรามิก (Ceramic): Terracotta Amber */
+.hero-ceramic {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.1) 0%, rgba(234, 88, 12, 0.02) 100%), var(--glass-bg-light) !important;
+  border: 1px solid rgba(234, 88, 12, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(234, 88, 12, 0.12) !important;
+}
+.badge-ceramic {
+  background: rgba(234, 88, 12, 0.12) !important;
+  color: #ea580c !important;
+  border: 1px solid rgba(234, 88, 12, 0.35) !important;
+}
+[data-theme="dark"] .hero-ceramic {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.18) 0%, rgba(234, 88, 12, 0.04) 100%), var(--glass-bg-dark) !important;
+  border-color: rgba(234, 88, 12, 0.45) !important;
+}
+
+/* โลหะวิทยา (Metallurgy): Steel Blue Cyan */
+.hero-metallurgy {
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.1) 0%, rgba(8, 145, 178, 0.02) 100%), var(--glass-bg-light) !important;
+  border: 1px solid rgba(8, 145, 178, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(8, 145, 178, 0.12) !important;
+}
+.badge-metallurgy {
+  background: rgba(8, 145, 178, 0.12) !important;
+  color: #0891b2 !important;
+  border: 1px solid rgba(8, 145, 178, 0.35) !important;
+}
+[data-theme="dark"] .hero-metallurgy {
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.18) 0%, rgba(8, 145, 178, 0.04) 100%), var(--glass-bg-dark) !important;
+  border-color: rgba(8, 145, 178, 0.45) !important;
+}
+
+/* ชีววิทยา (Biology): Emerald Green */
+.hero-biology {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.02) 100%), var(--glass-bg-light) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.12) !important;
+}
+.badge-biology {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+}
+[data-theme="dark"] .hero-biology {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0.04) 100%), var(--glass-bg-dark) !important;
+  border-color: rgba(16, 185, 129, 0.45) !important;
+}
+
+/* GreenLove (200-103): Forest Green */
+.hero-greenlove {
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(5, 150, 105, 0.02) 100%), var(--glass-bg-light) !important;
+  border: 1px solid rgba(5, 150, 105, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(5, 150, 105, 0.12) !important;
+}
+.badge-greenlove {
+  background: rgba(5, 150, 105, 0.12) !important;
+  color: #059669 !important;
+  border: 1px solid rgba(5, 150, 105, 0.35) !important;
+}
+[data-theme="dark"] .hero-greenlove {
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.18) 0%, rgba(5, 150, 105, 0.04) 100%), var(--glass-bg-dark) !important;
+  border-color: rgba(5, 150, 105, 0.45) !important;
+}
+
+/* Cybersecurity: Electric Indigo */
+.hero-cybersecurity {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.02) 100%), var(--glass-bg-light) !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.12) !important;
+}
+.badge-cybersecurity {
+  background: rgba(99, 102, 241, 0.12) !important;
+  color: #6366f1 !important;
+  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+}
+[data-theme="dark"] .hero-cybersecurity {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.18) 0%, rgba(99, 102, 241, 0.04) 100%), var(--glass-bg-dark) !important;
+  border-color: rgba(99, 102, 241, 0.45) !important;
+}
+
+/* Lab ชีวะ (BioLab): Mint Teal */
+.hero-biolab {
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(20, 184, 166, 0.02) 100%), var(--glass-bg-light) !important;
+  border: 1px solid rgba(20, 184, 166, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(20, 184, 166, 0.12) !important;
+}
+.badge-biolab {
+  background: rgba(20, 184, 166, 0.12) !important;
+  color: #14b8a6 !important;
+  border: 1px solid rgba(20, 184, 166, 0.35) !important;
+}
+[data-theme="dark"] .hero-biolab {
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.18) 0%, rgba(20, 184, 166, 0.04) 100%), var(--glass-bg-dark) !important;
+  border-color: rgba(20, 184, 166, 0.45) !important;
+}
+
+/* วิชาอื่นๆ (Other Electives): Rose Pink */
+.hero-other {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(236, 72, 153, 0.02) 100%), var(--glass-bg-light) !important;
+  border: 1px solid rgba(236, 72, 153, 0.3) !important;
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.12) !important;
+}
+.badge-other {
+  background: rgba(236, 72, 153, 0.12) !important;
+  color: #ec4899 !important;
+  border: 1px solid rgba(236, 72, 153, 0.35) !important;
+}
+[data-theme="dark"] .hero-other {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.18) 0%, rgba(236, 72, 153, 0.04) 100%), var(--glass-bg-dark) !important;
+  border-color: rgba(236, 72, 153, 0.45) !important;
+}
+</style>
+
+
+<style id="ios27-subnav-and-filehub-fix">
+/* =========================================================
+   iOS 27 SUB-NAV PILL BAR & FILE HUB REFINEMENT
+   ========================================================= */
+
+/* --- SUB-NAV QUICK-NAV PILL BAR --- */
+.subject-subnav {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 14px !important;
+  margin: 16px 0 24px 0 !important;
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: var(--ios-blur-heavy) !important;
+  -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="dark"] .subject-subnav {
+  background: var(--glass-bg-dark) !important;
+  border: 1px solid var(--glass-border-dark) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+.subject-subnav a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 7px 14px !important;
+  border-radius: 12px !important;
+  background: var(--subcard-bg) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  font-size: 0.84rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  letter-spacing: 0 !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+
+.subject-subnav a:hover {
+  background: var(--card-bg) !important;
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Specific pill colors in subnav */
+.subject-subnav a[href*="files"] {
+  background: rgba(0, 113, 227, 0.08) !important;
+  color: var(--primary) !important;
+  border-color: rgba(0, 113, 227, 0.25) !important;
+}
+.subject-subnav a[href*="files"]:hover {
+  background: var(--primary) !important;
+  color: #fff !important;
+}
+
+.subject-subnav a[href*="quiz"], .subject-subnav a.quiz-btn {
+  background: rgba(239, 68, 68, 0.08) !important;
+  color: #ef4444 !important;
+  border-color: rgba(239, 68, 68, 0.25) !important;
+}
+.subject-subnav a[href*="quiz"]:hover, .subject-subnav a.quiz-btn:hover {
+  background: #ef4444 !important;
+  color: #fff !important;
+}
+
+.subject-subnav a[href*="ultra"] {
+  background: rgba(139, 92, 246, 0.08) !important;
+  color: #8b5cf6 !important;
+  border-color: rgba(139, 92, 246, 0.25) !important;
+}
+.subject-subnav a[href*="ultra"]:hover {
+  background: #8b5cf6 !important;
+  color: #fff !important;
+}
+
+/* --- FILE HUB CONTAINER & CARDS --- */
+.file-hub-section {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: var(--ios-blur-heavy) !important;
+  -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  border-radius: 26px !important;
+  padding: 2rem !important;
+  margin: 1.5rem 0 2.5rem !important;
+  box-shadow: var(--glass-shadow-light) !important;
+}
+[data-theme="dark"] .file-hub-section {
+  background: var(--glass-bg-dark) !important;
+  border: 1px solid var(--glass-border-dark) !important;
+  box-shadow: var(--glass-shadow-dark) !important;
+}
+
+.file-hub-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 1.2rem !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.file-hub-title {
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  color: var(--text) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  letter-spacing: 0 !important;
+}
+
+.file-folder-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 18px !important;
+  border-radius: 999px !important;
+  background: var(--subcard-bg) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.file-folder-btn:hover {
+  background: var(--card-bg) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+.file-cards-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)) !important;
+  gap: 1.15rem !important;
+}
+
+.file-item-card {
+  background: var(--subcard-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 18px !important;
+  padding: 1.3rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+}
+.file-item-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+  border-color: var(--primary) !important;
+}
+[data-theme="dark"] .file-item-card {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.file-type-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 4px 10px !important;
+  border-radius: 8px !important;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+  margin-bottom: 8px !important;
+}
+.badge-type-pdf {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+.badge-type-pptx {
+  background: rgba(245, 158, 11, 0.12) !important;
+  color: #f59e0b !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+}
+
+.file-item-title {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: var(--text) !important;
+  line-height: 1.45 !important;
+  margin: 4px 0 6px !important;
+  letter-spacing: 0 !important;
+}
+
+.file-item-filename {
+  font-size: 0.8rem !important;
+  color: var(--text-muted) !important;
+  word-break: break-all !important;
+  margin-bottom: 12px !important;
+  font-family: -apple-system, monospace !important;
+}
+
+.file-item-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding-top: 10px !important;
+  border-top: 1px solid var(--border) !important;
+  margin-top: auto !important;
+}
+
+.file-item-size {
+  font-size: 0.78rem !important;
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+}
+
+.file-btn-open {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 14px !important;
+  border-radius: 999px !important;
+  background: var(--primary) !important;
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 12px var(--primary-glow) !important;
+}
+.file-btn-open:hover {
+  transform: scale(1.05) !important;
+}
+</style>
+
+
+<style id="ios27-animation-performance-engine">
+/* =========================================================
+   iOS 27 ULTRA 60FPS/120FPS GPU HARDWARE ACCELERATION ENGINE
+   ========================================================= */
+
+/* 1. Eliminate continuous GPU churn from ambient background pseudo-elements */
+body::before, body::after {
+  animation: none !important; /* Stop 24/7 background GPU rasterization */
+  position: fixed !important;
+  pointer-events: none !important;
+  transform: translate3d(0, 0, 0) !important;
+  will-change: auto !important;
+}
+
+/* 2. Hardware-accelerate main layout elements */
+.sidebar, .main-content, .main-top-bar, #panes-viewport, #panes-track {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* 3. Buttery smooth sidebar collapse transition (0.34s fluid curve) */
+.portal-layout {
+  transition: gap 0.34s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.sidebar {
+  transition: width 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              min-width 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-left 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.24s ease,
+              transform 0.34s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: width, min-width, margin-left, transform, opacity !important;
+}
+
+.portal-layout.sidebar-collapsed .sidebar {
+  transform: translate3d(-30px, 0, 0) !important; /* Pure translation, no re-rasterizing scale */
+}
+
+/* 4. Tab Slider Pill: Pure composited GPU capsule (Zero nested blur lag) */
+.tab-slider-pill {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04), inset 0 1px 1px #ffffff !important;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), width 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform, width !important;
+}
+[data-theme="dark"] .tab-slider-pill {
+  background: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+}
+
+/* 5. Synchronized Panes Track & Viewport (Smooth horizontal glide) */
+.panes-track {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform !important;
+}
+.panes-viewport {
+  transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: height !important;
+}
+
+.pane-section {
+  transition: opacity 0.28s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: opacity, transform !important;
+}
+
+/* 6. Page Slide Entrance: Pure GPU Composited (Remove heavy dynamic blur) */
+@keyframes coursePageSlideEnter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.main-content {
+  animation: coursePageSlideEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  will-change: transform, opacity !important;
+}
+
+/* 7. Snappy, optimized button and card transitions */
+.side-item, .tool-btn, .file-item-card, .assignment-card, .sidebar-toggle-btn {
+  transition-property: transform, background-color, border-color, box-shadow !important;
+  transition-duration: 0.2s !important;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+</style>
+
+<style id="ios27-rainbow-chaos-engine">
+/* ==========================================================================
+   iOS 27 OVERDRIVE: CHAOTIC FULL-SCREEN RGB RAINBOW ENGINE ("โหมดรุ้งตาแตกปั่นๆ")
+   ========================================================================== */
+
+/* 1. Full-Screen Screaming RGB Flowing Background */
+html[data-rainbow="true"],
+html[data-rainbow="true"] body {
+  background: linear-gradient(124deg, 
+    #ff0033 0%, 
+    #ff4800 10%, 
+    #ffaa00 20%, 
+    #ffee00 30%, 
+    #22dd00 40%, 
+    #00ffcc 50%, 
+    #0077ff 60%, 
+    #6600ff 70%, 
+    #cc00ff 80%, 
+    #ff0077 90%, 
+    #ff0033 100%
+  ) !important;
+  background-size: 1600% 1600% !important;
+  animation: rainbowChaosFlow 4s ease infinite !important;
+  color: #ffffff !important;
+}
+
+@keyframes rainbowChaosFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 2. Floating Cosmic RGB Light Orbs */
+html[data-rainbow="true"] body::before,
+html[data-rainbow="true"] body::after {
+  display: block !important;
+  opacity: 0.85 !important;
+  mix-blend-mode: color-dodge !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  border-radius: 50% !important;
+  filter: blur(80px) !important;
+}
+
+html[data-rainbow="true"] body::before {
+  top: -10% !important;
+  left: 10% !important;
+  width: 650px !important;
+  height: 650px !important;
+  background: radial-gradient(circle, rgba(255, 0, 128, 0.75), rgba(0, 255, 255, 0.45), transparent 70%) !important;
+  animation: rainbowOrbFloatA 3s ease-in-out infinite alternate !important;
+}
+
+html[data-rainbow="true"] body::after {
+  bottom: 0% !important;
+  right: 5% !important;
+  width: 750px !important;
+  height: 750px !important;
+  background: radial-gradient(circle, rgba(255, 220, 0, 0.75), rgba(138, 43, 226, 0.65), transparent 70%) !important;
+  animation: rainbowOrbFloatB 3.5s ease-in-out infinite alternate !important;
+}
+
+@keyframes rainbowOrbFloatA {
+  0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  100% { transform: translate3d(90px, 70px, 0) scale(1.3) rotate(90deg); }
+}
+
+@keyframes rainbowOrbFloatB {
+  0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  100% { transform: translate3d(-90px, -60px, 0) scale(1.35) rotate(-90deg); }
+}
+
+/* 3. Dark Holographic Glass Containers with Pulsing RGB Neon Borders */
+html[data-rainbow="true"] .sidebar,
+html[data-rainbow="true"] .main-top-bar,
+html[data-rainbow="true"] .card,
+html[data-rainbow="true"] .card-glass,
+html[data-rainbow="true"] .ultra-card,
+html[data-rainbow="true"] header.hero,
+html[data-rainbow="true"] .hero,
+html[data-rainbow="true"] .assignment-card,
+html[data-rainbow="true"] .file-hub-section,
+html[data-rainbow="true"] .file-item-card,
+html[data-rainbow="true"] .subject-subnav,
+html[data-rainbow="true"] .tab-slider-container,
+html[data-rainbow="true"] .quick-stat-box,
+html[data-rainbow="true"] .table-container,
+html[data-rainbow="true"] .portal-layout {
+  background: rgba(12, 6, 28, 0.82) !important;
+  backdrop-filter: blur(28px) saturate(220%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(220%) !important;
+  border: 2px solid transparent !important;
+  animation: rainbowBorderMadness 2.4s linear infinite !important;
+  color: #ffffff !important;
+}
+
+@keyframes rainbowBorderMadness {
+  0% {
+    border-color: #ff0055 !important;
+    box-shadow: 0 0 25px rgba(255, 0, 85, 0.65), inset 0 0 12px rgba(255, 0, 85, 0.25) !important;
+  }
+  20% {
+    border-color: #ffaa00 !important;
+    box-shadow: 0 0 25px rgba(255, 170, 0, 0.65), inset 0 0 12px rgba(255, 170, 0, 0.25) !important;
+  }
+  40% {
+    border-color: #00ff88 !important;
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.65), inset 0 0 12px rgba(0, 255, 136, 0.25) !important;
+  }
+  60% {
+    border-color: #00e1ff !important;
+    box-shadow: 0 0 25px rgba(0, 225, 255, 0.65), inset 0 0 12px rgba(0, 225, 255, 0.25) !important;
+  }
+  80% {
+    border-color: #a800ff !important;
+    box-shadow: 0 0 25px rgba(168, 0, 255, 0.65), inset 0 0 12px rgba(168, 0, 255, 0.25) !important;
+  }
+  100% {
+    border-color: #ff0055 !important;
+    box-shadow: 0 0 25px rgba(255, 0, 85, 0.65), inset 0 0 12px rgba(255, 0, 85, 0.25) !important;
+  }
+}
+
+/* 4. Screaming Gamer RGB Text on Headings and Titles */
+html[data-rainbow="true"] h1,
+html[data-rainbow="true"] h2,
+html[data-rainbow="true"] h3,
+html[data-rainbow="true"] .hero-title,
+html[data-rainbow="true"] .hero-code,
+html[data-rainbow="true"] .sidebar-logo-title,
+html[data-rainbow="true"] .quick-stat-val,
+html[data-rainbow="true"] .hero-badge {
+  background: linear-gradient(90deg, #ff0055, #ff7700, #ffee00, #00ff66, #00ffff, #0066ff, #aa00ff, #ff00aa, #ff0055) !important;
+  background-size: 300% 100% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: rainbowTextChaos 2s linear infinite !important;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.35) !important;
+}
+
+@keyframes rainbowTextChaos {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* 5. High-Contrast Text Legibility */
+html[data-rainbow="true"] p,
+html[data-rainbow="true"] span,
+html[data-rainbow="true"] td,
+html[data-rainbow="true"] th,
+html[data-rainbow="true"] .side-item-title,
+html[data-rainbow="true"] .hero-subtitle,
+html[data-rainbow="true"] .file-title,
+html[data-rainbow="true"] .file-item-name,
+html[data-rainbow="true"] .tab-slider-btn,
+html[data-rainbow="true"] .subnav-pill,
+html[data-rainbow="true"] .meta-chip,
+html[data-rainbow="true"] .search-input {
+  color: #f8fafc !important;
+}
+
+html[data-rainbow="true"] .side-item:hover,
+html[data-rainbow="true"] .side-item.active {
+  background: linear-gradient(135deg, rgba(255, 0, 128, 0.45), rgba(0, 225, 255, 0.45)) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.35) !important;
+}
+
+html[data-rainbow="true"] .tab-slider-pill {
+  background: linear-gradient(135deg, rgba(255, 0, 128, 0.7), rgba(0, 225, 255, 0.7)) !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 6. Wild Dancing Rainbow Button (ปุ่มเต้นดิสโก้) */
+html[data-rainbow="true"] #rainbow-toggle-btn {
+  background: linear-gradient(135deg, #ff0055, #ffee00, #00ffff, #aa00ff) !important;
+  background-size: 300% 300% !important;
+  animation: rainbowButtonDance 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate, rainbowChaosFlow 1.5s linear infinite !important;
+  box-shadow: 0 0 25px rgba(255, 0, 200, 0.9), 0 0 50px rgba(0, 255, 255, 0.75) !important;
+  transform: scale(1.2) !important;
+  border: 2px solid #ffffff !important;
+}
+
+@keyframes rainbowButtonDance {
+  0%   { transform: scale(1.12) rotate(-10deg); }
+  100% { transform: scale(1.28) rotate(10deg); }
+}
+
+/* 7. Nitro Particle Canvas Overlay */
+#rainbow-nitro-canvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+  z-index: 99999999 !important;
+}
+
+/* 8. Rainbow Mouse Sparkle Elements */
+.rainbow-sparkle-dot {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999998;
+  font-size: 20px;
+  animation: rainbowSparkleFloat 0.7s ease-out forwards;
+}
+
+@keyframes rainbowSparkleFloat {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -35px, 0) scale(1.6) rotate(180deg);
+  }
+}
+</style>
+</head>
+<body>
+  <div class="portal-layout">
+    <!-- LEFT GLASS SIDEBAR -->
+
+    <aside id="portal-sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-logo" style="text-decoration:none;">
+          <span class="sidebar-logo-icon">🏛️</span>
+          <div>
+            <div class="sidebar-logo-title">PSU Study Portal</div>
+            <span class="sidebar-logo-badge">LMS ครบ 9 รายวิชา</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="sidebar-nav">
+        <div class="nav-group-heading">ศูนย์รวม & ภาพรวม</div>
+        <a href="index.html#overview" class="side-item " onclick="if(window.showTab) { showTab('overview'); return false; }">
+          <div class="side-left">
+            <span class="side-icon">🏠</span> <span>หน้าหลักสรุป</span>
+          </div>
+          <span class="side-badge">Dashboard</span>
+        </a>
+        <a href="index.html#calendar" class="side-item " onclick="if(window.showTab) { showTab('calendar'); return false; }">
+          <div class="side-left">
+            <span class="side-icon">📅</span> <span>ปฏิทินส่งงาน & สอบ</span>
+          </div>
+          <span class="side-badge" style="color:#0071e3;">กันยายน</span>
+        </a>
+        <a href="index.html#tasks" class="side-item " onclick="if(window.showTab) { showTab('tasks'); return false; }">
+          <div class="side-left">
+            <span class="side-icon">📋</span> <span>งานทั้งหมดใน LMS</span>
+          </div>
+          <span class="side-badge" style="background:#ef4444; color:#fff; font-weight:800;">66</span>
+        </a>
+
+        <div class="nav-group-heading" style="margin-top:10px;">รายวิชาทั้งหมด (9 วิชา)</div>
+        
+        <a href="polymer.html" class="side-item ">
+          <div class="side-left">
+            <span class="side-icon">🧪</span>
+            <span>342-201 พอลิเมอร์</span>
+          </div>
+          <span class="side-badge badge-poly">23 pts!</span>
+        </a>
+
+        <a href="ceramic.html" class="side-item ">
+          <div class="side-left">
+            <span class="side-icon">🏺</span>
+            <span>316-211 เซรามิก</span>
+          </div>
+          <span class="side-badge badge-ceram">ควิซเปิด</span>
+        </a>
+
+        <a href="metallurgy.html" class="side-item active">
+          <div class="side-left">
+            <span class="side-icon">⚙️</span>
+            <span>316-221 โลหะวิทยา</span>
+          </div>
+          <span class="side-badge badge-metal">รายงาน</span>
+        </a>
+
+        <a href="biology.html" class="side-item ">
+          <div class="side-left">
+            <span class="side-icon">🧬</span>
+            <span>330-101 ชีววิทยา</span>
+          </div>
+          <span class="side-badge badge-bio">7 งาน</span>
+        </a>
+
+        <a href="greenlove.html" class="side-item ">
+          <div class="side-left">
+            <span class="side-icon">🌱</span>
+            <span>200-103 GreenLove</span>
+          </div>
+          <span class="side-badge badge-green">Bonus</span>
+        </a>
+
+        <a href="cybersecurity.html" class="side-item ">
+          <div class="side-left">
+            <span class="side-icon">💻</span>
+            <span>Cybersecurity</span>
+          </div>
+          <span class="side-badge badge-cyber">ใบประกาศ</span>
+        </a>
+
+        <a href="biolab.html" class="side-item ">
+          <div class="side-left">
+            <span class="side-icon">🔬</span>
+            <span>331-101 Lab ชีวะ</span>
+          </div>
+          <span class="side-badge badge-biolab">8 รายการ</span>
+        </a>
+
+        <a href="other_courses.html" class="side-item ">
+          <div class="side-left">
+            <span class="side-icon">🧠</span>
+            <span>ระบบการคิด & ชีวิตที่ดี</span>
+          </div>
+          <span class="side-badge ">9 งาน</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="rainbow-toggle-btn" class="side-tool-btn rainbow-btn" onclick="toggleRainbowMode()" title="สลับโหมดสีรุ้ง RGB">🌈</button>
+        <button id="theme-toggle-btn" class="side-tool-btn" onclick="toggleTheme()" title="สลับโหมดมืด/สว่าง">🌙</button>
+      </div>
+    </aside>
+    <main class="main-content">
+      <header class="main-top-bar" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; padding:10px 18px; background:var(--glass-bg-light); backdrop-filter:var(--ios-blur-heavy); -webkit-backdrop-filter:var(--ios-blur-heavy); border:1px solid var(--glass-border-light); border-radius:20px; box-shadow:var(--glass-shadow-light);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <button class="sidebar-toggle-btn" onclick="toggleDesktopSidebar()" title="เปิด/ปิดแถบรายวิชา">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="3" y1="6" x2="21" y2="6"></line>
+  <line x1="3" y1="12" x2="21" y2="12"></line>
+  <line x1="3" y1="18" x2="21" y2="18"></line>
+</svg>
+            <span>รายวิชา</span>
+          </button>
+        </div>
+        <a href="index.html" class="side-tool-btn" style="text-decoration:none; padding:6px 14px; font-size:0.85rem; font-weight:700; border-radius:12px; display:inline-flex; width:auto; height:34px;">🏠 กลับหน้าหลัก</a>
+      </header>
+
+    <!-- UNIVERSAL RESPONSIVE TOP NAV -->
+    
+    <div class="rainbow-speed-banner">🏎️💨 NITRO RGB SPEEDWAY ACTIVE • โหมดสีรุ้งซิ่งระดับ MAX 🏁</div>
+    
+    
+<header class="hero hero-metallurgy">
+      <div class="hero-badge badge-metallurgy">⚙️ 316-221 โลหะวิทยา (Metallurgy)</div>
+      <h1 class="hero-title">ศูนย์รวมสรุปเนื้อหา เอกสาร & งานวิชาโลหะวิทยา</h1>
+      <p class="hero-subtitle">รวบรวมเนื้อหาสำคัญ: โครงสร้างผลึก & ดัชนีมิลเลอร์ • ข้อบกพร่อง & ดิสโลเคชัน • กลไกเพิ่มความแข็งแรง (Hall-Petch, Cold work) • แผนภาพเฟส & Fe-Fe3C • การอบชุบความร้อน TTT • ผงโลหะวิทยา และคลังข้อสอบ</p>
+      <div class="hero-stats">
+        <span class="stat-pill" style="color:#ef4444; border-color:rgba(239, 68, 68, 0.35);">🔥 รายงานกลุ่ม PDF (ปิด 9 ต.ค.)</span>
+        <span class="stat-pill" style="color:#0891b2; border-color:rgba(8, 145, 178, 0.35);">📚 คลังเอกสาร & สไลด์ 24 ไฟล์</span>
+        <span class="stat-pill" style="color:#10b981; border-color:rgba(16, 185, 129, 0.35);">📊 บันทึกคะแนน Graded แล้ว</span>
+      </div>
+    </header>
+
+  <div class="subject-subnav">
+    <a href="#m-files">📁 คลังเอกสาร & สไลด์ (24 ไฟล์)</a>
+    <a href="#m-part1">1.โครงสร้างผลึก & มิลเลอร์</a>
+    <a href="#m-part2">2.ดิสโลเคชัน & การเลื่อน</a>
+    <a href="#m-part3">3.กลไกเพิ่มความแข็งแรง</a>
+    <a href="#m-part4">4.แผนภาพเฟส & Fe-C</a>
+    <a href="#m-part5">5.การอบชุบ TTT & Martensite</a>
+    <a href="#m-part6">6.ผงโลหะวิทยา & โลหะนอกกลุ่มเหล็ก</a>
+    <a href="#m-quiz" class="quiz-btn">📝 ข้อสอบโลหะ 10 ข้อ</a>
+    <a href="#m-ultra" style="background:var(--purple-bg); color:var(--purple); font-weight:700;">⚡ สรุปสั้น 1 นาที</a>
+  </div>
+
+  <!-- FILE HUB FOR METALLURGY -->
+  <section id="m-files" class="file-hub-section">
+    <div class="file-hub-header">
+      <div class="file-hub-title">
+        <span>📂 คลังเอกสารประกอบการสอนวิชาโลหะวิทยา (316-221)</span>
+        <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">(24 ไฟล์ในเครื่อง Mac: PDF, PPTX, Video)</span>
+      </div>
+      <a href="โลหะ" target="_blank" class="file-folder-btn">📂 เปิดโฟลเดอร์ใน Mac</a>
+    </div>
+    <div class="file-cards-grid">
+      
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">ประมวลรายวิชา 316-221 โลหะวิทยา (2569)</div>
+            <div class="file-item-filename">ประมวลรายวิชา 316-221 1-2569.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 206.4 KB</span>
+            <a href="โลหะ/ประมวลรายวิชา 316-221 1-2569.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 1: โครงสร้างผลึก ระนาบ และทิศทาง (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 1.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 3.27 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 1.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 1: โครงสร้างผลึก ระนาบ และทิศทาง (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 1.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 703.2 KB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 1.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">แบบฝึกหัดที่ 1: การหาดัชนีมิลเลอร์ระนาบและทิศทาง</div>
+            <div class="file-item-filename">316-221 แบบฝึกหัดที่ 1 ระนาบและทิศทาง (1) (1).pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 984.9 KB</span>
+            <a href="โลหะ/316-221 แบบฝึกหัดที่ 1 ระนาบและทิศทาง (1) (1).pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 2: ข้อบกพร่องในผลึกและการเคลื่อนที่ดิสโลเคชัน (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 2.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 4.58 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 2.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 2: ข้อบกพร่องในผลึกโลหะ (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 2.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 335.2 KB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 2.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 3: กลไกการเพิ่มความแข็งแรงของโลหะ (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 3.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.58 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 3.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 3: กลไกการเพิ่มความแข็งแรง (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 3.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.16 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 3.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 4: การคืนตัวและการตกผลึกใหม่ (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 4.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.20 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 4.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 4: การคืนตัวและการตกผลึกใหม่ (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 4.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 623.2 KB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 4.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 5: แผนภาพเฟสระบบ 2 องค์ประกอบ (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 5.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 2.25 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 5.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 5: แผนภาพเฟส (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 5.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1023.2 KB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 5.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 6: แผนภาพเฟส Fe-Fe3C และโครงสร้างจุลภาค (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 6.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 2.56 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 6.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 6: ระบบเหล็ก-คาร์บอน (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 6.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 655.2 KB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 6.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 7: การอบชุบความร้อนเหล็กกล้า (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 7.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.14 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 7.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 7: การอบชุบความร้อนเหล็กกล้า (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 7.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 991.2 KB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 7.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">เฉลยแบบฝึกหัดที่ 7: การอบชุบความร้อนและแปลงเฟส</div>
+            <div class="file-item-filename">เฉลยแบบฝึกหัดที่ 7.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 529.2 KB</span>
+            <a href="โลหะ/เฉลยแบบฝึกหัดที่ 7.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 8: การชุบแข็งและการเจือเหล็กกล้า (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 8.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 3.52 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 8.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 8: การชุบแข็งเหล็กกล้า (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 8.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 543.2 KB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 8.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 9: โลหะนอกกลุ่มเหล็ก (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 9.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 3.14 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 9.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 9: โลหะนอกกลุ่มเหล็ก (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 9.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.70 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 9.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 10: ผงโลหะวิทยาและการเผาประสาน (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 10.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.85 MB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 10.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 10: ผงโลหะวิทยา (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 10.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 223.2 KB</span>
+            <a href="โลหะ/316-221 Metallurgy unit 10.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-video">🎬 VIDEO</div>
+            <div class="file-item-title">วิดีโอสาธิตกระบวนการ Gas Atomization</div>
+            <div class="file-item-filename">SDC11563.wm</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 447.2 KB</span>
+            <a href="โลหะ/SDC11563.wm" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+    </div>
+  </section>
+
+  
+  <!-- METALLURGY ASSIGNMENTS & EVALUATION HUB -->
+  
+  <!-- METALLURGY ASSIGNMENTS & EVALUATION HUB -->
+  <section id="m-assignments" class="assign-hub-section" style="border-top:5px solid #0891b2;">
+    <div class="assign-hub-header">
+      <div class="assign-hub-title">
+        <span style="font-size:1.6rem;">📋</span>
+        <span>รายละเอียดการสั่งงานและการประเมินใน LMS วิชาโลหะวิทยา (316-221)</span>
+      </div>
+      <div style="font-size:0.88rem; font-weight:700; color:#0891b2; background:rgba(8, 145, 178, 0.12); padding:5px 14px; border-radius:999px;">
+        5 รายการ (รายงาน & สอบ & แบบฝึกหัด)
+      </div>
+    </div>
+
+    <div class="assign-filter-bar">
+      <button class="assign-filter-btn active" onclick="filterAssignments('all', 'm-assign-list', this)">ทั้งหมด (5)</button>
+      <button class="assign-filter-btn" style="color:#ef4444; font-weight:700;" onclick="filterAssignments('pending', 'm-assign-list', this)">ต้องส่ง (1)</button>
+      <button class="assign-filter-btn" onclick="filterAssignments('graded', 'm-assign-list', this)">มีคะแนนแล้ว (1)</button>
+      <button class="assign-filter-btn" onclick="filterAssignments('exercise', 'm-assign-list', this)">📝 แบบฝึกหัด (2)</button>
+      <button class="assign-filter-btn" onclick="filterAssignments('quiz', 'm-assign-list', this)">🎯 สอบย่อย Quiz (1)</button>
+    </div>
+
+    <div id="m-assign-list">
+      
+      <!-- TASK 1: ส่งรายงานกลุ่ม (PDF) -->
+      <div class="assignment-card" data-status="pending" style="border-left:5px solid #ef4444;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-metal">⚙️ โลหะวิทยา 316-221</span>
+          <span class="status-pill status-pending">ยังไม่ได้ส่ง (เหลือเวลา 32 วัน)</span>
+        </div>
+        <div class="assign-title">ส่งรายงานกลุ่ม (Group Report Submission)</div>
+        <div class="assign-section-name">หัวข้อ: รายงานการศึกษาค้นคว้าวิชาโลหะวิทยา (Section รายงาน)</div>
+        <div class="assign-prompt-box">
+          <strong>📝 คำสั่งจากอาจารย์ใน LMS:</strong>
+          "ให้ตัวแทนกลุ่ม 1 คน ส่งรายงานเป็นไฟล์ <strong>PDF</strong> ภายในวันที่ <strong>9 ตุลาคม 2569 เวลา 23:59 น.</strong>"
+        </div>
+        <div class="assign-meta-grid">
+          <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> วันศุกร์ที่ 9 ตุลาคม 2569 เวลา 23:59 น.</span></div>
+          <div class="assign-meta-item"><span>⏳ <strong>เวลาที่เหลือ:</strong> ประมาณ 32 วัน</span></div>
+          <div class="assign-meta-item"><span>👥 <strong>การส่ง:</strong> ตัวแทนกลุ่มส่ง 1 คน (ไฟล์ PDF)</span></div>
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/assign/view.php?id=554087" target="_blank" class="btn-lms-link" style="background:#ef4444;">🔗 เปิดหน้าส่งรายงานใน LMS</a>
+          <button class="btn-copy-prompt" onclick="copyPromptText('ให้ตัวแทนกลุ่ม 1 คน ส่งรายงานเป็นไฟล์ PDF ภายในวันที่ 9 ตุลาคม 2569')">📋 คัดลอกโจทย์</button>
+        </div>
+      </div>
+
+      <!-- TASK 2: คะแนนสอบกลางภาค -->
+      <div class="assignment-card" data-status="graded" style="border-left:5px solid #8b5cf6;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-metal">⚙️ โลหะวิทยา 316-221</span>
+          <span class="status-pill status-graded">บันทึกคะแนนแล้ว (Graded: 3.00 / 20.00)</span>
+        </div>
+        <div class="assign-title">คะแนนสอบกลางภาค (Midterm Examination Score)</div>
+        <div class="assign-prompt-box">
+          <strong>รายละเอียด:</strong> คะแนนสอบกลางภาค คิดเป็นสัดส่วนคะแนนเก็บ <strong>20%</strong> ของรายวิชา • ได้คะแนน: <strong>3.00 / 20.00</strong>
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/assign/view.php?id=660457" target="_blank" class="btn-lms-link">🔗 ดูคะแนนใน LMS</a>
+        </div>
+      </div>
+
+      <!-- TASK 3: สอบย่อยครั้งที่ 1 Quiz -->
+      <div class="assignment-card" data-status="quiz" style="border-left:5px solid #0071e3;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-metal">⚙️ โลหะวิทยา 316-221</span>
+          <span class="status-pill status-submitted">🎯 สอบย่อยในระบบ (Quiz)</span>
+        </div>
+        <div class="assign-title">สอบย่อยครั้งที่ 1 (Quiz 1)</div>
+        <div class="assign-prompt-box">
+          <strong>📝 ขอบเขต:</strong> Unit 1 โครงสร้างผลึก และ Unit 2 ข้อบกพร่องในผลึกโลหะ
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=407532" target="_blank" class="btn-lms-link">🔗 เปิดหน้าควิซใน LMS</a>
+        </div>
+      </div>
+
+      <!-- TASK 4: แบบฝึกหัดที่ 1 -->
+      <div class="assignment-card" data-status="exercise" style="border-left:5px solid #10b981;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-metal">⚙️ โลหะวิทยา 316-221</span>
+          <span class="status-pill status-submitted">แบบฝึกหัดประจำบทที่ 1</span>
+        </div>
+        <div class="assign-title">แบบฝึกหัดที่ 1 : ระนาบและทิศทางผลึก (Miller Indices)</div>
+        <div class="assign-prompt-box">
+          <strong>โจทย์:</strong> วาดและคำนวณหาดัชนีมิลเลอร์ [uvw], (hkl), คำนวณความหนาแน่นเชิงเส้น (LD) และเชิงระนาบ (PD)
+        </div>
+        <div class="assign-actions-row">
+          <a href="โลหะ/316-221%20แบบฝึกหัดที่%201%20ระนาบและทิศทาง%20(1)%20(1).pdf" target="_blank" class="btn-lms-link">📖 เปิดดูโจทย์แบบฝึกหัด</a>
+        </div>
+      </div>
+
+      <!-- TASK 5: แบบฝึกหัดที่ 7 (มีเฉลย) -->
+      <div class="assignment-card" data-status="exercise" style="border-left:5px solid #34d399;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-metal">⚙️ โลหะวิทยา 316-221</span>
+          <span class="status-pill status-submitted">✅ มีไฟล์เฉลยละเอียดในเครื่อง</span>
+        </div>
+        <div class="assign-title">แบบฝึกหัดที่ 7 : การอบชุบความร้อนเหล็กกล้า (Heat Treatment)</div>
+        <div class="assign-prompt-box">
+          <strong>เนื้อหา:</strong> แผนภาพ TTT/CCT, การเกิด Martensite, Bainite, Pearlite พร้อมไฟล์เฉลยวิธีคิดละเอียด
+        </div>
+        <div class="assign-actions-row">
+          <a href="โลหะ/เฉลยแบบฝึกหัดที่%207.pdf" target="_blank" class="btn-lms-link" style="background:#10b981;">📖 เปิดดูไฟล์เฉลยละเอียด</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CONTENT CHAPTER 1 -->
+  <section id="m-part1" class="card">
+    <h2>1. โครงสร้างผลึกโลหะ ระนาบ และทิศทาง (Crystal Structures & Miller Indices)</h2>
+    <p>อะตอมของโลหะยึดเหนี่ยวกันด้วย <strong>พันธะโลหะ (Metallic Bond)</strong> ซึ่งไม่มีทิศทาง (Non-directional) ส่งผลให้อะตอมสามารถจัดเรียงตัวชิดกันแน่นที่สุด (Close-packed) ในรูปแบบผลึก 3 แบบหลัก:</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>โครงสร้างผลึก</th>
+            <th>Coordination Number (CN)</th>
+            <th>Atomic Packing Factor (APF)</th>
+            <th>Close-Packed Plane & Direction</th>
+            <th>ตัวอย่างโลหะ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>FCC</strong> (Face-Centered Cubic)</td>
+            <td>12</td>
+            <td><strong>0.74</strong> (หนาแน่นสูงสุด)</td>
+            <td>ระนาบ $\{111\}$, ทิศทาง $\langle 110 \rangle$</td>
+            <td>$\text{Cu, Al, Ni, Au, Ag, Pb}, \gamma\text{-Fe}$</td>
+          </tr>
+          <tr>
+            <td><strong>BCC</strong> (Body-Centered Cubic)</td>
+            <td>8</td>
+            <td><strong>0.68</strong></td>
+            <td>ไม่มี close-packed plane (หนาแน่นสุดคือ $\{110\}$), ทิศทาง $\langle 111 \rangle$</td>
+            <td>$\alpha\text{-Fe (Ferrite), Cr, Mo, W, V}$</td>
+          </tr>
+          <tr>
+            <td><strong>HCP</strong> (Hexagonal Close-Packed)</td>
+            <td>12</td>
+            <td><strong>0.74</strong> (อัตราส่วน $c/a \approx 1.633$)</td>
+            <td>ระนาบ Basal $(0001)$, ทิศทาง $\langle 11\bar{2}0 \rangle$</td>
+            <td>$\text{Ti, Mg, Zn, Zr, Be}$</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-card">
+      <h3>ดัชนีมิลเลอร์ (Miller Indices) สำหรับทิศทางและระนาบ</h3>
+      <div class="grid-2">
+        <div>
+          <strong style="color:var(--primary);">ทิศทางผลึก $[uvw]$:</strong>
+          <p style="font-size:0.9rem; margin-top:6px;">นำพิกัดจุดปลายลบด้วยจุดเริ่มต้น $[x_2 - x_1, y_2 - y_1, z_2 - z_1]$ แล้วปรับให้เป็นจำนวนเต็มต่ำสุด ถ้าติดลบให้ใส่บาร์ด้านบน เช่น $[1\bar{1}0]$ โดยกลุ่มของทิศทางที่สมมาตรกันจะเขียนในวงเล็บแหลม $\langle uvw \rangle$</p>
+        </div>
+        <div>
+          <strong style="color:var(--accent);">ระนาบผลึก $(hkl)$:</strong>
+          <p style="font-size:0.9rem; margin-top:6px;">หาจุดตัดแกน $X, Y, Z$ (ถ้าขนานแกนใดให้จุดตัดเป็น $\infty$) $\rightarrow$ กลับเศษเป็นส่วน (Reciprocal) $\rightarrow$ ปรับให้เป็นจำนวนเต็มต่ำสุด โดยกลุ่มของระนาบที่สมมาตรกันจะเขียนในวงเล็บปีกกา $\{hkl\}$</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT CHAPTER 2 -->
+  <section id="m-part2" class="card">
+    <h2>2. ข้อบกพร่องในผลึกและการเคลื่อนที่ของดิสโลเคชัน (Defects & Slip)</h2>
+    <div class="grid-2">
+      <div class="sub-card">
+        <h3 style="color:var(--primary);">Edge Dislocation (ดิสโลเคชันแบบขอบ)</h3>
+        <p>เกิดจากมี <strong>ระนาบอะตอมส่วนเกินครึ่งระนาบ (Extra half-plane)</strong> แทรกเข้ามาในผลึก</p>
+        <p>• เวกเตอร์เบอร์เกอร์ ($\vec{b}$) <strong>ตั้งฉาก ($\perp$)</strong> กับเส้นดิสโลเคชัน ($\vec{l}$)</p>
+        <p>• เมื่อมีแรงเฉือน ทิศทางการเคลื่อนที่ของดิสโลเคชันจะ <em>ขนาน</em> กับทิศทางของแรงเฉือน</p>
+      </div>
+      <div class="sub-card">
+        <h3 style="color:var(--secondary);">Screw Dislocation (ดิสโลเคชันแบบเกลียว)</h3>
+        <p>เกิดจากการบิดเฉือนผลึกเป็นทางลาดวนรอบแกนคล้ายบันไดเวียน</p>
+        <p>• เวกเตอร์เบอร์เกอร์ ($\vec{b}$) <strong>ขนาน ($\parallel$)</strong> กับเส้นดิสโลเคชัน ($\vec{l}$)</p>
+        <p>• เมื่อมีแรงเฉือน ทิศทางการเคลื่อนที่ของดิสโลเคชันจะ <em>ตั้งฉาก</em> กับทิศทางของแรงเฉือน</p>
+      </div>
+    </div>
+
+    <div class="sub-card">
+      <h3>ระบบการเลื่อน (Slip Systems) และกฎของชมิดท์ (Schmid's Law)</h3>
+      <p>การเสียรูปถาวร (Plastic deformation) ของโลหะเกิดจากการเลื่อนไถลของดิสโลเคชันบน <strong>ระบบการเลื่อน (Slip System = Slip Plane + Slip Direction)</strong></p>
+      <ul>
+        <li><strong>FCC มี 12 ระบบ ($\{111\}\langle 110 \rangle$):</strong> ทุกระบบอยู่บน close-packed plane ทำให้โลหะ FCC มีความเหนียวสูงมากในทุกช่วงอุณหภูมิ ไม่เปราะ</li>
+        <li><strong>BCC มี 48 ระบบ ($\{110\}, \{112\}, \{123\}\langle 111 \rangle$):</strong> ไม่มี close-packed plane พลังงานกระตุ้นการเลื่อนขึ้นกับอุณหภูมิสูง จึงเกิดปรากฏการณ์ <em>จุดเปลี่ยนเปราะที่อุณหภูมิต่ำ (Ductile-to-Brittle Transition Temperature - DBTT)</em></li>
+      </ul>
+      <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; margin-top:10px;">
+        <strong>กฎของชมิดท์ (ความเค้นเฉือนวิกฤตบนระนาบเลื่อน $\tau_{crss}$):</strong>
+        <div style="text-align:center; font-size:1.15rem; font-weight:700; color:var(--primary); margin:8px 0;">
+          $$\tau_{R} = \sigma \cos\phi \cos\lambda$$
+        </div>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">$\phi$ = มุมระหว่างแรงดึงกับแนวตั้งฉากระนาบเลื่อน, $\lambda$ = มุมระหว่างแรงดึงกับทิศทางการเลื่อน โดยค่า Schmid Factor สูงสุดคือ 0.5 (เมื่อ $\phi = \lambda = 45^\circ$)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT CHAPTER 3 -->
+  <section id="m-part3" class="card">
+    <h2>3. กลไกการเพิ่มความแข็งแรงและการอบคืนตัว (Strengthening Mechanisms)</h2>
+    <p>หลักการสำคัญของการเพิ่มความแข็งแรงในโลหะคือ: <strong>"การขัดขวางไม่ให้ดิสโลเคชันเคลื่อนที่ได้ง่าย"</strong> มี 4 กลไกหลัก:</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>กลไกการเพิ่มความแข็งแรง</th>
+            <th>หลักการทางกายภาพ</th>
+            <th>สมการ / ผลลัพธ์ต่อความเหนียว</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. การลดขนาดเกรน (Grain Boundary Strengthening)</strong></td>
+            <td>ขอบเกรนเป็นบริเวณที่อะตอมเรียงตัวไม่เป็นระเบียบ ทำให้ดิสโลเคชันไม่สามารถเคลื่อนที่ข้ามเกรนได้โดยตรง เกิด Dislocation pile-up</td>
+            <td><strong>สมการ Hall-Petch:</strong> $\sigma_y = \sigma_0 + k_y d^{-1/2}$<br><span style="color:var(--success); font-weight:700;">เป็นวิธีเดียวที่เพิ่มความแข็งแรงและเพิ่มความเหนียวไปพร้อมกัน!</span></td>
+          </tr>
+          <tr>
+            <td><strong>2. สารละลายของแข็ง (Solid Solution Strengthening)</strong></td>
+            <td>อะตอมสารเจือ (เล็กกว่าหรือใหญ่กว่าโลหะหลัก) ก่อให้เกิดสนามความเค้น (Lattice strain) ดึงดูดและตรึงดิสโลเคชันไว้</td>
+            <td>$\Delta \sigma \propto \sqrt{C}$ (ความแข็งแรงเพิ่ม ความเหนียวลดลงเล็กน้อย)</td>
+          </tr>
+          <tr>
+            <td><strong>3. การขึ้นรูปเย็น (Strain Hardening / Cold Work)</strong></td>
+            <td>การรีดหรือดึงเย็นที่อุณหภูมิต่ำกว่าจุดตกผลึกใหม่ ความหนาแน่นดิสโลเคชันเพิ่มขึ้นมหาศาล ($10^5 \rightarrow 10^{10} \text{ cm}^{-2}$) จนพันกันเอง (Tangles)</td>
+            <td>$\%CW = \frac{A_0 - A_d}{A_0} \times 100\%$<br>ความเค้นคราก ($\sigma_y$) และความต้านทานแรงดึง ($\sigma_{uts}$) เพิ่มขึ้น แต่ความยืดตัว ($\%EL$) ลดลงฮวบ</td>
+          </tr>
+          <tr>
+            <td><strong>4. การบ่มแข็ง (Precipitation / Age Hardening)</strong></td>
+            <td>เกิดอนุภาคเฟสที่สองขนาดจิ๋วกระจายตัวสม่ำเสมอ บังคับให้ดิสโลเคชันต้องตัดผ่าน (Cutting) หรือโค้งวนอ้อมรอบอนุภาค (Orowan looping)</td>
+            <td>ใช้กับโลหะผสมอะลูมิเนียม (Al-Cu 2024, 7075) ผ่าน 3 ขั้นตอน: Solution heat treat $\rightarrow$ Quench $\rightarrow$ Aging</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-card">
+      <h3>การอบอ่อนเพื่อฟื้นฟูสมบัติหลังการขึ้นรูปเย็น (Annealing Stages)</h3>
+      <ol style="margin-left:1.5rem; line-height:1.7;">
+        <li><strong>Recovery (การคืนตัว):</strong> ความเค้นตกค้างลดลง ดิสโลเคชันจัดเรียงตัวเป็นระเบียบ (Polygonization) สมบัติเชิงกลแทบไม่เปลี่ยน</li>
+        <li><strong>Recrystallization (การตกผลึกใหม่):</strong> เกิดนิวเคลียสเกรนใหม่ไร้ความเค้น (Equiaxed strain-free grains) ความแข็งแรงลดลง ความเหนียวคืนกลับมา อุณหภูมิ $T_{rex} \approx 0.3 - 0.5 T_m$ (K)</li>
+        <li><strong>Grain Growth (การโตของเกรน):</strong> เกรนขนาดใหญ่กลืนเกรนเล็กเพื่อลดพลังงานขอบเกรนรวม ความแข็งแรงลดลงตาม Hall-Petch</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CONTENT CHAPTER 4 -->
+  <section id="m-part4" class="card">
+    <h2>4. แผนภาพเฟส และระบบเหล็ก-คาร์บอน (Phase Diagrams & Fe-Fe3C)</h2>
+    
+    <div class="sub-card">
+      <h3>กฎคานงัด (The Lever Rule) สำหรับคำนวณสัดส่วนเฟส</h3>
+      <p>บนเส้นไทไลน์ (Tie-line) ที่อุณหภูมิคงที่ สัดส่วนมวลของแต่ละเฟสจะเท่ากับ <em>ความยาวของแขนตรงข้าม หารด้วยความยาวรวมของเส้นไทไลน์</em>:</p>
+      <div style="text-align:center; font-size:1.15rem; font-weight:700; color:var(--primary); margin:8px 0;">
+        $$W_\alpha = \frac{C_\beta - C_0}{C_\beta - C_\alpha}, \quad W_\beta = \frac{C_0 - C_\alpha}{C_\beta - C_\alpha}$$
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>เฟส / โครงสร้าง</th>
+            <th>โครงสร้างผลึก</th>
+            <th>ปริมาณคาร์บอนสูงสุด</th>
+            <th>ลักษณะเด่น</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>$\alpha$-Ferrite (เฟอร์ไรต์)</strong></td>
+            <td>BCC</td>
+            <td><strong>0.022 wt% C</strong> (ที่ 727°C)</td>
+            <td>นิ่ม เหนียว ละลายคาร์บอนได้น้อยมากเนื่องจากช่องว่างใน BCC เล็ก มีสมบัติเป็นแม่เหล็กเฟร์โรที่อุณหภูมิห้อง</td>
+          </tr>
+          <tr>
+            <td><strong>$\gamma$-Austenite (ออสเทไนต์)</strong></td>
+            <td>FCC</td>
+            <td><strong>2.14 wt% C</strong> (ที่ 1147°C)</td>
+            <td>ละลายคาร์บอนได้สูงมากเพราะช่อง Interstitial ใน FCC ใหญ่กว่า ไม่เป็นแม่เหล็ก เหนียว ทนความร้อน</td>
+          </tr>
+          <tr>
+            <td><strong>$\text{Fe}_3\text{C}$ Cementite (ซีเมนไทต์)</strong></td>
+            <td>Orthorhombic</td>
+            <td><strong>6.70 wt% C</strong> (คงที่)</td>
+            <td>สารประกอบ Intermetallic แข็งมากแต่เปราะมาก เปรียบเหมือนโครงสร้างเสริมความแข็งแรงในเหล็ก</td>
+          </tr>
+          <tr>
+            <td><strong>Pearlite (เพิร์ลไลต์)</strong></td>
+            <td>Lamellar (สลับชั้น)</td>
+            <td><strong>0.76 wt% C</strong></td>
+            <td>โครงสร้างลายทางสลับชั้นระหว่างแผ่น $\alpha$-ferrite (หนา) กับ $\text{Fe}_3\text{C}$ (บาง) เกิดจากปฏิกิริยายูเทกตอยด์</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-card">
+      <h3>ปฏิกิริยาสำคัญ 2 ปฏิกิริยาในแผนภาพ $\text{Fe}-\text{Fe}_3\text{C}$</h3>
+      <ul>
+        <li><strong>Eutectic Reaction (1,147°C, 4.3% C):</strong> ของเหลวแปลงเป็นของแข็ง 2 เฟสพร้อมกัน: $\text{Liquid} \rightarrow \gamma\text{-Austenite} + \text{Fe}_3\text{C}$ (โครงสร้างเลเดบูไรต์ Ledeburite ในเหล็กหล่อ)</li>
+        <li><strong>Eutectoid Reaction (727°C, 0.76% C):</strong> ของแข็งเฟสเดียวแปลงเป็นของแข็ง 2 เฟสพร้อมกัน: $\gamma\text{-Austenite} \rightarrow \alpha\text{-Ferrite} + \text{Fe}_3\text{C}$ (ได้โครงสร้างเพิร์ลไลต์ Pearlite)
+          <br>• เหล็กที่มี $\%C < 0.76\%$ เรียกว่า <strong>Hypoeutectoid Steel</strong> (ได้ Proeutectoid ferrite + Pearlite)
+          <br>• เหล็กที่มี $\%C > 0.76\%$ เรียกว่า <strong>Hypereutectoid Steel</strong> (ได้ Proeutectoid cementite + Pearlite)
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTENT CHAPTER 5 -->
+  <section id="m-part5" class="card">
+    <h2>5. การอบชุบความร้อนเหล็กกล้า แผนภาพ TTT และ Martensite</h2>
+    <p>การปรับปรุงสมบัติเชิงกลของเหล็กกล้าอาศัยการควบคุมอัตราการเย็นตัวจากเฟสออสเทไนต์ เพื่อสร้างโครงสร้างจุลภาคที่ต้องการ:</p>
+
+    <div class="grid-2">
+      <div class="sub-card" style="border-left:4px solid var(--accent);">
+        <h3 style="color:var(--accent);">Martensite (มาร์เทนไซต์)</h3>
+        <p>เกิดจากการ <strong>ชุบน้ำหรือน้ำมันอย่างรวดเร็ว (Quenching)</strong> ด้วยอัตราการเย็นตัวเร็วกว่า Critical Cooling Rate</p>
+        <p>• เป็นการแปลงเฟสแบบ <strong>ไร้การแพร่ (Diffusionless Transformation)</strong></p>
+        <p>• อะตอมคาร์บอนถูกขังอยู่ในผลึก เกิดการบิดเบี้ยวโครงข่ายจาก FCC กลายเป็น <strong>BCT (Body-Centered Tetragonal)</strong></p>
+        <p>• แข็งที่สุดในบรรดาโครงสร้างเหล็ก แต่มีความเปราะสูงมาก ใช้งานจริงไม่ได้ ต้องนำไป <strong>Tempering</strong> ก่อนเสมอ</p>
+      </div>
+
+      <div class="sub-card" style="border-left:4px solid var(--purple);">
+        <h3 style="color:var(--purple);">Tempered Martensite (มาร์เทนไซต์คืนไฟ)</h3>
+        <p>นำชิ้นงานมาร์เทนไซต์ไปอบซ้ำที่อุณหภูมิ $250 - 650^\circ\text{C}$ เพื่อให้คาร์บอนส่วนเกินแพร่ออกมาตกตะกอนเป็นอนุภาคซีเมนไทต์ละเอียดขนาดเล็กกระจายตัวในเนื้อเฟอร์ไรต์</p>
+        <p>• <strong>ผลลัพธ์:</strong> ลดความเค้นตกค้าง คืนความเหนียว (Toughness) และความต้านทานแรงกระแทก ขณะที่ยังคงรักษาความแข็งไว้สูงมาก</p>
+      </div>
+    </div>
+
+    <div class="sub-card">
+      <h3>สรุปประเภทการอบชุบความร้อน (Heat Treatment Types)</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ชื่อกระบวนการ</th>
+              <th>วิธีการระบายความร้อน</th>
+              <th>โครงสร้างและสมบัติที่ได้</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Full Annealing (การอบอ่อนสมบูรณ์)</strong></td>
+              <td>เย็นตัวในเตาอบอย่างช้าๆ (Furnace cooling)</td>
+              <td>เกรนหยาบ นิ่มมาก ความเค้นต่ำ เหมาะกับการตัดแต่งขึ้นรูปกลึงกัดไส</td>
+            </tr>
+            <tr>
+              <td><strong>Normalizing (การอบปรับสภาพเกรน)</strong></td>
+              <td>เย็นตัวในอากาศนิ่ง (Air cooling)</td>
+              <td>เกรนสม่ำเสมอละเอียด เพิร์ลไลต์ละเอียด แข็งแรงกว่าการอบอ่อน</td>
+            </tr>
+            <tr>
+              <td><strong>Austempering (ออสเทมเปอริ่ง)</strong></td>
+              <td>ชุบในอ่างเกลือร้อน $250-450^\circ\text{C}$ แช่จนจบการแปลงเฟส</td>
+              <td>ได้โครงสร้าง <strong>เบไนต์ (Bainite) 100%</strong> เหนียว ทนแรงกระแทก ไม่แตกร้าว</td>
+            </tr>
+            <tr>
+              <td><strong>Spheroidizing (การอบตกผลึกกลม)</strong></td>
+              <td>อบแช่อุณหภูมิใต้เส้นยูเทกตอยด์เป็นเวลานาน (หลายสิบชม.)</td>
+              <td>แผ่นซีเมนไทต์แตกตัวเป็นอนุภาคทรงกลม (Spheroidite) นิ่มที่สุด เหนียวที่สุด</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT CHAPTER 6 -->
+  <section id="m-part6" class="card">
+    <h2>6. ผงโลหะวิทยา และโลหะนอกกลุ่มเหล็ก (Powder Metallurgy & Non-Ferrous)</h2>
+    <div class="sub-card">
+      <h3>กระบวนการผงโลหะวิทยา (Powder Metallurgy - P/M)</h3>
+      <p>เทคนิคการผลิตชิ้นส่วนโลหะโดยการอัดผงโลหะในแม่พิมพ์แล้วนำไปเผาประสาน (Sintering) ต่ำกว่าจุดหลอมเหลว ($0.7-0.8 T_m$):</p>
+      <ul>
+        <li><strong>การผลิตผง (Gas Atomization):</strong> ฉีดพ่นกระแสน้ำโลหะหลอมเหลวด้วยแก๊สเฉื่อยความดันสูง (เช่น ไนโตรเจนหรืออาร์กอน) ละอองโลหะแข็งตัวเป็น <strong>ผงทรงกลมสม่ำเสมอ ผิวเรียบ ออกซิเจนต่ำ</strong> เหมาะมากสำหรับงาน Additive Manufacturing (3D Printing โลหะ)</li>
+        <li><strong>การอัดขึ้นรูป (Compaction):</strong> อัดผงในแม่พิมพ์ความดัน $100 - 1,000 \text{ MPa}$ ได้ชิ้นงาน Green Compact ที่ยึดกันด้วยแรงกล</li>
+        <li><strong>จุดเด่นของ P/M:</strong> ผลิตชิ้นงานรูปร่างซับซ้อนแบบ Near-Net Shape ไม่เสียเศษโลหะ (Zero scrap), ผสมโลหะที่ไม่ละลายในกันได้, ผลิตแบริ่งรูพรุนหล่อลื่นในตัว (Self-lubricating bearings)</li>
+      </ul>
+    </div>
+
+    <div class="sub-card">
+      <h3>โลหะผสมนอกกลุ่มเหล็กที่สำคัญ (Non-Ferrous Alloys)</h3>
+      <div class="grid-3" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px;">
+          <strong style="color:var(--primary);">อะลูมิเนียม (Al Alloys)</strong>
+          <p style="font-size:0.88rem; margin-top:6px;">ความหนาแน่นต่ำ ($\approx 2.7 \text{ g/cm}^3$) มีฟิล์ม $\text{Al}_2\text{O}_3$ ป้องกันสนิม ซีรีส์ 2xxx, 7xxx สามารถอบชุบบ่มแข็งทำโครงสร้างเครื่องบินได้</p>
+        </div>
+        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px;">
+          <strong style="color:var(--warning);">ทองแดง (Cu Alloys)</strong>
+          <p style="font-size:0.88rem; margin-top:6px;">นำความร้อนและไฟฟ้าดีเยี่ยม: <strong>Brass (ทองเหลือง) = Cu + Zn</strong>, <strong>Bronze (ทองบรอนซ์) = Cu + Sn</strong> ทนการกัดกร่อนในน้ำทะเล</p>
+        </div>
+        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px;">
+          <strong style="color:var(--purple);">ไทเทเนียม (Ti Alloys)</strong>
+          <p style="font-size:0.88rem; margin-top:6px;">อัตราส่วนความแข็งแรงต่อน้ำหนักสูงเลิศ ทนอุณหภูมิสูง เข้ากับเนื้อเยื่อมนุษย์ได้ (Biocompatible) ทำกระดูกเทียมและชิ้นส่วนอวกาศ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METALLURGY QUIZ BANK -->
+  <section id="m-quiz" class="card">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:1.5rem;">
+      <div>
+        <h2 style="margin:0;">📝 คลังข้อสอบวิชาโลหะวิทยา (316-221)</h2>
+        <p style="color:var(--text-muted); margin:4px 0 0;">ทดสอบความรู้ 10 ข้อ ครอบคลุมผลึก ดิสโลเคชัน แผนภาพเฟส และการอบชุบ พร้อมตรวจคะแนนทันที</p>
+      </div>
+      <div id="m-quiz-score-badge" style="display:none; padding:8px 18px; border-radius:999px; background:var(--primary-light); color:var(--primary); font-weight:800; font-size:1.1rem;">
+        คะแนนของคุณ: <span id="m-score-text">0</span> / 10
+      </div>
+    </div>
+
+    <div id="m-quiz-container">
+      <!-- Generated via JS -->
+    </div>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <button class="nav-tool-btn" style="padding:12px 32px; font-size:1rem; border-radius:999px; background:var(--primary); color:white;" onclick="checkMetalQuiz()">✅ ส่งคำตอบ & ตรวจคะแนนโลหะ</button>
+    </div>
+  </section>
+
+  <!-- METALLURGY ULTRA CHEAT SHEET -->
+  <section id="m-ultra" class="ultra-card" style="margin-top:2rem;">
+    <h2>⚡ สรุปหัวใจสำคัญวิชาโลหะวิทยา (Ultra Cheat Sheet 1 นาที)</h2>
+    <div class="grid-2" style="margin-top:1.2rem;">
+      <div class="summary-box">
+        <h4 style="color:var(--primary);">🎯 ผลึก & ดิสโลเคชัน & ความแข็งแรง</h4>
+        <p>• FCC: CN=12, APF=0.74, 12 slip systems ($\{111\}\langle 110 \rangle$) $\rightarrow$ เหนียวมาก ไม่เปราะ</p>
+        <p>• BCC: CN=8, APF=0.68, ไวต่ออุณหภูมิ $\rightarrow$ เกิดจุดเปลี่ยนเปราะ DBTT</p>
+        <p>• Edge dislocation: $\vec{b} \perp \vec{l}$ | Screw dislocation: $\vec{b} \parallel \vec{l}$</p>
+        <p>• Hall-Petch: $\sigma_y = \sigma_0 + k_y d^{-1/2}$ $\rightarrow$ เกรนเล็ก แข็งแรงขึ้นและเหนียวขึ้นพร้อมกัน</p>
+      </div>
+      <div class="summary-box">
+        <h4 style="color:var(--accent);">🎯 แผนภาพเฟส & การอบชุบความร้อน</h4>
+        <p>• Eutectoid: 727°C, 0.76% C $\rightarrow$ Pearlite ($\alpha + \text{Fe}_3\text{C}$ lamellar)</p>
+        <p>• Ferrite ($\alpha$): BCC, ละลาย C สูงสุด 0.022% | Austenite ($\gamma$): FCC, ละลาย C สูงสุด 2.14%</p>
+        <p>• Martensite: BCT เกิดจากการ Quench เฉียบพลัน แข็งสุดแต่เปราะ ต้อง Tempering เสมอ</p>
+        <p>• Gas atomization: พ่นละอองแก๊ส ได้ผงโลหะทรงกลมสวย ออกซิเจนต่ำ เหมาะกับ 3D Print</p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+  </div>
+
+  <!-- FLOATING NOTEPAD -->
+  <button id="note-fab" class="note-fab" onclick="toggleNotePanel()" title="เปิดกระดาษจดโน้ต & วาดเขียน">✍️</button>
+  <div id="note-panel" class="note-panel">
+    <div class="note-header">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-weight:700; font-size:0.95rem;">📝 สมุดจด & วาดเขียน</span>
+        <button id="tab-draw" class="tool-btn" style="padding:4px 10px; font-size:0.75rem;" onclick="switchNoteMode('draw')">🎨 วาดเขียน</button>
+        <button id="tab-text" class="tool-btn" style="padding:4px 10px; font-size:0.75rem; background:var(--primary); color:white;" onclick="switchNoteMode('text')">⌨️ พิมพ์</button>
+      </div>
+      <button onclick="toggleNotePanel()" style="background:transparent; border:none; color:var(--text-muted); font-size:1.2rem; cursor:pointer;">✕</button>
+    </div>
+    
+    <div class="note-body">
+      <!-- Text Mode -->
+      <div id="note-mode-text" style="width:100%; height:100%; display:flex; flex-direction:column;">
+        <textarea id="note-textarea" class="note-textarea" placeholder="พิมพ์โน้ต บันทึกสูตร หรือข้อความที่นี่... (บันทึกอัตโนมัติ)" oninput="saveNoteText()"></textarea>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 14px; border-top:1px solid var(--border); font-size:0.78rem; color:var(--text-muted);">
+          <span id="note-status">💾 บันทึกอัตโนมัติแล้ว</span>
+          <button class="tool-btn" style="padding:3px 8px; font-size:0.75rem;" onclick="clearNoteText()">ล้างข้อความ</button>
+        </div>
+      </div>
+
+      <!-- Draw Mode -->
+      <div id="note-mode-draw" style="width:100%; height:100%; display:none; flex-direction:column;">
+        <canvas id="draw-canvas"></canvas>
+        <div class="draw-controls">
+          <input type="color" id="draw-color" value="#0071e3" style="width:28px; height:28px; border-radius:50%; border:none; cursor:pointer;" title="เลือกสี">
+          <input type="range" id="draw-size" min="1" max="15" value="3" style="width:70px;" title="ขนาดเส้น">
+          <button class="tool-btn" style="padding:3px 8px; font-size:0.75rem;" onclick="setEraser()">🧹 ยางลบ</button>
+          <button class="tool-btn" style="padding:3px 8px; font-size:0.75rem;" onclick="clearCanvas()">🗑️ ล้างภาพ</button>
+          <button class="tool-btn" style="padding:3px 8px; font-size:0.75rem; background:var(--primary); color:white;" onclick="saveCanvasImage()">📥 เซฟรูป</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- THEME & WIDTH & RAINBOW TOGGLES ---
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('materials_theme', target);
+      const btn = document.getElementById('theme-toggle-btn');
+      if (btn) btn.innerHTML = target === 'dark' ? '☀️' : '🌙';
+    }
+
+    function toggleWidth() { /* width toggle disabled */ }
+
+    
+
+    // Init Theme and Width preferences
+    (function() {
+      const savedTheme = localStorage.getItem('materials_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      if (themeBtn) themeBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
+
+      const savedWidth = localStorage.getItem('materials_full_width');
+      if (savedWidth === 'true') {
+        const c = document.querySelector('.container');
+        if (c) c.classList.add('full-width');
+        const widthBtn = document.getElementById('width-toggle-btn');
+        if (widthBtn) widthBtn.innerHTML = '⊟ กระชับ';
+      }
+
+      
+    })();
+
+    // --- NOTEPAD & DRAWING LOGIC ---
+    let noteOpen = false;
+    function toggleNotePanel() {
+      noteOpen = !noteOpen;
+      const panel = document.getElementById('note-panel');
+      if (panel) panel.classList.toggle('open', noteOpen);
+      if (noteOpen) {
+        loadNoteText();
+        resizeCanvas();
+      }
+    }
+
+    function switchNoteMode(mode) {
+      const textMode = document.getElementById('note-mode-text');
+      const drawMode = document.getElementById('note-mode-draw');
+      const tabDraw = document.getElementById('tab-draw');
+      const tabText = document.getElementById('tab-text');
+      if (mode === 'draw') {
+        if (textMode) textMode.style.display = 'none';
+        if (drawMode) drawMode.style.display = 'flex';
+        if (tabDraw) { tabDraw.style.background = 'var(--primary)'; tabDraw.style.color = 'white'; }
+        if (tabText) { tabText.style.background = 'transparent'; tabText.style.color = 'var(--text)'; }
+        setTimeout(resizeCanvas, 50);
+      } else {
+        if (textMode) textMode.style.display = 'flex';
+        if (drawMode) drawMode.style.display = 'none';
+        if (tabText) { tabText.style.background = 'var(--primary)'; tabText.style.color = 'white'; }
+        if (tabDraw) { tabDraw.style.background = 'transparent'; tabDraw.style.color = 'var(--text)'; }
+      }
+    }
+
+    function saveNoteText() {
+      const val = document.getElementById('note-textarea').value;
+      localStorage.setItem('materials_portal_note', val);
+      const st = document.getElementById('note-status');
+      if (st) {
+        st.innerText = '💾 บันทึกแล้ว ' + new Date().toLocaleTimeString();
+      }
+    }
+
+    function loadNoteText() {
+      const val = localStorage.getItem('materials_portal_note') || '';
+      const ta = document.getElementById('note-textarea');
+      if (ta) ta.value = val;
+    }
+
+    function clearNoteText() {
+      if (confirm('ต้องการล้างข้อความทั้งหมดใช่หรือไม่?')) {
+        const ta = document.getElementById('note-textarea');
+        if (ta) ta.value = '';
+        saveNoteText();
+      }
+    }
+
+    // Canvas Drawing
+    let canvas, ctx, isDrawing = false, isEraser = false;
+    function initCanvas() {
+      canvas = document.getElementById('draw-canvas');
+      if (!canvas) return;
+      ctx = canvas.getContext('2d');
+      window.addEventListener('resize', resizeCanvas);
+      
+      const startDraw = (e) => {
+        isDrawing = true;
+        ctx.beginPath();
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+        const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+        ctx.moveTo(x, y);
+      };
+      const draw = (e) => {
+        if (!isDrawing) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+        const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+        ctx.lineWidth = document.getElementById('draw-size').value || 3;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        if (isEraser) {
+          ctx.strokeStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#141a29' : '#ffffff';
+        } else {
+          ctx.strokeStyle = document.getElementById('draw-color').value || '#0071e3';
+        }
+        ctx.lineTo(x, y);
+        ctx.stroke();
+      };
+      const stopDraw = () => { isDrawing = false; };
+
+      canvas.addEventListener('mousedown', startDraw);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDraw);
+      canvas.addEventListener('mouseleave', stopDraw);
+
+      canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDraw(e); }, { passive: false });
+      canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); }, { passive: false });
+      canvas.addEventListener('touchend', stopDraw);
+    }
+
+    function resizeCanvas() {
+      if (!canvas) return;
+      const rect = canvas.parentElement.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        const temp = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        canvas.width = rect.width;
+        canvas.height = rect.height - 46;
+        ctx.putImageData(temp, 0, 0);
+      }
+    }
+
+    function setEraser() {
+      isEraser = !isEraser;
+    }
+
+    function clearCanvas() {
+      if (!canvas || !ctx) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function saveCanvasImage() {
+      if (!canvas) return;
+      const link = document.createElement('a');
+      link.download = 'materials_sketch_' + Date.now() + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initCanvas();
+      loadNoteText();
+    });
+  </script>
+
+
+  <script>
+    function filterSubjectFiles(containerId, q) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const cards = container.querySelectorAll('.file-item-card');
+      const term = q.toLowerCase().trim();
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        c.style.display = (!term || text.includes(term)) ? 'flex' : 'none';
+      });
+    }
+
+    const metalQuestions = [
+      {
+        q: "1. โครงสร้างผลึกโลหะแบบ FCC (Face-Centered Cubic) มีค่า Coordination Number และ Atomic Packing Factor (APF) เท่าใด?",
+        opts: [
+          "A. CN = 8, APF = 0.68",
+          "B. CN = 12, APF = 0.74",
+          "C. CN = 12, APF = 0.68",
+          "D. CN = 6, APF = 0.52"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! FCC มีอะตอมสัมผัสกัน 12 อะตอม (CN=12) และมีค่าความหนาแน่นการบรรจุอะตอมสูงสุดคือ APF = 0.74 (เท่ากับ HCP)"
+      },
+      {
+        q: "2. ในยูนิตเซลล์รูปลูกบาศก์ ระนาบที่ตัดแกน X ที่ 1, แกน Y ที่ 1 และขนานกับแกน Z (จุดตัดที่ ∞) มีดัชนีมิลเลอร์ตรงกับข้อใด?",
+        opts: [
+          "A. (1 1 1)",
+          "B. (1 1 0)",
+          "C. [1 1 0]",
+          "D. (0 0 1)"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! จุดตัดแกนคือ (1, 1, ∞) $
+ightarrow$ ส่วนกลับคือ (1/1, 1/1, 1/∞) = (1, 1, 0) และเขียนในวงเล็บกลมสำหรับระนาบผลึก"
+      },
+      {
+        q: "3. ข้อใดกล่าวถึง Edge Dislocation (ดิสโลเคชันแบบขอบ) ในผลึกโลหะได้ถูกต้องที่สุด?",
+        opts: [
+          "A. เวกเตอร์เบอร์เกอร์ (b) ขนานกับเส้นดิสโลเคชัน (l)",
+          "B. เวกเตอร์เบอร์เกอร์ (b) ตั้งฉากกับเส้นดิสโลเคชัน (l)",
+          "C. ไม่มีระนาบอะตอมส่วนเกิน",
+          "D. ไม่ทำให้เกิดการเสียรูปถาวร"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! Edge dislocation มีระนาบเกินครึ่งระนาบ และเวกเตอร์เบอร์เกอร์ b จะตั้งฉาก (⊥) กับเส้นดิสโลเคชัน l เสมอ ส่วน Screw dislocation จะขนาน (//)"
+      },
+      {
+        q: "4. ตามสมการ Hall-Petch (σy = σ0 + ky · d^(-1/2)) การลดขนาดเกรนเฉลี่ย (d) ของโลหะส่งผลอย่างไร?",
+        opts: [
+          "A. ความแข็งแรงเพิ่มขึ้น แต่ความเหนียวลดลงอย่างมาก",
+          "B. ความแข็งแรงเพิ่มขึ้น และความเหนียวเพิ่มขึ้นด้วย",
+          "C. ความแข็งแรงลดลง แต่ความเหนียวเพิ่มขึ้น",
+          "D. จุดหลอมเหลวลดลง"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! การลดขนาดเกรน (Grain refinement) เป็นกลไกการเพิ่มความแข็งแรงเพียงอย่างเดียวที่ช่วยเพิ่มทั้งความเค้นคราก (Yield strength) และความเหนียว (Toughness/Ductility) ไปพร้อมกัน"
+      },
+      {
+        q: "5. ในระบบเหล็ก-คาร์บอน (Fe-Fe3C) ปฏิกิริยายูเทกตอยด์ (Eutectoid Reaction) เกิดขึ้นที่อุณหภูมิและปริมาณคาร์บอนเท่าใด และได้โครงสร้างใด?",
+        opts: [
+          "A. 1,147°C, 4.3 wt% C $
+ightarrow$ Ledeburite",
+          "B. 727°C, 0.76 wt% C $
+ightarrow$ Pearlite (α-ferrite + Fe3C)",
+          "C. 912°C, 0.022 wt% C $
+ightarrow$ Austenite",
+          "D. 1,495°C, 0.17 wt% C $
+ightarrow$ Delta ferrite"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! ที่ 727°C และคาร์บอน 0.76 wt% เฟสของแข็งออสเทไนต์ (γ) จะสลายตัวพร้อมกันเป็นของแข็ง 2 เฟสแบบสลับชั้นคือ เพิร์ลไลต์ (Pearlite = α-ferrite + Fe3C)"
+      },
+      {
+        q: "6. โครงสร้างมาร์เทนไซต์ (Martensite) ที่ได้จากการชุบน้ำเย็นจัด (Quenching) แข็งมากแต่เปราะ การนำไปผ่านกระบวนการ Tempering มีเป้าหมายเพื่ออะไร?",
+        opts: [
+          "A. เพื่อเปลี่ยนโครงสร้างกลับเป็นออสเทไนต์ 100%",
+          "B. เพื่อลดความเค้นตกค้างและเพิ่มความเหนียว (Toughness) โดยให้คาร์บอนตกตะกอนเป็นอนุภาคคาร์ไบด์ละเอียด (Tempered Martensite)",
+          "C. เพื่อเพิ่มปริมาณคาร์บอนในเนื้อเหล็ก",
+          "D. เพื่อละลายเฟอร์ไรต์ออกไป"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! Martensite มีโครงสร้าง BCT ที่บิดเบี้ยวและมีความเค้นตกค้างสูงมาก การ Tempering ที่ 250-650°C จะช่วยปลดปล่อยความเค้น ให้คาร์บอนตกตะกอนเป็นอนุภาคซีเมนไทต์จิ๋วในเนื้อเฟอร์ไรต์ ได้ความแข็งแรงและความเหนียวสูงร่วมกัน"
+      },
+      {
+        q: "7. เหตุใดโลหะโครงสร้าง FCC เช่น อะลูมิเนียม ทองแดง จึงมีความเหนียว (Ductility) สูงมากและไม่มีจุดเปลี่ยนเปราะที่อุณหภูมิต่ำ (No DBTT)?",
+        opts: [
+          "A. มีระบบการเลื่อนมากถึง 48 ระบบ",
+          "B. มีระบบการเลื่อน 12 ระบบบนระนาบ {111} ซึ่งเป็น Close-packed planes ทำให้ดิสโลเคชันเคลื่อนที่ได้ง่ายทุกอุณหภูมิ",
+          "C. ไม่มีขอบเกรนในเนื้อโลหะ",
+          "D. มีจุดหลอมเหลวต่ำกว่าโลหะอื่น"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! FCC มีระบบการเลื่อน 12 ระบบ ({111}<110>) ซึ่งระนาบ {111} เป็นระนาบชิดแน่นที่สุด พลังงานที่ใช้ในการเลื่อนไถลจึงต่ำมากและไม่ไวต่ออุณหภูมิ ทำให้โลหะ FCC ไม่เกิดการแตกเปราะที่อุณหภูมิต่ำ"
+      },
+      {
+        q: "8. ในการอ่านแผนภาพ TTT หากต้องการชุบเหล็กกล้าให้ได้โครงสร้าง 'เบไนต์ (Bainite)' 100% ต้องใช้กระบวนการใด?",
+        opts: [
+          "A. ชุบน้ำเย็นเฉียบพลันทันทีถึงอุณหภูมิห้อง",
+          "B. Austempering: ชุบในอ่างเกลือร้อนที่ 250 - 450°C แล้วแช่จนแปลงเฟสเสร็จสมบูรณ์ ก่อนปล่อยให้เย็นตัว",
+          "C. ปล่อยให้เย็นตัวในเตาอบอย่างช้าๆ (Full Annealing)",
+          "D. ปล่อยให้เย็นตัวในอากาศนิ่ง (Normalizing)"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! Austempering คือการชุบเร็วผ่านช่วงจมูกเพิร์ลไลต์ลงมาหยุดแช่ในอ่างเกลือร้อนที่อุณหภูมิเหนือ Ms (ช่วงเกิด Bainite) แช่จนออสเทไนต์เปลี่ยนเป็นเบไนต์ 100% แล้วจึงปล่อยให้เย็นตัว"
+      },
+      {
+        q: "9. กระบวนการ Gas Atomization ในการผลิตผงโลหะ (Powder Metallurgy) มีจุดเด่นสำคัญคือข้อใด?",
+        opts: [
+          "A. ได้ผงโลหะทรงกลมสวย ผิวเรียบ ความบริสุทธิ์สูง ออกซิเจนต่ำ เหมาะสำหรับ 3D Printing โลหะ",
+          "B. ใช้ต้นทุนต่ำที่สุดเพราะใช้น้ำฉีดพ่น",
+          "C. ได้ผงโลหะที่มีรูปร่างไม่แน่นอนและผิวขรุขระมาก",
+          "D. ใช้ได้เฉพาะกับโลหะทองคำเท่านั้น"
+        ],
+        ans: 0,
+        exp: "ถูกต้อง! Gas Atomization ใช้แก๊สเฉื่อยความดันสูงพ่นสายน้ำโลหะ ทำให้ละอองโลหะแข็งตัวเป็นเม็ดทรงกลมสมบูรณ์ มีความลื่นไหล (Flowability) สูง และออกซิเจนต่ำมาก นิยมใช้ในงานพิมพ์สามมิติโลหะและการอัดขึ้นรูปขั้นสูง"
+      },
+      {
+        q: "10. การคำนวณหากฎคานงัด (Lever Rule) บนเส้นไทไลน์ในแผนภาพเฟส สัดส่วนของแต่ละเฟสคำนวณได้อย่างไร?",
+        opts: [
+          "A. ความยาวของแขนคานงัดด้านตรงข้าม หารด้วยความยาวรวมของเส้นไทไลน์",
+          "B. ความยาวของแขนคานงัดด้านเดียวกัน หารด้วยความยาวรวม",
+          "C. ผลคูณของอุณหภูมิและส่วนผสม",
+          "D. พื้นที่ใต้กราฟแผนภาพเฟส"
+        ],
+        ans: 0,
+        exp: "ถูกต้อง! กฎคานงัด (Lever Rule) ใช้หลักการสมดุลโมเมนต์ สัดส่วนมวลของเฟสใดเฟสหนึ่ง จะเท่ากับ 'ความยาวของแขนคานงัดด้านตรงข้าม' หารด้วย 'ความยาวรวมทั้งหมดของเส้นไทไลน์'"
+      }
+    ];
+
+    function initMetalQuiz() {
+      const container = document.getElementById('m-quiz-container');
+      if (!container) return;
+      container.innerHTML = metalQuestions.map((item, qIdx) => `
+        <div class="quiz-card" id="m-card-${qIdx}">
+          <div class="quiz-question">${item.q}</div>
+          <div class="quiz-options">
+            ${item.opts.map((opt, oIdx) => `
+              <div class="quiz-option" id="m-opt-${qIdx}-${oIdx}" onclick="selectOpt('m', ${qIdx}, ${oIdx})">
+                <input type="radio" name="m-q-${qIdx}" id="m-radio-${qIdx}-${oIdx}" value="${oIdx}">
+                <label for="m-radio-${qIdx}-${oIdx}" style="cursor:pointer; width:100%;">${opt}</label>
+              </div>
+            `).join('')}
+          </div>
+          <div class="quiz-explanation" id="m-exp-${qIdx}">${item.exp}</div>
+        </div>
+      `).join('');
+    }
+
+    function selectOpt(prefix, qIdx, oIdx) {
+      const radios = document.getElementsByName(`${prefix}-q-${qIdx}`);
+      if (radios[oIdx]) radios[oIdx].checked = true;
+      const card = document.getElementById(`${prefix}-card-${qIdx}`);
+      if (card) {
+        card.querySelectorAll('.quiz-option').forEach((el, idx) => {
+          el.classList.toggle('selected', idx === oIdx);
+        });
+      }
+    }
+
+    function checkMetalQuiz() {
+      let score = 0;
+      metalQuestions.forEach((item, qIdx) => {
+        const radios = document.getElementsByName(`m-q-${qIdx}`);
+        let selected = -1;
+        for (let i = 0; i < radios.length; i++) {
+          if (radios[i].checked) { selected = i; break; }
+        }
+        const exp = document.getElementById(`m-exp-${qIdx}`);
+        if (exp) exp.style.display = 'block';
+
+        for (let i = 0; i < item.opts.length; i++) {
+          const optEl = document.getElementById(`m-opt-${qIdx}-${i}`);
+          if (!optEl) continue;
+          optEl.classList.remove('correct', 'incorrect');
+          if (i === item.ans) optEl.classList.add('correct');
+          else if (i === selected) optEl.classList.add('incorrect');
+        }
+        if (selected === item.ans) score++;
+      });
+
+      const badge = document.getElementById('m-quiz-score-badge');
+      const scoreText = document.getElementById('m-score-text');
+      if (badge && scoreText) {
+        scoreText.innerText = score;
+        badge.style.display = 'inline-block';
+        badge.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initMetalQuiz();
+    });
+  </script>
+
+<!-- TOAST POPUP & ASSIGNMENT FILTER JS -->
+<div id="toast" class="toast-notification"><span>คัดลอกโจทย์เรียบร้อยแล้ว</span></div>
+
+<script>
+function copyPromptText(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('toast');
+    if (toast) {
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2400);
+    }
+  }).catch(() => {
+    // Fallback for clipboard
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const toast = document.getElementById('toast');
+    if (toast) {
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2400);
+    }
+  });
+}
+
+function filterAssignments(filterType, containerId, btnElement) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const cards = container.querySelectorAll('.assignment-card');
+  
+  // update buttons
+  const bar = btnElement ? btnElement.parentElement : container.parentElement.querySelector('.assign-filter-bar');
+  if (bar) {
+    const buttons = bar.querySelectorAll('.assign-filter-btn');
+    buttons.forEach(b => b.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+  }
+
+  cards.forEach(card => {
+    const status = card.getAttribute('data-status');
+    if (filterType === 'all' || (status && status.includes(filterType))) {
+      card.style.display = 'block';
+      card.style.animation = 'cardEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+
+
+
+
+
+<!-- SUPER RAINBOW RACING JS ENGINE -->
+<!-- == SUPER CHAOS RAINBOW RACING ENGINE ("โหมดรุ้งตาแตกปั่นๆ") == -->
+<script id="ios27-rainbow-chaos-script">
+let nitroAnimId = null;
+let sparkleMoveThrottle = 0;
+
+// Play 8-bit gamer chiptune sound with Web Audio API (Zero external assets)
+function playRainbowSound(isStart) {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    const now = ctx.currentTime;
+
+    if (isStart) {
+      // 8-bit Power Up Arpeggio: C5 -> E5 -> G5 -> C6
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.07);
+        gain.gain.setValueAtTime(0.12, now + idx * 0.07);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.07 + 0.12);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + idx * 0.07);
+        osc.stop(now + idx * 0.07 + 0.13);
+      });
+    } else {
+      // Soft Chime Down
+      const notes = [587.33, 440.0];
+      notes.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+        gain.gain.setValueAtTime(0.1, now + idx * 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.16);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + idx * 0.08);
+        osc.stop(now + idx * 0.08 + 0.18);
+      });
+    }
+  } catch (e) {
+    // Audio optional if blocked by autoplay policy
+  }
+}
+
+// Master Toggle Function
+function toggleRainbowMode() {
+  const isRainbow = document.documentElement.getAttribute('data-rainbow') === 'true';
+  setRainbowState(!isRainbow);
+}
+
+// State Setter
+function setRainbowState(enable) {
+  if (enable) {
+    document.documentElement.setAttribute('data-rainbow', 'true');
+    localStorage.setItem('materials_rainbow', 'true');
+    playRainbowSound(true);
+    launchRainbowNitroBurst();
+    enableRainbowSparkles();
+  } else {
+    document.documentElement.removeAttribute('data-rainbow');
+    localStorage.setItem('materials_rainbow', 'false');
+    playRainbowSound(false);
+    disableRainbowSparkles();
+    if (nitroAnimId) cancelAnimationFrame(nitroAnimId);
+    const canvas = document.getElementById('rainbow-nitro-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+
+  const btn = document.getElementById('rainbow-toggle-btn');
+  if (btn) {
+    btn.innerHTML = '🌈';
+    if (enable) {
+      btn.classList.add('rainbow-active');
+    } else {
+      btn.classList.remove('rainbow-active');
+      btn.style.animation = '';
+    }
+  }
+
+  const toast = document.getElementById('toast');
+  if (toast) {
+    toast.innerHTML = enable 
+      ? '🌈🚨 <strong>โหมดรุ้งตาแตกเต็มจอ OVERDRIVE MAX!</strong> 🏎️💨⚡' 
+      : '✨ <strong>ปิดโหมดสีรุ้ง</strong> กลับสู่โหมดคลีนมินิมอลสบายตา';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+}
+
+// Epic Nitro Particle Burst ("ปั่นๆ")
+function launchRainbowNitroBurst() {
+  let c = document.getElementById('rainbow-nitro-canvas');
+  if (!c) {
+    c = document.createElement('canvas');
+    c.id = 'rainbow-nitro-canvas';
+    document.body.appendChild(c);
+  }
+  const ctx = c.getContext('2d');
+  c.width = window.innerWidth;
+  c.height = window.innerHeight;
+
+  const nitroItems = ['🏎️', '⚡', '🌈', '🔥', '✨', '🏁', '💨', '🚀', '⭐', '🦄', '🎉', '💃', '🍕', '😎', '💥'];
+  const particles = [];
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  for (let i = 0; i < 110; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 26 + 8;
+    particles.push({
+      x: centerX + (Math.random() - 0.5) * 160,
+      y: centerY + (Math.random() - 0.5) * 100,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 3.2,
+      size: Math.random() * 32 + 20,
+      emoji: nitroItems[Math.floor(Math.random() * nitroItems.length)],
+      rot: Math.random() * 360,
+      vRot: (Math.random() - 0.5) * 22,
+      alpha: 1,
+      decay: Math.random() * 0.016 + 0.012
+    });
+  }
+
+  if (nitroAnimId) cancelAnimationFrame(nitroAnimId);
+
+  function step() {
+    ctx.clearRect(0, 0, c.width, c.height);
+    let alive = 0;
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.32;
+      p.rot += p.vRot;
+      p.alpha -= p.decay;
+
+      if (p.alpha > 0) {
+        alive++;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.font = `${p.size}px sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(p.emoji, 0, 0);
+        ctx.restore();
+      }
+    });
+
+    if (alive > 0) {
+      nitroAnimId = requestAnimationFrame(step);
+    } else {
+      ctx.clearRect(0, 0, c.width, c.height);
+    }
+  }
+
+  step();
+}
+
+// Sparkle Cursor Trail on Mouse Move
+function onRainbowMouseMove(e) {
+  const now = Date.now();
+  if (now - sparkleMoveThrottle < 65) return;
+  sparkleMoveThrottle = now;
+
+  const sparkles = ['✨', '⭐', '🌈', '🔥', '⚡'];
+  const dot = document.createElement('span');
+  dot.className = 'rainbow-sparkle-dot';
+  dot.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+  dot.style.left = (e.clientX + (Math.random() - 0.5) * 20) + 'px';
+  dot.style.top = (e.clientY + (Math.random() - 0.5) * 20) + 'px';
+  document.body.appendChild(dot);
+  setTimeout(() => dot.remove(), 700);
+}
+
+function enableRainbowSparkles() {
+  window.removeEventListener('mousemove', onRainbowMouseMove);
+  window.addEventListener('mousemove', onRainbowMouseMove, { passive: true });
+}
+
+function disableRainbowSparkles() {
+  window.removeEventListener('mousemove', onRainbowMouseMove);
+  document.querySelectorAll('.rainbow-sparkle-dot').forEach(el => el.remove());
+}
+
+// Initialize on DOM Ready
+document.addEventListener('DOMContentLoaded', () => {
+  const savedRainbow = localStorage.getItem('materials_rainbow');
+  if (savedRainbow === 'true') {
+    setRainbowState(true);
+  }
+
+  // Double-check button click listener
+  const rbBtn = document.getElementById('rainbow-toggle-btn');
+  if (rbBtn) {
+    rbBtn.onclick = (e) => {
+      e.preventDefault();
+      toggleRainbowMode();
+    };
+  }
+});
+</script>
+
+<script>
+
+  // --- DESKTOP & MOBILE SIDEBAR COLLAPSE TOGGLE ---
+  function toggleDesktopSidebar() {
+    const layout = document.querySelector(".portal-layout");
+    const sidebar = document.getElementById("portal-sidebar");
+    if (!layout || !sidebar) return;
+
+    if (window.innerWidth <= 900) {
+      if (typeof toggleMobileSidebar === "function") {
+        toggleMobileSidebar();
+      } else {
+        sidebar.classList.toggle("mobile-open");
+      }
+      return;
+    }
+
+    const isCollapsed = layout.classList.toggle("sidebar-collapsed");
+    localStorage.setItem("materials_sidebar_collapsed", isCollapsed ? "true" : "false");
+
+    // Recalculate slider pill and viewport height if present
+    setTimeout(() => {
+      const activeBtn = document.querySelector(".main-tab-btn.active");
+      if (activeBtn && typeof updateSliderPill === "function") {
+        updateSliderPill(activeBtn);
+      }
+      if (typeof adjustViewportHeight === "function") {
+        adjustViewportHeight();
+      }
+    }, 220);
+    setTimeout(() => {
+      const activeBtn = document.querySelector(".main-tab-btn.active");
+      if (activeBtn && typeof updateSliderPill === "function") {
+        updateSliderPill(activeBtn);
+      }
+      if (typeof adjustViewportHeight === "function") {
+        adjustViewportHeight();
+      }
+    }, 450);
+  }
+
+  // Restore sidebar collapsed preference on load
+  (function initSidebarCollapse() {
+    if (window.innerWidth > 900) {
+      const savedCollapsed = localStorage.getItem("materials_sidebar_collapsed");
+      if (savedCollapsed === "true") {
+        const layout = document.querySelector(".portal-layout");
+        if (layout) layout.classList.add("sidebar-collapsed");
+      }
+    }
+  })();
+
+</script>
+
+<script id="ios27-nav-transition-engine">
+document.addEventListener('DOMContentLoaded', () => {
+  const sidebarLinks = document.querySelectorAll('.sidebar .side-item');
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
+
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      const targetPath = href.split('#')[0];
+      if (targetPath === currentPath) return;
+
+      e.preventDefault();
+
+      // Instant tactile spring press feedback
+      link.classList.add('nav-switching');
+
+      // Pure GPU exit glide without blur overhead
+      const main = document.querySelector('.main-content');
+      if (main) {
+        main.style.transition = 'opacity 0.14s ease, transform 0.14s cubic-bezier(0.16, 1, 0.3, 1)';
+        main.style.opacity = '0';
+        main.style.transform = 'translate3d(0, -6px, 0)';
+      }
+
+      // Fast, silky navigation after 120ms
+      setTimeout(() => {
+        window.location.href = href;
+      }, 120);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
+    

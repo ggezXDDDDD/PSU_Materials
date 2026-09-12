@@ -1,0 +1,6 @@
+.DS_Store
+*.log
+sync.log
+sync_daemon.log
+__pycache__/
+*.pyc
