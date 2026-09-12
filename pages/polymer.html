@@ -1318,6 +1318,90 @@
 </style>
 
 
+<style>
+  .tag-bio { background: rgba(16, 185, 129, 0.14) !important; color: #10b981 !important; border: 1px solid rgba(16, 185, 129, 0.3) !important; }
+  .tag-greenlove { background: rgba(5, 150, 105, 0.14) !important; color: #059669 !important; border: 1px solid rgba(5, 150, 105, 0.3) !important; }
+  .tag-cyber { background: rgba(99, 102, 241, 0.14) !important; color: #6366f1 !important; border: 1px solid rgba(99, 102, 241, 0.3) !important; }
+  .tag-biolab { background: rgba(20, 184, 166, 0.14) !important; color: #14b8a6 !important; border: 1px solid rgba(20, 184, 166, 0.3) !important; }
+  .tag-thinking { background: rgba(236, 72, 153, 0.14) !important; color: #ec4899 !important; border: 1px solid rgba(236, 72, 153, 0.3) !important; }
+  .tag-goodlife { background: rgba(249, 115, 22, 0.14) !important; color: #f97316 !important; border: 1px solid rgba(249, 115, 22, 0.3) !important; }
+  
+  .nav-center-links {
+    display: flex;
+    align-items: center;
+    background: var(--subcard-bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    gap: 4px;
+    overflow-x: auto;
+    max-width: 650px;
+    scrollbar-width: none;
+  }
+  .nav-center-links::-webkit-scrollbar { display: none; }
+  .nav-pill {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .course-cat-title {
+    font-size: 1.18rem;
+    font-weight: 800;
+    margin: 1.8rem 0 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+  }
+
+  .search-box {
+    margin-bottom: 1.2rem;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    padding: 12px 18px 12px 42px;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    background: var(--subcard-bg);
+    color: var(--text);
+    font-size: 0.95rem;
+    font-family: inherit;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .search-input:focus {
+    border-color: var(--primary);
+    background: var(--card-bg);
+    box-shadow: 0 0 0 4px var(--primary-light);
+  }
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+  .filter-group {
+    margin-bottom: 0.9rem;
+  }
+  .filter-heading {
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+</style>
+
+
 <!-- ==============================================
      iOS 27 ULTRA-LIQUID GLASS & SPRING SYSTEM
      ============================================== -->
@@ -2959,7 +3043,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
 
     <aside id="portal-sidebar" class="sidebar">
       <div class="sidebar-header">
-        <a href="index.html" class="sidebar-logo" style="text-decoration:none;">
+        <a href="../index.html" class="sidebar-logo" style="text-decoration:none;">
           <span class="sidebar-logo-icon">🏛️</span>
           <div>
             <div class="sidebar-logo-title">PSU Study Portal</div>
@@ -3073,9 +3157,10 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
             <span>รายวิชา</span>
           </button>
         </div>
-        <a href="index.html" class="side-tool-btn" style="text-decoration:none; padding:6px 14px; font-size:0.85rem; font-weight:700; border-radius:12px; display:inline-flex; width:auto; height:34px;">🏠 กลับหน้าหลัก</a>
+        <a href="../index.html" class="side-tool-btn" style="text-decoration:none; padding:6px 14px; font-size:0.85rem; font-weight:700; border-radius:12px; display:inline-flex; width:auto; height:34px;">🏠 กลับหน้าหลัก</a>
       </header>
 
+    <!-- UNIVERSAL RESPONSIVE TOP NAV -->
     
     <div class="rainbow-speed-banner">🏎️💨 NITRO RGB SPEEDWAY ACTIVE • โหมดสีรุ้งซิ่งระดับ MAX 🏁</div>
     
@@ -3110,7 +3195,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           <span>📂 คลังเอกสารประกอบการสอนวิชาพอลิเมอร์ (342-201)</span>
           <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">(8 ไฟล์ในเครื่อง Mac)</span>
         </div>
-        <a href="พอลิเมอร์" target="_blank" class="file-folder-btn">📂 เปิดโฟลเดอร์ใน Mac</a>
+        <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer" target="_blank" class="file-folder-btn">📂 เปิดโฟลเดอร์ใน Mac</a>
       </div>
       <input type="text" class="file-search-input" placeholder="🔍 ค้นหาเอกสารพอลิเมอร์ (เช่น DSC, outline, ชวนพิศ, สังเคราะห์)..." oninput="filterSubjectFiles('p-cards', this.value)">
       <div id="p-cards" class="file-cards-grid">
@@ -3123,7 +3208,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           </div>
           <div class="file-item-footer">
             <span class="file-item-size">💾 204.7 KB</span>
-            <a href="พอลิเมอร์/342-201 course outline 1-2569.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/04_ประมวลรายวิชา/342-201 course outline 1-2569.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
         
@@ -3136,7 +3221,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           </div>
           <div class="file-item-footer">
             <span class="file-item-size">💾 2.19 MB</span>
-            <a href="พอลิเมอร์/Basic properties -65.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Basic properties -65.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
         
@@ -3149,7 +3234,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           </div>
           <div class="file-item-footer">
             <span class="file-item-size">💾 746.4 KB</span>
-            <a href="พอลิเมอร์/Chemical Reaction of polymers.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Chemical Reaction of polymers.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
         
@@ -3162,7 +3247,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           </div>
           <div class="file-item-footer">
             <span class="file-item-size">💾 1.29 MB</span>
-            <a href="พอลิเมอร์/Thermal transition-68-student.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Thermal transition-68-student.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
         
@@ -3175,7 +3260,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           </div>
           <div class="file-item-footer">
             <span class="file-item-size">💾 1.60 MB</span>
-            <a href="พอลิเมอร์/V.polymer_system-up date 68.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/V.polymer_system-up date 68.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
         
@@ -3188,7 +3273,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           </div>
           <div class="file-item-footer">
             <span class="file-item-size">💾 4.95 MB</span>
-            <a href="พอลิเมอร์/Lecture 342-201.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Lecture 342-201.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
         
@@ -3201,7 +3286,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           </div>
           <div class="file-item-footer">
             <span class="file-item-size">💾 3.60 MB</span>
-            <a href="พอลิเมอร์/เอกสารคำสอน สิริญญา จันทรักษ์ - 342-201 Final.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/02_เอกสารคำสอน/เอกสารคำสอน สิริญญา จันทรักษ์ - 342-201 Final.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
         
@@ -3214,7 +3299,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           </div>
           <div class="file-item-footer">
             <span class="file-item-size">💾 2.27 MB</span>
-            <a href="พอลิเมอร์/เอกสารคำสอน-ชวนพิศ.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/02_เอกสารคำสอน/เอกสารคำสอน-ชวนพิศ.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
         
@@ -3227,7 +3312,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           </div>
           <div class="file-item-footer">
             <span class="file-item-size">💾 21.8 KB</span>
-            <a href="พอลิเมอร์/สรุปพอลิเมอร์_เตรียมสอบ.md" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/03_สรุปเตรียมสอบ/สรุปพอลิเมอร์_เตรียมสอบ.md" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
         

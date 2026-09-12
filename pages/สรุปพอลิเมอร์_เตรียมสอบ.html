@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🧬 หลักชีววิทยา (330-101) | PSU Study Portal</title>
-<!-- Fonts -->
+  <title>🧪 พอลิเมอร์ (342-201) | PSU Materials Science</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -697,207 +698,6 @@
   </style>
 
 
-<style>
-  .hero-welcome {
-    text-align: center;
-    padding: 3.5rem 1rem 2.2rem;
-    position: relative;
-  }
-  .hero-pill-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 16px;
-    border-radius: 999px;
-    background: var(--primary-light);
-    color: var(--primary);
-    font-weight: 800;
-    font-size: 0.88rem;
-    margin-bottom: 1.2rem;
-    border: 1px solid var(--primary-border);
-  }
-  .hero-welcome h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    letter-spacing: -0.035em;
-    line-height: 1.25;
-    background: linear-gradient(135deg, var(--text) 30%, var(--primary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
-  }
-  .hero-welcome p {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 760px;
-    margin: 0 auto 2rem;
-    line-height: 1.7;
-  }
-  .global-search-wrapper {
-    max-width: 680px;
-    margin: 0 auto 3rem;
-    position: relative;
-  }
-  .global-search-input {
-    width: 100%;
-    padding: 16px 24px 16px 54px;
-    border-radius: 999px;
-    border: 1.5px solid var(--border);
-    background: var(--card-bg);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    font-size: 1.05rem;
-    color: var(--text);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-    outline: none;
-    transition: all 0.3s var(--fluid);
-  }
-  .global-search-input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 16px 40px var(--primary-glow);
-    transform: scale(1.01);
-  }
-  .search-icon-inside {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.35rem;
-    pointer-events: none;
-  }
-
-  /* 3 Hero Subject Cards */
-  .subject-portals-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-  }
-  .portal-card {
-    background: var(--card-bg);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    border: 1.5px solid var(--card-border);
-    border-radius: 28px;
-    padding: 2.2rem;
-    box-shadow: var(--card-shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.4s var(--spring);
-    position: relative;
-    overflow: hidden;
-  }
-  .portal-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 6px;
-    background: var(--card-accent, var(--primary));
-  }
-  .portal-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
-  }
-  .card-top-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 12px;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-    width: fit-content;
-  }
-  .portal-card-icon {
-    font-size: 3rem;
-    margin-bottom: 0.8rem;
-    display: inline-block;
-    transition: transform 0.35s var(--spring);
-  }
-  .portal-card:hover .portal-card-icon {
-    transform: scale(1.15) rotate(-6deg);
-  }
-  .portal-card-title {
-    font-size: 1.65rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-  }
-  .portal-card-code {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 600;
-    margin-bottom: 1.2rem;
-  }
-  .portal-card-desc {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.68;
-    margin-bottom: 1.5rem;
-  }
-  .portal-features-list {
-    list-style: none;
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 0.9rem;
-  }
-  .portal-features-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .portal-card-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-top: auto;
-  }
-  .btn-enter-subject {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 13px 22px;
-    border-radius: 999px;
-    color: white !important;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.96rem;
-    transition: all 0.25s var(--fluid);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  }
-  .btn-enter-subject:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
-  }
-  .btn-folder-direct {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 13px 18px;
-    border-radius: 999px;
-    background: var(--subcard-bg);
-    border: 1px solid var(--subcard-border);
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.92rem;
-    font-weight: 600;
-    transition: all 0.25s var(--fluid);
-  }
-  .btn-folder-direct:hover {
-    background: var(--subcard-hover);
-    transform: translateY(-2px);
-  }
-</style>
-
-
 <!-- ULTRA-SMOOTH ANIMATIONS & ASSIGNMENT HUB STYLES -->
 <style>
   /* --- ULTRA-SMOOTH ANIMATIONS & SPRING PHYSICS --- */
@@ -1514,91 +1314,6 @@
     height: 100vh;
     pointer-events: none;
     z-index: 99999;
-  }
-</style>
-
-
-
-<style>
-  .tag-bio { background: rgba(16, 185, 129, 0.14) !important; color: #10b981 !important; border: 1px solid rgba(16, 185, 129, 0.3) !important; }
-  .tag-greenlove { background: rgba(5, 150, 105, 0.14) !important; color: #059669 !important; border: 1px solid rgba(5, 150, 105, 0.3) !important; }
-  .tag-cyber { background: rgba(99, 102, 241, 0.14) !important; color: #6366f1 !important; border: 1px solid rgba(99, 102, 241, 0.3) !important; }
-  .tag-biolab { background: rgba(20, 184, 166, 0.14) !important; color: #14b8a6 !important; border: 1px solid rgba(20, 184, 166, 0.3) !important; }
-  .tag-thinking { background: rgba(236, 72, 153, 0.14) !important; color: #ec4899 !important; border: 1px solid rgba(236, 72, 153, 0.3) !important; }
-  .tag-goodlife { background: rgba(249, 115, 22, 0.14) !important; color: #f97316 !important; border: 1px solid rgba(249, 115, 22, 0.3) !important; }
-  
-  .nav-center-links {
-    display: flex;
-    align-items: center;
-    background: var(--subcard-bg);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 4px;
-    gap: 4px;
-    overflow-x: auto;
-    max-width: 650px;
-    scrollbar-width: none;
-  }
-  .nav-center-links::-webkit-scrollbar { display: none; }
-  .nav-pill {
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .course-cat-title {
-    font-size: 1.18rem;
-    font-weight: 800;
-    margin: 1.8rem 0 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text);
-  }
-
-  .search-box {
-    margin-bottom: 1.2rem;
-    position: relative;
-  }
-  .search-input {
-    width: 100%;
-    padding: 12px 18px 12px 42px;
-    border-radius: 14px;
-    border: 1.5px solid var(--border);
-    background: var(--subcard-bg);
-    color: var(--text);
-    font-size: 0.95rem;
-    font-family: inherit;
-    font-weight: 500;
-    outline: none;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .search-input:focus {
-    border-color: var(--primary);
-    background: var(--card-bg);
-    box-shadow: 0 0 0 4px var(--primary-light);
-  }
-  .search-icon {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    pointer-events: none;
-  }
-  .filter-group {
-    margin-bottom: 0.9rem;
-  }
-  .filter-heading {
-    font-size: 0.78rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
   }
 </style>
 
@@ -3244,7 +2959,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
 
     <aside id="portal-sidebar" class="sidebar">
       <div class="sidebar-header">
-        <a href="index.html" class="sidebar-logo" style="text-decoration:none;">
+        <a href="../index.html" class="sidebar-logo" style="text-decoration:none;">
           <span class="sidebar-logo-icon">🏛️</span>
           <div>
             <div class="sidebar-logo-title">PSU Study Portal</div>
@@ -3276,7 +2991,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
 
         <div class="nav-group-heading" style="margin-top:10px;">รายวิชาทั้งหมด (9 วิชา)</div>
         
-        <a href="polymer.html" class="side-item ">
+        <a href="polymer.html" class="side-item active">
           <div class="side-left">
             <span class="side-icon">🧪</span>
             <span>342-201 พอลิเมอร์</span>
@@ -3300,7 +3015,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           <span class="side-badge badge-metal">รายงาน</span>
         </a>
 
-        <a href="biology.html" class="side-item active">
+        <a href="biology.html" class="side-item ">
           <div class="side-left">
             <span class="side-icon">🧬</span>
             <span>330-101 ชีววิทยา</span>
@@ -3358,252 +3073,316 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
             <span>รายวิชา</span>
           </button>
         </div>
-        <a href="index.html" class="side-tool-btn" style="text-decoration:none; padding:6px 14px; font-size:0.85rem; font-weight:700; border-radius:12px; display:inline-flex; width:auto; height:34px;">🏠 กลับหน้าหลัก</a>
+        <a href="../index.html" class="side-tool-btn" style="text-decoration:none; padding:6px 14px; font-size:0.85rem; font-weight:700; border-radius:12px; display:inline-flex; width:auto; height:34px;">🏠 กลับหน้าหลัก</a>
       </header>
+
     
-    <!-- UNIVERSAL RESPONSIVE TOP NAV -->
+    <div class="rainbow-speed-banner">🏎️💨 NITRO RGB SPEEDWAY ACTIVE • โหมดสีรุ้งซิ่งระดับ MAX 🏁</div>
+    
     
 
-
-    <header class="hero hero-biology">
-      <div class="hero-badge badge-biology" style="background:rgba(16, 185, 129, 0.12); color:#10b981; border:1px solid rgba(16, 185, 129, 0.3);">🧬 330-101 หลักชีววิทยา (Principles of Biology)</div>
-      <h1 class="hero-title">ศูนย์รวมงาน การบ้าน & ควิซวิชาชีววิทยา</h1>
-      <p class="hero-subtitle">รวบรวมงานมอบหมาย การบ้านเก็บคะแนน ควิซประจำบท และแบบทดสอบหลังเรียนครบถ้วน</p>
-      
+    <header class="hero hero-polymer">
+      <div class="hero-badge badge-polymer">🧪 342-201 วิทยาศาสตร์พอลิเมอร์ (Polymer Science)</div>
+      <h1 class="hero-title">ศูนย์รวมสรุปเนื้อหา เอกสาร & ข้อสอบพอลิเมอร์</h1>
+      <p class="hero-subtitle">รวบรวมเนื้อหาสำคัญ: ปฏิกิริยาเคมีของพอลิเมอร์ • เทคนิคการสังเคราะห์ • สมบัติพื้นฐานและสภาพผลึก • การเปลี่ยนแปลงทางความร้อน (Tg, Tm, DSC) และคลังข้อสอบ 22 ข้อ</p>
       <div class="hero-stats">
-        <span class="stat-pill">รวม 7 รายการในระบบ</span>
-        <span class="stat-pill" style="color:#ef4444; border-color:#ef4444;">ต้องส่ง : SDGs (5 ต.ค.) & Evolution (29 ก.ย.)</span>
-        <span class="stat-pill" style="color:#8b5cf6; border-color:#8b5cf6;">ควิซ: Ecology (8 ข้อ 10 นาที หมดเขต 5 ต.ค.)</span>
-        <span class="stat-pill" style="color:#10b981; border-color:#10b981;">มีคะแนน: Animal Development (เต็ม 10.00/10.00!)</span>
+        <span class="stat-pill" style="color:#ef4444; border-color:rgba(239, 68, 68, 0.35);">🔥 Take Home Final (4 ต.ค. 23 pts)</span>
+        <span class="stat-pill" style="color:#8b5cf6; border-color:rgba(139, 92, 246, 0.35);">📚 4 บทสรุปเข้มฉบับสมบูรณ์</span>
+        <span class="stat-pill" style="color:#10b981; border-color:rgba(16, 185, 129, 0.35);">💡 Presentation (5 ต.ค. 8 คะแนน)</span>
       </div>
     </header>
 
-    <div class="card-glass">
-      <div style="font-size:1.3rem; font-weight:800; margin-bottom:1rem; display:flex; align-items:center; gap:10px;">
-        <span>อาจารย์ผู้สอนและหัวข้อสำคัญ</span>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;">
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; border:1px solid var(--border);">
-          <strong>ผศ.ดร.เจริญศักดิ์</strong>
-          <div style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">หัวข้อ 9: Systematics and Classification (มีแบบทดสอบหลังเรียน)</div>
-        </div>
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; border:1px solid var(--border);">
-          <strong>อ.อริยา</strong>
-          <div style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">หัวข้อ 13-14: Animal Development & Animal Tissue (ทำคะแนนได้ 10/10 เต็ม!)</div>
-        </div>
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; border:1px solid var(--border);">
-          <strong>รศ.ดร.กริ่งผกา</strong>
-          <div style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">หัวข้อ 18: Animal Behavior & Ecology (ควิซ 8 ข้อ 10 นาที หมดเขต 5 ต.ค.)</div>
-        </div>
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; border:1px solid var(--border);">
-          <strong>รศ.ดร.จารุวรรณ</strong>
-          <div style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">หัวข้อ 19-20: Evolution & ปัญหาสิ่งแวดล้อมโลก SDGs (เปิดให้ส่งช่วง 25 ก.ย. - 5 ต.ค.)</div>
-        </div>
-      </div>
-      <div style="margin-top:1.2rem; display:flex; gap:10px; flex-wrap:wrap;">
-        <a href="https://lms.psu.ac.th/course/view.php?id=4590" target="_blank" class="btn-lms-link" style="background:#10b981;">🔗 เปิดหน้ารายวิชา 330-101 ใน LMS PSU</a>
-      </div>
+    <!-- Navigation inside page -->
+    <div class="page-subnav">
+      <a href="#p-files">📁 คลังเอกสาร & สไลด์ (8 ไฟล์)</a>
+      <a href="#part1">1.ปฏิกิริยาเคมี</a>
+      <a href="#part2">2.เทคนิคสังเคราะห์</a>
+      <a href="#part3">3.สมบัติ & ผลึก</a>
+      <a href="#part4">4.การเปลี่ยนสถานะ Tg/Tm</a>
+      <a href="#quiz-section" class="quiz-btn">📝 ข้อสอบ 22 ข้อ</a>
+      <a href="#ultra-summary" style="background:var(--purple-bg); color:var(--purple); font-weight:700;">⚡ สรุปสั้น 1 นาที</a>
     </div>
 
-    <div class="assign-hub-section">
-      <div class="assign-hub-header">
-        <div class="assign-hub-title">
-          <span>📋</span>
+    <!-- FILE HUB FOR POLYMERS -->
+    <section id="p-files" class="file-hub-section">
+      <div class="file-hub-header">
+        <div class="file-hub-title">
+          <span>📂 คลังเอกสารประกอบการสอนวิชาพอลิเมอร์ (342-201)</span>
+          <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">(8 ไฟล์ในเครื่อง Mac)</span>
+        </div>
+        <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer" target="_blank" class="file-folder-btn">📂 เปิดโฟลเดอร์ใน Mac</a>
+      </div>
+      <input type="text" class="file-search-input" placeholder="🔍 ค้นหาเอกสารพอลิเมอร์ (เช่น DSC, outline, ชวนพิศ, สังเคราะห์)..." oninput="filterSubjectFiles('p-cards', this.value)">
+      <div id="p-cards" class="file-cards-grid">
+    
+        <div class="file-item-card">
           <div>
-            <div>รายการงานและควิซทั้งหมดในวิชาชีววิทยา (330-101)</div>
-            <div style="font-size:0.88rem; font-weight:500; color:var(--text-muted); margin-top:2px;">คลิกปุ่มลิงก์เพื่อเข้าสู่หน้าส่งงานหรือทำควิซบน LMS ได้ทันที</div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">ประมวลรายวิชาและเค้าโครงเนื้อหา 342-201</div>
+            <div class="file-item-filename">342-201 course outline 1-2569.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 204.7 KB</span>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/04_ประมวลรายวิชา/342-201 course outline 1-2569.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
-      </div>
-
-      <div id="local-tasks-container">
         
-        <div class="assignment-card" 
-             data-course="bio" 
-             data-status="pending" 
-             data-search="330-101 หลักชีววิทยา รายละเอียดเกี่ยวกับการเรียนและการสอน 9. systematics and classification _ผศ.ดร.เจริญศักดิ์  friday, 1 september 2023, 12:00 am"
-             style="border-left: 5px solid #f59e0b;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              
-              <span class="status-pill status-pending">ยังไม่ได้ส่ง</span>
-            </div>
-          </div>
-          <div class="assign-title">รายละเอียดเกี่ยวกับการเรียนและการสอน</div>
-          <div class="assign-section-name">หัวข้อ: 9. Systematics and classification _ผศ.ดร.เจริญศักดิ์</div>
-          
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 1 September 2023, 12:00 AM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=305506" target="_blank" class="btn-lms-link" style="background:#f59e0b;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=305506'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
-          </div>
-        </div>
 
-        <div class="assignment-card" 
-             data-course="bio" 
-             data-status="pending" 
-             data-search="330-101 หลักชีววิทยา evolution and adaptation นักศึกษาทำ assignment ได้ตั้งแต่วันที่ 25 กย เวลา 9.00 - วันที่ 29 กย เวลา 16.30 น 19. วิวัฒนาการและการปรับตัวของสิ่งมีชีวิต _รศ.ดร.จารุวรรณ evolution and adaptation โดย รศ.ดร.จารุวรรณ เปิดให้ทำ 25 ก.ย. เวลา 09:00 น. ถึง 29 ก.ย. 2569 เวลา 16:30 น. tuesday, 29 september 2026, 4:30 pm"
-             style="border-left: 5px solid #ef4444;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">งานเก็บคะแนน</span>
-              <span class="status-pill status-pending">ต้องทำด่วน / คะแนนสูง</span>
-            </div>
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">สมบัติพื้นฐาน การละลาย และสภาพผลึก</div>
+            <div class="file-item-filename">Basic properties -65.pdf</div>
           </div>
-          <div class="assign-title">Evolution and adaptation นักศึกษาทำ assignment ได้ตั้งแต่วันที่ 25 กย เวลา 9.00 - วันที่ 29 กย เวลา 16.30 น</div>
-          <div class="assign-section-name">หัวข้อ: 19. วิวัฒนาการและการปรับตัวของสิ่งมีชีวิต _รศ.ดร.จารุวรรณ</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> Evolution and adaptation โดย รศ.ดร.จารุวรรณ เปิดให้ทำ 25 ก.ย. เวลา 09:00 น. ถึง 29 ก.ย. 2569 เวลา 16:30 น.</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Tuesday, 29 September 2026, 4:30 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=666774" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=666774'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 2.19 MB</span>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Basic properties -65.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
+        
 
-        <div class="assignment-card" 
-             data-course="bio" 
-             data-status="pending" 
-             data-search="330-101 หลักชีววิทยา ปัญหาสิ่งแวดล้อม ecosystem services and sdgs ทำได้ตั้งแต่ 28 กย เวลา 9.00 น - 5 ตค 2569 เวลา 1ุ6.30 น 20. ปัญหาสิ่งแวดล้อมโลก การอนุรักษ์ ecosystem service และเป้าหมายการพัฒนาอย่างยั่งยืน _รศ.ดร.จารุวรรณ ปัญหาสิ่งแวดล้อมโลก การอนุรักษ์ ecosystem service และเป้าหมายการพัฒนาอย่างยั่งยืน (sdgs) เปิดให้ทำ 28 ก.ย. - 5 ต.ค. 2569 เวลา 16:30 น. monday, 5 october 2026, 4:30 pm"
-             style="border-left: 5px solid #ef4444;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">งานเก็บคะแนน</span>
-              <span class="status-pill status-pending">ต้องทำด่วน / คะแนนสูง</span>
-            </div>
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">ปฏิกิริยาเคมีของพอลิเมอร์และการเสื่อมสภาพ</div>
+            <div class="file-item-filename">Chemical Reaction of polymers.pdf</div>
           </div>
-          <div class="assign-title">ปัญหาสิ่งแวดล้อม ecosystem services and SDGs ทำได้ตั้งแต่ 28 กย เวลา 9.00 น - 5 ตค 2569 เวลา 1ุ6.30 น</div>
-          <div class="assign-section-name">หัวข้อ: 20. ปัญหาสิ่งแวดล้อมโลก การอนุรักษ์ ecosystem service และเป้าหมายการพัฒนาอย่างยั่งยืน _รศ.ดร.จารุวรรณ</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> ปัญหาสิ่งแวดล้อมโลก การอนุรักษ์ ecosystem service และเป้าหมายการพัฒนาอย่างยั่งยืน (SDGs) เปิดให้ทำ 28 ก.ย. - 5 ต.ค. 2569 เวลา 16:30 น.</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Monday, 5 October 2026, 4:30 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=665573" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=665573'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 746.4 KB</span>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Chemical Reaction of polymers.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
+        
 
-        <div class="assignment-card" 
-             data-course="bio" 
-             data-status="quiz" 
-             data-search="330-101 หลักชีววิทยา introduction to biology, life chemistry &amp; cells introduction to biology, life chemistry &amp; cells [7 hr.] introduction to biology, life chemistry & cells (เนื้อหาช่วงต้นเทอม 7 ชั่วโมง) wednesday, 15 july 2026, 12:00 am"
-             style="border-left: 5px solid #8b5cf6;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              
-              <span class="status-pill status-quiz">ควิซในระบบ</span>
-            </div>
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">พฤติกรรมทางความร้อน (Tg, Tm และ DSC)</div>
+            <div class="file-item-filename">Thermal transition-68-student.pdf</div>
           </div>
-          <div class="assign-title">Introduction to Biology, Life Chemistry &amp; Cells</div>
-          <div class="assign-section-name">หัวข้อ: Introduction to Biology, Life Chemistry &amp; Cells [7 hr.]</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> Introduction to Biology, Life Chemistry & Cells (เนื้อหาช่วงต้นเทอม 7 ชั่วโมง)</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Wednesday, 15 July 2026, 12:00 AM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=642862" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=642862'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.29 MB</span>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Thermal transition-68-student.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
+        
 
-        <div class="assignment-card" 
-             data-course="bio" 
-             data-status="quiz" 
-             data-search="330-101 หลักชีววิทยา แบบทดสอบหลังเรียน 9. systematics and classification _ผศ.ดร.เจริญศักดิ์ แบบทดสอบหลังเรียนหัวข้อ 9. systematics and classification (ผศ.ดร.เจริญศักดิ์) tuesday, 8 september 2026, 3:10 pm"
-             style="border-left: 5px solid #8b5cf6;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">ควิซหลังเรียน</span>
-              <span class="status-pill status-quiz">ควิซในระบบ</span>
-            </div>
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">ระบบและเทคนิคการสังเคราะห์พอลิเมอร์</div>
+            <div class="file-item-filename">V.polymer_system-up date 68.pdf</div>
           </div>
-          <div class="assign-title">แบบทดสอบหลังเรียน</div>
-          <div class="assign-section-name">หัวข้อ: 9. Systematics and classification _ผศ.ดร.เจริญศักดิ์</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> แบบทดสอบหลังเรียนหัวข้อ 9. Systematics and classification (ผศ.ดร.เจริญศักดิ์)</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Tuesday, 8 September 2026, 3:10 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=534377" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=534377'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.60 MB</span>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/V.polymer_system-up date 68.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
+        
 
-        <div class="assignment-card" 
-             data-course="bio" 
-             data-status="graded" 
-             data-search="330-101 หลักชีววิทยา แบบทดสอบหลังเรียน animal development และ animal tissue 13-14. animal development &amp; animal tissue_อ.อริยา แบบทดสอบหลังเรียนเรื่อง animal development และ animal tissue (อ.อริยา) - ทำได้คะแนนเต็ม 10/10 สมบูรณ์แบบ friday, 4 september 2026, 11:59 pm"
-             style="border-left: 5px solid #10b981;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">10.00 / 10.00 เต็ม!</span>
-              <span class="status-pill status-submitted">มีคะแนนแล้ว: 10.00/10.00</span>
-            </div>
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">รวมเอกสารคำสอนและสรุปเลกเชอร์ 342-201</div>
+            <div class="file-item-filename">Lecture 342-201.pdf</div>
           </div>
-          <div class="assign-title">แบบทดสอบหลังเรียน Animal Development และ Animal tissue</div>
-          <div class="assign-section-name">หัวข้อ: 13-14. Animal development &amp; Animal tissue_อ.อริยา</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> แบบทดสอบหลังเรียนเรื่อง Animal Development และ Animal tissue (อ.อริยา) - ทำได้คะแนนเต็ม 10/10 สมบูรณ์แบบ</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 4 September 2026, 11:59 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> มีคะแนนแล้ว</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=542541" target="_blank" class="btn-lms-link" style="background:#10b981;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=542541'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 4.95 MB</span>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Lecture 342-201.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
+        
 
-        <div class="assignment-card" 
-             data-course="bio" 
-             data-status="quiz" 
-             data-search="330-101 หลักชีววิทยา post test animal behavior &amp; ecology : แบบทดสอบในหัวข้อ animal behavior และ ecology จำนวน 8 ข้อ ใช้เวลาทำข้อสอบ 10 นาที ทำได้ 1 ครั้ง หมดเวลาทำข้อสอบวันที่ 5 ต.ค. 69 18. ecology _รศ.ดร.กริ่งผกา post-test animal behavior & ecology โดย รศ.ดร.กริ่งผกา จำนวน 8 ข้อ ให้เวลาทำ 10 นาที ทำได้ 1 ครั้ง หมดเขต 5 ต.ค. 2569 เวลา 23:59 น. monday, 5 october 2026, 11:59 pm"
-             style="border-left: 5px solid #8b5cf6;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">ควิซ 8 ข้อ 10 นาที</span>
-              <span class="status-pill status-quiz">ควิซในระบบ</span>
-            </div>
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">เอกสารคำสอนฉบับสมบูรณ์ Final (อ.สิริญญา)</div>
+            <div class="file-item-filename">เอกสารคำสอน สิริญญา จันทรักษ์ - 342-201 Final.pdf</div>
           </div>
-          <div class="assign-title">Post test Animal Behavior &amp; Ecology : แบบทดสอบในหัวข้อ Animal Behavior และ Ecology จำนวน 8 ข้อ ใช้เวลาทำข้อสอบ 10 นาที ทำได้ 1 ครั้ง หมดเวลาทำข้อสอบวันที่ 5 ต.ค. 69</div>
-          <div class="assign-section-name">หัวข้อ: 18. Ecology _รศ.ดร.กริ่งผกา</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> Post-test Animal Behavior & Ecology โดย รศ.ดร.กริ่งผกา จำนวน 8 ข้อ ให้เวลาทำ 10 นาที ทำได้ 1 ครั้ง หมดเขต 5 ต.ค. 2569 เวลา 23:59 น.</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Monday, 5 October 2026, 11:59 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=653458" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=653458'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 3.60 MB</span>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/02_เอกสารคำสอน/เอกสารคำสอน สิริญญา จันทรักษ์ - 342-201 Final.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
           </div>
         </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">เอกสารคำสอนวิชาพอลิเมอร์ (รศ.ชวนพิศ)</div>
+            <div class="file-item-filename">เอกสารคำสอน-ชวนพิศ.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 2.27 MB</span>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/02_เอกสารคำสอน/เอกสารคำสอน-ชวนพิศ.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-code">📝 DOC/MD</div>
+            <div class="file-item-title">สรุปเข้มเนื้อหาเตรียมสอบฉบับ Markdown</div>
+            <div class="file-item-filename">สรุปพอลิเมอร์_เตรียมสอบ.md</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 21.8 KB</span>
+            <a href="../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/03_สรุปเตรียมสอบ/สรุปพอลิเมอร์_เตรียมสอบ.md" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    
+  <!-- POLYMER QUIZZES & ASSIGNMENTS HUB -->
+  
+  <!-- POLYMER ASSIGNMENTS & QUIZZES HUB -->
+  <section id="p-assignments" class="assign-hub-section" style="border-top:5px solid #0071e3;">
+    <div class="assign-hub-header">
+      <div class="assign-hub-title">
+        <span style="font-size:1.6rem;">📋</span>
+        <span>รายละเอียดงานที่ต้องส่ง & ควิซใน LMS วิชาพอลิเมอร์ (342-201)</span>
+      </div>
+      <div style="font-size:0.88rem; font-weight:700; color:#0071e3; background:var(--primary-light); padding:5px 14px; border-radius:999px;">
+        8 รายการ (งานส่ง 2 + ควิซ 6)
       </div>
     </div>
+
+    <div class="assign-filter-bar">
+      <button class="assign-filter-btn active" onclick="filterAssignments('all', 'p-assign-list', this)">ทั้งหมด (8)</button>
+      <button class="assign-filter-btn" style="color:#ef4444; font-weight:700;" onclick="filterAssignments('pending', 'p-assign-list', this)">ต้องส่ง (2)</button>
+      <button class="assign-filter-btn" onclick="filterAssignments('graded', 'p-assign-list', this)">มีคะแนนแล้ว (1)</button>
+      <button class="assign-filter-btn" onclick="filterAssignments('closed', 'p-assign-list', this)">🔒 ควิซก่อนหน้า (5)</button>
+    </div>
+
+    <div id="p-assign-list">
+      
+      <!-- TASK 1: Take Home Final (23 คะแนน) -->
+      <div class="assignment-card" data-status="pending" style="border-left:5px solid #ef4444;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-poly">🧪 พอลิเมอร์ 342-201</span>
+          <span style="display:flex; gap:6px; align-items:center;">
+            <span class="status-pill" style="background:rgba(239, 68, 68, 0.15); color:#ef4444; border:1px solid #ef4444; font-weight:800;">🔥 คะแนนสูง: 23 คะแนน</span>
+            <span class="status-pill status-pending">ยังไม่ได้ส่ง</span>
+          </span>
+        </div>
+        <div class="assign-title">ส่ง Take Home Final Examination Assignment (23 คะแนน)</div>
+        <div class="assign-section-name">หัวข้อ: 10. Take Home Final Examination = 23 คะแนน (อ.สิริญญา)</div>
+        <div class="assign-prompt-box">
+          <strong>📝 ข้อมูลสำคัญ:</strong>
+          แบบทดสอบปลายภาคแบบ Take Home Final Examination คิดเป็นคะแนนเก็บสำคัญ <strong>23 คะแนน</strong> ในระบบ LMS2
+        </div>
+        <div class="assign-meta-grid">
+          <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> วันอาทิตย์ที่ 4 ตุลาคม 2569 เวลา 00:00 น.</span></div>
+          <div class="assign-meta-item"><span>⏳ <strong>เวลาที่เหลือ:</strong> ประมาณ 26 วัน</span></div>
+          <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ได้ส่ง (No submissions yet)</span></div>
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/assign/view.php?id=311795" target="_blank" class="btn-lms-link" style="background:#ef4444;">🔗 เปิดหน้าส่ง Take Home Final ใน LMS</a>
+        </div>
+      </div>
+
+      <!-- TASK 2: Assigned Presentation (8 คะแนน) -->
+      <div class="assignment-card" data-status="pending" style="border-left:5px solid #f59e0b;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-poly">🧪 พอลิเมอร์ 342-201</span>
+          <span style="display:flex; gap:6px; align-items:center;">
+            <span class="status-pill" style="background:rgba(245, 158, 11, 0.15); color:#f59e0b; border:1px solid #f59e0b; font-weight:800;">8 คะแนน</span>
+            <span class="status-pill status-pending">ยังไม่ได้ส่ง</span>
+          </span>
+        </div>
+        <div class="assign-title">ส่ง Assigned Presentation: Selected Commercial Polymers Assignment</div>
+        <div class="assign-section-name">หัวข้อ: 8. Commercial polymers and utilization = 8 คะแนน (อ.สิริญญา)</div>
+        <div class="assign-prompt-box">
+          <strong>📝 คำสั่งจากอาจารย์ใน LMS:</strong>
+          "มอบหมายให้ตัวแทนกลุ่มส่ง ส่งทาง LMS2 ภายใน <strong>จันทร์ ที่ 5 ตุลาคม 2569 ก่อน 23.59 น.</strong>"
+        </div>
+        <div class="assign-meta-grid">
+          <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> วันจันทร์ที่ 5 ตุลาคม 2569 เวลา 23:59 น.</span></div>
+          <div class="assign-meta-item"><span>⏳ <strong>เวลาที่เหลือ:</strong> ประมาณ 28 วัน</span></div>
+          <div class="assign-meta-item"><span>👥 <strong>การส่ง:</strong> ตัวแทนกลุ่มส่ง 1 คน</span></div>
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/assign/view.php?id=311782" target="_blank" class="btn-lms-link" style="background:#f59e0b;">🔗 เปิดหน้าส่ง Presentation ใน LMS</a>
+          <button class="btn-copy-prompt" onclick="copyPromptText('มอบหมายให้ตัวแทนกลุ่มส่ง ส่งทาง LMS2 ภายใน จันทร์ ที่ 5 ตุลาคม 2569 ก่อน 23.59 น.')">📋 คัดลอกโจทย์</button>
+        </div>
+      </div>
+
+      <!-- QUIZ 3: Suspension-Emulsion (Graded) -->
+      <div class="assignment-card" data-status="graded" style="border-left:5px solid #10b981;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-poly">🧪 พอลิเมอร์ 342-201</span>
+          <span class="status-pill status-graded">บันทึกคะแนนแล้ว (6.00 / 8.00)</span>
+        </div>
+        <div class="assign-title">Suspension-Emulsion polymerization Quiz</div>
+        <div class="assign-prompt-box">
+          <strong>📝 รายละเอียดและผลคะแนน:</strong>
+          แบบทดสอบเปรียบเทียบขนาดอนุภาค Surfactant ไมเซลล์ vs หยดน้ำมัน • <strong>ได้คะแนน: 6.00 / 8.00 (75%)</strong>
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=64373" target="_blank" class="btn-lms-link">🔗 ดูผลคะแนนใน LMS</a>
+        </div>
+      </div>
+
+      <!-- QUIZ: Bulk -->
+      <div class="assignment-card" data-status="closed" style="border-left:5px solid var(--primary);">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-poly">🧪 พอลิเมอร์ 342-201</span>
+          <span class="status-pill status-submitted">🔒 ปิดรับแล้ว</span>
+        </div>
+        <div class="assign-title">Quiz : Bulk polymerization</div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=57224" target="_blank" class="btn-folder-direct">🔗 เปิดใน LMS</a>
+        </div>
+      </div>
+
+      <!-- QUIZ: Solution -->
+      <div class="assignment-card" data-status="closed" style="border-left:5px solid var(--primary);">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-poly">🧪 พอลิเมอร์ 342-201</span>
+          <span class="status-pill status-submitted">🔒 ปิดรับแล้ว</span>
+        </div>
+        <div class="assign-title">Quiz : Solution Polymerization</div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=60011" target="_blank" class="btn-folder-direct">🔗 เปิดใน LMS</a>
+        </div>
+      </div>
+
+      <!-- QUIZ: Chemical Reaction -->
+      <div class="assignment-card" data-status="closed" style="border-left:5px solid var(--primary);">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-poly">🧪 พอลิเมอร์ 342-201</span>
+          <span class="status-pill status-submitted">🔒 ปิดรับแล้ว</span>
+        </div>
+        <div class="assign-title">Quiz : Chemical Reaction of Polymer</div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=414493" target="_blank" class="btn-folder-direct">🔗 เปิดใน LMS</a>
+        </div>
+      </div>
+
+      <!-- QUIZ: Interaction -->
+      <div class="assignment-card" data-status="closed" style="border-left:5px solid var(--primary);">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-poly">🧪 พอลิเมอร์ 342-201</span>
+          <span class="status-pill status-submitted">🔒 ปิดรับแล้ว</span>
+        </div>
+        <div class="assign-title">Quiz : Interaction - Microstructure</div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=415583" target="_blank" class="btn-folder-direct">🔗 เปิดใน LMS</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+    <!-- CORE POLYMER CONTENT (Parts 1-4, Quizzes, Cheat Sheet) -->
+    
   </main>
   </div>
-<!-- FLOATING NOTEPAD -->
+    
+  <!-- FLOATING NOTEPAD -->
   <button id="note-fab" class="note-fab" onclick="toggleNotePanel()" title="เปิดกระดาษจดโน้ต & วาดเขียน">✍️</button>
   <div id="note-panel" class="note-panel">
     <div class="note-header">
@@ -3804,94 +3583,18 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
     });
   </script>
 
-
-<script>
-  const allCatalog = [
-    // Polymers
-    { title: "ประมวลรายวิชาและเค้าโครงเนื้อหา 342-201", file: "342-201 course outline 1-2569.pdf", sub: "พอลิเมอร์", type: "pdf", url: "พอลิเมอร์/342-201 course outline 1-2569.pdf" },
-    { title: "สมบัติพื้นฐาน การละลาย และสภาพผลึก", file: "Basic properties -65.pdf", sub: "พอลิเมอร์", type: "pdf", url: "พอลิเมอร์/Basic properties -65.pdf" },
-    { title: "ปฏิกิริยาเคมีของพอลิเมอร์และการเสื่อมสภาพ", file: "Chemical Reaction of polymers.pdf", sub: "พอลิเมอร์", type: "pdf", url: "พอลิเมอร์/Chemical Reaction of polymers.pdf" },
-    { title: "พฤติกรรมทางความร้อน (Tg, Tm และ DSC)", file: "Thermal transition-68-student.pdf", sub: "พอลิเมอร์", type: "pdf", url: "พอลิเมอร์/Thermal transition-68-student.pdf" },
-    { title: "ระบบและเทคนิคการสังเคราะห์พอลิเมอร์", file: "V.polymer_system-up date 68.pdf", sub: "พอลิเมอร์", type: "pdf", url: "พอลิเมอร์/V.polymer_system-up date 68.pdf" },
-    { title: "รวมเอกสารคำสอนและสรุปเลกเชอร์ 342-201", file: "Lecture 342-201.pdf", sub: "พอลิเมอร์", type: "pdf", url: "พอลิเมอร์/Lecture 342-201.pdf" },
-    { title: "เอกสารคำสอนฉบับสมบูรณ์ Final (อ.สิริญญา)", file: "เอกสารคำสอน สิริญญา จันทรักษ์ - 342-201 Final.pdf", sub: "พอลิเมอร์", type: "pdf", url: "พอลิเมอร์/เอกสารคำสอน สิริญญา จันทรักษ์ - 342-201 Final.pdf" },
-    { title: "เอกสารคำสอนวิชาพอลิเมอร์ (รศ.ชวนพิศ)", file: "เอกสารคำสอน-ชวนพิศ.pdf", sub: "พอลิเมอร์", type: "pdf", url: "พอลิเมอร์/เอกสารคำสอน-ชวนพิศ.pdf" },
-    
-    // Ceramics
-    { title: "ประมวลรายวิชา 316-211 วัสดุเซรามิก (2569)", file: "Course syllabus 316-211-2569.pdf", sub: "เซรามิก", type: "pdf", url: "เซรามิก/Course syllabus 316-211-2569.pdf" },
-    { title: "เอกสารคำสอนหลัก Ceramic Materials", file: "316-211 ceramic materials.pdf", sub: "เซรามิก", type: "pdf", url: "เซรามิก/316-211 ceramic materials.pdf" },
-    { title: "บรรยายบทที่ 1: การจำแนกประเภทและโครงสร้างผลึก", file: "Lecture I.pdf", sub: "เซรามิก", type: "pdf", url: "เซรามิก/Lecture I.pdf" },
-    { title: "บรรยายเทคนิคการขึ้นรูปเซรามิกแบบดั้งเดิม", file: "Lecture I_Traditional forming techniques.pdf", sub: "เซรามิก", type: "pdf", url: "เซรามิก/Lecture I_Traditional forming techniques.pdf" },
-    { title: "บรรยายเทคนิคการเคลือบและเคมีน้ำเคลือบ", file: "Lecture I-III Glazing technique.pdf", sub: "เซรามิก", type: "pdf", url: "เซรามิก/Lecture I-III Glazing technique.pdf" },
-    { title: "วัสดุศาสตร์บ้านดินและเซรามิกก่อสร้าง", file: "Earthen Home  Materials Science.pdf", sub: "เซรามิก", type: "pdf", url: "เซรามิก/Earthen Home  Materials Science.pdf" },
-    { title: "กรณีศึกษาวัตถุดิบท้องถิ่น (เขา-ป่า-นา-เล)", file: "เขา-ป่า-นา-เล (1).pdf", sub: "เซรามิก", type: "pdf", url: "เซรามิก/เขา-ป่า-นา-เล (1).pdf" },
-
-    // Metallurgy
-    { title: "ประมวลรายวิชา 316-221 โลหะวิทยา (2569)", file: "ประมวลรายวิชา 316-221 1-2569.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/ประมวลรายวิชา 316-221 1-2569.pdf" },
-    { title: "Unit 1: โครงสร้างผลึก ระนาบ และทิศทาง (PDF)", file: "316-221 Metallurgy unit 1.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 Metallurgy unit 1.pdf" },
-    { title: "Unit 1: โครงสร้างผลึก (สไลด์ PPTX)", file: "316-221 Metallurgy unit 1.pptx", sub: "โลหะ", type: "pptx", url: "โลหะ/316-221 Metallurgy unit 1.pptx" },
-    { title: "แบบฝึกหัดที่ 1: การหาดัชนีมิลเลอร์ระนาบและทิศทาง", file: "316-221 แบบฝึกหัดที่ 1 ระนาบและทิศทาง (1) (1).pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 แบบฝึกหัดที่ 1 ระนาบและทิศทาง (1) (1).pdf" },
-    { title: "Unit 2: ข้อบกพร่องในผลึกและการเคลื่อนที่ดิสโลเคชัน", file: "316-221 Metallurgy unit 2.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 Metallurgy unit 2.pdf" },
-    { title: "Unit 2: ข้อบกพร่องในผลึกโลหะ (PPTX)", file: "316-221 Metallurgy unit 2.pptx", sub: "โลหะ", type: "pptx", url: "โลหะ/316-221 Metallurgy unit 2.pptx" },
-    { title: "Unit 3: กลไกการเพิ่มความแข็งแรงของโลหะ (PDF)", file: "316-221 Metallurgy unit 3.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 Metallurgy unit 3.pdf" },
-    { title: "Unit 3: กลไกการเพิ่มความแข็งแรง (PPTX)", file: "316-221 Metallurgy unit 3.pptx", sub: "โลหะ", type: "pptx", url: "โลหะ/316-221 Metallurgy unit 3.pptx" },
-    { title: "Unit 4: การคืนตัวและการตกผลึกใหม่ (PDF)", file: "316-221 Metallurgy unit 4.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 Metallurgy unit 4.pdf" },
-    { title: "Unit 4: การคืนตัวและการตกผลึกใหม่ (PPTX)", file: "316-221 Metallurgy unit 4.pptx", sub: "โลหะ", type: "pptx", url: "โลหะ/316-221 Metallurgy unit 4.pptx" },
-    { title: "Unit 5: แผนภาพเฟสระบบ 2 องค์ประกอบ (PDF)", file: "316-221 Metallurgy unit 5.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 Metallurgy unit 5.pdf" },
-    { title: "Unit 5: แผนภาพเฟส (PPTX)", file: "316-221 Metallurgy unit 5.pptx", sub: "โลหะ", type: "pptx", url: "โลหะ/316-221 Metallurgy unit 5.pptx" },
-    { title: "Unit 6: แผนภาพเฟส Fe-Fe3C และโครงสร้างจุลภาค (PDF)", file: "316-221 Metallurgy unit 6.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 Metallurgy unit 6.pdf" },
-    { title: "Unit 6: ระบบเหล็ก-คาร์บอน (PPTX)", file: "316-221 Metallurgy unit 6.pptx", sub: "โลหะ", type: "pptx", url: "โลหะ/316-221 Metallurgy unit 6.pptx" },
-    { title: "Unit 7: การอบชุบความร้อนเหล็กกล้า (PDF)", file: "316-221 Metallurgy unit 7.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 Metallurgy unit 7.pdf" },
-    { title: "Unit 7: การอบชุบความร้อนเหล็กกล้า (PPTX)", file: "316-221 Metallurgy unit 7.pptx", sub: "โลหะ", type: "pptx", url: "โลหะ/316-221 Metallurgy unit 7.pptx" },
-    { title: "เฉลยแบบฝึกหัดที่ 7: การอบชุบความร้อนและแปลงเฟส", file: "เฉลยแบบฝึกหัดที่ 7.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/เฉลยแบบฝึกหัดที่ 7.pdf" },
-    { title: "Unit 8: การชุบแข็งและการเจือเหล็กกล้า (PDF)", file: "316-221 Metallurgy unit 8.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 Metallurgy unit 8.pdf" },
-    { title: "Unit 8: การชุบแข็งเหล็กกล้า (PPTX)", file: "316-221 Metallurgy unit 8.pptx", sub: "โลหะ", type: "pptx", url: "โลหะ/316-221 Metallurgy unit 8.pptx" },
-    { title: "Unit 9: โลหะนอกกลุ่มเหล็ก (PDF)", file: "316-221 Metallurgy unit 9.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 Metallurgy unit 9.pdf" },
-    { title: "Unit 9: โลหะนอกกลุ่มเหล็ก (PPTX)", file: "316-221 Metallurgy unit 9.pptx", sub: "โลหะ", type: "pptx", url: "โลหะ/316-221 Metallurgy unit 9.pptx" },
-    { title: "Unit 10: ผงโลหะวิทยาและการเผาประสาน (PDF)", file: "316-221 Metallurgy unit 10.pdf", sub: "โลหะ", type: "pdf", url: "โลหะ/316-221 Metallurgy unit 10.pdf" },
-    { title: "Unit 10: ผงโลหะวิทยา (PPTX)", file: "316-221 Metallurgy unit 10.pptx", sub: "โลหะ", type: "pptx", url: "โลหะ/316-221 Metallurgy unit 10.pptx" },
-    { title: "วิดีโอสาธิตกระบวนการ Gas Atomization", file: "SDC11563.wm", sub: "โลหะ", type: "media", url: "โลหะ/SDC11563.wm" }
-  ];
-
-  function renderGlobalFiles(filterText = '') {
-    const container = document.getElementById('global-files-container');
-    if (!container) return;
-    const q = filterText.toLowerCase().trim();
-    const filtered = allCatalog.filter(item => !q || item.title.toLowerCase().includes(q) || item.file.toLowerCase().includes(q) || item.sub.includes(q));
-
-    container.innerHTML = filtered.map(item => `
-      <div class="file-item-card">
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <span class="file-type-badge ${item.type === 'pdf' ? 'badge-type-pdf' : item.type === 'pptx' ? 'badge-type-pptx' : 'badge-type-video'}">
-              ${item.type.toUpperCase()}
-            </span>
-            <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted);">${item.sub}</span>
-          </div>
-          <div class="file-item-title">${item.title}</div>
-          <div class="file-item-filename">${item.file}</div>
-        </div>
-        <div class="file-item-footer">
-          <span class="file-item-size">วิชา${item.sub}</span>
-          <a href="${item.url}" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  function onGlobalSearch(val) {
-    renderGlobalFiles(val);
-    const section = document.getElementById('global-all-files');
-    if (val && section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  <script>
+    function filterSubjectFiles(containerId, q) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const cards = container.querySelectorAll('.file-item-card');
+      const term = q.toLowerCase().trim();
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        c.style.display = (!term || text.includes(term)) ? 'flex' : 'none';
+      });
     }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    renderGlobalFiles();
-  });
-</script>
-
+  </script>
 
 <!-- TOAST POPUP & ASSIGNMENT FILTER JS -->
 <div id="toast" class="toast-notification"><span>คัดลอกโจทย์เรียบร้อยแล้ว</span></div>
@@ -4252,3 +3955,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+    

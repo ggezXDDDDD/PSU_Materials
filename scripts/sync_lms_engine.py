@@ -37,16 +37,16 @@ SERVER_PORT = 25690
 
 # Registered Courses
 COURSES = [
-    {"id": "1553", "code": "316-221", "name": "โลหะวิทยา 1 (Metallurgy)", "tag": "metal", "icon": "⚙️", "page": "metallurgy.html"},
-    {"id": "1552", "code": "315-201", "name": "เซรามิกเบื้องต้น (Ceramics)", "tag": "ceram", "icon": "🏺", "page": "ceramic.html"},
-    {"id": "4312", "code": "342-201", "name": "พอลิเมอร์เบื้องต้น (Polymer)", "tag": "poly", "icon": "🧪", "page": "polymer.html"},
-    {"id": "1513", "code": "200-103", "name": "GreenLove (ชีวิตพอเพียงและสิ่งแวดล้อม)", "tag": "greenlove", "icon": "🌿", "page": "greenlove.html"},
-    {"id": "10228", "code": "315-201G7", "name": "Life in the Future (Biotechnology)", "tag": "bio", "icon": "🔬", "page": "biology.html"},
-    {"id": "12285", "code": "B03-001", "name": "Cybersecurity (ความมั่นคงไซเบอร์)", "tag": "cyber", "icon": "🛡️", "page": "cybersecurity.html"},
-    {"id": "572", "code": "820-100", "name": "Save Earth Save Us", "tag": "other", "icon": "📚", "page": "other_courses.html"},
-    {"id": "10210", "code": "950-102", "name": "ชีวิตที่ดี (Good Life)", "tag": "other", "icon": "📚", "page": "other_courses.html"},
-    {"id": "11943", "code": "388-100", "name": "Health for All", "tag": "other", "icon": "📚", "page": "other_courses.html"},
-    {"id": "6134", "code": "ENG-SELF", "name": "English Self-Learning", "tag": "other", "icon": "📚", "page": "other_courses.html"}
+    {"id": "1553", "code": "316-221", "name": "โลหะวิทยา 1 (Metallurgy)", "tag": "metal", "icon": "⚙️", "page": "pages/metallurgy.html"},
+    {"id": "1552", "code": "315-201", "name": "เซรามิกเบื้องต้น (Ceramics)", "tag": "ceram", "icon": "🏺", "page": "pages/ceramic.html"},
+    {"id": "4312", "code": "342-201", "name": "พอลิเมอร์เบื้องต้น (Polymer)", "tag": "poly", "icon": "🧪", "page": "pages/polymer.html"},
+    {"id": "1513", "code": "200-103", "name": "GreenLove (ชีวิตพอเพียงและสิ่งแวดล้อม)", "tag": "greenlove", "icon": "🌿", "page": "pages/greenlove.html"},
+    {"id": "10228", "code": "315-201G7", "name": "Life in the Future (Biotechnology)", "tag": "bio", "icon": "🔬", "page": "pages/biology.html"},
+    {"id": "12285", "code": "B03-001", "name": "Cybersecurity (ความมั่นคงไซเบอร์)", "tag": "cyber", "icon": "🛡️", "page": "pages/cybersecurity.html"},
+    {"id": "572", "code": "820-100", "name": "Save Earth Save Us", "tag": "other", "icon": "📚", "page": "pages/other_courses.html"},
+    {"id": "10210", "code": "950-102", "name": "ชีวิตที่ดี (Good Life)", "tag": "other", "icon": "📚", "page": "pages/other_courses.html"},
+    {"id": "11943", "code": "388-100", "name": "Health for All", "tag": "other", "icon": "📚", "page": "pages/other_courses.html"},
+    {"id": "6134", "code": "ENG-SELF", "name": "English Self-Learning", "tag": "other", "icon": "📚", "page": "pages/other_courses.html"}
 ]
 
 def log(msg):
@@ -129,7 +129,7 @@ def map_course(cid, raw_name=""):
         "name": raw_name or "รายวิชาทั่วไป",
         "tag": "other",
         "icon": "📚",
-        "page": "other_courses.html"
+        "page": "pages/other_courses.html"
     }
 
 def parse_upcoming_calendar(html):
