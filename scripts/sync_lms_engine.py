@@ -18,10 +18,21 @@ from html import unescape
 from datetime import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
-PORTAL_DIR = "/Users/kongpop/Desktop/PSU_Materials"
+# Robust path resolution: script can live in root or in scripts/
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+if os.path.basename(SCRIPT_DIR) == "scripts":
+    PORTAL_DIR = os.path.dirname(SCRIPT_DIR)
+else:
+    PORTAL_DIR = SCRIPT_DIR
+
 INDEX_HTML = os.path.join(PORTAL_DIR, "index.html")
-TASKS_JSON = os.path.join(PORTAL_DIR, "tasks_live.json")
-LOG_FILE = os.path.join(PORTAL_DIR, "sync.log")
+DATA_DIR = os.path.join(PORTAL_DIR, "data")
+LOG_DIR = os.path.join(PORTAL_DIR, "logs")
+os.makedirs(DATA_DIR, exist_ok=True)
+os.makedirs(LOG_DIR, exist_ok=True)
+
+TASKS_JSON = os.path.join(DATA_DIR, "tasks_live.json")
+LOG_FILE = os.path.join(LOG_DIR, "sync.log")
 SERVER_PORT = 25690
 
 # Registered Courses
@@ -350,7 +361,7 @@ def update_index_html(tasks):
         html
     )
 
-    # 3. Update Course Filter Counts on #course-filter-bar
+    # 3. Update Course Filter Counts
     poly_c = sum(1 for t in sorted_tasks if t.get("course_tag") == "poly")
     ceram_c = sum(1 for t in sorted_tasks if t.get("course_tag") in ["ceram", "ceramic"])
     metal_c = sum(1 for t in sorted_tasks if t.get("course_tag") == "metal")
@@ -385,13 +396,12 @@ def update_index_html(tasks):
     log(f"✓ Updated index.html successfully with {total_count} tasks (Pending: {pending_count})")
     return True
 
-
 def git_auto_push():
     try:
         res = subprocess.run(["git", "remote", "-v"], cwd=PORTAL_DIR, capture_output=True, text=True)
         if "origin" in res.stdout:
             log("Syncing updates to online GitHub repository...")
-            subprocess.run(["git", "add", "index.html", "tasks_live.json"], cwd=PORTAL_DIR, capture_output=True)
+            subprocess.run(["git", "add", "index.html", "data/tasks_live.json"], cwd=PORTAL_DIR, capture_output=True)
             subprocess.run(["git", "commit", "-m", f"Auto-sync LMS: {datetime.now().strftime('%Y-%m-%d %H:%M')}"], cwd=PORTAL_DIR, capture_output=True)
             push_res = subprocess.run(["git", "push"], cwd=PORTAL_DIR, capture_output=True, text=True)
             if push_res.returncode == 0:
@@ -465,9 +475,11 @@ def run_sync(is_background=False):
 
     # 5. Update index.html
     update_index_html(all_tasks)
+
+    # 6. Auto-push to online git repository
     git_auto_push()
 
-    # 6. Notifications & Reload
+    # 7. Notifications & Reload
     if new_tasks and old_task_ids:
         first_title = new_tasks[0]['title']
         notif_body = f"พบงานใหม่: {first_title}" if len(new_tasks) == 1 else f"พบงานใหม่ {len(new_tasks)} รายการในระบบ!"
@@ -526,10 +538,9 @@ def start_server_daemon():
     log(f"Starting LMS Sync Background Server on http://127.0.0.1:{SERVER_PORT}...")
     server = HTTPServer(("127.0.0.1", SERVER_PORT), SyncHandler)
     
-    # Background periodic auto-sync thread
     def periodic_worker():
         while True:
-            time.sleep(21600)  # Every 6 hours
+            time.sleep(21600)
             log("Running periodic 6-hour scheduled sync...")
             run_sync(is_background=True)
             

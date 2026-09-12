@@ -1,7 +1,6 @@
 .DS_Store
+logs/
 *.log
-sync.log
-sync_daemon.log
+*.command
 __pycache__/
 *.pyc
-*.command
