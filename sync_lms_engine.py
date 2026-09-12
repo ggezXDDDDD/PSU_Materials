@@ -385,6 +385,22 @@ def update_index_html(tasks):
     log(f"✓ Updated index.html successfully with {total_count} tasks (Pending: {pending_count})")
     return True
 
+
+def git_auto_push():
+    try:
+        res = subprocess.run(["git", "remote", "-v"], cwd=PORTAL_DIR, capture_output=True, text=True)
+        if "origin" in res.stdout:
+            log("Syncing updates to online GitHub repository...")
+            subprocess.run(["git", "add", "index.html", "tasks_live.json"], cwd=PORTAL_DIR, capture_output=True)
+            subprocess.run(["git", "commit", "-m", f"Auto-sync LMS: {datetime.now().strftime('%Y-%m-%d %H:%M')}"], cwd=PORTAL_DIR, capture_output=True)
+            push_res = subprocess.run(["git", "push"], cwd=PORTAL_DIR, capture_output=True, text=True)
+            if push_res.returncode == 0:
+                log("✓ Successfully pushed updates to online website!")
+            else:
+                log(f"Git push status: {push_res.stderr.strip()[:100]}")
+    except Exception as e:
+        log(f"Git auto-push error: {e}")
+
 def run_sync(is_background=False):
     log("==================================================")
     log("🚀 Starting PSU LMS Sync Engine...")
@@ -449,6 +465,7 @@ def run_sync(is_background=False):
 
     # 5. Update index.html
     update_index_html(all_tasks)
+    git_auto_push()
 
     # 6. Notifications & Reload
     if new_tasks and old_task_ids:
