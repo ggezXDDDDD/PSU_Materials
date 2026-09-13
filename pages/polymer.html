@@ -3185,6 +3185,142 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
     text-align: center;
   }
 }
+</style><style>
+/* UNIVERSAL SUBNAV & SMOOTH SCROLL ENGINE */
+html {
+  scroll-behavior: smooth !important;
+}
+section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card-"], div[id$="-files"], div[id$="-assignments"] {
+  scroll-margin-top: 85px !important;
+}
+.subject-subnav {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 14px !important;
+  margin: 16px 0 24px 0 !important;
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: var(--ios-blur-heavy) !important;
+  -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04) !important;
+}
+.subject-subnav a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 8px 16px !important;
+  border-radius: 12px !important;
+  background: var(--subcard-bg) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  letter-spacing: 0 !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+.subject-subnav a:hover {
+  background: var(--card-bg) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
+}
+.subject-subnav a.active {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-highlight {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(99, 102, 241, 0.18)) !important;
+  color: #8b5cf6 !important;
+  border-color: rgba(139, 92, 246, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-highlight:hover {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1) !important;
+  color: #ffffff !important;
+}
+.subject-subnav a.subnav-btn-lms-highlight {
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.15), rgba(2, 132, 199, 0.18)) !important;
+  color: #0071e3 !important;
+  border-color: rgba(0, 113, 227, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-lms-highlight:hover {
+  background: linear-gradient(135deg, #0071e3, #0284c7) !important;
+  color: #ffffff !important;
+}
+</style><style>
+/* UNIVERSAL SUBNAV & SMOOTH SCROLL ENGINE */
+html {
+  scroll-behavior: smooth !important;
+}
+section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card-"], div[id$="-files"], div[id$="-assignments"] {
+  scroll-margin-top: 85px !important;
+}
+.subject-subnav {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 14px !important;
+  margin: 16px 0 24px 0 !important;
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: var(--ios-blur-heavy) !important;
+  -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04) !important;
+}
+.subject-subnav a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 8px 16px !important;
+  border-radius: 12px !important;
+  background: var(--subcard-bg) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  letter-spacing: 0 !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+.subject-subnav a:hover {
+  background: var(--card-bg) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
+}
+.subject-subnav a.active {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-highlight {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(99, 102, 241, 0.18)) !important;
+  color: #8b5cf6 !important;
+  border-color: rgba(139, 92, 246, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-highlight:hover {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1) !important;
+  color: #ffffff !important;
+}
+.subject-subnav a.subnav-btn-lms-highlight {
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.15), rgba(2, 132, 199, 0.18)) !important;
+  color: #0071e3 !important;
+  border-color: rgba(0, 113, 227, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-lms-highlight:hover {
+  background: linear-gradient(135deg, #0071e3, #0284c7) !important;
+  color: #ffffff !important;
+}
 </style></head>
 <body>
   <div class="portal-layout">
@@ -3349,16 +3485,17 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
       </div>
     </header>
 
+  
+  <div class="subject-subnav">
+    <a href="#p-files" class="active">📁 คลังเอกสาร & สไลด์ใน LMS (9 ไฟล์)</a>
+    <a href="#p-assignments">📋 รายละเอียดงาน & ควิซ LMS (8 งาน)</a>
+    <a href="polymer_summary.html" class="subnav-btn-highlight">📖 สรุปเนื้อหาเตรียมสอบ ➔</a>
+  </div>
+    
+    
+
     <!-- Navigation inside page -->
-    <div class="page-subnav">
-      <a href="#p-files">📁 คลังเอกสาร & สไลด์ (8 ไฟล์)</a>
-      <a href="#part1">1.ปฏิกิริยาเคมี</a>
-      <a href="#part2">2.เทคนิคสังเคราะห์</a>
-      <a href="#part3">3.สมบัติ & ผลึก</a>
-      <a href="#part4">4.การเปลี่ยนสถานะ Tg/Tm</a>
-      <a href="#quiz-section" class="quiz-btn">📝 ข้อสอบ 22 ข้อ</a>
-      <a href="#ultra-summary" style="background:var(--purple-bg); color:var(--purple); font-weight:700;">⚡ สรุปสั้น 1 นาที</a>
-    </div>
+    
 
     <!-- FILE HUB FOR POLYMERS -->
     <section id="p-files" class="file-hub-section">
@@ -4219,6 +4356,52 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<script>
+// BULLETPROOF SUBNAV & ANCHOR SMOOTH SCROLL ENGINE
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.subject-subnav a').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          this.closest('.subject-subnav').querySelectorAll('a').forEach(a => a.classList.remove('active'));
+          this.classList.add('active');
+          const headerOffset = 80;
+          const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: targetTop, behavior: 'smooth' });
+          if (history.pushState) history.pushState(null, null, href);
+        }
+      }
+    });
+  });
+});
+</script>
+
+<script>
+// BULLETPROOF SUBNAV & ANCHOR SMOOTH SCROLL ENGINE
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.subject-subnav a').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          this.closest('.subject-subnav').querySelectorAll('a').forEach(a => a.classList.remove('active'));
+          this.classList.add('active');
+          const headerOffset = 80;
+          const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: targetTop, behavior: 'smooth' });
+          if (history.pushState) history.pushState(null, null, href);
+        }
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
     

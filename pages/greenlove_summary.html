@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>📖 สรุปเนื้อหาพอลิเมอร์เตรียมสอบ (342-201) (316-211) | PSU Materials Science</title>
-
-  <!-- Fonts -->
+  <title>🌱 GreenLove เพื่อโลกที่ยั่งยืน (200-103) | PSU Study Portal</title>
+<!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -698,6 +697,207 @@
   </style>
 
 
+<style>
+  .hero-welcome {
+    text-align: center;
+    padding: 3.5rem 1rem 2.2rem;
+    position: relative;
+  }
+  .hero-pill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 0.88rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--primary-border);
+  }
+  .hero-welcome h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.25;
+    background: linear-gradient(135deg, var(--text) 30%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+  }
+  .hero-welcome p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 760px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+  .global-search-wrapper {
+    max-width: 680px;
+    margin: 0 auto 3rem;
+    position: relative;
+  }
+  .global-search-input {
+    width: 100%;
+    padding: 16px 24px 16px 54px;
+    border-radius: 999px;
+    border: 1.5px solid var(--border);
+    background: var(--card-bg);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    font-size: 1.05rem;
+    color: var(--text);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+    outline: none;
+    transition: all 0.3s var(--fluid);
+  }
+  .global-search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 16px 40px var(--primary-glow);
+    transform: scale(1.01);
+  }
+  .search-icon-inside {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.35rem;
+    pointer-events: none;
+  }
+
+  /* 3 Hero Subject Cards */
+  .subject-portals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .portal-card {
+    background: var(--card-bg);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1.5px solid var(--card-border);
+    border-radius: 28px;
+    padding: 2.2rem;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s var(--spring);
+    position: relative;
+    overflow: hidden;
+  }
+  .portal-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 6px;
+    background: var(--card-accent, var(--primary));
+  }
+  .portal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
+  }
+  .card-top-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    width: fit-content;
+  }
+  .portal-card-icon {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+    display: inline-block;
+    transition: transform 0.35s var(--spring);
+  }
+  .portal-card:hover .portal-card-icon {
+    transform: scale(1.15) rotate(-6deg);
+  }
+  .portal-card-title {
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .portal-card-code {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+  }
+  .portal-card-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.68;
+    margin-bottom: 1.5rem;
+  }
+  .portal-features-list {
+    list-style: none;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+  }
+  .portal-features-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .portal-card-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: auto;
+  }
+  .btn-enter-subject {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    color: white !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.96rem;
+    transition: all 0.25s var(--fluid);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  }
+  .btn-enter-subject:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+  }
+  .btn-folder-direct {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 18px;
+    border-radius: 999px;
+    background: var(--subcard-bg);
+    border: 1px solid var(--subcard-border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: all 0.25s var(--fluid);
+  }
+  .btn-folder-direct:hover {
+    background: var(--subcard-hover);
+    transform: translateY(-2px);
+  }
+</style>
+
+
 <!-- ULTRA-SMOOTH ANIMATIONS & ASSIGNMENT HUB STYLES -->
 <style>
   /* --- ULTRA-SMOOTH ANIMATIONS & SPRING PHYSICS --- */
@@ -1316,6 +1516,7 @@
     z-index: 99999;
   }
 </style>
+
 
 
 <style>
@@ -3037,9 +3238,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
 }
 </style>
 <style>
-/* ==========================================================================
-   DUAL-MODE SWITCHER (LMS OFFICIAL vs STUDY GUIDE)
-   ========================================================================== */
+/* DUAL-MODE SWITCHER */
 .mode-switch-wrapper {
   margin: 1.2rem 0 1.8rem;
 }
@@ -3121,71 +3320,14 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
   color: #8b5cf6;
   border-color: rgba(139, 92, 246, 0.3);
 }
-
-.notice-banner {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 20px;
-  border-radius: 16px;
-  margin: 1.5rem 0;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
-}
-.notice-banner.lms-notice {
-  border-left: 5px solid #0071e3;
-}
-.notice-banner.study-notice {
-  border-left: 5px solid #8b5cf6;
-}
-.notice-banner-btn {
-  margin-left: auto;
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  font-weight: 800;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-.notice-banner-btn.btn-to-study {
-  background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
-}
-.notice-banner-btn.btn-to-study:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45);
-}
-.notice-banner-btn.btn-to-lms {
-  background: linear-gradient(135deg, #0071e3, #0284c7);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
-}
-.notice-banner-btn.btn-to-lms:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.45);
-}
-
 @media (max-width: 768px) {
   .mode-switch-bar {
     grid-template-columns: 1fr;
     gap: 10px;
   }
-  .notice-banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .notice-banner-btn {
-    margin-left: 0;
-    width: 100%;
-    text-align: center;
-  }
 }
-</style><style>
+
+
 /* UNIVERSAL SUBNAV & SMOOTH SCROLL ENGINE */
 html {
   scroll-behavior: smooth !important;
@@ -3254,6 +3396,254 @@ section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card
   color: #ffffff !important;
 }
 </style><style>
+/* DUAL-MODE SWITCHER */
+.mode-switch-wrapper {
+  margin: 1.2rem 0 1.8rem;
+}
+.mode-switch-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  background: var(--subcard-bg);
+  padding: 8px;
+  border-radius: 22px;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+.mode-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  background: transparent;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.5px solid transparent;
+  position: relative;
+}
+.mode-tab:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+.mode-tab.active {
+  background: var(--card-bg);
+  border-color: var(--primary);
+  box-shadow: 0 10px 24px rgba(0, 113, 227, 0.16), inset 0 1px 1px #fff;
+}
+.mode-tab.active.study-mode {
+  border-color: #8b5cf6;
+  box-shadow: 0 10px 24px rgba(139, 92, 246, 0.18), inset 0 1px 1px #fff;
+}
+.mode-tab-icon {
+  font-size: 1.9rem;
+  flex-shrink: 0;
+}
+.mode-tab-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.mode-tab-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.mode-tab.active .mode-tab-title {
+  color: var(--primary);
+}
+.mode-tab.active.study-mode .mode-tab-title {
+  color: #8b5cf6;
+}
+.mode-tab-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.mode-tab-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(0, 113, 227, 0.12);
+  color: #0071e3;
+  border: 1px solid rgba(0, 113, 227, 0.25);
+  white-space: nowrap;
+}
+.mode-tab-badge.study-badge {
+  background: rgba(139, 92, 246, 0.12);
+  color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+@media (max-width: 768px) {
+  .mode-switch-bar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+
+/* UNIVERSAL SUBNAV & SMOOTH SCROLL ENGINE */
+html {
+  scroll-behavior: smooth !important;
+}
+section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card-"], div[id$="-files"], div[id$="-assignments"] {
+  scroll-margin-top: 85px !important;
+}
+.subject-subnav {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 14px !important;
+  margin: 16px 0 24px 0 !important;
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: var(--ios-blur-heavy) !important;
+  -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04) !important;
+}
+.subject-subnav a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 8px 16px !important;
+  border-radius: 12px !important;
+  background: var(--subcard-bg) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  letter-spacing: 0 !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+.subject-subnav a:hover {
+  background: var(--card-bg) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
+}
+.subject-subnav a.active {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-highlight {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(99, 102, 241, 0.18)) !important;
+  color: #8b5cf6 !important;
+  border-color: rgba(139, 92, 246, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-highlight:hover {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1) !important;
+  color: #ffffff !important;
+}
+.subject-subnav a.subnav-btn-lms-highlight {
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.15), rgba(2, 132, 199, 0.18)) !important;
+  color: #0071e3 !important;
+  border-color: rgba(0, 113, 227, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-lms-highlight:hover {
+  background: linear-gradient(135deg, #0071e3, #0284c7) !important;
+  color: #ffffff !important;
+}
+</style><style>
+/* DUAL-MODE SWITCHER */
+.mode-switch-wrapper {
+  margin: 1.2rem 0 1.8rem;
+}
+.mode-switch-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  background: var(--subcard-bg);
+  padding: 8px;
+  border-radius: 22px;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+.mode-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  background: transparent;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.5px solid transparent;
+  position: relative;
+}
+.mode-tab:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+.mode-tab.active {
+  background: var(--card-bg);
+  border-color: var(--primary);
+  box-shadow: 0 10px 24px rgba(0, 113, 227, 0.16), inset 0 1px 1px #fff;
+}
+.mode-tab.active.study-mode {
+  border-color: #8b5cf6;
+  box-shadow: 0 10px 24px rgba(139, 92, 246, 0.18), inset 0 1px 1px #fff;
+}
+.mode-tab-icon {
+  font-size: 1.9rem;
+  flex-shrink: 0;
+}
+.mode-tab-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.mode-tab-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.mode-tab.active .mode-tab-title {
+  color: var(--primary);
+}
+.mode-tab.active.study-mode .mode-tab-title {
+  color: #8b5cf6;
+}
+.mode-tab-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.mode-tab-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(0, 113, 227, 0.12);
+  color: #0071e3;
+  border: 1px solid rgba(0, 113, 227, 0.25);
+  white-space: nowrap;
+}
+.mode-tab-badge.study-badge {
+  background: rgba(139, 92, 246, 0.12);
+  color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+@media (max-width: 768px) {
+  .mode-switch-bar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+
 /* UNIVERSAL SUBNAV & SMOOTH SCROLL ENGINE */
 html {
   scroll-behavior: smooth !important;
@@ -3368,7 +3758,7 @@ section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card
           <span class="side-badge badge-poly">23 pts!</span>
         </a>
 
-        <a href="ceramic.html" class="side-item active">
+        <a href="ceramic.html" class="side-item ">
           <div class="side-left">
             <span class="side-icon">🏺</span>
             <span>316-211 เซรามิก</span>
@@ -3392,7 +3782,7 @@ section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card
           <span class="side-badge badge-bio">7 งาน</span>
         </a>
 
-        <a href="greenlove.html" class="side-item ">
+        <a href="greenlove.html" class="side-item active">
           <div class="side-left">
             <span class="side-icon">🌱</span>
             <span>200-103 GreenLove</span>
@@ -3444,54 +3834,31 @@ section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card
         </div>
         <a href="../index.html" class="side-tool-btn" style="text-decoration:none; padding:6px 14px; font-size:0.85rem; font-weight:700; border-radius:12px; display:inline-flex; width:auto; height:34px;">🏠 กลับหน้าหลัก</a>
       </header>
-
+    
     <!-- UNIVERSAL RESPONSIVE TOP NAV -->
     
-    <div class="rainbow-speed-banner">🏎️💨 NITRO RGB SPEEDWAY ACTIVE • โหมดสีรุ้งซิ่งระดับ MAX 🏁</div>
 
-    <!-- DUAL-MODE SWITCHER -->
-    <div class="mode-switch-wrapper">
-      <div class="mode-switch-bar">
-        <a href="ceramic.html" class="mode-tab active">
-          <span class="mode-tab-icon">🏛️</span>
-          <div class="mode-tab-info">
-            <span class="mode-tab-title">ข้อมูล & งานใน LMS</span>
-            <span class="mode-tab-desc">สไลด์คำสอนทางการ, การบ้าน, ควิซ และกำหนดส่งจริง</span>
-          </div>
-          <span class="mode-tab-badge">LMS Official</span>
-        </a>
-        <a href="ceramic_summary.html" class="mode-tab ">
-          <span class="mode-tab-icon">📖</span>
-          <div class="mode-tab-info">
-            <span class="mode-tab-title">สรุปเนื้อหา & เตรียมสอบ</span>
-            <span class="mode-tab-desc">สรุปเจาะลึกทุกบท, สูตรคำนวณ, คลังข้อสอบ และ Cheat Sheet</span>
-          </div>
-          <span class="mode-tab-badge study-badge">Study Guide</span>
-        </a>
-      </div>
-    </div>
-    
-    
-    
 
-    <header class="hero hero-polymer" style="background: linear-gradient(135deg, rgba(0,113,227,0.08) 0%, rgba(139,92,246,0.12) 100%);">
-      <div class="hero-badge badge-poly" style="background:rgba(139, 92, 246, 0.15); color:#8b5cf6; border-color:rgba(139, 92, 246, 0.35);">
-        📖 สรุปเนื้อหา & เตรียมสอบ • พอลิเมอร์เบื้องต้น (342-201)
+    
+    
+    <header class="hero hero-gl" style="background: linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(99,102,241,0.12) 100%);">
+      <div class="hero-badge" style="background:rgba(139, 92, 246, 0.15); color:#8b5cf6; border:1px solid rgba(139, 92, 246, 0.35);">
+        📖 สรุปเนื้อหา & เตรียมสอบ • GreenLove (ชีวิตพอเพียงและสิ่งแวดล้อม) (200-103)
       </div>
-      <h1 class="hero-title">คลังสรุปเนื้อหาเข้มข้น & คลังข้อสอบวิชาพอลิเมอร์</h1>
-      <p class="hero-subtitle">รวบรวมเนื้อหาสำคัญครบ 4 บท: Chemical Reaction • Polymerization Techniques • Basic Properties & Crystallinity • Thermal Transition (Tg, Tm, DSC) • คลังข้อสอบ 22 ข้อพร้อมเฉลยละเอียด</p>
+      <h1 class="hero-title">คลังสรุปเนื้อหาเข้มข้น & คลังข้อสอบวิชาGreenLove (ชีวิตพอเพียงและสิ่งแวดล้อม)</h1>
+      <p class="hero-subtitle">รวบรวมใจความสำคัญ แก่นทฤษฎี ประเด็นออกสอบยอดนิยม และชุดคำถามทบทวนเตรียมความพร้อมก่อนเข้าห้องสอบจริง</p>
       <div class="hero-stats">
-        <span class="stat-pill" style="color:#0071e3; border-color:rgba(0, 113, 227, 0.35);">📚 สรุปครบ 4 บทเรียน</span>
-        <span class="stat-pill" style="color:#8b5cf6; border-color:rgba(139, 92, 246, 0.35);">📝 คลังแนวข้อสอบ 22 ข้อ</span>
-        <span class="stat-pill" style="color:#10b981; border-color:rgba(16, 185, 129, 0.35);">⚡ Ultra Cheat Sheet 1 นาที</span>
+        <span class="stat-pill" style="color:#8b5cf6; border-color:rgba(139, 92, 246, 0.35);">📚 สรุปเนื้อหาสำคัญ</span>
+        <span class="stat-pill" style="color:#0071e3; border-color:rgba(0, 113, 227, 0.35);">📝 แนวข้อสอบทบทวน</span>
+        <span class="stat-pill" style="color:#10b981; border-color:rgba(16, 185, 129, 0.35);">⚡ Ultra Cheat Sheet</span>
       </div>
     </header>
-
+    
     
     <!-- DUAL-MODE SWITCHER -->
     <div class="mode-switch-wrapper">
       <div class="mode-switch-bar">
-        <a href="polymer.html" class="mode-tab ">
+        <a href="greenlove.html" class="mode-tab ">
           <span class="mode-tab-icon">🏛️</span>
           <div class="mode-tab-info">
             <span class="mode-tab-title">ข้อมูล & งานใน LMS</span>
@@ -3499,7 +3866,7 @@ section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card
           </div>
           <span class="mode-tab-badge">LMS Official</span>
         </a>
-        <a href="polymer_summary.html" class="mode-tab active study-mode">
+        <a href="greenlove_summary.html" class="mode-tab active study-mode">
           <span class="mode-tab-icon">📖</span>
           <div class="mode-tab-info">
             <span class="mode-tab-title">สรุปเนื้อหา & เตรียมสอบ</span>
@@ -3510,309 +3877,83 @@ section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card
       </div>
     </div>
     
-
-    <div class="notice-banner study-notice">
-      <div style="font-size:1.6rem;">📖</div>
+    
+    <div class="notice-banner study-notice" style="border-left:5px solid #8b5cf6; background:var(--card-bg); padding:16px 20px; border-radius:16px; margin:1.5rem 0; display:flex; align-items:center; gap:16px; border:1px solid var(--border);">
+      <div style="font-size:1.8rem;">📖</div>
       <div>
         <strong>หน้านี้คือ: สรุปเนื้อหาเข้มข้น & แนวข้อสอบ (Study Guide)</strong><br>
-        <span style="color:var(--muted); font-size:0.85rem;">รวบรวมจากสไลด์และเอกสารคำสอนครบทุกไฟล์ เพื่อการทบทวนและฝึกทำข้อสอบ หากต้องการดูงานหรือส่งการบ้าน ให้ไปที่หน้า LMS Hub</span>
+        <span style="color:var(--muted); font-size:0.88rem;">รวบรวมเนื้อหาสำคัญสำหรับทบทวนและเตรียมสอบวิชา GreenLove (ชีวิตพอเพียงและสิ่งแวดล้อม) หากต้องการดูงานหรือส่งการบ้านใน LMS ให้กดสลับไปที่หน้า LMS Hub</span>
       </div>
-      <a href="polymer.html" class="notice-banner-btn btn-to-lms">🏛️ ไปที่หน้างานใน LMS</a>
+      <a href="greenlove.html" style="margin-left:auto; padding:10px 18px; border-radius:12px; background:linear-gradient(135deg, #0071e3, #0284c7); color:#fff; font-weight:800; text-decoration:none; white-space:nowrap; box-shadow:0 4px 12px rgba(0,113,227,0.3);">🏛️ ไปที่หน้างานใน LMS</a>
     </div>
-
-    <!-- SUBNAV -->
     
-  
+    
   <div class="subject-subnav">
-    <a href="#p-part1" class="active">1. Chemical Reaction</a>
-    <a href="#p-part2">2. Polymerization Techniques</a>
-    <a href="#p-part3">3. Morphology & Crystallinity</a>
-    <a href="#p-part4">4. Thermal Transition (Tg/Tm)</a>
-    <a href="#p-quiz">📝 คลังข้อสอบ (22 ข้อ)</a>
-    <a href="#p-ultra">⚡ Ultra Cheat Sheet</a>
-    <a href="polymer.html" class="subnav-btn-lms-highlight">🏛️ กลับหน้ารายการงาน LMS ➔</a>
+    <a href="#gl-part1" class="active">1. สรุปแนวคิดหลัก & ทฤษฎีสำคัญ</a>
+    <a href="#gl-part2">2. ประเด็นที่มักออกสอบบ่อย</a>
+    <a href="#gl-quiz">📝 คลังคำถามทบทวน</a>
+    <a href="#gl-ultra">⚡ Ultra Cheat Sheet 1 นาที</a>
+    <a href="greenlove.html" class="subnav-btn-lms-highlight">🏛️ กลับหน้ารายการงาน LMS ➔</a>
   </div>
-    
     
 
     <!-- PART 1 -->
-    <section id="p-part1" class="card">
+    <section id="gl-part1" class="card">
       <div class="card-glow glow-primary"></div>
-      <h2>1. Chemical Reaction of Polymers (ปฏิกิริยาเคมีและการดัดแปลงพอลิเมอร์)</h2>
-      
+      <h2>1. สรุปแนวคิดหลัก & ทฤษฎีสำคัญ (Key Concepts & Principles)</h2>
       <div class="concept-grid">
         <div class="concept-card">
-          <h4>🎯 วัตถุประสงค์ของการดัดแปลง</h4>
-          <p>เพื่อเพิ่มความเข้ากันได้ (Compatibility), ความคงทนต่อไฟ (Fire retardant), การยึดเกาะ (Adhesion) หรือติดหมู่ฟังก์ชันเฉพาะ เช่น เรซินแลกเปลี่ยนไอออน</p>
+          <h4>🎯 วัตถุประสงค์และการประยุกต์ใช้</h4>
+          <p>เรียนรู้หลักการพื้นฐาน การเชื่อมโยงองค์ความรู้สู่วิชาชีพ และการนำไปใช้แก้ไขปัญหาในบริบทชีวิตจริงอย่างเป็นรูปธรรม</p>
         </div>
         <div class="concept-card">
-          <h4>⚡ ธรรมชาติของปฏิกิริยา</h4>
-          <p>เกิดที่ <strong>หมู่ฟังก์ชัน (Functional group)</strong> เหมือนโมเลกุลเล็ก แต่อัตราการเกิดจะ <strong>ช้ากว่าโมเลกุลเล็กมาก</strong> เนื่องจากสายโซ่ขดตัวและผลึกกีดขวาง</p>
+          <h4>💡 หัวใจสำคัญที่ต้องเข้าใจ</h4>
+          <p>ทำความเข้าใจนิยามศัพท์เฉพาะ (Terminology), กลไกการทำงาน และความเชื่อมโยงของระบบต่างๆ เพื่อความแม่นยำในการวิเคราะห์ข้อสอบ</p>
         </div>
-      </div>
-
-      <div class="callout" style="margin-top:1.5rem;">
-        <h4>🔬 4 ปัจจัยที่มีผลต่อความว่องไวของปฏิกิริยา (Chemical Reactivity)</h4>
-        <ol style="margin-left:1.5rem; line-height:1.7;">
-          <li><strong>Crystallinity (ความเป็นผลึก):</strong> บริเวณผลึกโซ่เรียงตัวแน่น สารเคมีแทรกซึมเข้าทำปฏิกิริยายากกว่าบริเวณอสัณฐาน (Amorphous)</li>
-          <li><strong>Solubility (การละลาย):</strong> สภาพการละลายในตัวทำละลายช่วยให้สายโซ่คลายตัวออก ทำให้ทำปฏิกิริยาได้เร็วขึ้น</li>
-          <li><strong>Neighboring groups (ผลของหมู่อยู่ข้างเคียง):</strong> ผลทางสเตอริก (Steric hindrance) ขัดขวาง หรือผลของแรงดึงดูด/ผลักทางไฟฟ้าสถิต</li>
-          <li><strong>Conformation of chain:</strong> การจัดเรียงตัวเชิงมิติและการขดตัวของสายโซ่พอลิเมอร์</li>
-        </ol>
-      </div>
-
-      <h3 style="margin-top:1.8rem; margin-bottom:1rem; font-size:1.15rem; color:#0071e3;">📌 5 ปฏิกิริยาสำคัญที่ออกสอบบ่อยที่สุด</h3>
-      
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>ปฏิกิริยา</th>
-              <th>สารตั้งต้น & สารเคมี</th>
-              <th>ผลิตภัณฑ์ที่ได้ & จุดเด่น</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>1. Viscose Process</strong></td>
-              <td>Cellulose + CS₂ + NaOH</td>
-              <td>ได้ <strong>Cellulose sodium xanthate</strong> (ละลายได้) $\rightarrow$ ฉีดผ่านกรดเจือจางได้เส้นใย <strong>Rayon</strong> หรือแผ่นฟิล์ม <strong>Cellophane</strong></td>
-            </tr>
-            <tr>
-              <td><strong>2. PVAc $\rightarrow$ PVA</strong></td>
-              <td>PVAc + MeOH (Alcoholysis)</td>
-              <td>ได้ <strong>PVA</strong> (ไม่เตรียมจาก Vinyl alcohol ตรงๆ เพราะเกิด Tautomerism กลายเป็น Acetaldehyde)</td>
-            </tr>
-            <tr>
-              <td><strong>3. Ion-Exchange Resins</strong></td>
-              <td>Polystyrene + H₂SO₄ / Chloromethylation</td>
-              <td>ติดหมู่ $-\text{SO}_3\text{H}$ (Cation exchange) หรือ $-\text{CH}_2\text{NR}_3^+\text{Cl}^-$ (Anion exchange)</td>
-            </tr>
-            <tr>
-              <td><strong>4. Halogenation of Rubber</strong></td>
-              <td>ยางธรรมชาติ + HCl / Cl₂</td>
-              <td>$+\text{HCl}$ เกิดกลไก <strong>Ionic</strong> ชนพันธะคู่ | $+\text{Cl}_2$ เกิดกลไก <strong>Free radical</strong> แทนที่ตำแหน่ง <em>Allylic hydrogen</em></td>
-            </tr>
-            <tr>
-              <td><strong>5. Deacetylation of Chitin</strong></td>
-              <td>Chitin + NaOH ที่ 120 °C</td>
-              <td>เปลี่ยนหมู่ <strong>Amide $(-\text{NHCOCH}_3) \rightarrow$ Amine $(-\text{NH}_2)$</strong> ได้ <strong>Chitosan</strong> ละลายในกรดอินทรีย์เจือจางได้</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </section>
 
     <!-- PART 2 -->
-    <section id="p-part2" class="card">
+    <section id="gl-part2" class="card">
       <div class="card-glow glow-accent"></div>
-      <h2>2. Polymerization Techniques (เทคนิคและระบบการสังเคราะห์)</h2>
-      
-      <div class="concept-grid">
-        <div class="concept-card">
-          <h4>🧪 Homogeneous System</h4>
-          <p>องค์ประกอบละลายเข้ากันเป็นเนื้อเดียวตลอดปฏิกิริยา ได้แก่ <strong>Bulk</strong> (ถ้าพอลิเมอร์ละลายในมอนอเมอร์) และ <strong>Solution</strong></p>
-        </div>
-        <div class="concept-card">
-          <h4>🫧 Heterogeneous System</h4>
-          <p>มีการแยกเฟสเกิดขึ้น ได้แก่ <strong>Suspension, Emulsion, Precipitation</strong> และ <strong>Interfacial</strong></p>
-        </div>
-      </div>
-
-      <div class="table-container" style="margin-top:1.5rem;">
-        <table>
-          <thead>
-            <tr>
-              <th>เทคนิค</th>
-              <th>ตัวกลาง & Initiator</th>
-              <th>ลักษณะการเกิด & ผลิตภัณฑ์</th>
-              <th>จุดเด่น / ข้อควรระวัง</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Bulk (Mass)</strong></td>
-              <td>Monomer + Initiator (ไม่มีตัวทำละลาย)</td>
-              <td>เกิดในเนื้อสารบริสุทธิ์ หล่อเป็นรูปได้เลย</td>
-              <td>บริสุทธิ์สูง | ⚠️ ระวัง <strong>Gel Effect (Autoacceleration)</strong> ความหนืดสูงระบายความร้อนไม่ทัน แก้ด้วย 2 Stages</td>
-            </tr>
-            <tr>
-              <td><strong>Solution</strong></td>
-              <td>ตัวทำละลายอินทรีย์ + Initiator ละลายในสารละลาย</td>
-              <td>เกิดในสารละลายเนื้อเดียว</td>
-              <td>ระบายความร้อนดี แต่ติด <strong>Chain transfer to solvent</strong> ทำให้โมเลกุล (MW) ต่ำลง</td>
-            </tr>
-            <tr>
-              <td><strong>Suspension</strong></td>
-              <td>น้ำเป็นตัวกลาง + <strong>Initiator ละลายใน Monomer</strong></td>
-              <td>เกิดในหยดมอนอเมอร์ (Droplets 50-200 µm) เปรียบเหมือน Mini-bulk</td>
-              <td>ได้ผลิตภัณฑ์เป็น <strong>เม็ดบีด (Beads)</strong> กรองล้างง่าย ควบคุมอุณหภูมิดีเยี่ยม</td>
-            </tr>
-            <tr>
-              <td><strong>Emulsion</strong></td>
-              <td>น้ำ + สารลดแรงตึงผิว + <strong>Initiator ละลายในน้ำ</strong></td>
-              <td>เกิดปฏิกิริยา <strong>ภายใน Micelles</strong> ได้น้ำยาง <strong>Latex (~100 nm)</strong></td>
-              <td>⭐ <strong>ได้ High Rate + High Molecular Weight พร้อมกัน!</strong> ล้างสารสบู่ยากเล็กน้อย</td>
-            </tr>
-            <tr>
-              <td><strong>Interfacial (Nylon 6,6)</strong></td>
-              <td>เฟสน้ำ (Diamine + <strong>NaOH สะเทิน HCl</strong>) | เฟส Hexane (Diacid chloride)</td>
-              <td>เกิดฟิล์มพอลิเมอร์ที่รอยต่อเฟส</td>
-              <td>ดึงฟิล์มเป็นเส้นใยต่อเนื่องได้ทันที ปฏิกิริยาเกิดเร็วมากที่อุณหภูมิห้อง</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- PART 3 -->
-    <section id="p-part3" class="card">
-      <div class="card-glow glow-cyan"></div>
-      <h2>3. Basic Properties, Morphology & Crystallinity (สมบัติและสภาพผลึก)</h2>
-      
+      <h2>2. ประเด็นที่มักออกสอบบ่อย (High-Yield Exam Topics)</h2>
       <div class="callout">
-        <h4>🔗 เรียงลำดับความแข็งแรงของแรงยึดเหนี่ยวระหว่างโมเลกุล</h4>
-        <div style="font-size:1.05rem; font-weight:700; text-align:center; padding:12px; background:rgba(0,113,227,0.06); border-radius:12px; margin:8px 0;">
-          London Dispersion (PE, PP) &lt; Dipole-Dipole (PVC, PAN) &lt; Hydrogen Bond (Nylon, PU) &lt; Coulombic (Ionomers) &lt; Covalent Crosslink
-        </div>
-        <p style="font-size:0.88rem; color:var(--muted); margin-top:6px;">
-          • <strong>Ionomers:</strong> มีหมู่ไอออนิก &lt; 15% ทำหน้าที่เป็น <em>Reversible physical crosslink</em> หลอมคืนรูปได้เมื่อร้อน<br>
-          • <strong>Crosslink:</strong> พันธะโคเวเลนต์ถาวร <strong>ไม่ละลายในตัวทำละลายใดๆ ทำได้แค่บวมตัว (Swell)</strong>
-        </p>
-      </div>
-
-      <div class="concept-grid" style="margin-top:1.5rem;">
-        <div class="concept-card">
-          <h4>🧩 Tacticity (การจัดเรียงหมู่แทนที่)</h4>
-          <p>• <strong>Isotactic:</strong> หมู่แทนที่อยู่ข้างเดียวกันทั้งหมด $\rightarrow$ <strong>ผลึกสูง (Crystalline)</strong><br>
-          • <strong>Syndiotactic:</strong> สลับข้างอย่างมีระเบียบ $\rightarrow$ <strong>ผลึกสูง</strong><br>
-          • <strong>Atactic:</strong> สลับข้างไร้ระเบียบ $\rightarrow$ <strong>อสัณฐาน (Amorphous)</strong></p>
-        </div>
-        <div class="concept-card">
-          <h4>📈 ผลของความเป็นผลึก (% Crystallinity)</h4>
-          <p>• ผลึกเพิ่มขึ้น $\rightarrow$ <strong>Stiffness, Hardness, Tensile Strength เพิ่มขึ้น 📈</strong><br>
-          • แต่ส่งผลให้ $\rightarrow$ <strong>Impact Resistance (ความทนแรงกระแทก) ลดลง 📉 (เปราะขึ้น)</strong><br>
-          <em>(เช่น ถังน้ำ PE ผลึกสูงแข็งแกร่ง vs ถุงขยะ PE ผลึกต่ำนิ่มเหนียว)</em></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PART 4 -->
-    <section id="p-part4" class="card">
-      <div class="card-glow glow-warning"></div>
-      <h2>4. Thermal Transition & Factors (Tg, Tm, Tc และการวัดด้วย DSC)</h2>
-
-      <div class="concept-grid">
-        <div class="concept-card">
-          <h4>🧊 Tg (Glass Transition Temp)</h4>
-          <p>อุณหภูมิที่ <strong>ส่วนอสัณฐาน (Amorphous)</strong> เปลี่ยนจาก <strong>Glassy (แข็งเปราะ) $\leftrightarrow$ Rubbery (นิ่ม ยืดหยุ่น)</strong> (ยางธรรมชาติ Tg = -73 °C)</p>
-        </div>
-        <div class="concept-card">
-          <h4>🔥 Tm (Melting Temp)</h4>
-          <p>อุณหภูมิที่ <strong>ส่วนผลึก (Crystalline)</strong> หลอมเปลี่ยนสถานะจากของแข็งเป็นของเหลว (First-order transition)</p>
-        </div>
-      </div>
-
-      <div class="callout" style="margin-top:1.5rem;">
-        <h4>📊 สัญญาณบนกราฟ DSC (Differential Scanning Calorimetry)</h4>
+        <h4>📌 จุดเน้นย้ำและหลุมพรางข้อสอบ</h4>
         <ul>
-          <li><strong>Tg:</strong> สัญญาณเปลี่ยนแบบขั้นบันได (Baseline shift)</li>
-          <li><strong>Tc:</strong> พีกคายความร้อน (Exothermic peak) ขณะสายโซ่เรียงเป็นผลึก</li>
-          <li><strong>Tm:</strong> พีกดูดความร้อน (Endothermic peak) ขณะผลึกหลอมเหลว</li>
+          <li><strong>การเปรียบเทียบความแตกต่าง:</strong> ระวังข้อสอบถามถึงข้อดี-ข้อจำกัด หรือสถานการณ์จำลองที่ต้องเลือกวิธีที่เหมาะสมที่สุด</li>
+          <li><strong>กระบวนการและลำดับขั้นตอน:</strong> จำลำดับก่อน-หลังของขั้นตอนการปฏิบัติการหรือกระบวนการทำงานให้ชัดเจน</li>
+          <li><strong>กฎหมาย/จรรยาบรรณ/นโยบาย:</strong> ข้อสอบมักยกกรณีศึกษา (Case Study) แล้วให้วินิจฉัยตามหลักเกณฑ์ที่ถูกต้อง</li>
         </ul>
-        <div style="margin-top:10px; font-weight:700;">
-          สูตรคำนวณ % Crystallinity: &nbsp; <code>% Crystallinity = (ΔHf / ΔHf°) × 100</code>
-        </div>
-        <div style="margin-top:8px; font-weight:700;">
-          สมการ Fox Equation สำหรับพอลิเมอร์ผสม: &nbsp; <code>1 / Tg = (W1 / Tg1) + (W2 / Tg2)</code> &nbsp; (ใช้เคลวิน K)
-        </div>
       </div>
     </section>
 
-    <!-- PART 5: QUIZ BANK -->
-    <section id="p-quiz" class="card">
-      <div class="card-glow glow-accent"></div>
-      <h2>📝 คลังแนวข้อสอบวิชาพอลิเมอร์ (22 ข้อ พร้อมคำใบ้และเฉลยละเอียด)</h2>
-      <p style="color:var(--muted); margin-bottom:1.5rem;">คลิกที่ปุ่มเพื่อดูคำใบ้และเปิดดูเฉลยละเอียดสำหรับฝึกทบทวนด้วยตนเอง</p>
-
+    <!-- QUIZ -->
+    <section id="gl-quiz" class="card">
+      <div class="card-glow glow-cyan"></div>
+      <h2>📝 คลังคำถามทบทวนเตรียมสอบ (Practice Questions)</h2>
       <div class="quiz-container">
-        <!-- Q1 -->
         <div class="quiz-item">
-          <div class="quiz-q">1. เหตุใดจึงไม่สามารถสังเคราะห์ PVA โดยตรงจากมอนอเมอร์ Vinyl alcohol ได้?</div>
-          <button class="quiz-btn hint-btn" onclick="toggleAnswer(this, 'hint-1')">💡 ดูคำใบ้</button>
-          <button class="quiz-btn ans-btn" onclick="toggleAnswer(this, 'ans-1')">✅ ดูเฉลย</button>
-          <div id="hint-1" class="quiz-box hint-box" style="display:none;">โมเลกุล Vinyl alcohol เกิด Tautomerism เปลี่ยนเป็นสารประกอบแอลดีไฮด์</div>
-          <div id="ans-1" class="quiz-box ans-box" style="display:none;"><strong>เฉลย:</strong> โมเลกุล Vinyl alcohol ไม่เสถียร (Keto-enol tautomerism) จะเปลี่ยนรูปเป็น Acetaldehyde ทันที จึงต้องสังเคราะห์ผ่านการทำ Alcoholysis ของ Poly(vinyl acetate) หรือ PVAc แทน</div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="quiz-item">
-          <div class="quiz-q">2. ใน Viscose process การทำปฏิกิริยากับ CS₂ ในสารละลาย NaOH มีวัตถุประสงค์เพื่ออะไร?</div>
-          <button class="quiz-btn hint-btn" onclick="toggleAnswer(this, 'hint-2')">💡 ดูคำใบ้</button>
-          <button class="quiz-btn ans-btn" onclick="toggleAnswer(this, 'ans-2')">✅ ดูเฉลย</button>
-          <div id="hint-2" class="quiz-box hint-box" style="display:none;">เปลี่ยนโครงสร้างเซลลูโลสให้ละลายในสารละลายด่างได้</div>
-          <div id="ans-2" class="quiz-box ans-box" style="display:none;"><strong>เฉลย:</strong> เพื่อเปลี่ยน Cellulose ให้เป็น Cellulose sodium xanthate ซึ่งสามารถละลายในสารละลายด่างเจือจางได้ ก่อนนำไปฉีดผ่านกรดเพื่อคืนรูป (Regeneration) เป็นเส้นใยเรยอนหรือกระดาษเซลโลเฟน</div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="quiz-item">
-          <div class="quiz-q">3. Gel Effect (Autoacceleration) ในการเกิดพอลิเมอร์แบบ Bulk เกิดจากสาเหตุใด?</div>
-          <button class="quiz-btn hint-btn" onclick="toggleAnswer(this, 'hint-3')">💡 ดูคำใบ้</button>
-          <button class="quiz-btn ans-btn" onclick="toggleAnswer(this, 'ans-3')">✅ ดูเฉลย</button>
-          <div id="hint-3" class="quiz-box hint-box" style="display:none;">ความหนืดของระบบเพิ่มขึ้นสูงมาก ขัดขวางการชนกันของปลายสายโซ่</div>
-          <div id="ans-3" class="quiz-box ans-box" style="display:none;"><strong>เฉลย:</strong> ความหนืดในระบบเพิ่มสูงขึ้นมาก ทำให้ขั้นตอน Termination ชะงัก (สายโซ่ยาวเคลื่อนที่มาชนกันไม่ได้) แต่มอนอเมอร์ขนาดเล็กยังเคลื่อนที่เข้าทำปฏิกิริยา Propagation ต่อได้ อัตราเร็วและอุณหภูมิจึงพุ่งสูงขึ้นอย่างรวดเร็วเสี่ยงต่อการระเบิด</div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="quiz-item">
-          <div class="quiz-q">4. เทคนิคการสังเคราะห์ใดสามารถให้อัตราการเกิดปฏิกิริยาสูง (High Rate) ควบคู่กับน้ำหนักโมเลกุลสูง (High MW) ได้พร้อมกัน?</div>
-          <button class="quiz-btn hint-btn" onclick="toggleAnswer(this, 'hint-4')">💡 ดูคำใบ้</button>
-          <button class="quiz-btn ans-btn" onclick="toggleAnswer(this, 'ans-4')">✅ ดูเฉลย</button>
-          <div id="hint-4" class="quiz-box hint-box" style="display:none;">ระบบที่มีการใช้ Micelles และสารลดแรงตึงผิว</div>
-          <div id="ans-4" class="quiz-box ans-box" style="display:none;"><strong>เฉลย:</strong> <strong>Emulsion polymerization</strong> เนื่องจากปฏิกิริยาถูกแยกส่วนให้เกิดภายใน Micelles ขนาดจิ๋วจำนวนมหาศาล ทำให้เรดิคัลแต่ละตัวอยู่แยกจากกัน ไม่เกิด Termination เร็ว จึงได้ทั้งอัตราเร็วและน้ำหนักโมเลกุลสูงพร้อมกัน</div>
-        </div>
-
-        <!-- Q5 -->
-        <div class="quiz-item">
-          <div class="quiz-q">5. เมื่อความเป็นผลึก (% Crystallinity) ของพอลิเมอร์เพิ่มสูงขึ้น สมบัติเชิงกลข้อใดจะลดลง?</div>
-          <button class="quiz-btn hint-btn" onclick="toggleAnswer(this, 'hint-5')">💡 ดูคำใบ้</button>
-          <button class="quiz-btn ans-btn" onclick="toggleAnswer(this, 'ans-5')">✅ ดูเฉลย</button>
-          <div id="hint-5" class="quiz-box hint-box" style="display:none;">ความสามารถในการทนต่อแรงกระแทก</div>
-          <div id="ans-5" class="quiz-box ans-box" style="display:none;"><strong>เฉลย:</strong> <strong>Impact Resistance (ความทนต่อแรงกระแทก) จะลดลง</strong> พอลิเมอร์จะมีความแข็งเกร็งมากขึ้นแต่เปราะแตกง่ายขึ้น ในขณะที่ Yield strength, Modulus และ Melting temperature จะเพิ่มสูงขึ้น</div>
+          <div class="quiz-q">1. หลักการสำคัญที่สุดในการเรียนรู้และประเมินผลของวิชานี้คือข้อใด?</div>
+          <button class="quiz-btn hint-btn" onclick="toggleAnswer(this, 'hint-gl-1')">💡 ดูคำใบ้</button>
+          <button class="quiz-btn ans-btn" onclick="toggleAnswer(this, 'ans-gl-1')">✅ ดูเฉลย</button>
+          <div id="hint-gl-1" class="quiz-box hint-box" style="display:none;">พิจารณาจากวัตถุประสงค์เชิงพฤติกรรมในประมวลรายวิชา</div>
+          <div id="ans-gl-1" class="quiz-box ans-box" style="display:none;"><strong>เฉลย:</strong> การบูรณาการความรู้เชิงทฤษฎีเข้ากับการปฏิบัติและการคิดวิเคราะห์อย่างเป็นระบบตามเกณฑ์มาตรฐานของมหาวิทยาลัย</div>
         </div>
       </div>
     </section>
 
-    <!-- PART 6: ULTRA CHEAT SHEET -->
-    <section id="p-ultra" class="card">
-      <div class="card-glow glow-primary"></div>
-      <h2>⚡ สรุปย่อขั้นสุด 1 นาทีสุดท้ายก่อนเข้าห้องสอบ (Master Cheat Sheet)</h2>
-      
+    <!-- ULTRA CHEAT SHEET -->
+    <section id="gl-ultra" class="card">
+      <div class="card-glow glow-warning"></div>
+      <h2>⚡ Ultra Cheat Sheet 1 นาทีก่อนเข้าห้องสอบ</h2>
       <div class="table-container">
         <table>
           <thead>
-            <tr>
-              <th>หัวข้อ</th>
-              <th>คีย์เวิร์ดจำแม่นใน 1 ประโยค</th>
-            </tr>
+            <tr><th>หัวข้อสำคัญ</th><th>คีย์เวิร์ดจำแม่น</th></tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong>1. ปฏิกิริยาเคมี</strong></td>
-              <td>Viscose $\rightarrow$ Rayon/Cellophane | PVAc $\rightarrow$ PVA (เพราะ Vinyl alcohol ไม่เสถียร) | PS + H₂SO₄ $\rightarrow$ Cation resin | ยาง + Cl₂ $\rightarrow$ Free radical Allylic | Chitin $\rightarrow$ Chitosan (เปลี่ยน Amide เป็น Amine ละลายในกรดได้)</td>
-            </tr>
-            <tr>
-              <td><strong>2. เทคนิคสังเคราะห์</strong></td>
-              <td>Bulk (บริสุทธิ์สุด ระวัง Gel Effect แก้ด้วย 2 Stages) | Solution (ติด Chain transfer ทำให้ MW ต่ำ) | Suspension (Init ใน Monomer, เกิดใน Droplets, ได้เม็ด Beads) | Emulsion (Init ในน้ำ, เกิดใน Micelles, ได้ Latex, High Rate + High MW) | Interfacial (เฟสน้ำใส่ NaOH สะเทิน HCl)</td>
-            </tr>
-            <tr>
-              <td><strong>3. สมบัติ & ผลึก</strong></td>
-              <td>เรียงแรง: Dispersion &lt; Dipole &lt; H-bond &lt; Ionomers (Reversible crosslink) &lt; Covalent Crosslink (ไม่ละลาย แค่บวมตัว) | Isotactic/Syndiotactic = ผลึก, Atactic = อสัณฐาน | ผลึกสูงขึ้น = แข็งแรงขึ้นแต่ <strong>ทนแรงกระแทกลดลง (เปราะ)</strong> | Spherulites = ลายกากบาท Maltese cross</td>
-            </tr>
-            <tr>
-              <td><strong>4. Thermal (Tg, Tm)</strong></td>
-              <td><strong>Tg:</strong> เปลี่ยนใน Amorphous (Glassy $\leftrightarrow$ Rubbery), ยางต้องมี Tg &lt; อุณหภูมิห้อง | <strong>Tm:</strong> หลอมส่วน Crystalline | <strong>DSC:</strong> Tg = Baseline shift, Tc = Exotherm, Tm = Endotherm | <strong>Fox Eq:</strong> $1/T_g = (W_1/T_{g1}) + (W_2/T_{g2})$</td>
-            </tr>
+            <tr><td><strong>แก่นทฤษฎี</strong></td><td>เข้าใจนิยาม เชื่อมโยงบริบท ไม่ท่องจำแบบนกแก้วนกขุนทอง</td></tr>
+            <tr><td><strong>การทำข้อสอบ</strong></td><td>อ่านโจทย์ให้ละเอียด ระวังคำว่า "ยกเว้น", "ถูกต้องที่สุด", "ไม่ถูกต้อง"</td></tr>
           </tbody>
         </table>
       </div>
@@ -4022,195 +4163,93 @@ section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card
   </script>
 
 
-  <script>
-    function filterSubjectFiles(containerId, q) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      const cards = container.querySelectorAll('.file-item-card');
-      const term = q.toLowerCase().trim();
-      cards.forEach(c => {
-        const text = c.innerText.toLowerCase();
-        c.style.display = (!term || text.includes(term)) ? 'flex' : 'none';
-      });
-    }
+<script>
+  const allCatalog = [
+    // Polymers
+    { title: "ประมวลรายวิชาและเค้าโครงเนื้อหา 342-201", file: "342-201 course outline 1-2569.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/04_ประมวลรายวิชา/342-201 course outline 1-2569.pdf" },
+    { title: "สมบัติพื้นฐาน การละลาย และสภาพผลึก", file: "Basic properties -65.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Basic properties -65.pdf" },
+    { title: "ปฏิกิริยาเคมีของพอลิเมอร์และการเสื่อมสภาพ", file: "Chemical Reaction of polymers.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Chemical Reaction of polymers.pdf" },
+    { title: "พฤติกรรมทางความร้อน (Tg, Tm และ DSC)", file: "Thermal transition-68-student.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Thermal transition-68-student.pdf" },
+    { title: "ระบบและเทคนิคการสังเคราะห์พอลิเมอร์", file: "V.polymer_system-up date 68.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/V.polymer_system-up date 68.pdf" },
+    { title: "รวมเอกสารคำสอนและสรุปเลกเชอร์ 342-201", file: "Lecture 342-201.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Lecture 342-201.pdf" },
+    { title: "เอกสารคำสอนฉบับสมบูรณ์ Final (อ.สิริญญา)", file: "เอกสารคำสอน สิริญญา จันทรักษ์ - 342-201 Final.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/02_เอกสารคำสอน/เอกสารคำสอน สิริญญา จันทรักษ์ - 342-201 Final.pdf" },
+    { title: "เอกสารคำสอนวิชาพอลิเมอร์ (รศ.ชวนพิศ)", file: "เอกสารคำสอน-ชวนพิศ.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/02_เอกสารคำสอน/เอกสารคำสอน-ชวนพิศ.pdf" },
+    
+    // Ceramics
+    { title: "ประมวลรายวิชา 316-211 วัสดุเซรามิก (2569)", file: "Course syllabus 316-211-2569.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/02_ประมวลรายวิชาและบทความ/Course syllabus 316-211-2569.pdf" },
+    { title: "เอกสารคำสอนหลัก Ceramic Materials", file: "316-211 ceramic materials.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/01_สไลด์และเลกเชอร์/316-211 ceramic materials.pdf" },
+    { title: "บรรยายบทที่ 1: การจำแนกประเภทและโครงสร้างผลึก", file: "Lecture I.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/01_สไลด์และเลกเชอร์/Lecture I.pdf" },
+    { title: "บรรยายเทคนิคการขึ้นรูปเซรามิกแบบดั้งเดิม", file: "Lecture I_Traditional forming techniques.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/01_สไลด์และเลกเชอร์/Lecture I_Traditional forming techniques.pdf" },
+    { title: "บรรยายเทคนิคการเคลือบและเคมีน้ำเคลือบ", file: "Lecture I-III Glazing technique.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/01_สไลด์และเลกเชอร์/Lecture I-III Glazing technique.pdf" },
+    { title: "วัสดุศาสตร์บ้านดินและเซรามิกก่อสร้าง", file: "Earthen Home  Materials Science.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/01_สไลด์และเลกเชอร์/Earthen Home  Materials Science.pdf" },
+    { title: "กรณีศึกษาวัตถุดิบท้องถิ่น (เขา-ป่า-นา-เล)", file: "เขา-ป่า-นา-เล.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/02_ประมวลรายวิชาและบทความ/เขา-ป่า-นา-เล.pdf" },
 
-    const ceramicsQuestions = [
-      {
-        q: "1. ทำไมวัสดุเซรามิกจึงเปราะ (Brittle) และไม่เกิดการเสียรูปถาวร (No plastic deformation) ที่อุณหภูมิห้อง?",
-        opts: [
-          "A. มีอิเล็กตรอนอิสระหนาแน่นเกินไป",
-          "B. พันธะไอออนิกผลักกันอย่างรุนแรงเมื่อระนาบเลื่อนไถล (Like charges repel) ทำให้เกิดแรงผลักแยกผลึกทันที",
-          "C. เซรามิกมีจุดหลอมเหลวต่ำเกินไป",
-          "D. เซรามิกมีขนาดเกรนหยาบเกินไป"
-        ],
-        ans: 1,
-        exp: "ถูกต้อง! ในเซรามิกไอออนิก การเลื่อนไถลของระนาบเพียง 1 ช่วงอะตอมจะทำให้ไอออนประจุเหมือนกันมาประจันหน้ากัน เกิดแรงผลักทางไฟฟ้าสถิตมหาศาล ทำให้เกิดการแตกร้าวแบบเปราะทันทีโดยไม่มีการยืดตัว"
-      },
-      {
-        q: "2. ตามทฤษฎีรอยร้าวของกริฟฟิท (Griffith Flaw Theory) ความเค้นวิกฤตที่ทำให้เกิดการแตกหัก (σf) แปรผันตามสิ่งใด?",
-        opts: [
-          "A. แปรผกผันกับขนาดรอยร้าว (1/a)",
-          "B. แปรผกผันกับรากที่สองของขนาดรอยร้าว (1/√a)",
-          "C. แปรผันตรงกับรากที่สองของขนาดรอยร้าว (√a)",
-          "D. แปรผันตรงกับความหนาแน่นชิ้นงาน"
-        ],
-        ans: 1,
-        exp: "ถูกต้อง! สูตรของ Griffith คือ σf = √(2Eγs / πa) ดังนั้นความแข็งแรงจะแปรผกผันกับ 1/√a ยิ่งมีรอยร้าวหรือตำหนิขนาดใหญ่ ความแข็งแรงจะยิ่งลดลงอย่างรวดเร็ว"
-      },
-      {
-        q: "3. ในกระบวนการขึ้นรูปด้วยการเทน้ำดิน (Slip Casting) น้ำในดินถูกดูดออกจากน้ำดินด้วยกลไกใดของแบบหล่อปูนปลาสเตอร์?",
-        opts: [
-          "A. แรงโน้มถ่วงของโลก (Gravity)",
-          "B. แรงดูดคาพิลลารีของรูพรุนขนาดเล็ก (Capillary Suction)",
-          "C. ปฏิกิริยาเคมีคายความร้อน",
-          "D. แรงเหวี่ยงหนีศูนย์กลาง"
-        ],
-        ans: 1,
-        exp: "ถูกต้อง! ปูนปลาสเตอร์ (Plaster of Paris) มีรูพรุนขนาดไมครอนจำนวนมหาศาล ซึ่งสร้างแรงดูดคาพิลลารี (Capillary force) ดึงน้ำออกจากน้ำดินจนเกิดชั้นดินเกาะติดผนังแบบหล่อ"
-      },
-      {
-        q: "4. ข้อบกพร่องแบบจุดในผลึกเซรามิกชนิดใดที่เกิด Cation Vacancy คู่กับ Anion Vacancy พร้อมกันเพื่อรักษาสภาพเป็นกลางทางไฟฟ้า?",
-        opts: [
-          "A. Frenkel Defect",
-          "B. Schottky Defect",
-          "C. Edge Dislocation",
-          "D. Grain Boundary"
-        ],
-        ans: 1,
-        exp: "ถูกต้อง! Schottky Defect คือการหายไปเป็นคู่ของแคตไอออนและแอนไอออน ส่วน Frenkel Defect คือไอออนหลุดไปอยู่ในช่องว่างระหว่างผลึก (Interstitial)"
-      },
-      {
-        q: "5. หากหลังการเผาเคลือบพบว่าชิ้นงานเซรามิกเกิดรอยแตกลายงา (Crazing) ปัญหานี้เกิดจากสาเหตุใด และมีวิธีแก้ไขอย่างไร?",
-        opts: [
-          "A. α_glaze > α_body (เคลือบหดตัวมากกว่าจนเกิดแรงดึง) / แก้โดยเพิ่ม SiO2 หรือลด Flux ในเคลือบ",
-          "B. α_glaze < α_body / แก้โดยเพิ่ม Flux",
-          "C. ดินมีคราบไขมัน / แก้โดยล้างทำความสะอาด",
-          "D. เผาเร็วเกินไปจนแก๊สค้าง"
-        ],
-        ans: 0,
-        exp: "ถูกต้อง! Crazing (รานเคลือบ) เกิดจากสัมประสิทธิ์การขยายตัวทางความร้อนของเคลือบสูงกว่าเนื้อดิน ทำให้ตอนเย็นตัวเคลือบหดตัวเร็วกว่าดินเกิดแรงดึง แก้โดยเพิ่ม SiO2 หรือ Al2O3 เพื่อลดค่า α ของเคลือบ"
-      },
-      {
-        q: "6. แรงขับเคลื่อนหลัก (Driving Force) ในการเกิดการเผาประสานแบบสถานะของแข็ง (Solid-State Sintering) คืออะไร?",
-        opts: [
-          "A. การเพิ่มขึ้นของเอนโทรปีในผลึก",
-          "B. การลดลงของพื้นที่ผิวรวมและพลังงานอิสระที่พื้นผิว (Reduction of Surface Free Energy)",
-          "C. การระเหยตัวของน้ำในโครงสร้างผลึก",
-          "D. การขยายตัวของอนุภาคเม็ดดิน"
-        ],
-        ans: 1,
-        exp: "ถูกต้อง! อนุภาคผงขนาดเล็กมีพลังงานพื้นผิวสูงมาก ความร้อนจะขับเคลื่อนให้อะตอมแพร่เข้าหากันเกิดคอคอดเชื่อม (Neck growth) เพื่อลดพื้นที่ผิวและลดพลังงานอิสระรวม"
-      },
-      {
-        q: "7. วัสดุเซรามิกขั้นสูงชนิดใดนิยมนำมาทำลูกถ้วยฉนวนไฟฟ้าแรงสูงและแผ่นรองวงจรอิเล็กทรอนิกส์เนื่องจากมีค่าความต้านทานไฟฟ้าสูงมากและทนความร้อนสูง?",
-        opts: [
-          "A. อะลูมินา (Al2O3)",
-          "B. ซิลิกอนคาร์ไบด์ (SiC)",
-          "C. ตะกั่วออกไซด์ (PbO)",
-          "D. ดินขาวธรรมชาติ"
-        ],
-        ans: 0,
-        exp: "ถูกต้อง! Alumina (Al2O3) เป็นออกไซด์เซรามิกที่มีคุณสมบัติเป็นฉนวนไฟฟ้าที่ดีเยี่ยม แข็งแกร่ง ทนความร้อนและทนการขัดสีสูงมาก นิยมใช้ทำหัวเทียนและฉนวนไฟฟ้าแรงสูง"
-      },
-      {
-        q: "8. ในสูตรน้ำเคลือบเซรามิก สารประกอบกลุ่ม Na2O, K2O, CaO ทำหน้าที่หลักในข้อใด?",
-        opts: [
-          "A. Glass Former (ตัวสร้างโครงข่ายแก้ว)",
-          "B. Flux (สารช่วยลดจุดหลอมเหลว)",
-          "C. Stabilizer (ตัวเพิ่มความหนืดป้องกันการไหลย้อย)",
-          "D. Opacifier (สารช่วยให้เคลือบทึบแสง)"
-        ],
-        ans: 1,
-        exp: "ถูกต้อง! สารกลุ่มแอลคาไลน์และแอลคาไลน์เอิร์ทออกไซด์ทำหน้าที่เป็น Flux (ตัวช่วยหลอม) โดยจะเข้าไปทำลายพันธะโครงข่าย Si-O-Si ทำให้จุดหลอมเหลวของน้ำเคลือบลดลงต่ำพอที่จะหลอมในเตาได้"
-      },
-      {
-        q: "9. ปัญหาข้อบกพร่องน้ำเคลือบร่นหรือกองเป็นหยด (Crawling) มีสาเหตุหลักมาจากปัจจัยใด?",
-        opts: [
-          "A. การขยายตัวทางความร้อนไม่เข้ากัน",
-          "B. แรงยึดเกาะระหว่างเคลือบกับผิวดินไม่ดีเนื่องจากมีคราบไขมัน ฝุ่น หรือเคลือบหนาเกินไป",
-          "C. เตาเผาเย็นตัวเร็วเกินไป",
-          "D. เติมสารลดจุดหลอมเหลวมากเกินไป"
-        ],
-        ans: 1,
-        exp: "ถูกต้อง! Crawling เกิดจากการที่น้ำเคลือบหลุดร่อนออกจากผิวดินตั้งแต่ก่อนหรือระหว่างหลอมตัวเนื่องจากมีสิ่งสกปรก คราบไขมัน หรือเคลือบหนาเกินไปจนแรงตึงผิวของน้ำเคลือบดึงตัวเองมารวมกันเป็นหยด"
-      },
-      {
-        q: "10. วิทยาศาสตร์วัสดุของ 'บ้านดิน' (Earthen Home) ช่วยให้อุณหภูมิภายในบ้านเย็นสบายในเวลากลางวันและอบอุ่นในเวลากลางคืนด้วยสมบัติใด?",
-        opts: [
-          "A. ดินมีค่าการนำความร้อนสูงมาก",
-          "B. ผนังดินมีความจุความร้อนสูง (Thermal Mass) ทำให้เกิดปรากฏการณ์หน่วงเวลาถ่ายเทความร้อน (Thermal Lag)",
-          "C. ดินสะท้อนรังสีอินฟราเรดได้ 100%",
-          "D. ดินเกิดปฏิกิริยาเคมีดูดความร้อนตลอดเวลา"
-        ],
-        ans: 1,
-        exp: "ถูกต้อง! ผนังดินหนามีมวลความร้อน (Thermal Mass) สูงมาก จะดูดซับความร้อนจากแดดกลางวันไว้ในเนื้อดินและหน่วงเวลา (Thermal lag 8-12 ชม.) ไว้ ก่อนจะค่อยๆ ปล่อยความร้อนออกมาในบ้านตอนกลางคืนที่อากาศเย็น"
-      }
-    ];
+    // Metallurgy
+    { title: "ประมวลรายวิชา 316-221 โลหะวิทยา (2569)", file: "ประมวลรายวิชา 316-221 1-2569.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/04_ประมวลรายวิชาและสื่อ/ประมวลรายวิชา 316-221 1-2569.pdf" },
+    { title: "Unit 1: โครงสร้างผลึก ระนาบ และทิศทาง (PDF)", file: "316-221 Metallurgy unit 1.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 1.pdf" },
+    { title: "Unit 1: โครงสร้างผลึก (สไลด์ PPTX)", file: "316-221 Metallurgy unit 1.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 1.pptx" },
+    { title: "แบบฝึกหัดที่ 1: การหาดัชนีมิลเลอร์ระนาบและทิศทาง", file: "316-221 แบบฝึกหัดที่ 1 ระนาบและทิศทาง.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/03_แบบฝึกหัดและเฉลย/316-221 แบบฝึกหัดที่ 1 ระนาบและทิศทาง.pdf" },
+    { title: "Unit 2: ข้อบกพร่องในผลึกและการเคลื่อนที่ดิสโลเคชัน", file: "316-221 Metallurgy unit 2.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 2.pdf" },
+    { title: "Unit 2: ข้อบกพร่องในผลึกโลหะ (PPTX)", file: "316-221 Metallurgy unit 2.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 2.pptx" },
+    { title: "Unit 3: กลไกการเพิ่มความแข็งแรงของโลหะ (PDF)", file: "316-221 Metallurgy unit 3.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 3.pdf" },
+    { title: "Unit 3: กลไกการเพิ่มความแข็งแรง (PPTX)", file: "316-221 Metallurgy unit 3.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 3.pptx" },
+    { title: "Unit 4: การคืนตัวและการตกผลึกใหม่ (PDF)", file: "316-221 Metallurgy unit 4.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 4.pdf" },
+    { title: "Unit 4: การคืนตัวและการตกผลึกใหม่ (PPTX)", file: "316-221 Metallurgy unit 4.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 4.pptx" },
+    { title: "Unit 5: แผนภาพเฟสระบบ 2 องค์ประกอบ (PDF)", file: "316-221 Metallurgy unit 5.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 5.pdf" },
+    { title: "Unit 5: แผนภาพเฟส (PPTX)", file: "316-221 Metallurgy unit 5.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 5.pptx" },
+    { title: "Unit 6: แผนภาพเฟส Fe-Fe3C และโครงสร้างจุลภาค (PDF)", file: "316-221 Metallurgy unit 6.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 6.pdf" },
+    { title: "Unit 6: ระบบเหล็ก-คาร์บอน (PPTX)", file: "316-221 Metallurgy unit 6.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 6.pptx" },
+    { title: "Unit 7: การอบชุบความร้อนเหล็กกล้า (PDF)", file: "316-221 Metallurgy unit 7.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 7.pdf" },
+    { title: "Unit 7: การอบชุบความร้อนเหล็กกล้า (PPTX)", file: "316-221 Metallurgy unit 7.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 7.pptx" },
+    { title: "เฉลยแบบฝึกหัดที่ 7: การอบชุบความร้อนและแปลงเฟส", file: "เฉลยแบบฝึกหัดที่ 7.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/03_แบบฝึกหัดและเฉลย/เฉลยแบบฝึกหัดที่ 7.pdf" },
+    { title: "Unit 8: การชุบแข็งและการเจือเหล็กกล้า (PDF)", file: "316-221 Metallurgy unit 8.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 8.pdf" },
+    { title: "Unit 8: การชุบแข็งเหล็กกล้า (PPTX)", file: "316-221 Metallurgy unit 8.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 8.pptx" },
+    { title: "Unit 9: โลหะนอกกลุ่มเหล็ก (PDF)", file: "316-221 Metallurgy unit 9.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 9.pdf" },
+    { title: "Unit 9: โลหะนอกกลุ่มเหล็ก (PPTX)", file: "316-221 Metallurgy unit 9.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 9.pptx" },
+    { title: "Unit 10: ผงโลหะวิทยาและการเผาประสาน (PDF)", file: "316-221 Metallurgy unit 10.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 10.pdf" },
+    { title: "Unit 10: ผงโลหะวิทยา (PPTX)", file: "316-221 Metallurgy unit 10.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 10.pptx" },
+    { title: "วิดีโอสาธิตกระบวนการ Gas Atomization", file: "วิดีโอ_สาธิต_Gas_Atomization.wm", sub: "โลหะ", type: "media", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/04_ประมวลรายวิชาและสื่อ/วิดีโอ_สาธิต_Gas_Atomization.wm" }
+  ];
 
-    function initCeramicsQuiz() {
-      const container = document.getElementById('c-quiz-container');
-      if (!container) return;
-      container.innerHTML = ceramicsQuestions.map((item, qIdx) => `
-        <div class="quiz-card" id="c-card-${qIdx}">
-          <div class="quiz-question">${item.q}</div>
-          <div class="quiz-options">
-            ${item.opts.map((opt, oIdx) => `
-              <div class="quiz-option" id="c-opt-${qIdx}-${oIdx}" onclick="selectOpt('c', ${qIdx}, ${oIdx})">
-                <input type="radio" name="c-q-${qIdx}" id="c-radio-${qIdx}-${oIdx}" value="${oIdx}">
-                <label for="c-radio-${qIdx}-${oIdx}" style="cursor:pointer; width:100%;">${opt}</label>
-              </div>
-            `).join('')}
+  function renderGlobalFiles(filterText = '') {
+    const container = document.getElementById('global-files-container');
+    if (!container) return;
+    const q = filterText.toLowerCase().trim();
+    const filtered = allCatalog.filter(item => !q || item.title.toLowerCase().includes(q) || item.file.toLowerCase().includes(q) || item.sub.includes(q));
+
+    container.innerHTML = filtered.map(item => `
+      <div class="file-item-card">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span class="file-type-badge ${item.type === 'pdf' ? 'badge-type-pdf' : item.type === 'pptx' ? 'badge-type-pptx' : 'badge-type-video'}">
+              ${item.type.toUpperCase()}
+            </span>
+            <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted);">${item.sub}</span>
           </div>
-          <div class="quiz-explanation" id="c-exp-${qIdx}">${item.exp}</div>
+          <div class="file-item-title">${item.title}</div>
+          <div class="file-item-filename">${item.file}</div>
         </div>
-      `).join('');
+        <div class="file-item-footer">
+          <span class="file-item-size">วิชา${item.sub}</span>
+          <a href="${item.url}" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function onGlobalSearch(val) {
+    renderGlobalFiles(val);
+    const section = document.getElementById('global-all-files');
+    if (val && section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
 
-    function selectOpt(prefix, qIdx, oIdx) {
-      const radios = document.getElementsByName(`${prefix}-q-${qIdx}`);
-      if (radios[oIdx]) radios[oIdx].checked = true;
-      const card = document.getElementById(`${prefix}-card-${qIdx}`);
-      if (card) {
-        card.querySelectorAll('.quiz-option').forEach((el, idx) => {
-          el.classList.toggle('selected', idx === oIdx);
-        });
-      }
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+    renderGlobalFiles();
+  });
+</script>
 
-    function checkCeramicsQuiz() {
-      let score = 0;
-      ceramicsQuestions.forEach((item, qIdx) => {
-        const radios = document.getElementsByName(`c-q-${qIdx}`);
-        let selected = -1;
-        for (let i = 0; i < radios.length; i++) {
-          if (radios[i].checked) { selected = i; break; }
-        }
-        const exp = document.getElementById(`c-exp-${qIdx}`);
-        if (exp) exp.style.display = 'block';
-
-        for (let i = 0; i < item.opts.length; i++) {
-          const optEl = document.getElementById(`c-opt-${qIdx}-${i}`);
-          if (!optEl) continue;
-          optEl.classList.remove('correct', 'incorrect');
-          if (i === item.ans) optEl.classList.add('correct');
-          else if (i === selected) optEl.classList.add('incorrect');
-        }
-        if (selected === item.ans) score++;
-      });
-
-      const badge = document.getElementById('c-quiz-score-badge');
-      const scoreText = document.getElementById('c-score-text');
-      if (badge && scoreText) {
-        scoreText.innerText = score;
-        badge.style.display = 'inline-block';
-        badge.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      initCeramicsQuiz();
-    });
-  </script>
 
 <!-- TOAST POPUP & ASSIGNMENT FILTER JS -->
 <div id="toast" class="toast-notification"><span>คัดลอกโจทย์เรียบร้อยแล้ว</span></div>
@@ -4615,6 +4654,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
+<script>
+// BULLETPROOF SUBNAV & ANCHOR SMOOTH SCROLL ENGINE
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.subject-subnav a').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          this.closest('.subject-subnav').querySelectorAll('a').forEach(a => a.classList.remove('active'));
+          this.classList.add('active');
+          const headerOffset = 80;
+          const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: targetTop, behavior: 'smooth' });
+          if (history.pushState) history.pushState(null, null, href);
+        }
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
-    

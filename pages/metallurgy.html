@@ -3037,9 +3037,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
 }
 </style>
 <style>
-/* ==========================================================================
-   DUAL-MODE SWITCHER (LMS OFFICIAL vs STUDY GUIDE)
-   ========================================================================== */
+/* DUAL-MODE SWITCHER */
 .mode-switch-wrapper {
   margin: 1.2rem 0 1.8rem;
 }
@@ -3121,69 +3119,80 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
   color: #8b5cf6;
   border-color: rgba(139, 92, 246, 0.3);
 }
-
-.notice-banner {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 20px;
-  border-radius: 16px;
-  margin: 1.5rem 0;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
-}
-.notice-banner.lms-notice {
-  border-left: 5px solid #0071e3;
-}
-.notice-banner.study-notice {
-  border-left: 5px solid #8b5cf6;
-}
-.notice-banner-btn {
-  margin-left: auto;
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  font-weight: 800;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-.notice-banner-btn.btn-to-study {
-  background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
-}
-.notice-banner-btn.btn-to-study:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45);
-}
-.notice-banner-btn.btn-to-lms {
-  background: linear-gradient(135deg, #0071e3, #0284c7);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
-}
-.notice-banner-btn.btn-to-lms:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.45);
-}
-
 @media (max-width: 768px) {
   .mode-switch-bar {
     grid-template-columns: 1fr;
     gap: 10px;
   }
-  .notice-banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .notice-banner-btn {
-    margin-left: 0;
-    width: 100%;
-    text-align: center;
-  }
+}
+
+
+/* UNIVERSAL SUBNAV & SMOOTH SCROLL ENGINE */
+html {
+  scroll-behavior: smooth !important;
+}
+section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card-"], div[id$="-files"], div[id$="-assignments"] {
+  scroll-margin-top: 85px !important;
+}
+.subject-subnav {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 14px !important;
+  margin: 16px 0 24px 0 !important;
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: var(--ios-blur-heavy) !important;
+  -webkit-backdrop-filter: var(--ios-blur-heavy) !important;
+  border: 1px solid var(--glass-border-light) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04) !important;
+}
+.subject-subnav a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 8px 16px !important;
+  border-radius: 12px !important;
+  background: var(--subcard-bg) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  letter-spacing: 0 !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+.subject-subnav a:hover {
+  background: var(--card-bg) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
+}
+.subject-subnav a.active {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-highlight {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(99, 102, 241, 0.18)) !important;
+  color: #8b5cf6 !important;
+  border-color: rgba(139, 92, 246, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-highlight:hover {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1) !important;
+  color: #ffffff !important;
+}
+.subject-subnav a.subnav-btn-lms-highlight {
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.15), rgba(2, 132, 199, 0.18)) !important;
+  color: #0071e3 !important;
+  border-color: rgba(0, 113, 227, 0.35) !important;
+}
+.subject-subnav a.subnav-btn-lms-highlight:hover {
+  background: linear-gradient(135deg, #0071e3, #0284c7) !important;
+  color: #ffffff !important;
 }
 </style></head>
 <body>
@@ -3348,11 +3357,13 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
       </div>
     </header>
 
+  
   <div class="subject-subnav">
-    <a href="#m-files">📁 คลังเอกสาร & สไลด์ใน LMS (24 ไฟล์)</a>
+    <a href="#m-files" class="active">📁 คลังเอกสาร & สไลด์ใน LMS (24 ไฟล์)</a>
     <a href="#m-assignments">📋 รายละเอียดงาน & ควิซ LMS (2 งาน)</a>
-    <a href="metallurgy_summary.html" style="background:rgba(139, 92, 246, 0.15); color:#8b5cf6; border-color:rgba(139, 92, 246, 0.3);">📖 สรุปเนื้อหาเตรียมสอบ ➔</a>
+    <a href="metallurgy_summary.html" class="subnav-btn-highlight">📖 สรุปเนื้อหาเตรียมสอบ ➔</a>
   </div>
+    
 
   <!-- FILE HUB FOR METALLURGY -->
   <section id="m-files" class="file-hub-section">
@@ -3792,13 +3803,13 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
 
 
   
-    <div class="notice-banner lms-notice">
-      <div style="font-size:1.6rem;">💡</div>
+    <div class="notice-banner lms-notice" style="border-left:5px solid #0891b2; background:var(--card-bg); padding:16px 20px; border-radius:16px; margin:2rem 0; display:flex; align-items:center; gap:16px; border:1px solid var(--border);">
+      <div style="font-size:1.8rem;">💡</div>
       <div>
         <strong>ต้องการอ่านสรุปทบทวนบทเรียน หรือฝึกทำโจทย์แนวข้อสอบ?</strong><br>
-        <span style="color:var(--muted); font-size:0.85rem;">เราได้แยกเนื้อหาสรุปเจาะลึก 6 บท, แผนภาพเฟส Fe-C, การอบชุบ TTT, คลังข้อสอบพร้อมเฉลย และ Ultra Cheat Sheet ไว้ในหน้าเฉพาะแล้ว</span>
+        <span style="color:var(--muted); font-size:0.88rem;">เราได้แยกเนื้อหาสรุปเจาะลึก 6 บท, แผนภาพเฟส Fe-C, การอบชุบ TTT, คลังข้อสอบพร้อมเฉลย และ Ultra Cheat Sheet ไว้ในหน้าเฉพาะแล้ว</span>
       </div>
-      <a href="metallurgy_summary.html" class="notice-banner-btn btn-to-study">📖 เปิดหน้าสรุปเนื้อหา & แนวข้อสอบ</a>
+      <a href="metallurgy_summary.html" style="margin-left:auto; padding:10px 18px; border-radius:12px; background:linear-gradient(135deg, #8b5cf6, #6366f1); color:#fff; font-weight:800; text-decoration:none; white-space:nowrap; box-shadow:0 4px 12px rgba(139,92,246,0.3);">📖 เปิดหน้าสรุปเนื้อหา & แนวข้อสอบ</a>
     </div>
     
   </main>
@@ -4559,6 +4570,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<script>
+// BULLETPROOF SUBNAV & ANCHOR SMOOTH SCROLL ENGINE
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.subject-subnav a').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          this.closest('.subject-subnav').querySelectorAll('a').forEach(a => a.classList.remove('active'));
+          this.classList.add('active');
+          const headerOffset = 80;
+          const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: targetTop, behavior: 'smooth' });
+          if (history.pushState) history.pushState(null, null, href);
+        }
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
     
