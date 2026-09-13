@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📋 งานและการบ้าน LMS - เซรามิกเบื้องต้น (316-222)</title>
+  <link rel="stylesheet" href="../assets/css/ios_minimal_theme.css">
+</head>
+<body>
+  <div class="portal-layout">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside id="portal-sidebar" class="sidebar">
+      <div style="padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--glass-hairline); display:flex; align-items:center; justify-content:space-between;">
+        <a href="../index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #1d1d1f; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800;">PSU</div>
+          <div>
+            <div style="font-weight: 800; font-size: 0.98rem; letter-spacing: -0.01em;">Materials Hub</div>
+            <div style="font-size: 0.72rem; color: var(--text-tertiary);">Academic Portal</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="sidebar-nav" style="padding: 1rem 0.8rem; overflow-y: auto; max-height: calc(100vh - 120px);">
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 0.4rem 0.6rem; letter-spacing: 0.05em;">ภาพรวมระบบ</div>
+        <a href="../index.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">🏠</span> <span>หน้าหลัก Dashboard</span></div>
+        </a>
+        <a href="../tasks.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">📋</span> <span>งานทั้งหมดใน LMS</span></div>
+          <span class="side-badge" style="background: rgba(239,68,68,0.12); color: #ef4444; font-weight: 800;">67 งาน</span>
+        </a>
+        <a href="../calendar.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">📅</span> <span>ปฏิทินส่งงาน & สอบ</span></div>
+          <span class="side-badge" style="color: var(--accent-blue);">กันยายน</span>
+        </a>
+
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 1rem 0.6rem 0.4rem; letter-spacing: 0.05em;">รายวิชา (แยกไฟล์/งาน/สรุป)</div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="metallurgy.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">⚙️</span>
+              <span style="font-weight: 600;">โลหะวิทยา 1</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">5 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="metallurgy.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="metallurgy_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="metallurgy_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="ceramic.html" class="side-item active" style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🏺</span>
+              <span style="font-weight: 600;">เซรามิกเบื้องต้น</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">4 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="ceramic.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="ceramic_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="ceramic_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="polymer.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🧪</span>
+              <span style="font-weight: 600;">พอลิเมอร์เบื้องต้น</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">7 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="polymer.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="polymer_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="polymer_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="biology.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌿</span>
+              <span style="font-weight: 600;">ชีววิทยา</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">7 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="biology.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="biology_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="biology_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="biolab.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🔬</span>
+              <span style="font-weight: 600;">ปฏิบัติการชีววิทยา</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">8 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="biolab.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="biolab_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="biolab_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="greenlove.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌱</span>
+              <span style="font-weight: 600;">GreenLove</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">23 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="greenlove.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="greenlove_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="greenlove_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="cybersecurity.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🛡️</span>
+              <span style="font-weight: 600;">Cybersecurity</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">4 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="cybersecurity.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="cybersecurity_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="cybersecurity_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="other_courses.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌐</span>
+              <span style="font-weight: 600;">วิชาศึกษาทั่วไปอื่นๆ</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">9 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="other_courses.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="other_courses_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="other_courses_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+    
+
+    <main class="main-content">
+      <header class="main-top-bar">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <a href="../tasks.html" style="text-decoration:none; color:var(--text-tertiary); font-size:0.9rem;">📋 งานทั้งหมด</a>
+          <span style="color:var(--text-tertiary);">/</span>
+          <span style="font-weight:700; color:var(--text-main);">เซรามิกเบื้องต้น</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button id="theme-toggle-btn" onclick="toggleTheme()" style="background:transparent; border:1px solid var(--glass-hairline); border-radius:999px; padding:6px 12px; cursor:pointer;">🌓</button>
+          <a href="../index.html" style="padding:6px 14px; border-radius:999px; background:#1d1d1f; color:#fff; text-decoration:none; font-size:0.84rem; font-weight:600;">กลับหน้าหลัก</a>
+        </div>
+      </header>
+
+      <div class="card-glass" style="padding:2rem 2.2rem; margin-bottom:1.5rem;">
+        <div style="display:inline-block; font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:999px; background:var(--accent-blue-soft); color:var(--accent-blue); margin-bottom:10px;">
+          🏺 316-222 • PSU LMS OFFICIAL ASSIGNMENTS
+        </div>
+        <h1 style="font-size:1.85rem; font-weight:800; margin:0 0 8px; letter-spacing:-0.02em;">หน้ารายการงาน การบ้าน & ควิซ - เซรามิกเบื้องต้น</h1>
+        <p style="color:var(--text-secondary); margin:0; font-size:0.95rem;">รวบรวมงานทั้งหมด 4 รายการจากระบบ LMS พร้อมกำหนดส่งและลิงก์ตรงไปยังหน้าส่งงาน</p>
+      </div>
+
+      
+    <!-- 3-WAY APPLE FROSTED GLASS SWITCHER -->
+    <div class="course-3way-switcher-wrapper">
+      <div class="course-3way-switcher">
+        <a href="ceramic.html" class="course-3way-tab">
+          <span class="course-3way-icon">📁</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">คลังเอกสาร & สไลด์</span>
+            <span class="course-3way-desc">สไลด์ PDF/PPTX, ชีทเรียน</span>
+          </div>
+          <span class="course-3way-badge">6 ไฟล์</span>
+        </a>
+        <a href="ceramic_tasks.html" class="course-3way-tab active tab-tasks">
+          <span class="course-3way-icon">📋</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">งาน & การบ้าน LMS</span>
+            <span class="course-3way-desc">การบ้าน, ควิซ และกำหนดส่ง</span>
+          </div>
+          <span class="course-3way-badge">4 งาน</span>
+        </a>
+        <a href="ceramic_summary.html" class="course-3way-tab">
+          <span class="course-3way-icon">📖</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">สรุปเนื้อหา & ข้อสอบ</span>
+            <span class="course-3way-desc">สรุปเข้มข้น, สูตร, Cheat Sheet</span>
+          </div>
+          <span class="course-3way-badge" style="background:rgba(139,92,246,0.1); color:#8b5cf6;">Study Guide</span>
+        </a>
+      </div>
+    </div>
+    
+
+      <div class="tasks-container" style="margin-top:1.5rem;">
+        <div class="assignment-card" data-search="🏺 เซรามิก 316-211 ยังไม่ได้ส่ง (no submission yet) assignment i : สรุปและผังความคิดความรู้เบื้องต้น &amp; ขั้นตอนการผลิต หัวข้อ: lecture i: introduction to ceramic materials 📝 คำสั่งและโจทย์จากอาจารย์ผู้สอนใน lms: &quot;ให้ นศ. ทำสรุป/ผังความคิดหัวข้อ: &amp;nbsp;&amp;nbsp;1. definition, history and categories of ceramic materials (นิยาม ประวัติ และการจำแนกประเภทเซรามิก) &amp;nbsp;&amp;nbsp;2. ขั้นตอนการทำผลิตภัณฑ์เซรามิก (ตั้งแต่เตรียมดิน ขึ้นรูป อบแห้ง เผาดิบ เคลือบ เผาเคลือบ)&quot; 🔗 เปิดหน้าส่งงานใน lms 📋 คัดลอกโจทย์" data-course="ceram" data-status="pending" style="border-left:5px solid #ef4444;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-ceram">🏺 เซรามิก 316-211</span>
+          <span class="status-pill status-pending">ยังไม่ได้ส่ง (No submission yet)</span>
+        </div>
+        <div class="assign-title">Assignment I : สรุปและผังความคิดความรู้เบื้องต้น & ขั้นตอนการผลิต</div>
+        <div class="assign-section-name">หัวข้อ: Lecture I: Introduction to ceramic materials</div>
+        <div class="assign-prompt-box">
+          <strong>📝 คำสั่งและโจทย์จากอาจารย์ผู้สอนใน LMS:</strong>
+          "ให้ นศ. ทำสรุป/ผังความคิดหัวข้อ: <br>
+          &nbsp;&nbsp;1. <strong>Definition, history and categories of ceramic materials</strong> (นิยาม ประวัติ และการจำแนกประเภทเซรามิก)<br>
+          &nbsp;&nbsp;2. <strong>ขั้นตอนการทำผลิตภัณฑ์เซรามิก</strong> (ตั้งแต่เตรียมดิน ขึ้นรูป อบแห้ง เผาดิบ เคลือบ เผาเคลือบ)"
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/assign/view.php?id=168814" target="_blank" class="btn-lms-link" style="background:#ef4444;">🔗 เปิดหน้าส่งงานใน LMS</a>
+          <button class="btn-copy-prompt" onclick="copyPromptText('ให้ นศ. ทำสรุป/ผังความคิดหัวข้อ 1. Definition, history and categories of ceramic materials 2. ขั้นตอนการทำผลิตภัณฑ์เซรามิก')">📋 คัดลอกโจทย์</button>
+        </div>
+      </div>
+<div class="assignment-card" data-search="🏺 เซรามิก 316-211 🎯 ควิซเปิดอยู่ (no close date) quiz #1 ceramics (kowit&#x27;s lecture) หัวข้อ: บรรยาย อ.โกวิทย์ - การทดสอบความรู้พื้นฐานเซรามิก รายละเอียด: แบบทดสอบออนไลน์เก็บคะแนนวิชาเซรามิกในระบบ lms สามารถกดเข้าไปทำได้ทันที 🎯 เข้าทำควิซ #1 ใน lms" data-course="ceram" data-status="pending" style="border-left:5px solid #0071e3;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-ceram">🏺 เซรามิก 316-211</span>
+          <span class="status-pill status-submitted" style="background:rgba(0, 113, 227, 0.15); color:#0071e3; border:1px solid #0071e3;">🎯 ควิซเปิดอยู่ (No close date)</span>
+        </div>
+        <div class="assign-title">Quiz #1 ceramics (Kowit's lecture)</div>
+        <div class="assign-section-name">หัวข้อ: บรรยาย อ.โกวิทย์ - การทดสอบความรู้พื้นฐานเซรามิก</div>
+        <div class="assign-prompt-box">
+          <strong>รายละเอียด:</strong> แบบทดสอบออนไลน์เก็บคะแนนวิชาเซรามิกในระบบ LMS สามารถกดเข้าไปทำได้ทันที
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=666087" target="_blank" class="btn-lms-link">🎯 เข้าทำควิซ #1 ใน LMS</a>
+        </div>
+      </div>
+<div class="assignment-card" data-search="🏺 เซรามิก 316-211 🎯 ควิซเปิดอยู่ (no close date) quiz #2 ceramics (kowit&#x27;s lecture) หัวข้อ: บรรยาย อ.โกวิทย์ - การทดสอบความรู้เซรามิก ครั้งที่ 2 รายละเอียด: แบบทดสอบออนไลน์เก็บคะแนนวิชาเซรามิกในระบบ lms ครั้งที่ 2 🎯 เข้าทำควิซ #2 ใน lms" data-course="ceram" data-status="pending" style="border-left:5px solid #0071e3;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-ceram">🏺 เซรามิก 316-211</span>
+          <span class="status-pill status-submitted" style="background:rgba(0, 113, 227, 0.15); color:#0071e3; border:1px solid #0071e3;">🎯 ควิซเปิดอยู่ (No close date)</span>
+        </div>
+        <div class="assign-title">Quiz #2 ceramics (Kowit's lecture)</div>
+        <div class="assign-section-name">หัวข้อ: บรรยาย อ.โกวิทย์ - การทดสอบความรู้เซรามิก ครั้งที่ 2</div>
+        <div class="assign-prompt-box">
+          <strong>รายละเอียด:</strong> แบบทดสอบออนไลน์เก็บคะแนนวิชาเซรามิกในระบบ LMS ครั้งที่ 2
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=666777" target="_blank" class="btn-lms-link">🎯 เข้าทำควิซ #2 ใน LMS</a>
+        </div>
+      </div>
+<div class="assignment-card" data-search="🏺 เซรามิก 316-211 ส่งแล้ว (submitted for grading) ออกแบบผลิตภัณฑ์ 1 : กำหนดโจทย์ 4w และรูปภาพประกอบ หัวข้อ: ออกแบบผลิตภัณฑ์ (product design) 📝 คำสั่งจากอาจารย์: &quot;กำหนดโจทย์ what where when why พร้อมแนบรูปที่เกี่ยวข้องกับสิ่งที่ออกแบบมากที่สุด 1 รูป&quot; (ส่งไฟล์ สมุดโน้ตไม่มีชื่อ.pdf แล้ว เมื่อ 5 ส.ค. 2569) 🔗 เปิดดูงานที่ส่งใน lms" data-course="ceram" data-status="submitted" style="border-left:5px solid #10b981;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-ceram">🏺 เซรามิก 316-211</span>
+          <span class="status-pill status-submitted">ส่งแล้ว (Submitted for grading)</span>
+        </div>
+        <div class="assign-title">ออกแบบผลิตภัณฑ์ 1 : กำหนดโจทย์ 4W และรูปภาพประกอบ</div>
+        <div class="assign-section-name">หัวข้อ: ออกแบบผลิตภัณฑ์ (Product Design)</div>
+        <div class="assign-prompt-box">
+          <strong>📝 คำสั่งจากอาจารย์:</strong>
+          "กำหนดโจทย์ <strong>What Where When Why</strong> พร้อมแนบรูปที่เกี่ยวข้องกับสิ่งที่ออกแบบมากที่สุด 1 รูป" (ส่งไฟล์ <code>สมุดโน้ตไม่มีชื่อ.pdf</code> แล้ว เมื่อ 5 ส.ค. 2569)
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/assign/view.php?id=656679" target="_blank" class="btn-lms-link">🔗 เปิดดูงานที่ส่งใน LMS</a>
+        </div>
+      </div>
+      </div>
+
+      <div class="card-glass" style="margin-top:2.5rem; padding:1.8rem 2rem; display:flex; align-items:center; justify-content:space-between; gap:20px; border-left:5px solid var(--accent-purple);">
+        <div>
+          <div style="font-weight:800; font-size:1.05rem; color:var(--text-main);">📖 ต้องการอ่านสรุปเนื้อหาบทเรียน หรือฝึกทำโจทย์แนวข้อสอบ?</div>
+          <div style="font-size:0.88rem; color:var(--text-secondary); margin-top:4px;">เรามีสรุปสูตร แผนภาพ และคลังข้อสอบพร้อมเฉลยในหน้าสรุปเนื้อหา</div>
+        </div>
+        <a href="ceramic_summary.html" class="btn-lms-submit" style="background:#8b5cf6; padding:10px 20px; font-size:0.9rem; white-space:nowrap;">
+          <span>เปิดหน้าสรุปเนื้อหา</span> <span>➔</span>
+        </a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('psu_theme', isDark ? 'light' : 'dark');
+    }
+    (function() {
+      const saved = localStorage.getItem('psu_theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</body>
+</html>

@@ -3321,115 +3321,164 @@ section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card
   background: linear-gradient(135deg, #0071e3, #0284c7) !important;
   color: #ffffff !important;
 }
-</style></head>
+</style>  <link rel="stylesheet" href="../assets/css/ios_minimal_theme.css">
+</head>
 <body>
   <div class="portal-layout">
     <!-- LEFT GLASS SIDEBAR -->
 
+    
+    <!-- SIDEBAR NAVIGATION -->
     <aside id="portal-sidebar" class="sidebar">
-      <div class="sidebar-header">
-        <a href="../index.html" class="sidebar-logo" style="text-decoration:none;">
-          <span class="sidebar-logo-icon">🏛️</span>
+      <div style="padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--glass-hairline); display:flex; align-items:center; justify-content:space-between;">
+        <a href="../index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #1d1d1f; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800;">PSU</div>
           <div>
-            <div class="sidebar-logo-title">PSU Study Portal</div>
-            <span class="sidebar-logo-badge">LMS ครบ 9 รายวิชา</span>
+            <div style="font-weight: 800; font-size: 0.98rem; letter-spacing: -0.01em;">Materials Hub</div>
+            <div style="font-size: 0.72rem; color: var(--text-tertiary);">Academic Portal</div>
           </div>
         </a>
       </div>
 
-      <div class="sidebar-nav">
-        <div class="nav-group-heading">ศูนย์รวม & ภาพรวม</div>
-        <a href="../index.html#overview" class="side-item " onclick="if(window.showTab) { showTab('overview'); return false; }">
-          <div class="side-left">
-            <span class="side-icon">🏠</span> <span>หน้าหลักสรุป</span>
-          </div>
-          <span class="side-badge">Dashboard</span>
+      <div class="sidebar-nav" style="padding: 1rem 0.8rem; overflow-y: auto; max-height: calc(100vh - 120px);">
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 0.4rem 0.6rem; letter-spacing: 0.05em;">ภาพรวมระบบ</div>
+        <a href="../index.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">🏠</span> <span>หน้าหลัก Dashboard</span></div>
         </a>
-        <a href="../index.html#calendar" class="side-item " onclick="if(window.showTab) { showTab('calendar'); return false; }">
-          <div class="side-left">
-            <span class="side-icon">📅</span> <span>ปฏิทินส่งงาน & สอบ</span>
-          </div>
-          <span class="side-badge" style="color:#0071e3;">กันยายน</span>
+        <a href="../tasks.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">📋</span> <span>งานทั้งหมดใน LMS</span></div>
+          <span class="side-badge" style="background: rgba(239,68,68,0.12); color: #ef4444; font-weight: 800;">67 งาน</span>
         </a>
-        <a href="../index.html#tasks" class="side-item " onclick="if(window.showTab) { showTab('tasks'); return false; }">
-          <div class="side-left">
-            <span class="side-icon">📋</span> <span>งานทั้งหมดใน LMS</span>
-          </div>
-          <span class="side-badge" style="background:#ef4444; color:#fff; font-weight:800;">66</span>
+        <a href="../calendar.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">📅</span> <span>ปฏิทินส่งงาน & สอบ</span></div>
+          <span class="side-badge" style="color: var(--accent-blue);">กันยายน</span>
         </a>
 
-        <div class="nav-group-heading" style="margin-top:10px;">รายวิชาทั้งหมด (9 วิชา)</div>
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 1rem 0.6rem 0.4rem; letter-spacing: 0.05em;">รายวิชา (แยกไฟล์/งาน/สรุป)</div>
         
-        <a href="polymer.html" class="side-item ">
-          <div class="side-left">
-            <span class="side-icon">🧪</span>
-            <span>342-201 พอลิเมอร์</span>
+        <div style="margin-bottom: 6px;">
+          <a href="metallurgy.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">⚙️</span>
+              <span style="font-weight: 600;">โลหะวิทยา 1</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">5 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="metallurgy.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="metallurgy_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="metallurgy_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
           </div>
-          <span class="side-badge badge-poly">23 pts!</span>
-        </a>
-
-        <a href="ceramic.html" class="side-item active">
-          <div class="side-left">
-            <span class="side-icon">🏺</span>
-            <span>316-211 เซรามิก</span>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="ceramic.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🏺</span>
+              <span style="font-weight: 600;">เซรามิกเบื้องต้น</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">4 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="ceramic.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="ceramic_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="ceramic_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
           </div>
-          <span class="side-badge badge-ceram">ควิซเปิด</span>
-        </a>
-
-        <a href="metallurgy.html" class="side-item ">
-          <div class="side-left">
-            <span class="side-icon">⚙️</span>
-            <span>316-221 โลหะวิทยา</span>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="polymer.html" class="side-item active" style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🧪</span>
+              <span style="font-weight: 600;">พอลิเมอร์เบื้องต้น</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">7 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="polymer.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="polymer_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="polymer_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
           </div>
-          <span class="side-badge badge-metal">รายงาน</span>
-        </a>
-
-        <a href="biology.html" class="side-item ">
-          <div class="side-left">
-            <span class="side-icon">🧬</span>
-            <span>330-101 ชีววิทยา</span>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="biology.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌿</span>
+              <span style="font-weight: 600;">ชีววิทยา</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">7 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="biology.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="biology_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="biology_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
           </div>
-          <span class="side-badge badge-bio">7 งาน</span>
-        </a>
-
-        <a href="greenlove.html" class="side-item ">
-          <div class="side-left">
-            <span class="side-icon">🌱</span>
-            <span>200-103 GreenLove</span>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="biolab.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🔬</span>
+              <span style="font-weight: 600;">ปฏิบัติการชีววิทยา</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">8 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="biolab.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="biolab_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="biolab_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
           </div>
-          <span class="side-badge badge-green">Bonus</span>
-        </a>
-
-        <a href="cybersecurity.html" class="side-item ">
-          <div class="side-left">
-            <span class="side-icon">💻</span>
-            <span>Cybersecurity</span>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="greenlove.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌱</span>
+              <span style="font-weight: 600;">GreenLove</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">23 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="greenlove.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="greenlove_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="greenlove_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
           </div>
-          <span class="side-badge badge-cyber">ใบประกาศ</span>
-        </a>
-
-        <a href="biolab.html" class="side-item ">
-          <div class="side-left">
-            <span class="side-icon">🔬</span>
-            <span>331-101 Lab ชีวะ</span>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="cybersecurity.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🛡️</span>
+              <span style="font-weight: 600;">Cybersecurity</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">4 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="cybersecurity.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="cybersecurity_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="cybersecurity_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
           </div>
-          <span class="side-badge badge-biolab">8 รายการ</span>
-        </a>
-
-        <a href="other_courses.html" class="side-item ">
-          <div class="side-left">
-            <span class="side-icon">🧠</span>
-            <span>ระบบการคิด & ชีวิตที่ดี</span>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="other_courses.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌐</span>
+              <span style="font-weight: 600;">วิชาศึกษาทั่วไปอื่นๆ</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">9 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="other_courses.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="other_courses_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="other_courses_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
           </div>
-          <span class="side-badge ">9 งาน</span>
-        </a>
-      </div>
-
-      <div class="sidebar-footer">
-        <button id="rainbow-toggle-btn" class="side-tool-btn rainbow-btn" onclick="toggleRainbowMode()" title="สลับโหมดสีรุ้ง RGB">🌈</button>
-        <button id="theme-toggle-btn" class="side-tool-btn" onclick="toggleTheme()" title="สลับโหมดมืด/สว่าง">🌙</button>
+        </div>
+        
       </div>
     </aside>
+    
     <main class="main-content">
       <header class="main-top-bar" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; padding:10px 18px; background:var(--glass-bg-light); backdrop-filter:var(--ios-blur-heavy); -webkit-backdrop-filter:var(--ios-blur-heavy); border:1px solid var(--glass-border-light); border-radius:20px; box-shadow:var(--glass-shadow-light);">
         <div style="display:flex; align-items:center; gap:12px;">
@@ -3450,26 +3499,40 @@ section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card
     <div class="rainbow-speed-banner">🏎️💨 NITRO RGB SPEEDWAY ACTIVE • โหมดสีรุ้งซิ่งระดับ MAX 🏁</div>
 
     <!-- DUAL-MODE SWITCHER -->
-    <div class="mode-switch-wrapper">
-      <div class="mode-switch-bar">
-        <a href="ceramic.html" class="mode-tab active">
-          <span class="mode-tab-icon">🏛️</span>
-          <div class="mode-tab-info">
-            <span class="mode-tab-title">ข้อมูล & งานใน LMS</span>
-            <span class="mode-tab-desc">สไลด์คำสอนทางการ, การบ้าน, ควิซ และกำหนดส่งจริง</span>
+    
+    <!-- 3-WAY APPLE FROSTED GLASS SWITCHER -->
+    
+    <!-- 3-WAY APPLE FROSTED GLASS SWITCHER -->
+    <div class="course-3way-switcher-wrapper">
+      <div class="course-3way-switcher">
+        <a href="polymer.html" class="course-3way-tab">
+          <span class="course-3way-icon">📁</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">คลังเอกสาร & สไลด์</span>
+            <span class="course-3way-desc">สไลด์ PDF/PPTX, ชีทเรียน</span>
           </div>
-          <span class="mode-tab-badge">LMS Official</span>
+          <span class="course-3way-badge">9 ไฟล์</span>
         </a>
-        <a href="ceramic_summary.html" class="mode-tab ">
-          <span class="mode-tab-icon">📖</span>
-          <div class="mode-tab-info">
-            <span class="mode-tab-title">สรุปเนื้อหา & เตรียมสอบ</span>
-            <span class="mode-tab-desc">สรุปเจาะลึกทุกบท, สูตรคำนวณ, คลังข้อสอบ และ Cheat Sheet</span>
+        <a href="polymer_tasks.html" class="course-3way-tab">
+          <span class="course-3way-icon">📋</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">งาน & การบ้าน LMS</span>
+            <span class="course-3way-desc">การบ้าน, ควิซ และกำหนดส่ง</span>
           </div>
-          <span class="mode-tab-badge study-badge">Study Guide</span>
+          <span class="course-3way-badge">7 งาน</span>
+        </a>
+        <a href="polymer_summary.html" class="course-3way-tab active tab-study">
+          <span class="course-3way-icon">📖</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">สรุปเนื้อหา & ข้อสอบ</span>
+            <span class="course-3way-desc">สรุปเข้มข้น, สูตร, Cheat Sheet</span>
+          </div>
+          <span class="course-3way-badge" style="background:rgba(139,92,246,0.1); color:#8b5cf6;">Study Guide</span>
         </a>
       </div>
     </div>
+        
+        
     
     
     
@@ -3489,26 +3552,40 @@ section[id], div[id].file-hub-section, div[id].assign-hub-section, div[id^="card
 
     
     <!-- DUAL-MODE SWITCHER -->
-    <div class="mode-switch-wrapper">
-      <div class="mode-switch-bar">
-        <a href="polymer.html" class="mode-tab ">
-          <span class="mode-tab-icon">🏛️</span>
-          <div class="mode-tab-info">
-            <span class="mode-tab-title">ข้อมูล & งานใน LMS</span>
-            <span class="mode-tab-desc">สไลด์คำสอนทางการ, การบ้าน, ควิซ และกำหนดส่งจริง</span>
+    
+    <!-- 3-WAY APPLE FROSTED GLASS SWITCHER -->
+    
+    <!-- 3-WAY APPLE FROSTED GLASS SWITCHER -->
+    <div class="course-3way-switcher-wrapper">
+      <div class="course-3way-switcher">
+        <a href="polymer.html" class="course-3way-tab">
+          <span class="course-3way-icon">📁</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">คลังเอกสาร & สไลด์</span>
+            <span class="course-3way-desc">สไลด์ PDF/PPTX, ชีทเรียน</span>
           </div>
-          <span class="mode-tab-badge">LMS Official</span>
+          <span class="course-3way-badge">9 ไฟล์</span>
         </a>
-        <a href="polymer_summary.html" class="mode-tab active study-mode">
-          <span class="mode-tab-icon">📖</span>
-          <div class="mode-tab-info">
-            <span class="mode-tab-title">สรุปเนื้อหา & เตรียมสอบ</span>
-            <span class="mode-tab-desc">สรุปเจาะลึกทุกบท, สูตรคำนวณ, คลังข้อสอบ และ Cheat Sheet</span>
+        <a href="polymer_tasks.html" class="course-3way-tab">
+          <span class="course-3way-icon">📋</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">งาน & การบ้าน LMS</span>
+            <span class="course-3way-desc">การบ้าน, ควิซ และกำหนดส่ง</span>
           </div>
-          <span class="mode-tab-badge study-badge">Study Guide</span>
+          <span class="course-3way-badge">7 งาน</span>
+        </a>
+        <a href="polymer_summary.html" class="course-3way-tab active tab-study">
+          <span class="course-3way-icon">📖</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">สรุปเนื้อหา & ข้อสอบ</span>
+            <span class="course-3way-desc">สรุปเข้มข้น, สูตร, Cheat Sheet</span>
+          </div>
+          <span class="course-3way-badge" style="background:rgba(139,92,246,0.1); color:#8b5cf6;">Study Guide</span>
         </a>
       </div>
     </div>
+        
+        
     
 
     <div class="notice-banner study-notice">

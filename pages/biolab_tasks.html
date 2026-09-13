@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📋 งานและการบ้าน LMS - ปฏิบัติการชีววิทยา (331-101)</title>
+  <link rel="stylesheet" href="../assets/css/ios_minimal_theme.css">
+</head>
+<body>
+  <div class="portal-layout">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside id="portal-sidebar" class="sidebar">
+      <div style="padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--glass-hairline); display:flex; align-items:center; justify-content:space-between;">
+        <a href="../index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #1d1d1f; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800;">PSU</div>
+          <div>
+            <div style="font-weight: 800; font-size: 0.98rem; letter-spacing: -0.01em;">Materials Hub</div>
+            <div style="font-size: 0.72rem; color: var(--text-tertiary);">Academic Portal</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="sidebar-nav" style="padding: 1rem 0.8rem; overflow-y: auto; max-height: calc(100vh - 120px);">
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 0.4rem 0.6rem; letter-spacing: 0.05em;">ภาพรวมระบบ</div>
+        <a href="../index.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">🏠</span> <span>หน้าหลัก Dashboard</span></div>
+        </a>
+        <a href="../tasks.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">📋</span> <span>งานทั้งหมดใน LMS</span></div>
+          <span class="side-badge" style="background: rgba(239,68,68,0.12); color: #ef4444; font-weight: 800;">67 งาน</span>
+        </a>
+        <a href="../calendar.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">📅</span> <span>ปฏิทินส่งงาน & สอบ</span></div>
+          <span class="side-badge" style="color: var(--accent-blue);">กันยายน</span>
+        </a>
+
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 1rem 0.6rem 0.4rem; letter-spacing: 0.05em;">รายวิชา (แยกไฟล์/งาน/สรุป)</div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="metallurgy.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">⚙️</span>
+              <span style="font-weight: 600;">โลหะวิทยา 1</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">5 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="metallurgy.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="metallurgy_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="metallurgy_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="ceramic.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🏺</span>
+              <span style="font-weight: 600;">เซรามิกเบื้องต้น</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">4 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="ceramic.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="ceramic_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="ceramic_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="polymer.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🧪</span>
+              <span style="font-weight: 600;">พอลิเมอร์เบื้องต้น</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">7 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="polymer.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="polymer_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="polymer_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="biology.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌿</span>
+              <span style="font-weight: 600;">ชีววิทยา</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">7 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="biology.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="biology_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="biology_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="biolab.html" class="side-item active" style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🔬</span>
+              <span style="font-weight: 600;">ปฏิบัติการชีววิทยา</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">8 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="biolab.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="biolab_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="biolab_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="greenlove.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌱</span>
+              <span style="font-weight: 600;">GreenLove</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">23 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="greenlove.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="greenlove_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="greenlove_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="cybersecurity.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🛡️</span>
+              <span style="font-weight: 600;">Cybersecurity</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">4 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="cybersecurity.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="cybersecurity_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="cybersecurity_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="other_courses.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌐</span>
+              <span style="font-weight: 600;">วิชาศึกษาทั่วไปอื่นๆ</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">9 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="other_courses.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="other_courses_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="other_courses_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+    
+
+    <main class="main-content">
+      <header class="main-top-bar">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <a href="../tasks.html" style="text-decoration:none; color:var(--text-tertiary); font-size:0.9rem;">📋 งานทั้งหมด</a>
+          <span style="color:var(--text-tertiary);">/</span>
+          <span style="font-weight:700; color:var(--text-main);">ปฏิบัติการชีววิทยา</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button id="theme-toggle-btn" onclick="toggleTheme()" style="background:transparent; border:1px solid var(--glass-hairline); border-radius:999px; padding:6px 12px; cursor:pointer;">🌓</button>
+          <a href="../index.html" style="padding:6px 14px; border-radius:999px; background:#1d1d1f; color:#fff; text-decoration:none; font-size:0.84rem; font-weight:600;">กลับหน้าหลัก</a>
+        </div>
+      </header>
+
+      <div class="card-glass" style="padding:2rem 2.2rem; margin-bottom:1.5rem;">
+        <div style="display:inline-block; font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:999px; background:var(--accent-blue-soft); color:var(--accent-blue); margin-bottom:10px;">
+          🔬 331-101 • PSU LMS OFFICIAL ASSIGNMENTS
+        </div>
+        <h1 style="font-size:1.85rem; font-weight:800; margin:0 0 8px; letter-spacing:-0.02em;">หน้ารายการงาน การบ้าน & ควิซ - ปฏิบัติการชีววิทยา</h1>
+        <p style="color:var(--text-secondary); margin:0; font-size:0.95rem;">รวบรวมงานทั้งหมด 8 รายการจากระบบ LMS พร้อมกำหนดส่งและลิงก์ตรงไปยังหน้าส่งงาน</p>
+      </div>
+
+      
+    <!-- 3-WAY APPLE FROSTED GLASS SWITCHER -->
+    <div class="course-3way-switcher-wrapper">
+      <div class="course-3way-switcher">
+        <a href="biolab.html" class="course-3way-tab">
+          <span class="course-3way-icon">📁</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">คลังเอกสาร & สไลด์</span>
+            <span class="course-3way-desc">สไลด์ PDF/PPTX, ชีทเรียน</span>
+          </div>
+          <span class="course-3way-badge">0 ไฟล์</span>
+        </a>
+        <a href="biolab_tasks.html" class="course-3way-tab active tab-tasks">
+          <span class="course-3way-icon">📋</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">งาน & การบ้าน LMS</span>
+            <span class="course-3way-desc">การบ้าน, ควิซ และกำหนดส่ง</span>
+          </div>
+          <span class="course-3way-badge">8 งาน</span>
+        </a>
+        <a href="biolab_summary.html" class="course-3way-tab">
+          <span class="course-3way-icon">📖</span>
+          <div class="course-3way-info">
+            <span class="course-3way-title">สรุปเนื้อหา & ข้อสอบ</span>
+            <span class="course-3way-desc">สรุปเข้มข้น, สูตร, Cheat Sheet</span>
+          </div>
+          <span class="course-3way-badge" style="background:rgba(139,92,246,0.1); color:#8b5cf6;">Study Guide</span>
+        </a>
+      </div>
+    </div>
+    
+
+      <div class="tasks-container" style="margin-top:1.5rem;">
+        <div class="assignment-card" 
+             data-course="biolab" 
+             data-status="pending" 
+             data-search="331-101 ปฏิบัติการชีววิทยา ส่ง report lab 3 (รวมทุก sections) ปฏิบัติการที่ 3 การแบ่งเซลล์ (cell division) งาน/การทดลองปฏิบัติการชีววิทยา: ส่ง report lab 3 (รวมทุก sections) friday, 31 july 2026, 10:00 am"
+             style="border-left: 5px solid #f59e0b;">
+          <div class="assign-top-row">
+            
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              
+              <span class="status-pill status-pending">ยังไม่ได้ส่ง</span>
+            </div>
+          </div>
+          <div class="assign-title">ส่ง Report Lab 3 (รวมทุก Sections)</div>
+          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 3 การแบ่งเซลล์ (Cell division)</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: ส่ง Report Lab 3 (รวมทุก Sections)</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 31 July 2026, 10:00 AM</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=652253" target="_blank" class="btn-lms-link" style="background:#f59e0b;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=652253'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+<div class="assignment-card" 
+             data-course="biolab" 
+             data-status="pending" 
+             data-search="331-101 ปฏิบัติการชีววิทยา รายงานปฏิบัติการที่ 5 ปฏิบัติการที่ 5 อาณาจักรพืช (plantae) งาน/การทดลองปฏิบัติการชีววิทยา: รายงานปฏิบัติการที่ 5 monday, 31 august 2026, 12:00 am"
+             style="border-left: 5px solid #f59e0b;">
+          <div class="assign-top-row">
+            
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              
+              <span class="status-pill status-pending">ยังไม่ได้ส่ง</span>
+            </div>
+          </div>
+          <div class="assign-title">รายงานปฏิบัติการที่ 5</div>
+          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 5 อาณาจักรพืช (Plantae)</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: รายงานปฏิบัติการที่ 5</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Monday, 31 August 2026, 12:00 AM</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=661966" target="_blank" class="btn-lms-link" style="background:#f59e0b;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=661966'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+<div class="assignment-card" 
+             data-course="biolab" 
+             data-status="quiz" 
+             data-search="331-101 ปฏิบัติการชีววิทยา แบบทดสอบก่อนเรียน ปฏิบัติการที่ 2 ปฏิบัติการที่ 2 พลังงานกับชีวิต (energy and life) งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบก่อนเรียน ปฏิบัติการที่ 2 friday, 17 july 2026, 11:59 pm"
+             style="border-left: 5px solid #8b5cf6;">
+          <div class="assign-top-row">
+            
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              
+              <span class="status-pill status-quiz">ควิซในระบบ</span>
+            </div>
+          </div>
+          <div class="assign-title">แบบทดสอบก่อนเรียน ปฏิบัติการที่ 2</div>
+          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 2 พลังงานกับชีวิต (Energy and life)</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบก่อนเรียน ปฏิบัติการที่ 2</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 17 July 2026, 11:59 PM</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=499731" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=499731'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+<div class="assignment-card" 
+             data-course="biolab" 
+             data-status="quiz" 
+             data-search="331-101 ปฏิบัติการชีววิทยา แบบทดสอบหลังเรียน ปฏิบัติการที่ 2  งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบหลังเรียน ปฏิบัติการที่ 2 friday, 17 july 2026, 11:59 pm"
+             style="border-left: 5px solid #8b5cf6;">
+          <div class="assign-top-row">
+            
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              
+              <span class="status-pill status-quiz">ควิซในระบบ</span>
+            </div>
+          </div>
+          <div class="assign-title">แบบทดสอบหลังเรียน ปฏิบัติการที่ 2</div>
+          
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบหลังเรียน ปฏิบัติการที่ 2</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 17 July 2026, 11:59 PM</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=499733" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=499733'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+<div class="assignment-card" 
+             data-course="biolab" 
+             data-status="quiz" 
+             data-search="331-101 ปฏิบัติการชีววิทยา แบบฝึกหัด lab cell division (ทบทวนก่อนสอบ) ปฏิบัติการที่ 3 การแบ่งเซลล์ (cell division) งาน/การทดลองปฏิบัติการชีววิทยา: แบบฝึกหัด lab cell division (ทบทวนก่อนสอบ) saturday, 8 august 2026, 11:59 pm"
+             style="border-left: 5px solid #8b5cf6;">
+          <div class="assign-top-row">
+            
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              
+              <span class="status-pill status-quiz">ควิซในระบบ</span>
+            </div>
+          </div>
+          <div class="assign-title">แบบฝึกหัด LAB Cell division (ทบทวนก่อนสอบ)</div>
+          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 3 การแบ่งเซลล์ (Cell division)</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบฝึกหัด LAB Cell division (ทบทวนก่อนสอบ)</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Saturday, 8 August 2026, 11:59 PM</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=653879" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=653879'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+<div class="assignment-card" 
+             data-course="biolab" 
+             data-status="quiz" 
+             data-search="331-101 ปฏิบัติการชีววิทยา แบบทดสอบก่อนเรียน ปฏิบัติการที่ 6 : ทำข้อสอบได้วันที่ 29 สิงหาคม 2569 เวลา 8.00 น. - วันที่ 30 สิงหาคม 2569 เวลา 23.59 น. ทำข้อสอบได้คนละ 1 ครั้ง เวลา 10 นาที ปฏิบัติการที่ 6 เนื้อเยื่อพืชพื้นฐาน (plant tissue) งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบก่อนเรียน ปฏิบัติการที่ 6 : ทำข้อสอบได้วันที่ 29 สิงหาคม 2569 เวลา 8.00 น. - วันที่ 30 สิงหาคม 2569 เวลา 23.59 น. ทำข้อสอบได้คนละ 1 ครั้ง เวลา 10 นาที sunday, 30 august 2026, 11:59 pm"
+             style="border-left: 5px solid #8b5cf6;">
+          <div class="assign-top-row">
+            
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              
+              <span class="status-pill status-quiz">ควิซในระบบ</span>
+            </div>
+          </div>
+          <div class="assign-title">แบบทดสอบก่อนเรียน ปฏิบัติการที่ 6 : ทำข้อสอบได้วันที่ 29 สิงหาคม 2569 เวลา 8.00 น. - วันที่ 30 สิงหาคม 2569 เวลา 23.59 น. ทำข้อสอบได้คนละ 1 ครั้ง เวลา 10 นาที</div>
+          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 6 เนื้อเยื่อพืชพื้นฐาน (Plant tissue)</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบก่อนเรียน ปฏิบัติการที่ 6 : ทำข้อสอบได้วันที่ 29 สิงหาคม 2569 เวลา 8.00 น. - วันที่ 30 สิงหาคม 2569 เวลา 23.59 น. ทำข้อสอบได้คนละ 1 ครั้ง เวลา 10 นาที</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Sunday, 30 August 2026, 11:59 PM</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=661148" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=661148'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+<div class="assignment-card" 
+             data-course="biolab" 
+             data-status="quiz" 
+             data-search="331-101 ปฏิบัติการชีววิทยา แบบทดสอบเก็บคะเเนน ปฏิบัติการที่ 8 การเจริญและเนื้อเยื่อของสัตว์ (animal development and histology) งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบเก็บคะเเนน friday, 19 september 2025, 11:59 pm"
+             style="border-left: 5px solid #8b5cf6;">
+          <div class="assign-top-row">
+            
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              
+              <span class="status-pill status-quiz">ควิซในระบบ</span>
+            </div>
+          </div>
+          <div class="assign-title">แบบทดสอบเก็บคะเเนน</div>
+          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 8 การเจริญและเนื้อเยื่อของสัตว์ (Animal development and histology)</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบเก็บคะเเนน</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 19 September 2025, 11:59 PM</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=549343" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=549343'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+<div class="assignment-card" 
+             data-course="biolab" 
+             data-status="quiz" 
+             data-search="331-101 ปฏิบัติการชีววิทยา แบบฝึกหัดเก็บคะแนน ปฏิบัติการที่ 9 ระบบอวัยวะของสัตว์ (animal organ system) งาน/การทดลองปฏิบัติการชีววิทยา: แบบฝึกหัดเก็บคะแนน monday, 6 october 2025, 11:59 pm"
+             style="border-left: 5px solid #8b5cf6;">
+          <div class="assign-top-row">
+            
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              
+              <span class="status-pill status-quiz">ควิซในระบบ</span>
+            </div>
+          </div>
+          <div class="assign-title">แบบฝึกหัดเก็บคะแนน</div>
+          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 9 ระบบอวัยวะของสัตว์ (Animal organ system)</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบฝึกหัดเก็บคะแนน</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Monday, 6 October 2025, 11:59 PM</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=554981" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=554981'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-glass" style="margin-top:2.5rem; padding:1.8rem 2rem; display:flex; align-items:center; justify-content:space-between; gap:20px; border-left:5px solid var(--accent-purple);">
+        <div>
+          <div style="font-weight:800; font-size:1.05rem; color:var(--text-main);">📖 ต้องการอ่านสรุปเนื้อหาบทเรียน หรือฝึกทำโจทย์แนวข้อสอบ?</div>
+          <div style="font-size:0.88rem; color:var(--text-secondary); margin-top:4px;">เรามีสรุปสูตร แผนภาพ และคลังข้อสอบพร้อมเฉลยในหน้าสรุปเนื้อหา</div>
+        </div>
+        <a href="biolab_summary.html" class="btn-lms-submit" style="background:#8b5cf6; padding:10px 20px; font-size:0.9rem; white-space:nowrap;">
+          <span>เปิดหน้าสรุปเนื้อหา</span> <span>➔</span>
+        </a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('psu_theme', isDark ? 'light' : 'dark');
+    }
+    (function() {
+      const saved = localStorage.getItem('psu_theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</body>
+</html>

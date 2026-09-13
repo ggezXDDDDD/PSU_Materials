@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📅 ปฏิทินส่งงาน & ตารางสอบ | PSU Materials</title>
+  <link rel="stylesheet" href="assets/css/ios_minimal_theme.css">
+  <style>
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+    }
+    .cal-day-header {
+      padding: 10px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+    }
+    .cal-cell {
+      min-height: 110px;
+      background: var(--surface-glass);
+      backdrop-filter: var(--ios-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.22s var(--ios-ease);
+    }
+    .cal-cell:hover {
+      background: var(--surface-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--glass-shadow-hover);
+    }
+    .cal-cell.today {
+      border: 2px solid var(--accent-blue);
+      box-shadow: 0 0 0 3px var(--accent-blue-soft);
+    }
+    .cal-cell.has-tasks {
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .cal-date-num {
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .cal-task-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 6px;
+      border-radius: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cal-task-urgent { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+    .cal-task-quiz { background: rgba(0, 113, 227, 0.15); color: #0071e3; }
+    .cal-task-normal { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; }
+  </style>
+</head>
+<body>
+  <div class="portal-layout">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside id="portal-sidebar" class="sidebar">
+      <div style="padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--glass-hairline); display:flex; align-items:center; justify-content:space-between;">
+        <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main);">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: #1d1d1f; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800;">PSU</div>
+          <div>
+            <div style="font-weight: 800; font-size: 0.98rem; letter-spacing: -0.01em;">Materials Hub</div>
+            <div style="font-size: 0.72rem; color: var(--text-tertiary);">Academic Portal</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="sidebar-nav" style="padding: 1rem 0.8rem; overflow-y: auto; max-height: calc(100vh - 120px);">
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 0.4rem 0.6rem; letter-spacing: 0.05em;">ภาพรวมระบบ</div>
+        <a href="index.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">🏠</span> <span>หน้าหลัก Dashboard</span></div>
+        </a>
+        <a href="tasks.html" class="side-item ">
+          <div class="side-left"><span class="side-icon">📋</span> <span>งานทั้งหมดใน LMS</span></div>
+          <span class="side-badge" style="background: rgba(239,68,68,0.12); color: #ef4444; font-weight: 800;">67 งาน</span>
+        </a>
+        <a href="calendar.html" class="side-item active">
+          <div class="side-left"><span class="side-icon">📅</span> <span>ปฏิทินส่งงาน & สอบ</span></div>
+          <span class="side-badge" style="color: var(--accent-blue);">กันยายน</span>
+        </a>
+
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 1rem 0.6rem 0.4rem; letter-spacing: 0.05em;">รายวิชา (แยกไฟล์/งาน/สรุป)</div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="pages/metallurgy.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">⚙️</span>
+              <span style="font-weight: 600;">โลหะวิทยา 1</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">5 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="pages/metallurgy.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="pages/metallurgy_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="pages/metallurgy_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="pages/ceramic.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🏺</span>
+              <span style="font-weight: 600;">เซรามิกเบื้องต้น</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">4 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="pages/ceramic.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="pages/ceramic_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="pages/ceramic_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="pages/polymer.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🧪</span>
+              <span style="font-weight: 600;">พอลิเมอร์เบื้องต้น</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">7 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="pages/polymer.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="pages/polymer_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="pages/polymer_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="pages/biology.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌿</span>
+              <span style="font-weight: 600;">ชีววิทยา</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">7 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="pages/biology.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="pages/biology_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="pages/biology_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="pages/biolab.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🔬</span>
+              <span style="font-weight: 600;">ปฏิบัติการชีววิทยา</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">8 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="pages/biolab.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="pages/biolab_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="pages/biolab_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="pages/greenlove.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌱</span>
+              <span style="font-weight: 600;">GreenLove</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">23 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="pages/greenlove.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="pages/greenlove_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="pages/greenlove_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="pages/cybersecurity.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🛡️</span>
+              <span style="font-weight: 600;">Cybersecurity</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">4 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="pages/cybersecurity.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="pages/cybersecurity_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="pages/cybersecurity_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 6px;">
+          <a href="pages/other_courses.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
+            <div class="side-left">
+              <span class="side-icon">🌐</span>
+              <span style="font-weight: 600;">วิชาศึกษาทั่วไปอื่นๆ</span>
+            </div>
+            <span class="side-badge" style="font-size:0.68rem;">9 งาน</span>
+          </a>
+          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
+            <a href="pages/other_courses.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
+            <a href="pages/other_courses_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
+            <a href="pages/other_courses_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+    
+
+    <main class="main-content">
+      <header class="main-top-bar">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-weight:700; font-size:1.1rem; color:var(--text-main);">📅 ปฏิทินส่งงาน & ตารางสอบย่อย</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button id="theme-toggle-btn" onclick="toggleTheme()" style="background:transparent; border:1px solid var(--glass-hairline); border-radius:999px; padding:6px 12px; cursor:pointer;">🌓</button>
+          <a href="tasks.html" style="padding:6px 14px; border-radius:999px; background:#1d1d1f; color:#fff; text-decoration:none; font-size:0.84rem; font-weight:600;">📋 ดูรายการงานทั้งหมด (67 งาน)</a>
+        </div>
+      </header>
+
+      <div class="card-glass" style="padding:2rem 2.2rem; margin-bottom:1.5rem;">
+        <div style="display:inline-block; font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:999px; background:var(--accent-blue-soft); color:var(--accent-blue); margin-bottom:10px;">
+          📅 MONTHLY DEADLINES VIEW • กันยายน 2569
+        </div>
+        <h1 style="font-size:2rem; font-weight:800; margin:0 0 10px; letter-spacing:-0.02em;">ปฏิทินกำหนดส่งงานและสอบย่อย</h1>
+        <p style="color:var(--text-secondary); margin:0; font-size:0.96rem;">คลิกที่วันที่เพื่อเปิดดูรายละเอียดงาน คำสั่งจากอาจารย์ และลิงก์ส่งงานในระบบ LMS</p>
+      </div>
+
+      <div class="card-glass" style="padding:1.8rem 2rem; margin-bottom:2rem;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+          <div style="font-weight:800; font-size:1.3rem;">กันยายน 2569 (September 2026)</div>
+          <div style="display:flex; gap:10px; font-size:0.8rem;">
+            <span style="display:flex; align-items:center; gap:5px;"><span style="width:8px; height:8px; border-radius:50%; background:#ef4444;"></span> งานด่วน</span>
+            <span style="display:flex; align-items:center; gap:5px;"><span style="width:8px; height:8px; border-radius:50%; background:#0071e3;"></span> ควิซ LMS</span>
+            <span style="display:flex; align-items:center; gap:5px;"><span style="width:8px; height:8px; border-radius:50%; background:#8b5cf6;"></span> แบบฝึกหัด</span>
+          </div>
+        </div>
+
+        <div class="cal-grid">
+          <div class="cal-day-header">จันทร์</div>
+          <div class="cal-day-header">อังคาร</div>
+          <div class="cal-day-header">พุธ</div>
+          <div class="cal-day-header">พฤหัสบดี</div>
+          <div class="cal-day-header">ศุกร์</div>
+          <div class="cal-day-header" style="color:#0071e3;">เสาร์</div>
+          <div class="cal-day-header" style="color:#ef4444;">อาทิตย์</div>
+
+          <div class="cal-cell" style="opacity:0.4;"><span class="cal-date-num">31</span></div>
+          <div class="cal-cell"><span class="cal-date-num">1</span></div>
+          <div class="cal-cell"><span class="cal-date-num">2</span></div>
+          <div class="cal-cell"><span class="cal-date-num">3</span></div>
+          <div class="cal-cell"><span class="cal-date-num">4</span></div>
+          <div class="cal-cell"><span class="cal-date-num">5</span></div>
+          <div class="cal-cell"><span class="cal-date-num">6</span></div>
+
+          <div class="cal-cell"><span class="cal-date-num">7</span></div>
+          <div class="cal-cell"><span class="cal-date-num">8</span></div>
+          <div class="cal-cell"><span class="cal-date-num">9</span></div>
+          <div class="cal-cell"><span class="cal-date-num">10</span></div>
+          <div class="cal-cell"><span class="cal-date-num">11</span></div>
+          <div class="cal-cell has-tasks" onclick="alert('กำหนดส่ง: Bonus Challenge GreenLove 12/9/2569')">
+            <span class="cal-date-num">12</span>
+            <div class="cal-task-pill cal-task-urgent">🌱 Bonus GreenLove</div>
+          </div>
+          <div class="cal-cell today has-tasks" onclick="alert('วันนี้: กำหนดส่งงาน LMS และแบบฝึกหัดประจำสัปดาห์')">
+            <span class="cal-date-num" style="color:var(--accent-blue);">13 (วันนี้)</span>
+            <div class="cal-task-pill cal-task-urgent">⚙️ รายงานโลหะวิทยา</div>
+            <div class="cal-task-pill cal-task-quiz">🏺 ควิซเซรามิก 1</div>
+          </div>
+
+          <div class="cal-cell"><span class="cal-date-num">14</span></div>
+          <div class="cal-cell has-tasks" onclick="alert('กำหนดส่ง: ควิซชีววิทยา และแล็ปเคมี')">
+            <span class="cal-date-num">15</span>
+            <div class="cal-task-pill cal-task-quiz">🌿 Quiz ชีววิทยา</div>
+          </div>
+          <div class="cal-cell"><span class="cal-date-num">16</span></div>
+          <div class="cal-cell"><span class="cal-date-num">17</span></div>
+          <div class="cal-cell"><span class="cal-date-num">18</span></div>
+          <div class="cal-cell"><span class="cal-date-num">19</span></div>
+          <div class="cal-cell has-tasks" onclick="alert('กำหนดส่ง: แบบฝึกหัดพอลิเมอร์ บทที่ 2')">
+            <span class="cal-date-num">20</span>
+            <div class="cal-task-pill cal-task-normal">🧪 การบ้านพอลิเมอร์</div>
+          </div>
+
+          <div class="cal-cell"><span class="cal-date-num">21</span></div>
+          <div class="cal-cell"><span class="cal-date-num">22</span></div>
+          <div class="cal-cell"><span class="cal-date-num">23</span></div>
+          <div class="cal-cell"><span class="cal-date-num">24</span></div>
+          <div class="cal-cell"><span class="cal-date-num">25</span></div>
+          <div class="cal-cell"><span class="cal-date-num">26</span></div>
+          <div class="cal-cell"><span class="cal-date-num">27</span></div>
+
+          <div class="cal-cell"><span class="cal-date-num">28</span></div>
+          <div class="cal-cell"><span class="cal-date-num">29</span></div>
+          <div class="cal-cell has-tasks" onclick="alert('กำหนดส่ง: รายงานกลุ่มปลายเดือน & ควิซท้ายบท')">
+            <span class="cal-date-num">30</span>
+            <div class="cal-task-pill cal-task-urgent">🛡️ Cybersecurity Lab</div>
+          </div>
+          <div class="cal-cell" style="opacity:0.4;"><span class="cal-date-num">1</span></div>
+          <div class="cal-cell" style="opacity:0.4;"><span class="cal-date-num">2</span></div>
+          <div class="cal-cell" style="opacity:0.4;"><span class="cal-date-num">3</span></div>
+          <div class="cal-cell" style="opacity:0.4;"><span class="cal-date-num">4</span></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('psu_theme', isDark ? 'light' : 'dark');
+    }
+    (function() {
+      const saved = localStorage.getItem('psu_theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</body>
+</html>
