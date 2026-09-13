@@ -4080,7 +4080,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           <div>
             <div style="font-size:1.55rem; font-weight:800; color:var(--text);">ศูนย์รวมงาน & ควิซทุกวิชาใน LMS (Master Hub)</div>
             <div style="font-size:0.9rem; font-weight:500; color:var(--text-muted); margin-top:3px;">
-              รวบรวมงานที่ต้องส่ง ควิซเก็บคะแนน รายงาน และการสอบ ครบทุกวิชา (ทั้งหมด 0 รายการ)
+              รวบรวมงานที่ต้องส่ง ควิซเก็บคะแนน รายงาน และการสอบ ครบทุกวิชา (ทั้งหมด 15 รายการ)
             </div>
           </div>
         </div>
@@ -4090,7 +4090,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
             งานสำคัญ / ต้องส่งด่วน
           </span>
           <span style="font-size:0.85rem; font-weight:700; color:var(--primary); background:var(--primary-light); padding:6px 14px; border-radius:999px;">
-            รวม 0 รายการในระบบ
+            รวม 15 รายการในระบบ
           </span>
         </div>
       </div>
@@ -4119,15 +4119,15 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
       <div class="filter-group">
         <div class="filter-heading">กรองตามหมวดวิชา:</div>
         <div class="assign-filter-bar" id="course-filter-bar">
-          <button class="assign-filter-btn active" onclick="setCourseFilter('all', this)">🌟 ทั้งหมดทุกวิชา (0)</button>
-          <button class="assign-filter-btn" onclick="setCourseFilter('poly', this)">🧪 พอลิเมอร์ (0)</button>
-          <button class="assign-filter-btn" onclick="setCourseFilter('ceram,ceramic', this)">🏺 เซรามิก (0)</button>
-          <button class="assign-filter-btn" onclick="setCourseFilter('metal', this)">⚙️ โลหะวิทยา (0)</button>
+          <button class="assign-filter-btn active" onclick="setCourseFilter('all', this)">🌟 ทั้งหมดทุกวิชา (15)</button>
+          <button class="assign-filter-btn" onclick="setCourseFilter('poly', this)">🧪 พอลิเมอร์ (3)</button>
+          <button class="assign-filter-btn" onclick="setCourseFilter('ceram,ceramic', this)">🏺 เซรามิก (3)</button>
+          <button class="assign-filter-btn" onclick="setCourseFilter('metal', this)">⚙️ โลหะวิทยา (4)</button>
           <button class="assign-filter-btn" onclick="setCourseFilter('bio', this)">🧬 ชีววิทยา (0)</button>
-          <button class="assign-filter-btn" onclick="setCourseFilter('greenlove', this)">🌱 GreenLove (0)</button>
-          <button class="assign-filter-btn" onclick="setCourseFilter('cyber', this)">💻 Cybersecurity (0)</button>
+          <button class="assign-filter-btn" onclick="setCourseFilter('greenlove', this)">🌱 GreenLove (3)</button>
+          <button class="assign-filter-btn" onclick="setCourseFilter('cyber', this)">💻 Cybersecurity (1)</button>
           <button class="assign-filter-btn" onclick="setCourseFilter('biolab', this)">🔬 Lab ชีวะ (0)</button>
-          <button class="assign-filter-btn" onclick="setCourseFilter('thinking,goodlife', this)">🧠 วิชาอื่นๆ (0)</button>
+          <button class="assign-filter-btn" onclick="setCourseFilter('thinking,goodlife', this)">🧠 วิชาอื่นๆ (1)</button>
         </div>
       </div>
 
@@ -4151,7 +4151,395 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
 
       <!-- ALL 66 TASK CARDS CONTAINER -->
       <div id="home-assign-list">
+<div class="assignment-card" 
+             data-course="greenlove" 
+             data-status="pending" 
+             data-search="200-103 greenlove (ชีวิตพอเพียงและสิ่งแวดล้อม) ส่ง bonus challenge 12/9/2569 today, 23:59 ส่งไฟล์ พร้อมระบุ ครั้งที่ และ สิ่งที่ทำเพื่อช่วยลดการเกิดขยะ"
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-greenlove">🌿 200-103 GreenLove (ชีวิตพอเพียงและสิ่งแวดล้อม)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">🔥 ต้องทำด่วน</span>
+            </div>
+          </div>
+          <div class="assign-title">ส่ง Bonus Challenge 12/9/2569</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> ส่งไฟล์ พร้อมระบุ ครั้งที่ และ สิ่งที่ทำเพื่อช่วยลดการเกิดขยะ</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Today, 23:59</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/greenlove.html" class="btn-page-link">ดูหน้าวิชา</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=482257&action=editsubmission" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=482257&action=editsubmission'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
 
+<div class="assignment-card" 
+             data-course="greenlove" 
+             data-status="pending" 
+             data-search="200-103 greenlove (ชีวิตพอเพียงและสิ่งแวดล้อม) ส่ง bonus challenge 13/9/2569 tomorrow, 23:59 ส่งไฟล์ พร้อมระบุ ครั้งที่ และ สิ่งที่ทำเพื่อช่วยลดการเกิดขยะ"
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-greenlove">🌿 200-103 GreenLove (ชีวิตพอเพียงและสิ่งแวดล้อม)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">🔥 ต้องทำด่วน</span>
+            </div>
+          </div>
+          <div class="assign-title">ส่ง Bonus Challenge 13/9/2569</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> ส่งไฟล์ พร้อมระบุ ครั้งที่ และ สิ่งที่ทำเพื่อช่วยลดการเกิดขยะ</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Tomorrow, 23:59</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/greenlove.html" class="btn-page-link">ดูหน้าวิชา</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=482407" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=482407'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="other" 
+             data-status="pending" 
+             data-search="820-100 save earth save us ส่งงานสัปดาห์ที่ 11 tomorrow, 23:59 "
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-other">📚 820-100 Save Earth Save Us</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">🔥 ต้องทำด่วน</span>
+            </div>
+          </div>
+          <div class="assign-title">ส่งงานสัปดาห์ที่ 11</div>
+          
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Tomorrow, 23:59</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/other_courses.html" class="btn-page-link">ดูหน้าวิชา</a>
+            <a href="" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText(''); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="ceram" 
+             data-status="pending" 
+             data-search="315-201 เซรามิกเบื้องต้น (ceramics) 5. ส่งงานแบบฝึกหัด_chapter5_biotechnology_2_2 monday, 14 september, 23:59 "
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-ceram">🏺 315-201 เซรามิกเบื้องต้น (Ceramics)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">🔥 ต้องทำด่วน</span>
+            </div>
+          </div>
+          <div class="assign-title">5. ส่งงานแบบฝึกหัด_Chapter5_Biotechnology_2_2</div>
+          
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Monday, 14 September, 23:59</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/ceramic.html" class="btn-page-link" style="margin-right:6px;">🏛️ งานใน LMS</a><a href="pages/ceramic_summary.html" class="btn-page-link" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); box-shadow:0 2px 8px rgba(139,92,246,0.3);">📖 สรุปเตรียมสอบ</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=599740&action=editsubmission" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=599740&action=editsubmission'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="ceram" 
+             data-status="pending" 
+             data-search="315-201 เซรามิกเบื้องต้น (ceramics) 7. ส่งงานแบบฝึกหัด_chapter5_biotechnology_3_3 monday, 14 september, 23:59 "
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-ceram">🏺 315-201 เซรามิกเบื้องต้น (Ceramics)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">🔥 ต้องทำด่วน</span>
+            </div>
+          </div>
+          <div class="assign-title">7. ส่งงานแบบฝึกหัด_Chapter5_Biotechnology_3_3</div>
+          
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Monday, 14 September, 23:59</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/ceramic.html" class="btn-page-link" style="margin-right:6px;">🏛️ งานใน LMS</a><a href="pages/ceramic_summary.html" class="btn-page-link" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); box-shadow:0 2px 8px rgba(139,92,246,0.3);">📖 สรุปเตรียมสอบ</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=602241&action=editsubmission" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=602241&action=editsubmission'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="greenlove" 
+             data-status="pending" 
+             data-search="200-103 greenlove (ชีวิตพอเพียงและสิ่งแวดล้อม) ส่ง bonus challenge 14/9/2569 monday, 14 september, 23:59 ส่งไฟล์ พร้อมระบุ ครั้งที่ และ สิ่งที่ทำเพื่อช่วยลดการเกิดขยะ"
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-greenlove">🌿 200-103 GreenLove (ชีวิตพอเพียงและสิ่งแวดล้อม)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">🔥 ต้องทำด่วน</span>
+            </div>
+          </div>
+          <div class="assign-title">ส่ง Bonus Challenge 14/9/2569</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> ส่งไฟล์ พร้อมระบุ ครั้งที่ และ สิ่งที่ทำเพื่อช่วยลดการเกิดขยะ</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Monday, 14 September, 23:59</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/greenlove.html" class="btn-page-link">ดูหน้าวิชา</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=482493" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=482493'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="cyber" 
+             data-status="pending" 
+             data-search="b03-001 cybersecurity (ความมั่นคงไซเบอร์) บทเรียนออนไลน์เรื่อง ความมั่นคงปลอดภัยไซเบอร์และข้อมูลส่วนบุคคลในชีวิตประจำวัน tuesday, 15 september, 23:59 ศึกษาบทเรียนออนไลน์เรื่อง  ความมั่นคงปลอดภัยไซเบอร์และข้อมูลส่วนบุคคลในชีวิตประจำวัน  https://mooc.psu.ac.th/psumooc-680022/ 20 คะแนน ส่งใบประกาศนียบัตร 1 ภายใน  วันที่    15 กันยายน 2569"
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-cyber">🛡️ B03-001 Cybersecurity (ความมั่นคงไซเบอร์)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">🔥 ต้องทำด่วน</span>
+            </div>
+          </div>
+          <div class="assign-title">บทเรียนออนไลน์เรื่อง ความมั่นคงปลอดภัยไซเบอร์และข้อมูลส่วนบุคคลในชีวิตประจำวัน</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> ศึกษาบทเรียนออนไลน์เรื่อง  ความมั่นคงปลอดภัยไซเบอร์และข้อมูลส่วนบุคคลในชีวิตประจำวัน  https://mooc.psu.ac.th/psumooc-680022/ 20 คะแนน ส่งใบประกาศนียบัตร 1 ภายใน  วันที่    15 กันยายน 2569</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Tuesday, 15 September, 23:59</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/cybersecurity.html" class="btn-page-link">ดูหน้าวิชา</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=634511" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=634511'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="metal" 
+             data-status="pending" 
+             data-search="316-221 โลหะวิทยา 1 (metallurgy) ส่งรายงาน friday, 9 october 2026, 11:59 pm งานมอบหมายในระบบ lms (โลหะวิทยา 1 (metallurgy))"
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-metal">⚙️ 316-221 โลหะวิทยา 1 (Metallurgy)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">🔥 ต้องทำด่วน</span>
+            </div>
+          </div>
+          <div class="assign-title">ส่งรายงาน</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งานมอบหมายในระบบ LMS (โลหะวิทยา 1 (Metallurgy))</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 9 October 2026, 11:59 PM</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/metallurgy.html" class="btn-page-link" style="margin-right:6px;">🏛️ งานใน LMS</a><a href="pages/metallurgy_summary.html" class="btn-page-link" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); box-shadow:0 2px 8px rgba(139,92,246,0.3);">📖 สรุปเตรียมสอบ</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=554087" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=554087'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="metal" 
+             data-status="quiz" 
+             data-search="316-221 โลหะวิทยา 1 (metallurgy) สอบย่อยครั้งที่ 2 (บทที่ 6-7) opens tomorrow, 13:00 ข้อสอบมีทั้งหมด     30  ข้อ คิดเป็น  15%  สอบวันอาทิตย์ที่ 13   กันยายน  2569  เวลา 13.00-15.00   น."
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-metal">⚙️ 316-221 โลหะวิทยา 1 (Metallurgy)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending" style="background:rgba(245, 158, 11, 0.15); color:#d97706; border:1px solid rgba(245, 158, 11, 0.3);">🎯 ควิซเปิดอยู่</span>
+            </div>
+          </div>
+          <div class="assign-title">สอบย่อยครั้งที่ 2 (บทที่ 6-7) opens</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> ข้อสอบมีทั้งหมด     30  ข้อ คิดเป็น  15%  สอบวันอาทิตย์ที่ 13   กันยายน  2569  เวลา 13.00-15.00   น.</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Tomorrow, 13:00</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซเปิดสอบ</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> ควิซ / Quiz</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/metallurgy.html" class="btn-page-link" style="margin-right:6px;">🏛️ งานใน LMS</a><a href="pages/metallurgy_summary.html" class="btn-page-link" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); box-shadow:0 2px 8px rgba(139,92,246,0.3);">📖 สรุปเตรียมสอบ</a>
+            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=430364" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=430364'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="metal" 
+             data-status="quiz" 
+             data-search="316-221 โลหะวิทยา 1 (metallurgy) สอบย่อยครั้งที่ 2 (บทที่ 6-7) closes tomorrow, 15:00 ข้อสอบมีทั้งหมด     30  ข้อ คิดเป็น  15%  สอบวันอาทิตย์ที่ 13   กันยายน  2569  เวลา 13.00-15.00   น."
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-metal">⚙️ 316-221 โลหะวิทยา 1 (Metallurgy)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending" style="background:rgba(245, 158, 11, 0.15); color:#d97706; border:1px solid rgba(245, 158, 11, 0.3);">🎯 ควิซเปิดอยู่</span>
+            </div>
+          </div>
+          <div class="assign-title">สอบย่อยครั้งที่ 2 (บทที่ 6-7) closes</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> ข้อสอบมีทั้งหมด     30  ข้อ คิดเป็น  15%  สอบวันอาทิตย์ที่ 13   กันยายน  2569  เวลา 13.00-15.00   น.</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Tomorrow, 15:00</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซเปิดสอบ</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> ควิซ / Quiz</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/metallurgy.html" class="btn-page-link" style="margin-right:6px;">🏛️ งานใน LMS</a><a href="pages/metallurgy_summary.html" class="btn-page-link" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); box-shadow:0 2px 8px rgba(139,92,246,0.3);">📖 สรุปเตรียมสอบ</a>
+            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=430364" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=430364'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="ceram" 
+             data-status="quiz" 
+             data-search="315-201 เซรามิกเบื้องต้น (ceramics) 3. quiz_chapter5_biotechnology_2_3 closes monday, 14 september, 23:59 "
+             style="border-left: 5px solid #ef4444;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-ceram">🏺 315-201 เซรามิกเบื้องต้น (Ceramics)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending" style="background:rgba(245, 158, 11, 0.15); color:#d97706; border:1px solid rgba(245, 158, 11, 0.3);">🎯 ควิซเปิดอยู่</span>
+            </div>
+          </div>
+          <div class="assign-title">3. Quiz_Chapter5_Biotechnology_2_3 closes</div>
+          
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Monday, 14 September, 23:59</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซเปิดสอบ</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> ควิซ / Quiz</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/ceramic.html" class="btn-page-link" style="margin-right:6px;">🏛️ งานใน LMS</a><a href="pages/ceramic_summary.html" class="btn-page-link" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); box-shadow:0 2px 8px rgba(139,92,246,0.3);">📖 สรุปเตรียมสอบ</a>
+            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=599816" target="_blank" class="btn-lms-link" style="background:#ef4444;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=599816'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="poly" 
+             data-status="pending" 
+             data-search="342-201 พอลิเมอร์เบื้องต้น (polymer) assignment i ตามที่ผู้สอนกำหนด งานมอบหมายในระบบ lms (พอลิเมอร์เบื้องต้น (polymer))"
+             style="border-left: 5px solid #3b82f6;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-poly">🧪 342-201 พอลิเมอร์เบื้องต้น (Polymer)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">ยังไม่ส่ง</span>
+            </div>
+          </div>
+          <div class="assign-title">Assignment I</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งานมอบหมายในระบบ LMS (พอลิเมอร์เบื้องต้น (Polymer))</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> ตามที่ผู้สอนกำหนด</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/polymer.html" class="btn-page-link" style="margin-right:6px;">🏛️ งานใน LMS</a><a href="pages/polymer_summary.html" class="btn-page-link" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); box-shadow:0 2px 8px rgba(139,92,246,0.3);">📖 สรุปเตรียมสอบ</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=168814" target="_blank" class="btn-lms-link" style="background:#3b82f6;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=168814'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="poly" 
+             data-status="pending" 
+             data-search="342-201 พอลิเมอร์เบื้องต้น (polymer) ประกาศคะแนนสอบกลางภาค อ.เมธี (15%) ตามที่ผู้สอนกำหนด งานมอบหมายในระบบ lms (พอลิเมอร์เบื้องต้น (polymer))"
+             style="border-left: 5px solid #3b82f6;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-poly">🧪 342-201 พอลิเมอร์เบื้องต้น (Polymer)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">ยังไม่ส่ง</span>
+            </div>
+          </div>
+          <div class="assign-title">ประกาศคะแนนสอบกลางภาค อ.เมธี (15%)</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งานมอบหมายในระบบ LMS (พอลิเมอร์เบื้องต้น (Polymer))</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> ตามที่ผู้สอนกำหนด</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/polymer.html" class="btn-page-link" style="margin-right:6px;">🏛️ งานใน LMS</a><a href="pages/polymer_summary.html" class="btn-page-link" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); box-shadow:0 2px 8px rgba(139,92,246,0.3);">📖 สรุปเตรียมสอบ</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=668580" target="_blank" class="btn-lms-link" style="background:#3b82f6;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=668580'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="metal" 
+             data-status="pending" 
+             data-search="316-221 โลหะวิทยา 1 (metallurgy) คะแนนสอบกลางภาค ตามที่ผู้สอนกำหนด งานมอบหมายในระบบ lms (โลหะวิทยา 1 (metallurgy))"
+             style="border-left: 5px solid #3b82f6;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-metal">⚙️ 316-221 โลหะวิทยา 1 (Metallurgy)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-pending">ยังไม่ส่ง</span>
+            </div>
+          </div>
+          <div class="assign-title">คะแนนสอบกลางภาค</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งานมอบหมายในระบบ LMS (โลหะวิทยา 1 (Metallurgy))</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> ตามที่ผู้สอนกำหนด</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/metallurgy.html" class="btn-page-link" style="margin-right:6px;">🏛️ งานใน LMS</a><a href="pages/metallurgy_summary.html" class="btn-page-link" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); box-shadow:0 2px 8px rgba(139,92,246,0.3);">📖 สรุปเตรียมสอบ</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=660457" target="_blank" class="btn-lms-link" style="background:#3b82f6;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=660457'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
+
+<div class="assignment-card" 
+             data-course="poly" 
+             data-status="submitted" 
+             data-search="342-201 พอลิเมอร์เบื้องต้น (polymer) ออกแบบผลิตภัณฑ์ 1 ตามที่ผู้สอนกำหนด งานมอบหมายในระบบ lms (พอลิเมอร์เบื้องต้น (polymer))"
+             style="border-left: 5px solid #10b981;">
+          <div class="assign-top-row">
+            <span class="assign-course-tag tag-poly">🧪 342-201 พอลิเมอร์เบื้องต้น (Polymer)</span>
+            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+              <span class="status-pill" style="background:rgba(239, 68, 68, 0.12); color:#ef4444; border:1px solid rgba(239, 68, 68, 0.3); font-weight:800;">มีคะแนนเก็บ</span>
+              <span class="status-pill status-submitted">✅ ส่งแล้ว</span>
+            </div>
+          </div>
+          <div class="assign-title">ออกแบบผลิตภัณฑ์ 1</div>
+          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งานมอบหมายในระบบ LMS (พอลิเมอร์เบื้องต้น (Polymer))</div>
+          <div class="assign-meta-grid">
+            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> ตามที่ผู้สอนกำหนด</span></div>
+            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ส่งแล้ว (Submitted)</span></div>
+            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
+          </div>
+          <div class="assign-actions-row">
+            <a href="pages/polymer.html" class="btn-page-link" style="margin-right:6px;">🏛️ งานใน LMS</a><a href="pages/polymer_summary.html" class="btn-page-link" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); box-shadow:0 2px 8px rgba(139,92,246,0.3);">📖 สรุปเตรียมสอบ</a>
+            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=656679" target="_blank" class="btn-lms-link" style="background:#10b981;">เปิดใน LMS</a>
+            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=656679'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
+          </div>
+        </div>
       </div>
     </section>
         </div><!-- END panes-track -->

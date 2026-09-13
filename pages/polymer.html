@@ -3036,7 +3036,156 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
   }
 }
 </style>
-</head>
+<style>
+/* ==========================================================================
+   DUAL-MODE SWITCHER (LMS OFFICIAL vs STUDY GUIDE)
+   ========================================================================== */
+.mode-switch-wrapper {
+  margin: 1.2rem 0 1.8rem;
+}
+.mode-switch-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  background: var(--subcard-bg);
+  padding: 8px;
+  border-radius: 22px;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+.mode-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  background: transparent;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.5px solid transparent;
+  position: relative;
+}
+.mode-tab:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+.mode-tab.active {
+  background: var(--card-bg);
+  border-color: var(--primary);
+  box-shadow: 0 10px 24px rgba(0, 113, 227, 0.16), inset 0 1px 1px #fff;
+}
+.mode-tab.active.study-mode {
+  border-color: #8b5cf6;
+  box-shadow: 0 10px 24px rgba(139, 92, 246, 0.18), inset 0 1px 1px #fff;
+}
+.mode-tab-icon {
+  font-size: 1.9rem;
+  flex-shrink: 0;
+}
+.mode-tab-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.mode-tab-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.mode-tab.active .mode-tab-title {
+  color: var(--primary);
+}
+.mode-tab.active.study-mode .mode-tab-title {
+  color: #8b5cf6;
+}
+.mode-tab-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.mode-tab-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(0, 113, 227, 0.12);
+  color: #0071e3;
+  border: 1px solid rgba(0, 113, 227, 0.25);
+  white-space: nowrap;
+}
+.mode-tab-badge.study-badge {
+  background: rgba(139, 92, 246, 0.12);
+  color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.notice-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+.notice-banner.lms-notice {
+  border-left: 5px solid #0071e3;
+}
+.notice-banner.study-notice {
+  border-left: 5px solid #8b5cf6;
+}
+.notice-banner-btn {
+  margin-left: auto;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.notice-banner-btn.btn-to-study {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+.notice-banner-btn.btn-to-study:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45);
+}
+.notice-banner-btn.btn-to-lms {
+  background: linear-gradient(135deg, #0071e3, #0284c7);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+}
+.notice-banner-btn.btn-to-lms:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.45);
+}
+
+@media (max-width: 768px) {
+  .mode-switch-bar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .notice-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .notice-banner-btn {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+</style></head>
 <body>
   <div class="portal-layout">
     <!-- LEFT GLASS SIDEBAR -->
@@ -3163,12 +3312,35 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
     <!-- UNIVERSAL RESPONSIVE TOP NAV -->
     
     <div class="rainbow-speed-banner">🏎️💨 NITRO RGB SPEEDWAY ACTIVE • โหมดสีรุ้งซิ่งระดับ MAX 🏁</div>
+
+    <!-- DUAL-MODE SWITCHER -->
+    <div class="mode-switch-wrapper">
+      <div class="mode-switch-bar">
+        <a href="polymer.html" class="mode-tab active">
+          <span class="mode-tab-icon">🏛️</span>
+          <div class="mode-tab-info">
+            <span class="mode-tab-title">ข้อมูล & งานใน LMS</span>
+            <span class="mode-tab-desc">สไลด์คำสอนทางการ, การบ้าน, ควิซ และกำหนดส่งจริง</span>
+          </div>
+          <span class="mode-tab-badge">LMS Official</span>
+        </a>
+        <a href="polymer_summary.html" class="mode-tab ">
+          <span class="mode-tab-icon">📖</span>
+          <div class="mode-tab-info">
+            <span class="mode-tab-title">สรุปเนื้อหา & เตรียมสอบ</span>
+            <span class="mode-tab-desc">สรุปเจาะลึกทุกบท, สูตรคำนวณ, คลังข้อสอบ และ Cheat Sheet</span>
+          </div>
+          <span class="mode-tab-badge study-badge">Study Guide</span>
+        </a>
+      </div>
+    </div>
+    
     
     
 
     <header class="hero hero-polymer">
       <div class="hero-badge badge-polymer">🧪 342-201 วิทยาศาสตร์พอลิเมอร์ (Polymer Science)</div>
-      <h1 class="hero-title">ศูนย์รวมสรุปเนื้อหา เอกสาร & ข้อสอบพอลิเมอร์</h1>
+      <h1 class="hero-title">คลังไฟล์สไลด์ & ศูนย์รวมงาน LMS วิชาพอลิเมอร์</h1>
       <p class="hero-subtitle">รวบรวมเนื้อหาสำคัญ: ปฏิกิริยาเคมีของพอลิเมอร์ • เทคนิคการสังเคราะห์ • สมบัติพื้นฐานและสภาพผลึก • การเปลี่ยนแปลงทางความร้อน (Tg, Tm, DSC) และคลังข้อสอบ 22 ข้อ</p>
       <div class="hero-stats">
         <span class="stat-pill" style="color:#ef4444; border-color:rgba(239, 68, 68, 0.35);">🔥 Take Home Final (4 ต.ค. 23 pts)</span>
@@ -3464,7 +3636,16 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
 
     <!-- CORE POLYMER CONTENT (Parts 1-4, Quizzes, Cheat Sheet) -->
     
-  </main>
+  
+    <div class="notice-banner lms-notice">
+      <div style="font-size:1.6rem;">💡</div>
+      <div>
+        <strong>ต้องการอ่านสรุปทบทวนบทเรียน หรือฝึกทำโจทย์แนวข้อสอบ?</strong><br>
+        <span style="color:var(--muted); font-size:0.85rem;">เราได้แยกเนื้อหาสรุปเจาะลึก 4 บท (Chemical Reactions, Polymerization Techniques, Crystallinity, Tg/Tm), คลังข้อสอบ 22 ข้อพร้อมเฉลยละเอียด และ Master Cheat Sheet ไว้ในหน้าเฉพาะแล้ว</span>
+      </div>
+      <a href="polymer_summary.html" class="notice-banner-btn btn-to-study">📖 เปิดหน้าสรุปเนื้อหา & แนวข้อสอบ</a>
+    </div>
+    </main>
   </div>
     
   <!-- FLOATING NOTEPAD -->

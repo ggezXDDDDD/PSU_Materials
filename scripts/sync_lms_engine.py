@@ -470,6 +470,10 @@ def run_sync(is_background=False):
     log(f"3/4 Total synced tasks: {len(all_tasks)} (New tasks: {len(new_tasks)})")
 
     # 4. Save to JSON cache
+    if not all_tasks and existing_tasks:
+        log("⚠️ No tasks retrieved from Safari (Safari might not be logged into LMS). Preserving previous cached tasks.")
+        all_tasks = existing_tasks
+
     with open(TASKS_JSON, "w", encoding="utf-8") as f:
         json.dump(all_tasks, f, ensure_ascii=False, indent=2)
 

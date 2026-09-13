@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔬 ปฏิบัติการชีววิทยา (331-101) | PSU Study Portal</title>
-<!-- Fonts -->
+  <title>📖 สรุปเนื้อหาโลหะวิทยาเตรียมสอบ (316-221) | PSU Materials Science</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -697,207 +698,6 @@
   </style>
 
 
-<style>
-  .hero-welcome {
-    text-align: center;
-    padding: 3.5rem 1rem 2.2rem;
-    position: relative;
-  }
-  .hero-pill-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 16px;
-    border-radius: 999px;
-    background: var(--primary-light);
-    color: var(--primary);
-    font-weight: 800;
-    font-size: 0.88rem;
-    margin-bottom: 1.2rem;
-    border: 1px solid var(--primary-border);
-  }
-  .hero-welcome h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    letter-spacing: -0.035em;
-    line-height: 1.25;
-    background: linear-gradient(135deg, var(--text) 30%, var(--primary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
-  }
-  .hero-welcome p {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    max-width: 760px;
-    margin: 0 auto 2rem;
-    line-height: 1.7;
-  }
-  .global-search-wrapper {
-    max-width: 680px;
-    margin: 0 auto 3rem;
-    position: relative;
-  }
-  .global-search-input {
-    width: 100%;
-    padding: 16px 24px 16px 54px;
-    border-radius: 999px;
-    border: 1.5px solid var(--border);
-    background: var(--card-bg);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    font-size: 1.05rem;
-    color: var(--text);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-    outline: none;
-    transition: all 0.3s var(--fluid);
-  }
-  .global-search-input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 16px 40px var(--primary-glow);
-    transform: scale(1.01);
-  }
-  .search-icon-inside {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.35rem;
-    pointer-events: none;
-  }
-
-  /* 3 Hero Subject Cards */
-  .subject-portals-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 2rem;
-    margin-bottom: 4rem;
-  }
-  .portal-card {
-    background: var(--card-bg);
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
-    border: 1.5px solid var(--card-border);
-    border-radius: 28px;
-    padding: 2.2rem;
-    box-shadow: var(--card-shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.4s var(--spring);
-    position: relative;
-    overflow: hidden;
-  }
-  .portal-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 6px;
-    background: var(--card-accent, var(--primary));
-  }
-  .portal-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
-  }
-  .card-top-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 12px;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-    width: fit-content;
-  }
-  .portal-card-icon {
-    font-size: 3rem;
-    margin-bottom: 0.8rem;
-    display: inline-block;
-    transition: transform 0.35s var(--spring);
-  }
-  .portal-card:hover .portal-card-icon {
-    transform: scale(1.15) rotate(-6deg);
-  }
-  .portal-card-title {
-    font-size: 1.65rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-  }
-  .portal-card-code {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 600;
-    margin-bottom: 1.2rem;
-  }
-  .portal-card-desc {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.68;
-    margin-bottom: 1.5rem;
-  }
-  .portal-features-list {
-    list-style: none;
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 0.9rem;
-  }
-  .portal-features-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .portal-card-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-top: auto;
-  }
-  .btn-enter-subject {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 13px 22px;
-    border-radius: 999px;
-    color: white !important;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.96rem;
-    transition: all 0.25s var(--fluid);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  }
-  .btn-enter-subject:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
-  }
-  .btn-folder-direct {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 13px 18px;
-    border-radius: 999px;
-    background: var(--subcard-bg);
-    border: 1px solid var(--subcard-border);
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.92rem;
-    font-weight: 600;
-    transition: all 0.25s var(--fluid);
-  }
-  .btn-folder-direct:hover {
-    background: var(--subcard-hover);
-    transform: translateY(-2px);
-  }
-</style>
-
-
 <!-- ULTRA-SMOOTH ANIMATIONS & ASSIGNMENT HUB STYLES -->
 <style>
   /* --- ULTRA-SMOOTH ANIMATIONS & SPRING PHYSICS --- */
@@ -1516,7 +1316,6 @@
     z-index: 99999;
   }
 </style>
-
 
 
 <style>
@@ -3237,7 +3036,156 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
   }
 }
 </style>
-</head>
+<style>
+/* ==========================================================================
+   DUAL-MODE SWITCHER (LMS OFFICIAL vs STUDY GUIDE)
+   ========================================================================== */
+.mode-switch-wrapper {
+  margin: 1.2rem 0 1.8rem;
+}
+.mode-switch-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  background: var(--subcard-bg);
+  padding: 8px;
+  border-radius: 22px;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+.mode-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  background: transparent;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.5px solid transparent;
+  position: relative;
+}
+.mode-tab:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+.mode-tab.active {
+  background: var(--card-bg);
+  border-color: var(--primary);
+  box-shadow: 0 10px 24px rgba(0, 113, 227, 0.16), inset 0 1px 1px #fff;
+}
+.mode-tab.active.study-mode {
+  border-color: #8b5cf6;
+  box-shadow: 0 10px 24px rgba(139, 92, 246, 0.18), inset 0 1px 1px #fff;
+}
+.mode-tab-icon {
+  font-size: 1.9rem;
+  flex-shrink: 0;
+}
+.mode-tab-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.mode-tab-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.mode-tab.active .mode-tab-title {
+  color: var(--primary);
+}
+.mode-tab.active.study-mode .mode-tab-title {
+  color: #8b5cf6;
+}
+.mode-tab-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.mode-tab-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(0, 113, 227, 0.12);
+  color: #0071e3;
+  border: 1px solid rgba(0, 113, 227, 0.25);
+  white-space: nowrap;
+}
+.mode-tab-badge.study-badge {
+  background: rgba(139, 92, 246, 0.12);
+  color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.notice-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+.notice-banner.lms-notice {
+  border-left: 5px solid #0071e3;
+}
+.notice-banner.study-notice {
+  border-left: 5px solid #8b5cf6;
+}
+.notice-banner-btn {
+  margin-left: auto;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.notice-banner-btn.btn-to-study {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+.notice-banner-btn.btn-to-study:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45);
+}
+.notice-banner-btn.btn-to-lms {
+  background: linear-gradient(135deg, #0071e3, #0284c7);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+}
+.notice-banner-btn.btn-to-lms:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.45);
+}
+
+@media (max-width: 768px) {
+  .mode-switch-bar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .notice-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .notice-banner-btn {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+</style></head>
 <body>
   <div class="portal-layout">
     <!-- LEFT GLASS SIDEBAR -->
@@ -3292,7 +3240,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           <span class="side-badge badge-ceram">ควิซเปิด</span>
         </a>
 
-        <a href="metallurgy.html" class="side-item ">
+        <a href="metallurgy.html" class="side-item active">
           <div class="side-left">
             <span class="side-icon">⚙️</span>
             <span>316-221 โลหะวิทยา</span>
@@ -3324,7 +3272,7 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
           <span class="side-badge badge-cyber">ใบประกาศ</span>
         </a>
 
-        <a href="biolab.html" class="side-item active">
+        <a href="biolab.html" class="side-item ">
           <div class="side-left">
             <span class="side-icon">🔬</span>
             <span>331-101 Lab ชีวะ</span>
@@ -3360,260 +3308,504 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
         </div>
         <a href="../index.html" class="side-tool-btn" style="text-decoration:none; padding:6px 14px; font-size:0.85rem; font-weight:700; border-radius:12px; display:inline-flex; width:auto; height:34px;">🏠 กลับหน้าหลัก</a>
       </header>
-    
+
     <!-- UNIVERSAL RESPONSIVE TOP NAV -->
     
+    <div class="rainbow-speed-banner">🏎️💨 NITRO RGB SPEEDWAY ACTIVE • โหมดสีรุ้งซิ่งระดับ MAX 🏁</div>
 
-
-    <header class="hero hero-biolab">
-      <div class="hero-badge" style="border: 1px solid rgba(0, 113, 227, 0.3); background: rgba(0, 113, 227, 0.1); color: #0071e3;"><span style="margin-right:6px;">🏛️ ข้อมูลทางการจาก PSU LMS (Official LMS Hub)</span> |  badge-biolab" style="background:rgba(20, 184, 166, 0.12); color:#14b8a6; border:1px solid rgba(20, 184, 166, 0.3);">🔬 331-101 ปฏิบัติการชีววิทยา (Biology Laboratory)</div>
-      <h1 class="hero-title">ศูนย์รวมรายงานแล็บ & ควิซปฏิบัติการชีววิทยา</h1>
-      <p class="hero-subtitle">รวบรวมรายงานผลการทดลองประจำสัปดาห์ แบบทดสอบก่อนเรียน (Pre-test) และหลังเรียน (Post-test)</p>
-      
+    <!-- DUAL-MODE SWITCHER -->
+    <div class="mode-switch-wrapper">
+      <div class="mode-switch-bar">
+        <a href="metallurgy.html" class="mode-tab active">
+          <span class="mode-tab-icon">🏛️</span>
+          <div class="mode-tab-info">
+            <span class="mode-tab-title">ข้อมูล & งานใน LMS</span>
+            <span class="mode-tab-desc">สไลด์คำสอนทางการ, การบ้าน, ควิซ และกำหนดส่งจริง</span>
+          </div>
+          <span class="mode-tab-badge">LMS Official</span>
+        </a>
+        <a href="metallurgy_summary.html" class="mode-tab ">
+          <span class="mode-tab-icon">📖</span>
+          <div class="mode-tab-info">
+            <span class="mode-tab-title">สรุปเนื้อหา & เตรียมสอบ</span>
+            <span class="mode-tab-desc">สรุปเจาะลึกทุกบท, สูตรคำนวณ, คลังข้อสอบ และ Cheat Sheet</span>
+          </div>
+          <span class="mode-tab-badge study-badge">Study Guide</span>
+        </a>
+      </div>
+    </div>
+    
+    
+    
+<header class="hero hero-metallurgy">
+      <div class="hero-badge badge-metallurgy">🏛️ ข้อมูลทางการจาก PSU LMS • โลหะวิทยา 1 (316-221)</div>
+      <h1 class="hero-title">คลังไฟล์สไลด์ & ศูนย์รวมงาน LMS วิชาโลหะวิทยา 1</h1>
+      <p class="hero-subtitle">รวบรวมเนื้อหาสำคัญ: โครงสร้างผลึก & ดัชนีมิลเลอร์ • ข้อบกพร่อง & ดิสโลเคชัน • กลไกเพิ่มความแข็งแรง (Hall-Petch, Cold work) • แผนภาพเฟส & Fe-Fe3C • การอบชุบความร้อน TTT • ผงโลหะวิทยา และคลังข้อสอบ</p>
       <div class="hero-stats">
-        <span class="stat-pill">รวม 8 กิจกรรมในระบบ</span>
-        <span class="stat-pill">รายงานแล็บ: Lab 3 (Cell division) & Lab 5 (Plantae)</span>
-        <span class="stat-pill">ควิซแล็บ: Lab 2, 3, 6, 8, 9</span>
+        <span class="stat-pill" style="color:#ef4444; border-color:rgba(239, 68, 68, 0.35);">🔥 รายงานกลุ่ม PDF (ปิด 9 ต.ค.)</span>
+        <span class="stat-pill" style="color:#0891b2; border-color:rgba(8, 145, 178, 0.35);">📚 คลังเอกสาร & สไลด์ 24 ไฟล์</span>
+        <span class="stat-pill" style="color:#10b981; border-color:rgba(16, 185, 129, 0.35);">📊 บันทึกคะแนน Graded แล้ว</span>
       </div>
     </header>
 
-    <div class="card-glass">
-      <div style="font-size:1.25rem; font-weight:800; margin-bottom:0.8rem; display:flex; align-items:center; gap:10px;">
-        <span>ข้อมูลรายวิชาปฏิบัติการชีววิทยา</span>
-      </div>
-      <div style="font-size:0.92rem; line-height:1.6; color:var(--text);">
-        การทำปฏิบัติการทางชีววิทยาประกอบด้วยการทดสอบความรู้ก่อนเรียน การบันทึกผลและเขียนรายงานผลการทดลอง พร้อมทั้งทำแบบฝึกหัดทบทวนเพื่อเตรียมสอบปฏิบัติการ
-      </div>
-      <div style="margin-top:1.2rem; display:flex; gap:10px;">
-        <a href="https://lms.psu.ac.th/course/view.php?id=9952" target="_blank" class="btn-lms-link" style="background:#14b8a6;">🔗 เปิดหน้ารายวิชาปฏิบัติการชีววิทยา ใน LMS</a>
-      </div>
-    </div>
-
-    <div class="assign-hub-section">
-      <div class="assign-hub-header">
-        <div class="assign-hub-title">
-          <span>📋</span>
-          <div>
-            <div>รายงานปฏิบัติการและควิซทั้งหมด (331-101)</div>
-            <div style="font-size:0.88rem; font-weight:500; color:var(--text-muted); margin-top:2px;">คลิกปุ่มเพื่อตรวจสอบสถานะหรือเปิดลิงก์ในระบบ LMS</div>
-          </div>
-        </div>
-      </div>
-
-      <div id="local-tasks-container">
-        
-        <div class="assignment-card" 
-             data-course="biolab" 
-             data-status="pending" 
-             data-search="331-101 ปฏิบัติการชีววิทยา ส่ง report lab 3 (รวมทุก sections) ปฏิบัติการที่ 3 การแบ่งเซลล์ (cell division) งาน/การทดลองปฏิบัติการชีววิทยา: ส่ง report lab 3 (รวมทุก sections) friday, 31 july 2026, 10:00 am"
-             style="border-left: 5px solid #f59e0b;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              
-              <span class="status-pill status-pending">ยังไม่ได้ส่ง</span>
-            </div>
-          </div>
-          <div class="assign-title">ส่ง Report Lab 3 (รวมทุก Sections)</div>
-          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 3 การแบ่งเซลล์ (Cell division)</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: ส่ง Report Lab 3 (รวมทุก Sections)</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 31 July 2026, 10:00 AM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=652253" target="_blank" class="btn-lms-link" style="background:#f59e0b;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=652253'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
-          </div>
-        </div>
-
-        <div class="assignment-card" 
-             data-course="biolab" 
-             data-status="pending" 
-             data-search="331-101 ปฏิบัติการชีววิทยา รายงานปฏิบัติการที่ 5 ปฏิบัติการที่ 5 อาณาจักรพืช (plantae) งาน/การทดลองปฏิบัติการชีววิทยา: รายงานปฏิบัติการที่ 5 monday, 31 august 2026, 12:00 am"
-             style="border-left: 5px solid #f59e0b;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              
-              <span class="status-pill status-pending">ยังไม่ได้ส่ง</span>
-            </div>
-          </div>
-          <div class="assign-title">รายงานปฏิบัติการที่ 5</div>
-          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 5 อาณาจักรพืช (Plantae)</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: รายงานปฏิบัติการที่ 5</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Monday, 31 August 2026, 12:00 AM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ยังไม่ส่ง</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> การบ้าน / Assignment</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/assign/view.php?id=661966" target="_blank" class="btn-lms-link" style="background:#f59e0b;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/assign/view.php?id=661966'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
-          </div>
-        </div>
-
-        <div class="assignment-card" 
-             data-course="biolab" 
-             data-status="quiz" 
-             data-search="331-101 ปฏิบัติการชีววิทยา แบบทดสอบก่อนเรียน ปฏิบัติการที่ 2 ปฏิบัติการที่ 2 พลังงานกับชีวิต (energy and life) งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบก่อนเรียน ปฏิบัติการที่ 2 friday, 17 july 2026, 11:59 pm"
-             style="border-left: 5px solid #8b5cf6;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              
-              <span class="status-pill status-quiz">ควิซในระบบ</span>
-            </div>
-          </div>
-          <div class="assign-title">แบบทดสอบก่อนเรียน ปฏิบัติการที่ 2</div>
-          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 2 พลังงานกับชีวิต (Energy and life)</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบก่อนเรียน ปฏิบัติการที่ 2</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 17 July 2026, 11:59 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=499731" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=499731'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
-          </div>
-        </div>
-
-        <div class="assignment-card" 
-             data-course="biolab" 
-             data-status="quiz" 
-             data-search="331-101 ปฏิบัติการชีววิทยา แบบทดสอบหลังเรียน ปฏิบัติการที่ 2  งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบหลังเรียน ปฏิบัติการที่ 2 friday, 17 july 2026, 11:59 pm"
-             style="border-left: 5px solid #8b5cf6;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              
-              <span class="status-pill status-quiz">ควิซในระบบ</span>
-            </div>
-          </div>
-          <div class="assign-title">แบบทดสอบหลังเรียน ปฏิบัติการที่ 2</div>
-          
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบหลังเรียน ปฏิบัติการที่ 2</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 17 July 2026, 11:59 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=499733" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=499733'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
-          </div>
-        </div>
-
-        <div class="assignment-card" 
-             data-course="biolab" 
-             data-status="quiz" 
-             data-search="331-101 ปฏิบัติการชีววิทยา แบบฝึกหัด lab cell division (ทบทวนก่อนสอบ) ปฏิบัติการที่ 3 การแบ่งเซลล์ (cell division) งาน/การทดลองปฏิบัติการชีววิทยา: แบบฝึกหัด lab cell division (ทบทวนก่อนสอบ) saturday, 8 august 2026, 11:59 pm"
-             style="border-left: 5px solid #8b5cf6;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              
-              <span class="status-pill status-quiz">ควิซในระบบ</span>
-            </div>
-          </div>
-          <div class="assign-title">แบบฝึกหัด LAB Cell division (ทบทวนก่อนสอบ)</div>
-          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 3 การแบ่งเซลล์ (Cell division)</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบฝึกหัด LAB Cell division (ทบทวนก่อนสอบ)</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Saturday, 8 August 2026, 11:59 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=653879" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=653879'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
-          </div>
-        </div>
-
-        <div class="assignment-card" 
-             data-course="biolab" 
-             data-status="quiz" 
-             data-search="331-101 ปฏิบัติการชีววิทยา แบบทดสอบก่อนเรียน ปฏิบัติการที่ 6 : ทำข้อสอบได้วันที่ 29 สิงหาคม 2569 เวลา 8.00 น. - วันที่ 30 สิงหาคม 2569 เวลา 23.59 น. ทำข้อสอบได้คนละ 1 ครั้ง เวลา 10 นาที ปฏิบัติการที่ 6 เนื้อเยื่อพืชพื้นฐาน (plant tissue) งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบก่อนเรียน ปฏิบัติการที่ 6 : ทำข้อสอบได้วันที่ 29 สิงหาคม 2569 เวลา 8.00 น. - วันที่ 30 สิงหาคม 2569 เวลา 23.59 น. ทำข้อสอบได้คนละ 1 ครั้ง เวลา 10 นาที sunday, 30 august 2026, 11:59 pm"
-             style="border-left: 5px solid #8b5cf6;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              
-              <span class="status-pill status-quiz">ควิซในระบบ</span>
-            </div>
-          </div>
-          <div class="assign-title">แบบทดสอบก่อนเรียน ปฏิบัติการที่ 6 : ทำข้อสอบได้วันที่ 29 สิงหาคม 2569 เวลา 8.00 น. - วันที่ 30 สิงหาคม 2569 เวลา 23.59 น. ทำข้อสอบได้คนละ 1 ครั้ง เวลา 10 นาที</div>
-          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 6 เนื้อเยื่อพืชพื้นฐาน (Plant tissue)</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบก่อนเรียน ปฏิบัติการที่ 6 : ทำข้อสอบได้วันที่ 29 สิงหาคม 2569 เวลา 8.00 น. - วันที่ 30 สิงหาคม 2569 เวลา 23.59 น. ทำข้อสอบได้คนละ 1 ครั้ง เวลา 10 นาที</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Sunday, 30 August 2026, 11:59 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=661148" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=661148'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
-          </div>
-        </div>
-
-        <div class="assignment-card" 
-             data-course="biolab" 
-             data-status="quiz" 
-             data-search="331-101 ปฏิบัติการชีววิทยา แบบทดสอบเก็บคะเเนน ปฏิบัติการที่ 8 การเจริญและเนื้อเยื่อของสัตว์ (animal development and histology) งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบเก็บคะเเนน friday, 19 september 2025, 11:59 pm"
-             style="border-left: 5px solid #8b5cf6;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              
-              <span class="status-pill status-quiz">ควิซในระบบ</span>
-            </div>
-          </div>
-          <div class="assign-title">แบบทดสอบเก็บคะเเนน</div>
-          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 8 การเจริญและเนื้อเยื่อของสัตว์ (Animal development and histology)</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบทดสอบเก็บคะเเนน</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Friday, 19 September 2025, 11:59 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=549343" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=549343'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
-          </div>
-        </div>
-
-        <div class="assignment-card" 
-             data-course="biolab" 
-             data-status="quiz" 
-             data-search="331-101 ปฏิบัติการชีววิทยา แบบฝึกหัดเก็บคะแนน ปฏิบัติการที่ 9 ระบบอวัยวะของสัตว์ (animal organ system) งาน/การทดลองปฏิบัติการชีววิทยา: แบบฝึกหัดเก็บคะแนน monday, 6 october 2025, 11:59 pm"
-             style="border-left: 5px solid #8b5cf6;">
-          <div class="assign-top-row">
-            
-            <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-              
-              <span class="status-pill status-quiz">ควิซในระบบ</span>
-            </div>
-          </div>
-          <div class="assign-title">แบบฝึกหัดเก็บคะแนน</div>
-          <div class="assign-section-name">หัวข้อ: ปฏิบัติการที่ 9 ระบบอวัยวะของสัตว์ (Animal organ system)</div>
-          <div class="assign-prompt-box"><strong>รายละเอียด:</strong> งาน/การทดลองปฏิบัติการชีววิทยา: แบบฝึกหัดเก็บคะแนน</div>
-          <div class="assign-meta-grid">
-            <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> Monday, 6 October 2025, 11:59 PM</span></div>
-            <div class="assign-meta-item"><span><strong>สถานะ:</strong> ควิซ</span></div>
-            <div class="assign-meta-item"><span><strong>ประเภท:</strong> แบบทดสอบ / Quiz</span></div>
-          </div>
-          <div class="assign-actions-row">
-            <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=554981" target="_blank" class="btn-lms-link" style="background:#8b5cf6;">เปิดใน LMS</a>
-            <button class="tool-btn" onclick="navigator.clipboard.writeText('https://lms.psu.ac.th/mod/quiz/view.php?id=554981'); alert('คัดลอกลิงก์ LMS เรียบร้อย!');">คัดลอกลิงก์</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+  <div class="subject-subnav">
+    <a href="#m-files">📁 คลังเอกสาร & สไลด์ใน LMS (24 ไฟล์)</a>
+    <a href="#m-assignments">📋 รายละเอียดงาน & ควิซ LMS (2 งาน)</a>
+    <a href="metallurgy_summary.html" style="background:rgba(139, 92, 246, 0.15); color:#8b5cf6; border-color:rgba(139, 92, 246, 0.3);">📖 สรุปเนื้อหาเตรียมสอบ ➔</a>
   </div>
-<!-- FLOATING NOTEPAD -->
+
+  <!-- FILE HUB FOR METALLURGY -->
+  <section id="m-files" class="file-hub-section">
+    <div class="file-hub-header">
+      <div class="file-hub-title">
+        <span>📂 คลังเอกสารประกอบการสอนวิชาโลหะวิทยา (316-221)</span>
+        <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">(24 ไฟล์ในเครื่อง Mac: PDF, PPTX, Video)</span>
+      </div>
+      <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy" target="_blank" class="file-folder-btn">📂 เปิดโฟลเดอร์ใน Mac</a>
+    </div>
+    <div class="file-cards-grid">
+      
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">ประมวลรายวิชา 316-221 โลหะวิทยา (2569)</div>
+            <div class="file-item-filename">ประมวลรายวิชา 316-221 1-2569.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 206.4 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/04_ประมวลรายวิชาและสื่อ/ประมวลรายวิชา 316-221 1-2569.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 1: โครงสร้างผลึก ระนาบ และทิศทาง (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 1.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 3.27 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 1.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 1: โครงสร้างผลึก ระนาบ และทิศทาง (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 1.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 703.2 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 1.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">แบบฝึกหัดที่ 1: การหาดัชนีมิลเลอร์ระนาบและทิศทาง</div>
+            <div class="file-item-filename">316-221 แบบฝึกหัดที่ 1 ระนาบและทิศทาง.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 984.9 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/03_แบบฝึกหัดและเฉลย/316-221 แบบฝึกหัดที่ 1 ระนาบและทิศทาง.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 2: ข้อบกพร่องในผลึกและการเคลื่อนที่ดิสโลเคชัน (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 2.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 4.58 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 2.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 2: ข้อบกพร่องในผลึกโลหะ (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 2.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 335.2 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 2.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 3: กลไกการเพิ่มความแข็งแรงของโลหะ (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 3.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.58 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 3.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 3: กลไกการเพิ่มความแข็งแรง (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 3.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.16 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 3.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 4: การคืนตัวและการตกผลึกใหม่ (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 4.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.20 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 4.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 4: การคืนตัวและการตกผลึกใหม่ (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 4.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 623.2 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 4.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 5: แผนภาพเฟสระบบ 2 องค์ประกอบ (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 5.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 2.25 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 5.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 5: แผนภาพเฟส (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 5.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1023.2 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 5.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 6: แผนภาพเฟส Fe-Fe3C และโครงสร้างจุลภาค (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 6.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 2.56 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 6.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 6: ระบบเหล็ก-คาร์บอน (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 6.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 655.2 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 6.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 7: การอบชุบความร้อนเหล็กกล้า (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 7.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.14 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 7.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 7: การอบชุบความร้อนเหล็กกล้า (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 7.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 991.2 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 7.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">เฉลยแบบฝึกหัดที่ 7: การอบชุบความร้อนและแปลงเฟส</div>
+            <div class="file-item-filename">เฉลยแบบฝึกหัดที่ 7.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 529.2 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/03_แบบฝึกหัดและเฉลย/เฉลยแบบฝึกหัดที่ 7.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 8: การชุบแข็งและการเจือเหล็กกล้า (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 8.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 3.52 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 8.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 8: การชุบแข็งเหล็กกล้า (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 8.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 543.2 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 8.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 9: โลหะนอกกลุ่มเหล็ก (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 9.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 3.14 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 9.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 9: โลหะนอกกลุ่มเหล็ก (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 9.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.70 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 9.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pdf">📄 PDF</div>
+            <div class="file-item-title">Unit 10: ผงโลหะวิทยาและการเผาประสาน (PDF)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 10.pdf</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 1.85 MB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 10.pdf" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-pptx">📊 PPTX</div>
+            <div class="file-item-title">Unit 10: ผงโลหะวิทยา (สไลด์ PPT)</div>
+            <div class="file-item-filename">316-221 Metallurgy unit 10.pptx</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 223.2 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 10.pptx" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+
+        <div class="file-item-card">
+          <div>
+            <div class="file-type-badge badge-type-video">🎬 VIDEO</div>
+            <div class="file-item-title">วิดีโอสาธิตกระบวนการ Gas Atomization</div>
+            <div class="file-item-filename">วิดีโอ_สาธิต_Gas_Atomization.wm</div>
+          </div>
+          <div class="file-item-footer">
+            <span class="file-item-size">💾 447.2 KB</span>
+            <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/04_ประมวลรายวิชาและสื่อ/วิดีโอ_สาธิต_Gas_Atomization.wm" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
+          </div>
+        </div>
+        
+    </div>
+  </section>
+
+  
+  <!-- METALLURGY ASSIGNMENTS & EVALUATION HUB -->
+  
+  <!-- METALLURGY ASSIGNMENTS & EVALUATION HUB -->
+  <section id="m-assignments" class="assign-hub-section" style="border-top:5px solid #0891b2;">
+    <div class="assign-hub-header">
+      <div class="assign-hub-title">
+        <span style="font-size:1.6rem;">📋</span>
+        <span>รายละเอียดการสั่งงานและการประเมินใน LMS วิชาโลหะวิทยา (316-221)</span>
+      </div>
+      <div style="font-size:0.88rem; font-weight:700; color:#0891b2; background:rgba(8, 145, 178, 0.12); padding:5px 14px; border-radius:999px;">
+        5 รายการ (รายงาน & สอบ & แบบฝึกหัด)
+      </div>
+    </div>
+
+    <div class="assign-filter-bar">
+      <button class="assign-filter-btn active" onclick="filterAssignments('all', 'm-assign-list', this)">ทั้งหมด (5)</button>
+      <button class="assign-filter-btn" style="color:#ef4444; font-weight:700;" onclick="filterAssignments('pending', 'm-assign-list', this)">ต้องส่ง (1)</button>
+      <button class="assign-filter-btn" onclick="filterAssignments('graded', 'm-assign-list', this)">มีคะแนนแล้ว (1)</button>
+      <button class="assign-filter-btn" onclick="filterAssignments('exercise', 'm-assign-list', this)">📝 แบบฝึกหัด (2)</button>
+      <button class="assign-filter-btn" onclick="filterAssignments('quiz', 'm-assign-list', this)">🎯 สอบย่อย Quiz (1)</button>
+    </div>
+
+    <div id="m-assign-list">
+      
+      <!-- TASK 1: ส่งรายงานกลุ่ม (PDF) -->
+      <div class="assignment-card" data-status="pending" style="border-left:5px solid #ef4444;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-metal">⚙️ โลหะวิทยา 316-221</span>
+          <span class="status-pill status-pending">ยังไม่ได้ส่ง (เหลือเวลา 32 วัน)</span>
+        </div>
+        <div class="assign-title">ส่งรายงานกลุ่ม (Group Report Submission)</div>
+        <div class="assign-section-name">หัวข้อ: รายงานการศึกษาค้นคว้าวิชาโลหะวิทยา (Section รายงาน)</div>
+        <div class="assign-prompt-box">
+          <strong>📝 คำสั่งจากอาจารย์ใน LMS:</strong>
+          "ให้ตัวแทนกลุ่ม 1 คน ส่งรายงานเป็นไฟล์ <strong>PDF</strong> ภายในวันที่ <strong>9 ตุลาคม 2569 เวลา 23:59 น.</strong>"
+        </div>
+        <div class="assign-meta-grid">
+          <div class="assign-meta-item"><span><strong>กำหนดส่ง:</strong> วันศุกร์ที่ 9 ตุลาคม 2569 เวลา 23:59 น.</span></div>
+          <div class="assign-meta-item"><span>⏳ <strong>เวลาที่เหลือ:</strong> ประมาณ 32 วัน</span></div>
+          <div class="assign-meta-item"><span>👥 <strong>การส่ง:</strong> ตัวแทนกลุ่มส่ง 1 คน (ไฟล์ PDF)</span></div>
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/assign/view.php?id=554087" target="_blank" class="btn-lms-link" style="background:#ef4444;">🔗 เปิดหน้าส่งรายงานใน LMS</a>
+          <button class="btn-copy-prompt" onclick="copyPromptText('ให้ตัวแทนกลุ่ม 1 คน ส่งรายงานเป็นไฟล์ PDF ภายในวันที่ 9 ตุลาคม 2569')">📋 คัดลอกโจทย์</button>
+        </div>
+      </div>
+
+      <!-- TASK 2: คะแนนสอบกลางภาค -->
+      <div class="assignment-card" data-status="graded" style="border-left:5px solid #8b5cf6;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-metal">⚙️ โลหะวิทยา 316-221</span>
+          <span class="status-pill status-graded">บันทึกคะแนนแล้ว (Graded: 3.00 / 20.00)</span>
+        </div>
+        <div class="assign-title">คะแนนสอบกลางภาค (Midterm Examination Score)</div>
+        <div class="assign-prompt-box">
+          <strong>รายละเอียด:</strong> คะแนนสอบกลางภาค คิดเป็นสัดส่วนคะแนนเก็บ <strong>20%</strong> ของรายวิชา • ได้คะแนน: <strong>3.00 / 20.00</strong>
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/assign/view.php?id=660457" target="_blank" class="btn-lms-link">🔗 ดูคะแนนใน LMS</a>
+        </div>
+      </div>
+
+      <!-- TASK 3: สอบย่อยครั้งที่ 1 Quiz -->
+      <div class="assignment-card" data-status="quiz" style="border-left:5px solid #0071e3;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-metal">⚙️ โลหะวิทยา 316-221</span>
+          <span class="status-pill status-submitted">🎯 สอบย่อยในระบบ (Quiz)</span>
+        </div>
+        <div class="assign-title">สอบย่อยครั้งที่ 1 (Quiz 1)</div>
+        <div class="assign-prompt-box">
+          <strong>📝 ขอบเขต:</strong> Unit 1 โครงสร้างผลึก และ Unit 2 ข้อบกพร่องในผลึกโลหะ
+        </div>
+        <div class="assign-actions-row">
+          <a href="https://lms.psu.ac.th/mod/quiz/view.php?id=407532" target="_blank" class="btn-lms-link">🔗 เปิดหน้าควิซใน LMS</a>
+        </div>
+      </div>
+
+      <!-- TASK 4: แบบฝึกหัดที่ 1 -->
+      <div class="assignment-card" data-status="exercise" style="border-left:5px solid #10b981;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-metal">⚙️ โลหะวิทยา 316-221</span>
+          <span class="status-pill status-submitted">แบบฝึกหัดประจำบทที่ 1</span>
+        </div>
+        <div class="assign-title">แบบฝึกหัดที่ 1 : ระนาบและทิศทางผลึก (Miller Indices)</div>
+        <div class="assign-prompt-box">
+          <strong>โจทย์:</strong> วาดและคำนวณหาดัชนีมิลเลอร์ [uvw], (hkl), คำนวณความหนาแน่นเชิงเส้น (LD) และเชิงระนาบ (PD)
+        </div>
+        <div class="assign-actions-row">
+          <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/03_แบบฝึกหัดและเฉลย/316-221%20แบบฝึกหัดที่%201%20ระนาบและทิศทาง.pdf" target="_blank" class="btn-lms-link">📖 เปิดดูโจทย์แบบฝึกหัด</a>
+        </div>
+      </div>
+
+      <!-- TASK 5: แบบฝึกหัดที่ 7 (มีเฉลย) -->
+      <div class="assignment-card" data-status="exercise" style="border-left:5px solid #34d399;">
+        <div class="assign-top-row">
+          <span class="assign-course-tag tag-metal">⚙️ โลหะวิทยา 316-221</span>
+          <span class="status-pill status-submitted">✅ มีไฟล์เฉลยละเอียดในเครื่อง</span>
+        </div>
+        <div class="assign-title">แบบฝึกหัดที่ 7 : การอบชุบความร้อนเหล็กกล้า (Heat Treatment)</div>
+        <div class="assign-prompt-box">
+          <strong>เนื้อหา:</strong> แผนภาพ TTT/CCT, การเกิด Martensite, Bainite, Pearlite พร้อมไฟล์เฉลยวิธีคิดละเอียด
+        </div>
+        <div class="assign-actions-row">
+          <a href="../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/03_แบบฝึกหัดและเฉลย/เฉลยแบบฝึกหัดที่%207.pdf" target="_blank" class="btn-lms-link" style="background:#10b981;">📖 เปิดดูไฟล์เฉลยละเอียด</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  
+    <div class="notice-banner lms-notice">
+      <div style="font-size:1.6rem;">💡</div>
+      <div>
+        <strong>ต้องการอ่านสรุปทบทวนบทเรียน หรือฝึกทำโจทย์แนวข้อสอบ?</strong><br>
+        <span style="color:var(--muted); font-size:0.85rem;">เราได้แยกเนื้อหาสรุปเจาะลึก 6 บท, แผนภาพเฟส Fe-C, การอบชุบ TTT, คลังข้อสอบพร้อมเฉลย และ Ultra Cheat Sheet ไว้ในหน้าเฉพาะแล้ว</span>
+      </div>
+      <a href="metallurgy_summary.html" class="notice-banner-btn btn-to-study">📖 เปิดหน้าสรุปเนื้อหา & แนวข้อสอบ</a>
+    </div>
+    
+  </main>
+
+  </div>
+
+  <!-- FLOATING NOTEPAD -->
   <button id="note-fab" class="note-fab" onclick="toggleNotePanel()" title="เปิดกระดาษจดโน้ต & วาดเขียน">✍️</button>
   <div id="note-panel" class="note-panel">
     <div class="note-header">
@@ -3815,93 +4007,200 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
   </script>
 
 
-<script>
-  const allCatalog = [
-    // Polymers
-    { title: "ประมวลรายวิชาและเค้าโครงเนื้อหา 342-201", file: "342-201 course outline 1-2569.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/04_ประมวลรายวิชา/342-201 course outline 1-2569.pdf" },
-    { title: "สมบัติพื้นฐาน การละลาย และสภาพผลึก", file: "Basic properties -65.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Basic properties -65.pdf" },
-    { title: "ปฏิกิริยาเคมีของพอลิเมอร์และการเสื่อมสภาพ", file: "Chemical Reaction of polymers.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Chemical Reaction of polymers.pdf" },
-    { title: "พฤติกรรมทางความร้อน (Tg, Tm และ DSC)", file: "Thermal transition-68-student.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Thermal transition-68-student.pdf" },
-    { title: "ระบบและเทคนิคการสังเคราะห์พอลิเมอร์", file: "V.polymer_system-up date 68.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/V.polymer_system-up date 68.pdf" },
-    { title: "รวมเอกสารคำสอนและสรุปเลกเชอร์ 342-201", file: "Lecture 342-201.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/01_สไลด์และเลกเชอร์/Lecture 342-201.pdf" },
-    { title: "เอกสารคำสอนฉบับสมบูรณ์ Final (อ.สิริญญา)", file: "เอกสารคำสอน สิริญญา จันทรักษ์ - 342-201 Final.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/02_เอกสารคำสอน/เอกสารคำสอน สิริญญา จันทรักษ์ - 342-201 Final.pdf" },
-    { title: "เอกสารคำสอนวิชาพอลิเมอร์ (รศ.ชวนพิศ)", file: "เอกสารคำสอน-ชวนพิศ.pdf", sub: "พอลิเมอร์", type: "pdf", url: "../01_วิชาเอก_Materials/02_พอลิเมอร์_Polymer/02_เอกสารคำสอน/เอกสารคำสอน-ชวนพิศ.pdf" },
-    
-    // Ceramics
-    { title: "ประมวลรายวิชา 316-211 วัสดุเซรามิก (2569)", file: "Course syllabus 316-211-2569.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/02_ประมวลรายวิชาและบทความ/Course syllabus 316-211-2569.pdf" },
-    { title: "เอกสารคำสอนหลัก Ceramic Materials", file: "316-211 ceramic materials.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/01_สไลด์และเลกเชอร์/316-211 ceramic materials.pdf" },
-    { title: "บรรยายบทที่ 1: การจำแนกประเภทและโครงสร้างผลึก", file: "Lecture I.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/01_สไลด์และเลกเชอร์/Lecture I.pdf" },
-    { title: "บรรยายเทคนิคการขึ้นรูปเซรามิกแบบดั้งเดิม", file: "Lecture I_Traditional forming techniques.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/01_สไลด์และเลกเชอร์/Lecture I_Traditional forming techniques.pdf" },
-    { title: "บรรยายเทคนิคการเคลือบและเคมีน้ำเคลือบ", file: "Lecture I-III Glazing technique.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/01_สไลด์และเลกเชอร์/Lecture I-III Glazing technique.pdf" },
-    { title: "วัสดุศาสตร์บ้านดินและเซรามิกก่อสร้าง", file: "Earthen Home  Materials Science.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/01_สไลด์และเลกเชอร์/Earthen Home  Materials Science.pdf" },
-    { title: "กรณีศึกษาวัตถุดิบท้องถิ่น (เขา-ป่า-นา-เล)", file: "เขา-ป่า-นา-เล.pdf", sub: "เซรามิก", type: "pdf", url: "../01_วิชาเอก_Materials/03_เซรามิก_Ceramics/02_ประมวลรายวิชาและบทความ/เขา-ป่า-นา-เล.pdf" },
-
-    // Metallurgy
-    { title: "ประมวลรายวิชา 316-221 โลหะวิทยา (2569)", file: "ประมวลรายวิชา 316-221 1-2569.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/04_ประมวลรายวิชาและสื่อ/ประมวลรายวิชา 316-221 1-2569.pdf" },
-    { title: "Unit 1: โครงสร้างผลึก ระนาบ และทิศทาง (PDF)", file: "316-221 Metallurgy unit 1.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 1.pdf" },
-    { title: "Unit 1: โครงสร้างผลึก (สไลด์ PPTX)", file: "316-221 Metallurgy unit 1.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 1.pptx" },
-    { title: "แบบฝึกหัดที่ 1: การหาดัชนีมิลเลอร์ระนาบและทิศทาง", file: "316-221 แบบฝึกหัดที่ 1 ระนาบและทิศทาง.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/03_แบบฝึกหัดและเฉลย/316-221 แบบฝึกหัดที่ 1 ระนาบและทิศทาง.pdf" },
-    { title: "Unit 2: ข้อบกพร่องในผลึกและการเคลื่อนที่ดิสโลเคชัน", file: "316-221 Metallurgy unit 2.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 2.pdf" },
-    { title: "Unit 2: ข้อบกพร่องในผลึกโลหะ (PPTX)", file: "316-221 Metallurgy unit 2.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 2.pptx" },
-    { title: "Unit 3: กลไกการเพิ่มความแข็งแรงของโลหะ (PDF)", file: "316-221 Metallurgy unit 3.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 3.pdf" },
-    { title: "Unit 3: กลไกการเพิ่มความแข็งแรง (PPTX)", file: "316-221 Metallurgy unit 3.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 3.pptx" },
-    { title: "Unit 4: การคืนตัวและการตกผลึกใหม่ (PDF)", file: "316-221 Metallurgy unit 4.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 4.pdf" },
-    { title: "Unit 4: การคืนตัวและการตกผลึกใหม่ (PPTX)", file: "316-221 Metallurgy unit 4.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 4.pptx" },
-    { title: "Unit 5: แผนภาพเฟสระบบ 2 องค์ประกอบ (PDF)", file: "316-221 Metallurgy unit 5.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 5.pdf" },
-    { title: "Unit 5: แผนภาพเฟส (PPTX)", file: "316-221 Metallurgy unit 5.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 5.pptx" },
-    { title: "Unit 6: แผนภาพเฟส Fe-Fe3C และโครงสร้างจุลภาค (PDF)", file: "316-221 Metallurgy unit 6.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 6.pdf" },
-    { title: "Unit 6: ระบบเหล็ก-คาร์บอน (PPTX)", file: "316-221 Metallurgy unit 6.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 6.pptx" },
-    { title: "Unit 7: การอบชุบความร้อนเหล็กกล้า (PDF)", file: "316-221 Metallurgy unit 7.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 7.pdf" },
-    { title: "Unit 7: การอบชุบความร้อนเหล็กกล้า (PPTX)", file: "316-221 Metallurgy unit 7.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 7.pptx" },
-    { title: "เฉลยแบบฝึกหัดที่ 7: การอบชุบความร้อนและแปลงเฟส", file: "เฉลยแบบฝึกหัดที่ 7.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/03_แบบฝึกหัดและเฉลย/เฉลยแบบฝึกหัดที่ 7.pdf" },
-    { title: "Unit 8: การชุบแข็งและการเจือเหล็กกล้า (PDF)", file: "316-221 Metallurgy unit 8.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 8.pdf" },
-    { title: "Unit 8: การชุบแข็งเหล็กกล้า (PPTX)", file: "316-221 Metallurgy unit 8.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 8.pptx" },
-    { title: "Unit 9: โลหะนอกกลุ่มเหล็ก (PDF)", file: "316-221 Metallurgy unit 9.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 9.pdf" },
-    { title: "Unit 9: โลหะนอกกลุ่มเหล็ก (PPTX)", file: "316-221 Metallurgy unit 9.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 9.pptx" },
-    { title: "Unit 10: ผงโลหะวิทยาและการเผาประสาน (PDF)", file: "316-221 Metallurgy unit 10.pdf", sub: "โลหะ", type: "pdf", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/01_สไลด์_PDF/316-221 Metallurgy unit 10.pdf" },
-    { title: "Unit 10: ผงโลหะวิทยา (PPTX)", file: "316-221 Metallurgy unit 10.pptx", sub: "โลหะ", type: "pptx", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/02_สไลด์_PowerPoint/316-221 Metallurgy unit 10.pptx" },
-    { title: "วิดีโอสาธิตกระบวนการ Gas Atomization", file: "วิดีโอ_สาธิต_Gas_Atomization.wm", sub: "โลหะ", type: "media", url: "../01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/04_ประมวลรายวิชาและสื่อ/วิดีโอ_สาธิต_Gas_Atomization.wm" }
-  ];
-
-  function renderGlobalFiles(filterText = '') {
-    const container = document.getElementById('global-files-container');
-    if (!container) return;
-    const q = filterText.toLowerCase().trim();
-    const filtered = allCatalog.filter(item => !q || item.title.toLowerCase().includes(q) || item.file.toLowerCase().includes(q) || item.sub.includes(q));
-
-    container.innerHTML = filtered.map(item => `
-      <div class="file-item-card">
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <span class="file-type-badge ${item.type === 'pdf' ? 'badge-type-pdf' : item.type === 'pptx' ? 'badge-type-pptx' : 'badge-type-video'}">
-              ${item.type.toUpperCase()}
-            </span>
-            <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted);">${item.sub}</span>
-          </div>
-          <div class="file-item-title">${item.title}</div>
-          <div class="file-item-filename">${item.file}</div>
-        </div>
-        <div class="file-item-footer">
-          <span class="file-item-size">วิชา${item.sub}</span>
-          <a href="${item.url}" target="_blank" class="file-btn-open">📖 เปิดอ่าน</a>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  function onGlobalSearch(val) {
-    renderGlobalFiles(val);
-    const section = document.getElementById('global-all-files');
-    if (val && section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  <script>
+    function filterSubjectFiles(containerId, q) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const cards = container.querySelectorAll('.file-item-card');
+      const term = q.toLowerCase().trim();
+      cards.forEach(c => {
+        const text = c.innerText.toLowerCase();
+        c.style.display = (!term || text.includes(term)) ? 'flex' : 'none';
+      });
     }
-  }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    renderGlobalFiles();
-  });
-</script>
+    const metalQuestions = [
+      {
+        q: "1. โครงสร้างผลึกโลหะแบบ FCC (Face-Centered Cubic) มีค่า Coordination Number และ Atomic Packing Factor (APF) เท่าใด?",
+        opts: [
+          "A. CN = 8, APF = 0.68",
+          "B. CN = 12, APF = 0.74",
+          "C. CN = 12, APF = 0.68",
+          "D. CN = 6, APF = 0.52"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! FCC มีอะตอมสัมผัสกัน 12 อะตอม (CN=12) และมีค่าความหนาแน่นการบรรจุอะตอมสูงสุดคือ APF = 0.74 (เท่ากับ HCP)"
+      },
+      {
+        q: "2. ในยูนิตเซลล์รูปลูกบาศก์ ระนาบที่ตัดแกน X ที่ 1, แกน Y ที่ 1 และขนานกับแกน Z (จุดตัดที่ ∞) มีดัชนีมิลเลอร์ตรงกับข้อใด?",
+        opts: [
+          "A. (1 1 1)",
+          "B. (1 1 0)",
+          "C. [1 1 0]",
+          "D. (0 0 1)"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! จุดตัดแกนคือ (1, 1, ∞) $
+ightarrow$ ส่วนกลับคือ (1/1, 1/1, 1/∞) = (1, 1, 0) และเขียนในวงเล็บกลมสำหรับระนาบผลึก"
+      },
+      {
+        q: "3. ข้อใดกล่าวถึง Edge Dislocation (ดิสโลเคชันแบบขอบ) ในผลึกโลหะได้ถูกต้องที่สุด?",
+        opts: [
+          "A. เวกเตอร์เบอร์เกอร์ (b) ขนานกับเส้นดิสโลเคชัน (l)",
+          "B. เวกเตอร์เบอร์เกอร์ (b) ตั้งฉากกับเส้นดิสโลเคชัน (l)",
+          "C. ไม่มีระนาบอะตอมส่วนเกิน",
+          "D. ไม่ทำให้เกิดการเสียรูปถาวร"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! Edge dislocation มีระนาบเกินครึ่งระนาบ และเวกเตอร์เบอร์เกอร์ b จะตั้งฉาก (⊥) กับเส้นดิสโลเคชัน l เสมอ ส่วน Screw dislocation จะขนาน (//)"
+      },
+      {
+        q: "4. ตามสมการ Hall-Petch (σy = σ0 + ky · d^(-1/2)) การลดขนาดเกรนเฉลี่ย (d) ของโลหะส่งผลอย่างไร?",
+        opts: [
+          "A. ความแข็งแรงเพิ่มขึ้น แต่ความเหนียวลดลงอย่างมาก",
+          "B. ความแข็งแรงเพิ่มขึ้น และความเหนียวเพิ่มขึ้นด้วย",
+          "C. ความแข็งแรงลดลง แต่ความเหนียวเพิ่มขึ้น",
+          "D. จุดหลอมเหลวลดลง"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! การลดขนาดเกรน (Grain refinement) เป็นกลไกการเพิ่มความแข็งแรงเพียงอย่างเดียวที่ช่วยเพิ่มทั้งความเค้นคราก (Yield strength) และความเหนียว (Toughness/Ductility) ไปพร้อมกัน"
+      },
+      {
+        q: "5. ในระบบเหล็ก-คาร์บอน (Fe-Fe3C) ปฏิกิริยายูเทกตอยด์ (Eutectoid Reaction) เกิดขึ้นที่อุณหภูมิและปริมาณคาร์บอนเท่าใด และได้โครงสร้างใด?",
+        opts: [
+          "A. 1,147°C, 4.3 wt% C $
+ightarrow$ Ledeburite",
+          "B. 727°C, 0.76 wt% C $
+ightarrow$ Pearlite (α-ferrite + Fe3C)",
+          "C. 912°C, 0.022 wt% C $
+ightarrow$ Austenite",
+          "D. 1,495°C, 0.17 wt% C $
+ightarrow$ Delta ferrite"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! ที่ 727°C และคาร์บอน 0.76 wt% เฟสของแข็งออสเทไนต์ (γ) จะสลายตัวพร้อมกันเป็นของแข็ง 2 เฟสแบบสลับชั้นคือ เพิร์ลไลต์ (Pearlite = α-ferrite + Fe3C)"
+      },
+      {
+        q: "6. โครงสร้างมาร์เทนไซต์ (Martensite) ที่ได้จากการชุบน้ำเย็นจัด (Quenching) แข็งมากแต่เปราะ การนำไปผ่านกระบวนการ Tempering มีเป้าหมายเพื่ออะไร?",
+        opts: [
+          "A. เพื่อเปลี่ยนโครงสร้างกลับเป็นออสเทไนต์ 100%",
+          "B. เพื่อลดความเค้นตกค้างและเพิ่มความเหนียว (Toughness) โดยให้คาร์บอนตกตะกอนเป็นอนุภาคคาร์ไบด์ละเอียด (Tempered Martensite)",
+          "C. เพื่อเพิ่มปริมาณคาร์บอนในเนื้อเหล็ก",
+          "D. เพื่อละลายเฟอร์ไรต์ออกไป"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! Martensite มีโครงสร้าง BCT ที่บิดเบี้ยวและมีความเค้นตกค้างสูงมาก การ Tempering ที่ 250-650°C จะช่วยปลดปล่อยความเค้น ให้คาร์บอนตกตะกอนเป็นอนุภาคซีเมนไทต์จิ๋วในเนื้อเฟอร์ไรต์ ได้ความแข็งแรงและความเหนียวสูงร่วมกัน"
+      },
+      {
+        q: "7. เหตุใดโลหะโครงสร้าง FCC เช่น อะลูมิเนียม ทองแดง จึงมีความเหนียว (Ductility) สูงมากและไม่มีจุดเปลี่ยนเปราะที่อุณหภูมิต่ำ (No DBTT)?",
+        opts: [
+          "A. มีระบบการเลื่อนมากถึง 48 ระบบ",
+          "B. มีระบบการเลื่อน 12 ระบบบนระนาบ {111} ซึ่งเป็น Close-packed planes ทำให้ดิสโลเคชันเคลื่อนที่ได้ง่ายทุกอุณหภูมิ",
+          "C. ไม่มีขอบเกรนในเนื้อโลหะ",
+          "D. มีจุดหลอมเหลวต่ำกว่าโลหะอื่น"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! FCC มีระบบการเลื่อน 12 ระบบ ({111}<110>) ซึ่งระนาบ {111} เป็นระนาบชิดแน่นที่สุด พลังงานที่ใช้ในการเลื่อนไถลจึงต่ำมากและไม่ไวต่ออุณหภูมิ ทำให้โลหะ FCC ไม่เกิดการแตกเปราะที่อุณหภูมิต่ำ"
+      },
+      {
+        q: "8. ในการอ่านแผนภาพ TTT หากต้องการชุบเหล็กกล้าให้ได้โครงสร้าง 'เบไนต์ (Bainite)' 100% ต้องใช้กระบวนการใด?",
+        opts: [
+          "A. ชุบน้ำเย็นเฉียบพลันทันทีถึงอุณหภูมิห้อง",
+          "B. Austempering: ชุบในอ่างเกลือร้อนที่ 250 - 450°C แล้วแช่จนแปลงเฟสเสร็จสมบูรณ์ ก่อนปล่อยให้เย็นตัว",
+          "C. ปล่อยให้เย็นตัวในเตาอบอย่างช้าๆ (Full Annealing)",
+          "D. ปล่อยให้เย็นตัวในอากาศนิ่ง (Normalizing)"
+        ],
+        ans: 1,
+        exp: "ถูกต้อง! Austempering คือการชุบเร็วผ่านช่วงจมูกเพิร์ลไลต์ลงมาหยุดแช่ในอ่างเกลือร้อนที่อุณหภูมิเหนือ Ms (ช่วงเกิด Bainite) แช่จนออสเทไนต์เปลี่ยนเป็นเบไนต์ 100% แล้วจึงปล่อยให้เย็นตัว"
+      },
+      {
+        q: "9. กระบวนการ Gas Atomization ในการผลิตผงโลหะ (Powder Metallurgy) มีจุดเด่นสำคัญคือข้อใด?",
+        opts: [
+          "A. ได้ผงโลหะทรงกลมสวย ผิวเรียบ ความบริสุทธิ์สูง ออกซิเจนต่ำ เหมาะสำหรับ 3D Printing โลหะ",
+          "B. ใช้ต้นทุนต่ำที่สุดเพราะใช้น้ำฉีดพ่น",
+          "C. ได้ผงโลหะที่มีรูปร่างไม่แน่นอนและผิวขรุขระมาก",
+          "D. ใช้ได้เฉพาะกับโลหะทองคำเท่านั้น"
+        ],
+        ans: 0,
+        exp: "ถูกต้อง! Gas Atomization ใช้แก๊สเฉื่อยความดันสูงพ่นสายน้ำโลหะ ทำให้ละอองโลหะแข็งตัวเป็นเม็ดทรงกลมสมบูรณ์ มีความลื่นไหล (Flowability) สูง และออกซิเจนต่ำมาก นิยมใช้ในงานพิมพ์สามมิติโลหะและการอัดขึ้นรูปขั้นสูง"
+      },
+      {
+        q: "10. การคำนวณหากฎคานงัด (Lever Rule) บนเส้นไทไลน์ในแผนภาพเฟส สัดส่วนของแต่ละเฟสคำนวณได้อย่างไร?",
+        opts: [
+          "A. ความยาวของแขนคานงัดด้านตรงข้าม หารด้วยความยาวรวมของเส้นไทไลน์",
+          "B. ความยาวของแขนคานงัดด้านเดียวกัน หารด้วยความยาวรวม",
+          "C. ผลคูณของอุณหภูมิและส่วนผสม",
+          "D. พื้นที่ใต้กราฟแผนภาพเฟส"
+        ],
+        ans: 0,
+        exp: "ถูกต้อง! กฎคานงัด (Lever Rule) ใช้หลักการสมดุลโมเมนต์ สัดส่วนมวลของเฟสใดเฟสหนึ่ง จะเท่ากับ 'ความยาวของแขนคานงัดด้านตรงข้าม' หารด้วย 'ความยาวรวมทั้งหมดของเส้นไทไลน์'"
+      }
+    ];
 
+    function initMetalQuiz() {
+      const container = document.getElementById('m-quiz-container');
+      if (!container) return;
+      container.innerHTML = metalQuestions.map((item, qIdx) => `
+        <div class="quiz-card" id="m-card-${qIdx}">
+          <div class="quiz-question">${item.q}</div>
+          <div class="quiz-options">
+            ${item.opts.map((opt, oIdx) => `
+              <div class="quiz-option" id="m-opt-${qIdx}-${oIdx}" onclick="selectOpt('m', ${qIdx}, ${oIdx})">
+                <input type="radio" name="m-q-${qIdx}" id="m-radio-${qIdx}-${oIdx}" value="${oIdx}">
+                <label for="m-radio-${qIdx}-${oIdx}" style="cursor:pointer; width:100%;">${opt}</label>
+              </div>
+            `).join('')}
+          </div>
+          <div class="quiz-explanation" id="m-exp-${qIdx}">${item.exp}</div>
+        </div>
+      `).join('');
+    }
+
+    function selectOpt(prefix, qIdx, oIdx) {
+      const radios = document.getElementsByName(`${prefix}-q-${qIdx}`);
+      if (radios[oIdx]) radios[oIdx].checked = true;
+      const card = document.getElementById(`${prefix}-card-${qIdx}`);
+      if (card) {
+        card.querySelectorAll('.quiz-option').forEach((el, idx) => {
+          el.classList.toggle('selected', idx === oIdx);
+        });
+      }
+    }
+
+    function checkMetalQuiz() {
+      let score = 0;
+      metalQuestions.forEach((item, qIdx) => {
+        const radios = document.getElementsByName(`m-q-${qIdx}`);
+        let selected = -1;
+        for (let i = 0; i < radios.length; i++) {
+          if (radios[i].checked) { selected = i; break; }
+        }
+        const exp = document.getElementById(`m-exp-${qIdx}`);
+        if (exp) exp.style.display = 'block';
+
+        for (let i = 0; i < item.opts.length; i++) {
+          const optEl = document.getElementById(`m-opt-${qIdx}-${i}`);
+          if (!optEl) continue;
+          optEl.classList.remove('correct', 'incorrect');
+          if (i === item.ans) optEl.classList.add('correct');
+          else if (i === selected) optEl.classList.add('incorrect');
+        }
+        if (selected === item.ans) score++;
+      });
+
+      const badge = document.getElementById('m-quiz-score-badge');
+      const scoreText = document.getElementById('m-score-text');
+      if (badge && scoreText) {
+        scoreText.innerText = score;
+        badge.style.display = 'inline-block';
+        badge.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initMetalQuiz();
+    });
+  </script>
 
 <!-- TOAST POPUP & ASSIGNMENT FILTER JS -->
 <div id="toast" class="toast-notification"><span>คัดลอกโจทย์เรียบร้อยแล้ว</span></div>
@@ -4262,3 +4561,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+    

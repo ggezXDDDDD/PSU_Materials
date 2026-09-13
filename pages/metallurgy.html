@@ -3036,7 +3036,156 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
   }
 }
 </style>
-</head>
+<style>
+/* ==========================================================================
+   DUAL-MODE SWITCHER (LMS OFFICIAL vs STUDY GUIDE)
+   ========================================================================== */
+.mode-switch-wrapper {
+  margin: 1.2rem 0 1.8rem;
+}
+.mode-switch-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  background: var(--subcard-bg);
+  padding: 8px;
+  border-radius: 22px;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+.mode-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  background: transparent;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.5px solid transparent;
+  position: relative;
+}
+.mode-tab:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+.mode-tab.active {
+  background: var(--card-bg);
+  border-color: var(--primary);
+  box-shadow: 0 10px 24px rgba(0, 113, 227, 0.16), inset 0 1px 1px #fff;
+}
+.mode-tab.active.study-mode {
+  border-color: #8b5cf6;
+  box-shadow: 0 10px 24px rgba(139, 92, 246, 0.18), inset 0 1px 1px #fff;
+}
+.mode-tab-icon {
+  font-size: 1.9rem;
+  flex-shrink: 0;
+}
+.mode-tab-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.mode-tab-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.mode-tab.active .mode-tab-title {
+  color: var(--primary);
+}
+.mode-tab.active.study-mode .mode-tab-title {
+  color: #8b5cf6;
+}
+.mode-tab-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.mode-tab-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(0, 113, 227, 0.12);
+  color: #0071e3;
+  border: 1px solid rgba(0, 113, 227, 0.25);
+  white-space: nowrap;
+}
+.mode-tab-badge.study-badge {
+  background: rgba(139, 92, 246, 0.12);
+  color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.notice-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+.notice-banner.lms-notice {
+  border-left: 5px solid #0071e3;
+}
+.notice-banner.study-notice {
+  border-left: 5px solid #8b5cf6;
+}
+.notice-banner-btn {
+  margin-left: auto;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.notice-banner-btn.btn-to-study {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+.notice-banner-btn.btn-to-study:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45);
+}
+.notice-banner-btn.btn-to-lms {
+  background: linear-gradient(135deg, #0071e3, #0284c7);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+}
+.notice-banner-btn.btn-to-lms:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.45);
+}
+
+@media (max-width: 768px) {
+  .mode-switch-bar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .notice-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .notice-banner-btn {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+</style></head>
 <body>
   <div class="portal-layout">
     <!-- LEFT GLASS SIDEBAR -->
@@ -3163,11 +3312,34 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
     <!-- UNIVERSAL RESPONSIVE TOP NAV -->
     
     <div class="rainbow-speed-banner">🏎️💨 NITRO RGB SPEEDWAY ACTIVE • โหมดสีรุ้งซิ่งระดับ MAX 🏁</div>
+
+    <!-- DUAL-MODE SWITCHER -->
+    <div class="mode-switch-wrapper">
+      <div class="mode-switch-bar">
+        <a href="metallurgy.html" class="mode-tab active">
+          <span class="mode-tab-icon">🏛️</span>
+          <div class="mode-tab-info">
+            <span class="mode-tab-title">ข้อมูล & งานใน LMS</span>
+            <span class="mode-tab-desc">สไลด์คำสอนทางการ, การบ้าน, ควิซ และกำหนดส่งจริง</span>
+          </div>
+          <span class="mode-tab-badge">LMS Official</span>
+        </a>
+        <a href="metallurgy_summary.html" class="mode-tab ">
+          <span class="mode-tab-icon">📖</span>
+          <div class="mode-tab-info">
+            <span class="mode-tab-title">สรุปเนื้อหา & เตรียมสอบ</span>
+            <span class="mode-tab-desc">สรุปเจาะลึกทุกบท, สูตรคำนวณ, คลังข้อสอบ และ Cheat Sheet</span>
+          </div>
+          <span class="mode-tab-badge study-badge">Study Guide</span>
+        </a>
+      </div>
+    </div>
+    
     
     
 <header class="hero hero-metallurgy">
-      <div class="hero-badge badge-metallurgy">⚙️ 316-221 โลหะวิทยา (Metallurgy)</div>
-      <h1 class="hero-title">ศูนย์รวมสรุปเนื้อหา เอกสาร & งานวิชาโลหะวิทยา</h1>
+      <div class="hero-badge badge-metallurgy">🏛️ ข้อมูลทางการจาก PSU LMS • โลหะวิทยา 1 (316-221)</div>
+      <h1 class="hero-title">คลังไฟล์สไลด์ & ศูนย์รวมงาน LMS วิชาโลหะวิทยา 1</h1>
       <p class="hero-subtitle">รวบรวมเนื้อหาสำคัญ: โครงสร้างผลึก & ดัชนีมิลเลอร์ • ข้อบกพร่อง & ดิสโลเคชัน • กลไกเพิ่มความแข็งแรง (Hall-Petch, Cold work) • แผนภาพเฟส & Fe-Fe3C • การอบชุบความร้อน TTT • ผงโลหะวิทยา และคลังข้อสอบ</p>
       <div class="hero-stats">
         <span class="stat-pill" style="color:#ef4444; border-color:rgba(239, 68, 68, 0.35);">🔥 รายงานกลุ่ม PDF (ปิด 9 ต.ค.)</span>
@@ -3177,15 +3349,9 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
     </header>
 
   <div class="subject-subnav">
-    <a href="#m-files">📁 คลังเอกสาร & สไลด์ (24 ไฟล์)</a>
-    <a href="#m-part1">1.โครงสร้างผลึก & มิลเลอร์</a>
-    <a href="#m-part2">2.ดิสโลเคชัน & การเลื่อน</a>
-    <a href="#m-part3">3.กลไกเพิ่มความแข็งแรง</a>
-    <a href="#m-part4">4.แผนภาพเฟส & Fe-C</a>
-    <a href="#m-part5">5.การอบชุบ TTT & Martensite</a>
-    <a href="#m-part6">6.ผงโลหะวิทยา & โลหะนอกกลุ่มเหล็ก</a>
-    <a href="#m-quiz" class="quiz-btn">📝 ข้อสอบโลหะ 10 ข้อ</a>
-    <a href="#m-ultra" style="background:var(--purple-bg); color:var(--purple); font-weight:700;">⚡ สรุปสั้น 1 นาที</a>
+    <a href="#m-files">📁 คลังเอกสาร & สไลด์ใน LMS (24 ไฟล์)</a>
+    <a href="#m-assignments">📋 รายละเอียดงาน & ควิซ LMS (2 งาน)</a>
+    <a href="metallurgy_summary.html" style="background:rgba(139, 92, 246, 0.15); color:#8b5cf6; border-color:rgba(139, 92, 246, 0.3);">📖 สรุปเนื้อหาเตรียมสอบ ➔</a>
   </div>
 
   <!-- FILE HUB FOR METALLURGY -->
@@ -3625,344 +3791,18 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
   </section>
 
 
-  <!-- CONTENT CHAPTER 1 -->
-  <section id="m-part1" class="card">
-    <h2>1. โครงสร้างผลึกโลหะ ระนาบ และทิศทาง (Crystal Structures & Miller Indices)</h2>
-    <p>อะตอมของโลหะยึดเหนี่ยวกันด้วย <strong>พันธะโลหะ (Metallic Bond)</strong> ซึ่งไม่มีทิศทาง (Non-directional) ส่งผลให้อะตอมสามารถจัดเรียงตัวชิดกันแน่นที่สุด (Close-packed) ในรูปแบบผลึก 3 แบบหลัก:</p>
-
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>โครงสร้างผลึก</th>
-            <th>Coordination Number (CN)</th>
-            <th>Atomic Packing Factor (APF)</th>
-            <th>Close-Packed Plane & Direction</th>
-            <th>ตัวอย่างโลหะ</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>FCC</strong> (Face-Centered Cubic)</td>
-            <td>12</td>
-            <td><strong>0.74</strong> (หนาแน่นสูงสุด)</td>
-            <td>ระนาบ $\{111\}$, ทิศทาง $\langle 110 \rangle$</td>
-            <td>$\text{Cu, Al, Ni, Au, Ag, Pb}, \gamma\text{-Fe}$</td>
-          </tr>
-          <tr>
-            <td><strong>BCC</strong> (Body-Centered Cubic)</td>
-            <td>8</td>
-            <td><strong>0.68</strong></td>
-            <td>ไม่มี close-packed plane (หนาแน่นสุดคือ $\{110\}$), ทิศทาง $\langle 111 \rangle$</td>
-            <td>$\alpha\text{-Fe (Ferrite), Cr, Mo, W, V}$</td>
-          </tr>
-          <tr>
-            <td><strong>HCP</strong> (Hexagonal Close-Packed)</td>
-            <td>12</td>
-            <td><strong>0.74</strong> (อัตราส่วน $c/a \approx 1.633$)</td>
-            <td>ระนาบ Basal $(0001)$, ทิศทาง $\langle 11\bar{2}0 \rangle$</td>
-            <td>$\text{Ti, Mg, Zn, Zr, Be}$</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="sub-card">
-      <h3>ดัชนีมิลเลอร์ (Miller Indices) สำหรับทิศทางและระนาบ</h3>
-      <div class="grid-2">
-        <div>
-          <strong style="color:var(--primary);">ทิศทางผลึก $[uvw]$:</strong>
-          <p style="font-size:0.9rem; margin-top:6px;">นำพิกัดจุดปลายลบด้วยจุดเริ่มต้น $[x_2 - x_1, y_2 - y_1, z_2 - z_1]$ แล้วปรับให้เป็นจำนวนเต็มต่ำสุด ถ้าติดลบให้ใส่บาร์ด้านบน เช่น $[1\bar{1}0]$ โดยกลุ่มของทิศทางที่สมมาตรกันจะเขียนในวงเล็บแหลม $\langle uvw \rangle$</p>
-        </div>
-        <div>
-          <strong style="color:var(--accent);">ระนาบผลึก $(hkl)$:</strong>
-          <p style="font-size:0.9rem; margin-top:6px;">หาจุดตัดแกน $X, Y, Z$ (ถ้าขนานแกนใดให้จุดตัดเป็น $\infty$) $\rightarrow$ กลับเศษเป็นส่วน (Reciprocal) $\rightarrow$ ปรับให้เป็นจำนวนเต็มต่ำสุด โดยกลุ่มของระนาบที่สมมาตรกันจะเขียนในวงเล็บปีกกา $\{hkl\}$</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTENT CHAPTER 2 -->
-  <section id="m-part2" class="card">
-    <h2>2. ข้อบกพร่องในผลึกและการเคลื่อนที่ของดิสโลเคชัน (Defects & Slip)</h2>
-    <div class="grid-2">
-      <div class="sub-card">
-        <h3 style="color:var(--primary);">Edge Dislocation (ดิสโลเคชันแบบขอบ)</h3>
-        <p>เกิดจากมี <strong>ระนาบอะตอมส่วนเกินครึ่งระนาบ (Extra half-plane)</strong> แทรกเข้ามาในผลึก</p>
-        <p>• เวกเตอร์เบอร์เกอร์ ($\vec{b}$) <strong>ตั้งฉาก ($\perp$)</strong> กับเส้นดิสโลเคชัน ($\vec{l}$)</p>
-        <p>• เมื่อมีแรงเฉือน ทิศทางการเคลื่อนที่ของดิสโลเคชันจะ <em>ขนาน</em> กับทิศทางของแรงเฉือน</p>
-      </div>
-      <div class="sub-card">
-        <h3 style="color:var(--secondary);">Screw Dislocation (ดิสโลเคชันแบบเกลียว)</h3>
-        <p>เกิดจากการบิดเฉือนผลึกเป็นทางลาดวนรอบแกนคล้ายบันไดเวียน</p>
-        <p>• เวกเตอร์เบอร์เกอร์ ($\vec{b}$) <strong>ขนาน ($\parallel$)</strong> กับเส้นดิสโลเคชัน ($\vec{l}$)</p>
-        <p>• เมื่อมีแรงเฉือน ทิศทางการเคลื่อนที่ของดิสโลเคชันจะ <em>ตั้งฉาก</em> กับทิศทางของแรงเฉือน</p>
-      </div>
-    </div>
-
-    <div class="sub-card">
-      <h3>ระบบการเลื่อน (Slip Systems) และกฎของชมิดท์ (Schmid's Law)</h3>
-      <p>การเสียรูปถาวร (Plastic deformation) ของโลหะเกิดจากการเลื่อนไถลของดิสโลเคชันบน <strong>ระบบการเลื่อน (Slip System = Slip Plane + Slip Direction)</strong></p>
-      <ul>
-        <li><strong>FCC มี 12 ระบบ ($\{111\}\langle 110 \rangle$):</strong> ทุกระบบอยู่บน close-packed plane ทำให้โลหะ FCC มีความเหนียวสูงมากในทุกช่วงอุณหภูมิ ไม่เปราะ</li>
-        <li><strong>BCC มี 48 ระบบ ($\{110\}, \{112\}, \{123\}\langle 111 \rangle$):</strong> ไม่มี close-packed plane พลังงานกระตุ้นการเลื่อนขึ้นกับอุณหภูมิสูง จึงเกิดปรากฏการณ์ <em>จุดเปลี่ยนเปราะที่อุณหภูมิต่ำ (Ductile-to-Brittle Transition Temperature - DBTT)</em></li>
-      </ul>
-      <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; margin-top:10px;">
-        <strong>กฎของชมิดท์ (ความเค้นเฉือนวิกฤตบนระนาบเลื่อน $\tau_{crss}$):</strong>
-        <div style="text-align:center; font-size:1.15rem; font-weight:700; color:var(--primary); margin:8px 0;">
-          $$\tau_{R} = \sigma \cos\phi \cos\lambda$$
-        </div>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">$\phi$ = มุมระหว่างแรงดึงกับแนวตั้งฉากระนาบเลื่อน, $\lambda$ = มุมระหว่างแรงดึงกับทิศทางการเลื่อน โดยค่า Schmid Factor สูงสุดคือ 0.5 (เมื่อ $\phi = \lambda = 45^\circ$)</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTENT CHAPTER 3 -->
-  <section id="m-part3" class="card">
-    <h2>3. กลไกการเพิ่มความแข็งแรงและการอบคืนตัว (Strengthening Mechanisms)</h2>
-    <p>หลักการสำคัญของการเพิ่มความแข็งแรงในโลหะคือ: <strong>"การขัดขวางไม่ให้ดิสโลเคชันเคลื่อนที่ได้ง่าย"</strong> มี 4 กลไกหลัก:</p>
-
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>กลไกการเพิ่มความแข็งแรง</th>
-            <th>หลักการทางกายภาพ</th>
-            <th>สมการ / ผลลัพธ์ต่อความเหนียว</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>1. การลดขนาดเกรน (Grain Boundary Strengthening)</strong></td>
-            <td>ขอบเกรนเป็นบริเวณที่อะตอมเรียงตัวไม่เป็นระเบียบ ทำให้ดิสโลเคชันไม่สามารถเคลื่อนที่ข้ามเกรนได้โดยตรง เกิด Dislocation pile-up</td>
-            <td><strong>สมการ Hall-Petch:</strong> $\sigma_y = \sigma_0 + k_y d^{-1/2}$<br><span style="color:var(--success); font-weight:700;">เป็นวิธีเดียวที่เพิ่มความแข็งแรงและเพิ่มความเหนียวไปพร้อมกัน!</span></td>
-          </tr>
-          <tr>
-            <td><strong>2. สารละลายของแข็ง (Solid Solution Strengthening)</strong></td>
-            <td>อะตอมสารเจือ (เล็กกว่าหรือใหญ่กว่าโลหะหลัก) ก่อให้เกิดสนามความเค้น (Lattice strain) ดึงดูดและตรึงดิสโลเคชันไว้</td>
-            <td>$\Delta \sigma \propto \sqrt{C}$ (ความแข็งแรงเพิ่ม ความเหนียวลดลงเล็กน้อย)</td>
-          </tr>
-          <tr>
-            <td><strong>3. การขึ้นรูปเย็น (Strain Hardening / Cold Work)</strong></td>
-            <td>การรีดหรือดึงเย็นที่อุณหภูมิต่ำกว่าจุดตกผลึกใหม่ ความหนาแน่นดิสโลเคชันเพิ่มขึ้นมหาศาล ($10^5 \rightarrow 10^{10} \text{ cm}^{-2}$) จนพันกันเอง (Tangles)</td>
-            <td>$\%CW = \frac{A_0 - A_d}{A_0} \times 100\%$<br>ความเค้นคราก ($\sigma_y$) และความต้านทานแรงดึง ($\sigma_{uts}$) เพิ่มขึ้น แต่ความยืดตัว ($\%EL$) ลดลงฮวบ</td>
-          </tr>
-          <tr>
-            <td><strong>4. การบ่มแข็ง (Precipitation / Age Hardening)</strong></td>
-            <td>เกิดอนุภาคเฟสที่สองขนาดจิ๋วกระจายตัวสม่ำเสมอ บังคับให้ดิสโลเคชันต้องตัดผ่าน (Cutting) หรือโค้งวนอ้อมรอบอนุภาค (Orowan looping)</td>
-            <td>ใช้กับโลหะผสมอะลูมิเนียม (Al-Cu 2024, 7075) ผ่าน 3 ขั้นตอน: Solution heat treat $\rightarrow$ Quench $\rightarrow$ Aging</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="sub-card">
-      <h3>การอบอ่อนเพื่อฟื้นฟูสมบัติหลังการขึ้นรูปเย็น (Annealing Stages)</h3>
-      <ol style="margin-left:1.5rem; line-height:1.7;">
-        <li><strong>Recovery (การคืนตัว):</strong> ความเค้นตกค้างลดลง ดิสโลเคชันจัดเรียงตัวเป็นระเบียบ (Polygonization) สมบัติเชิงกลแทบไม่เปลี่ยน</li>
-        <li><strong>Recrystallization (การตกผลึกใหม่):</strong> เกิดนิวเคลียสเกรนใหม่ไร้ความเค้น (Equiaxed strain-free grains) ความแข็งแรงลดลง ความเหนียวคืนกลับมา อุณหภูมิ $T_{rex} \approx 0.3 - 0.5 T_m$ (K)</li>
-        <li><strong>Grain Growth (การโตของเกรน):</strong> เกรนขนาดใหญ่กลืนเกรนเล็กเพื่อลดพลังงานขอบเกรนรวม ความแข็งแรงลดลงตาม Hall-Petch</li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- CONTENT CHAPTER 4 -->
-  <section id="m-part4" class="card">
-    <h2>4. แผนภาพเฟส และระบบเหล็ก-คาร์บอน (Phase Diagrams & Fe-Fe3C)</h2>
-    
-    <div class="sub-card">
-      <h3>กฎคานงัด (The Lever Rule) สำหรับคำนวณสัดส่วนเฟส</h3>
-      <p>บนเส้นไทไลน์ (Tie-line) ที่อุณหภูมิคงที่ สัดส่วนมวลของแต่ละเฟสจะเท่ากับ <em>ความยาวของแขนตรงข้าม หารด้วยความยาวรวมของเส้นไทไลน์</em>:</p>
-      <div style="text-align:center; font-size:1.15rem; font-weight:700; color:var(--primary); margin:8px 0;">
-        $$W_\alpha = \frac{C_\beta - C_0}{C_\beta - C_\alpha}, \quad W_\beta = \frac{C_0 - C_\alpha}{C_\beta - C_\alpha}$$
-      </div>
-    </div>
-
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>เฟส / โครงสร้าง</th>
-            <th>โครงสร้างผลึก</th>
-            <th>ปริมาณคาร์บอนสูงสุด</th>
-            <th>ลักษณะเด่น</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>$\alpha$-Ferrite (เฟอร์ไรต์)</strong></td>
-            <td>BCC</td>
-            <td><strong>0.022 wt% C</strong> (ที่ 727°C)</td>
-            <td>นิ่ม เหนียว ละลายคาร์บอนได้น้อยมากเนื่องจากช่องว่างใน BCC เล็ก มีสมบัติเป็นแม่เหล็กเฟร์โรที่อุณหภูมิห้อง</td>
-          </tr>
-          <tr>
-            <td><strong>$\gamma$-Austenite (ออสเทไนต์)</strong></td>
-            <td>FCC</td>
-            <td><strong>2.14 wt% C</strong> (ที่ 1147°C)</td>
-            <td>ละลายคาร์บอนได้สูงมากเพราะช่อง Interstitial ใน FCC ใหญ่กว่า ไม่เป็นแม่เหล็ก เหนียว ทนความร้อน</td>
-          </tr>
-          <tr>
-            <td><strong>$\text{Fe}_3\text{C}$ Cementite (ซีเมนไทต์)</strong></td>
-            <td>Orthorhombic</td>
-            <td><strong>6.70 wt% C</strong> (คงที่)</td>
-            <td>สารประกอบ Intermetallic แข็งมากแต่เปราะมาก เปรียบเหมือนโครงสร้างเสริมความแข็งแรงในเหล็ก</td>
-          </tr>
-          <tr>
-            <td><strong>Pearlite (เพิร์ลไลต์)</strong></td>
-            <td>Lamellar (สลับชั้น)</td>
-            <td><strong>0.76 wt% C</strong></td>
-            <td>โครงสร้างลายทางสลับชั้นระหว่างแผ่น $\alpha$-ferrite (หนา) กับ $\text{Fe}_3\text{C}$ (บาง) เกิดจากปฏิกิริยายูเทกตอยด์</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="sub-card">
-      <h3>ปฏิกิริยาสำคัญ 2 ปฏิกิริยาในแผนภาพ $\text{Fe}-\text{Fe}_3\text{C}$</h3>
-      <ul>
-        <li><strong>Eutectic Reaction (1,147°C, 4.3% C):</strong> ของเหลวแปลงเป็นของแข็ง 2 เฟสพร้อมกัน: $\text{Liquid} \rightarrow \gamma\text{-Austenite} + \text{Fe}_3\text{C}$ (โครงสร้างเลเดบูไรต์ Ledeburite ในเหล็กหล่อ)</li>
-        <li><strong>Eutectoid Reaction (727°C, 0.76% C):</strong> ของแข็งเฟสเดียวแปลงเป็นของแข็ง 2 เฟสพร้อมกัน: $\gamma\text{-Austenite} \rightarrow \alpha\text{-Ferrite} + \text{Fe}_3\text{C}$ (ได้โครงสร้างเพิร์ลไลต์ Pearlite)
-          <br>• เหล็กที่มี $\%C < 0.76\%$ เรียกว่า <strong>Hypoeutectoid Steel</strong> (ได้ Proeutectoid ferrite + Pearlite)
-          <br>• เหล็กที่มี $\%C > 0.76\%$ เรียกว่า <strong>Hypereutectoid Steel</strong> (ได้ Proeutectoid cementite + Pearlite)
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CONTENT CHAPTER 5 -->
-  <section id="m-part5" class="card">
-    <h2>5. การอบชุบความร้อนเหล็กกล้า แผนภาพ TTT และ Martensite</h2>
-    <p>การปรับปรุงสมบัติเชิงกลของเหล็กกล้าอาศัยการควบคุมอัตราการเย็นตัวจากเฟสออสเทไนต์ เพื่อสร้างโครงสร้างจุลภาคที่ต้องการ:</p>
-
-    <div class="grid-2">
-      <div class="sub-card" style="border-left:4px solid var(--accent);">
-        <h3 style="color:var(--accent);">Martensite (มาร์เทนไซต์)</h3>
-        <p>เกิดจากการ <strong>ชุบน้ำหรือน้ำมันอย่างรวดเร็ว (Quenching)</strong> ด้วยอัตราการเย็นตัวเร็วกว่า Critical Cooling Rate</p>
-        <p>• เป็นการแปลงเฟสแบบ <strong>ไร้การแพร่ (Diffusionless Transformation)</strong></p>
-        <p>• อะตอมคาร์บอนถูกขังอยู่ในผลึก เกิดการบิดเบี้ยวโครงข่ายจาก FCC กลายเป็น <strong>BCT (Body-Centered Tetragonal)</strong></p>
-        <p>• แข็งที่สุดในบรรดาโครงสร้างเหล็ก แต่มีความเปราะสูงมาก ใช้งานจริงไม่ได้ ต้องนำไป <strong>Tempering</strong> ก่อนเสมอ</p>
-      </div>
-
-      <div class="sub-card" style="border-left:4px solid var(--purple);">
-        <h3 style="color:var(--purple);">Tempered Martensite (มาร์เทนไซต์คืนไฟ)</h3>
-        <p>นำชิ้นงานมาร์เทนไซต์ไปอบซ้ำที่อุณหภูมิ $250 - 650^\circ\text{C}$ เพื่อให้คาร์บอนส่วนเกินแพร่ออกมาตกตะกอนเป็นอนุภาคซีเมนไทต์ละเอียดขนาดเล็กกระจายตัวในเนื้อเฟอร์ไรต์</p>
-        <p>• <strong>ผลลัพธ์:</strong> ลดความเค้นตกค้าง คืนความเหนียว (Toughness) และความต้านทานแรงกระแทก ขณะที่ยังคงรักษาความแข็งไว้สูงมาก</p>
-      </div>
-    </div>
-
-    <div class="sub-card">
-      <h3>สรุปประเภทการอบชุบความร้อน (Heat Treatment Types)</h3>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>ชื่อกระบวนการ</th>
-              <th>วิธีการระบายความร้อน</th>
-              <th>โครงสร้างและสมบัติที่ได้</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Full Annealing (การอบอ่อนสมบูรณ์)</strong></td>
-              <td>เย็นตัวในเตาอบอย่างช้าๆ (Furnace cooling)</td>
-              <td>เกรนหยาบ นิ่มมาก ความเค้นต่ำ เหมาะกับการตัดแต่งขึ้นรูปกลึงกัดไส</td>
-            </tr>
-            <tr>
-              <td><strong>Normalizing (การอบปรับสภาพเกรน)</strong></td>
-              <td>เย็นตัวในอากาศนิ่ง (Air cooling)</td>
-              <td>เกรนสม่ำเสมอละเอียด เพิร์ลไลต์ละเอียด แข็งแรงกว่าการอบอ่อน</td>
-            </tr>
-            <tr>
-              <td><strong>Austempering (ออสเทมเปอริ่ง)</strong></td>
-              <td>ชุบในอ่างเกลือร้อน $250-450^\circ\text{C}$ แช่จนจบการแปลงเฟส</td>
-              <td>ได้โครงสร้าง <strong>เบไนต์ (Bainite) 100%</strong> เหนียว ทนแรงกระแทก ไม่แตกร้าว</td>
-            </tr>
-            <tr>
-              <td><strong>Spheroidizing (การอบตกผลึกกลม)</strong></td>
-              <td>อบแช่อุณหภูมิใต้เส้นยูเทกตอยด์เป็นเวลานาน (หลายสิบชม.)</td>
-              <td>แผ่นซีเมนไทต์แตกตัวเป็นอนุภาคทรงกลม (Spheroidite) นิ่มที่สุด เหนียวที่สุด</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTENT CHAPTER 6 -->
-  <section id="m-part6" class="card">
-    <h2>6. ผงโลหะวิทยา และโลหะนอกกลุ่มเหล็ก (Powder Metallurgy & Non-Ferrous)</h2>
-    <div class="sub-card">
-      <h3>กระบวนการผงโลหะวิทยา (Powder Metallurgy - P/M)</h3>
-      <p>เทคนิคการผลิตชิ้นส่วนโลหะโดยการอัดผงโลหะในแม่พิมพ์แล้วนำไปเผาประสาน (Sintering) ต่ำกว่าจุดหลอมเหลว ($0.7-0.8 T_m$):</p>
-      <ul>
-        <li><strong>การผลิตผง (Gas Atomization):</strong> ฉีดพ่นกระแสน้ำโลหะหลอมเหลวด้วยแก๊สเฉื่อยความดันสูง (เช่น ไนโตรเจนหรืออาร์กอน) ละอองโลหะแข็งตัวเป็น <strong>ผงทรงกลมสม่ำเสมอ ผิวเรียบ ออกซิเจนต่ำ</strong> เหมาะมากสำหรับงาน Additive Manufacturing (3D Printing โลหะ)</li>
-        <li><strong>การอัดขึ้นรูป (Compaction):</strong> อัดผงในแม่พิมพ์ความดัน $100 - 1,000 \text{ MPa}$ ได้ชิ้นงาน Green Compact ที่ยึดกันด้วยแรงกล</li>
-        <li><strong>จุดเด่นของ P/M:</strong> ผลิตชิ้นงานรูปร่างซับซ้อนแบบ Near-Net Shape ไม่เสียเศษโลหะ (Zero scrap), ผสมโลหะที่ไม่ละลายในกันได้, ผลิตแบริ่งรูพรุนหล่อลื่นในตัว (Self-lubricating bearings)</li>
-      </ul>
-    </div>
-
-    <div class="sub-card">
-      <h3>โลหะผสมนอกกลุ่มเหล็กที่สำคัญ (Non-Ferrous Alloys)</h3>
-      <div class="grid-3" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px;">
-          <strong style="color:var(--primary);">อะลูมิเนียม (Al Alloys)</strong>
-          <p style="font-size:0.88rem; margin-top:6px;">ความหนาแน่นต่ำ ($\approx 2.7 \text{ g/cm}^3$) มีฟิล์ม $\text{Al}_2\text{O}_3$ ป้องกันสนิม ซีรีส์ 2xxx, 7xxx สามารถอบชุบบ่มแข็งทำโครงสร้างเครื่องบินได้</p>
-        </div>
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px;">
-          <strong style="color:var(--warning);">ทองแดง (Cu Alloys)</strong>
-          <p style="font-size:0.88rem; margin-top:6px;">นำความร้อนและไฟฟ้าดีเยี่ยม: <strong>Brass (ทองเหลือง) = Cu + Zn</strong>, <strong>Bronze (ทองบรอนซ์) = Cu + Sn</strong> ทนการกัดกร่อนในน้ำทะเล</p>
-        </div>
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px;">
-          <strong style="color:var(--purple);">ไทเทเนียม (Ti Alloys)</strong>
-          <p style="font-size:0.88rem; margin-top:6px;">อัตราส่วนความแข็งแรงต่อน้ำหนักสูงเลิศ ทนอุณหภูมิสูง เข้ากับเนื้อเยื่อมนุษย์ได้ (Biocompatible) ทำกระดูกเทียมและชิ้นส่วนอวกาศ</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- METALLURGY QUIZ BANK -->
-  <section id="m-quiz" class="card">
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:1.5rem;">
+  
+    <div class="notice-banner lms-notice">
+      <div style="font-size:1.6rem;">💡</div>
       <div>
-        <h2 style="margin:0;">📝 คลังข้อสอบวิชาโลหะวิทยา (316-221)</h2>
-        <p style="color:var(--text-muted); margin:4px 0 0;">ทดสอบความรู้ 10 ข้อ ครอบคลุมผลึก ดิสโลเคชัน แผนภาพเฟส และการอบชุบ พร้อมตรวจคะแนนทันที</p>
+        <strong>ต้องการอ่านสรุปทบทวนบทเรียน หรือฝึกทำโจทย์แนวข้อสอบ?</strong><br>
+        <span style="color:var(--muted); font-size:0.85rem;">เราได้แยกเนื้อหาสรุปเจาะลึก 6 บท, แผนภาพเฟส Fe-C, การอบชุบ TTT, คลังข้อสอบพร้อมเฉลย และ Ultra Cheat Sheet ไว้ในหน้าเฉพาะแล้ว</span>
       </div>
-      <div id="m-quiz-score-badge" style="display:none; padding:8px 18px; border-radius:999px; background:var(--primary-light); color:var(--primary); font-weight:800; font-size:1.1rem;">
-        คะแนนของคุณ: <span id="m-score-text">0</span> / 10
-      </div>
+      <a href="metallurgy_summary.html" class="notice-banner-btn btn-to-study">📖 เปิดหน้าสรุปเนื้อหา & แนวข้อสอบ</a>
     </div>
-
-    <div id="m-quiz-container">
-      <!-- Generated via JS -->
-    </div>
-
-    <div style="text-align:center; margin-top:2rem;">
-      <button class="nav-tool-btn" style="padding:12px 32px; font-size:1rem; border-radius:999px; background:var(--primary); color:white;" onclick="checkMetalQuiz()">✅ ส่งคำตอบ & ตรวจคะแนนโลหะ</button>
-    </div>
-  </section>
-
-  <!-- METALLURGY ULTRA CHEAT SHEET -->
-  <section id="m-ultra" class="ultra-card" style="margin-top:2rem;">
-    <h2>⚡ สรุปหัวใจสำคัญวิชาโลหะวิทยา (Ultra Cheat Sheet 1 นาที)</h2>
-    <div class="grid-2" style="margin-top:1.2rem;">
-      <div class="summary-box">
-        <h4 style="color:var(--primary);">🎯 ผลึก & ดิสโลเคชัน & ความแข็งแรง</h4>
-        <p>• FCC: CN=12, APF=0.74, 12 slip systems ($\{111\}\langle 110 \rangle$) $\rightarrow$ เหนียวมาก ไม่เปราะ</p>
-        <p>• BCC: CN=8, APF=0.68, ไวต่ออุณหภูมิ $\rightarrow$ เกิดจุดเปลี่ยนเปราะ DBTT</p>
-        <p>• Edge dislocation: $\vec{b} \perp \vec{l}$ | Screw dislocation: $\vec{b} \parallel \vec{l}$</p>
-        <p>• Hall-Petch: $\sigma_y = \sigma_0 + k_y d^{-1/2}$ $\rightarrow$ เกรนเล็ก แข็งแรงขึ้นและเหนียวขึ้นพร้อมกัน</p>
-      </div>
-      <div class="summary-box">
-        <h4 style="color:var(--accent);">🎯 แผนภาพเฟส & การอบชุบความร้อน</h4>
-        <p>• Eutectoid: 727°C, 0.76% C $\rightarrow$ Pearlite ($\alpha + \text{Fe}_3\text{C}$ lamellar)</p>
-        <p>• Ferrite ($\alpha$): BCC, ละลาย C สูงสุด 0.022% | Austenite ($\gamma$): FCC, ละลาย C สูงสุด 2.14%</p>
-        <p>• Martensite: BCT เกิดจากการ Quench เฉียบพลัน แข็งสุดแต่เปราะ ต้อง Tempering เสมอ</p>
-        <p>• Gas atomization: พ่นละอองแก๊ส ได้ผงโลหะทรงกลมสวย ออกซิเจนต่ำ เหมาะกับ 3D Print</p>
-      </div>
-    </div>
-  </section>
-
+    
   </main>
+
   </div>
 
   <!-- FLOATING NOTEPAD -->

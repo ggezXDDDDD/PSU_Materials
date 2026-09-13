@@ -3036,7 +3036,156 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
   }
 }
 </style>
-</head>
+<style>
+/* ==========================================================================
+   DUAL-MODE SWITCHER (LMS OFFICIAL vs STUDY GUIDE)
+   ========================================================================== */
+.mode-switch-wrapper {
+  margin: 1.2rem 0 1.8rem;
+}
+.mode-switch-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  background: var(--subcard-bg);
+  padding: 8px;
+  border-radius: 22px;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+.mode-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  background: transparent;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1.5px solid transparent;
+  position: relative;
+}
+.mode-tab:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+.mode-tab.active {
+  background: var(--card-bg);
+  border-color: var(--primary);
+  box-shadow: 0 10px 24px rgba(0, 113, 227, 0.16), inset 0 1px 1px #fff;
+}
+.mode-tab.active.study-mode {
+  border-color: #8b5cf6;
+  box-shadow: 0 10px 24px rgba(139, 92, 246, 0.18), inset 0 1px 1px #fff;
+}
+.mode-tab-icon {
+  font-size: 1.9rem;
+  flex-shrink: 0;
+}
+.mode-tab-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.mode-tab-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.mode-tab.active .mode-tab-title {
+  color: var(--primary);
+}
+.mode-tab.active.study-mode .mode-tab-title {
+  color: #8b5cf6;
+}
+.mode-tab-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.mode-tab-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(0, 113, 227, 0.12);
+  color: #0071e3;
+  border: 1px solid rgba(0, 113, 227, 0.25);
+  white-space: nowrap;
+}
+.mode-tab-badge.study-badge {
+  background: rgba(139, 92, 246, 0.12);
+  color: #8b5cf6;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.notice-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+.notice-banner.lms-notice {
+  border-left: 5px solid #0071e3;
+}
+.notice-banner.study-notice {
+  border-left: 5px solid #8b5cf6;
+}
+.notice-banner-btn {
+  margin-left: auto;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.notice-banner-btn.btn-to-study {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+.notice-banner-btn.btn-to-study:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45);
+}
+.notice-banner-btn.btn-to-lms {
+  background: linear-gradient(135deg, #0071e3, #0284c7);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+}
+.notice-banner-btn.btn-to-lms:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.45);
+}
+
+@media (max-width: 768px) {
+  .mode-switch-bar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .notice-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .notice-banner-btn {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+</style></head>
 <body>
   <div class="portal-layout">
     <!-- LEFT GLASS SIDEBAR -->
@@ -3163,6 +3312,29 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
     <!-- UNIVERSAL RESPONSIVE TOP NAV -->
     
     <div class="rainbow-speed-banner">🏎️💨 NITRO RGB SPEEDWAY ACTIVE • โหมดสีรุ้งซิ่งระดับ MAX 🏁</div>
+
+    <!-- DUAL-MODE SWITCHER -->
+    <div class="mode-switch-wrapper">
+      <div class="mode-switch-bar">
+        <a href="ceramic.html" class="mode-tab active">
+          <span class="mode-tab-icon">🏛️</span>
+          <div class="mode-tab-info">
+            <span class="mode-tab-title">ข้อมูล & งานใน LMS</span>
+            <span class="mode-tab-desc">สไลด์คำสอนทางการ, การบ้าน, ควิซ และกำหนดส่งจริง</span>
+          </div>
+          <span class="mode-tab-badge">LMS Official</span>
+        </a>
+        <a href="ceramic_summary.html" class="mode-tab ">
+          <span class="mode-tab-icon">📖</span>
+          <div class="mode-tab-info">
+            <span class="mode-tab-title">สรุปเนื้อหา & เตรียมสอบ</span>
+            <span class="mode-tab-desc">สรุปเจาะลึกทุกบท, สูตรคำนวณ, คลังข้อสอบ และ Cheat Sheet</span>
+          </div>
+          <span class="mode-tab-badge study-badge">Study Guide</span>
+        </a>
+      </div>
+    </div>
+    
     
     
 <header class="hero hero-ceramic">
@@ -3177,14 +3349,9 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
     </header>
 
   <div class="subject-subnav">
-    <a href="#c-files">📁 คลังเอกสาร & สไลด์ (7 ไฟล์)</a>
-    <a href="#c-part1">1.โครงสร้าง & พันธะ</a>
-    <a href="#c-part2">2.สมบัติเชิงกล & รอยร้าว</a>
-    <a href="#c-part3">3.เทคนิคการขึ้นรูป</a>
-    <a href="#c-part4">4.เคมีน้ำเคลือบ & ข้อบกพร่อง</a>
-    <a href="#c-part5">5.บ้านดิน & เซรามิกขั้นสูง</a>
-    <a href="#c-quiz" class="quiz-btn">📝 ข้อสอบเซรามิก 10 ข้อ</a>
-    <a href="#c-ultra" style="background:var(--purple-bg); color:var(--purple); font-weight:700;">⚡ สรุปสั้น 1 นาที</a>
+    <a href="#c-files">📁 คลังเอกสาร & สไลด์ใน LMS (7 ไฟล์)</a>
+    <a href="#c-assignments">📋 รายละเอียดงาน & ควิซ LMS</a>
+    <a href="ceramic_summary.html" style="background:rgba(139, 92, 246, 0.15); color:#8b5cf6; border-color:rgba(139, 92, 246, 0.3);">📖 สรุปเนื้อหาเตรียมสอบ ➔</a>
   </div>
 
   <!-- FILE HUB FOR CERAMICS -->
@@ -3387,283 +3554,18 @@ html[data-rainbow="true"] #rainbow-toggle-btn {
   </section>
 
 
-  <!-- CONTENT CHAPTER 1 -->
-  <section id="c-part1" class="card">
-    <h2>1. โครงสร้างผลึก พันธะเคมี และข้อบกพร่องในเซรามิก</h2>
-    <p>วัสดุเซรามิก (Ceramics) คือสารประกอบอนินทรีย์ที่ประกอบด้วยธาตุโลหะและอโลหะ โดยยึดเหนี่ยวกันด้วย <strong>พันธะไอออนิก (Ionic Bond)</strong> หรือ <strong>พันธะโคเวเลนต์ (Covalent Bond)</strong> หรือแบบผสม</p>
-
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>ลักษณะสำคัญ</th>
-            <th>พันธะไอออนิก (Ionic)</th>
-            <th>พันธะโคเวเลนต์ (Covalent)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>ธรรมชาติของพันธะ</strong></td>
-            <td>การถ่ายโอน $e^-$ เกิดแรงดึงดูดทางไฟฟ้าสถิต ไม่มีทิศทางแน่นอน (Non-directional)</td>
-            <td>การใช้อิเล็กตรอนร่วมกัน มีทิศทางที่แน่นอนสูง (Directional)</td>
-          </tr>
-          <tr>
-            <td><strong>ผลต่อโครงสร้างผลึก</strong></td>
-            <td>กำหนดโดย <em>ความสมดุลประจุ</em> และ <em>อัตราส่วนรัศมี ($r_C/r_A$)</em></td>
-            <td>กำหนดโดย <em>มุมพันธะและไฮบริไดเซชัน</em> (เช่น $sp^3$ ในเพชร, SiC)</td>
-          </tr>
-          <tr>
-            <td><strong>ตัวอย่างสาร</strong></td>
-            <td>$	ext{NaCl}, 	ext{MgO}, 	ext{Al}_2	ext{O}_3, 	ext{ZrO}_2$</td>
-            <td>$	ext{SiC}, 	ext{Si}_3	ext{N}_4, 	ext{BN}, 	ext{C (Diamond)}$</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="sub-card">
-      <h3>อัตราส่วนรัศมีไอออน ($r_{cation} / r_{anion}$) กับ Coordination Number (CN)</h3>
-      <p>เนื่องจากแอนไอออน (ประจุลบ) มักมีขนาดใหญ่กว่าแคตไอออน (ประจุบวก) อะตอมแคตไอออนจึงแทรกอยู่ตามช่องว่าง (Interstitial sites) โดยมีเงื่อนไขเสถียรภาพคือ <strong>แคตไอออนต้องสัมผัสกับแอนไอออนโดยรอบเสมอ</strong></p>
-      <ul>
-        <li><strong>$r_C/r_A < 0.155$</strong> : CN = 2 (เส้นตรง Linear)</li>
-        <li><strong>$0.155 - 0.225$</strong> : CN = 3 (สามเหลี่ยมแบนราบ Trigonal Planar) เช่น $	ext{B}_2	ext{O}_3$</li>
-        <li><strong>$0.225 - 0.414$</strong> : CN = 4 (ทรงสี่หน้า Tetrahedral) เช่น $	ext{SiO}_4^{4-}, 	ext{ZnS}$</li>
-        <li><strong>$0.414 - 0.732$</strong> : CN = 6 (ทรงแปดหน้า Octahedral) เช่น $	ext{NaCl}, 	ext{MgO}$</li>
-        <li><strong>$0.732 - 1.000$</strong> : CN = 8 (ลูกบาศก์ Cubic) เช่น $	ext{CsCl}$</li>
-      </ul>
-    </div>
-
-    <div class="sub-card">
-      <h3>ข้อบกพร่องแบบจุดในเซรามิก (Point Defects & Charge Neutrality)</h3>
-      <div class="grid-2">
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; border-left:4px solid var(--primary);">
-          <strong style="color:var(--primary); font-size:1.05rem;">Frenkel Defect</strong>
-          <p style="margin-top:6px; font-size:0.9rem;">ไอออน (มักเป็นแคตไอออนขนาดเล็ก) หลุดออกจากตำแหน่งปกติในโครงผลึก แล้วไปแทรกตัวอยู่ใน <em>ช่องว่างระหว่างผลึก (Interstitial site)</em> กลายเป็นคู่ Vacancy-Interstitial <strong>โดยประจุรวมในผลึกยังคงเป็นกลาง 100%</strong></p>
-        </div>
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; border-left:4px solid var(--accent);">
-          <strong style="color:var(--accent); font-size:1.05rem;">Schottky Defect</strong>
-          <p style="margin-top:6px; font-size:0.9rem;">การเกิดช่องว่างของแคตไอออนและแอนไอออนพร้อมกันเป็นคู่ (Cation Vacancy + Anion Vacancy) เพื่อรักษาสภาพเป็นกลางทางไฟฟ้า เช่น ใน $	ext{NaCl}$ หรือ $	ext{MgO}$ จะหายไปทั้งคู่บวกและลบพร้อมกัน</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTENT CHAPTER 2 -->
-  <section id="c-part2" class="card">
-    <h2>2. สมบัติเชิงกล พฤติกรรมเปราะ และทฤษฎีรอยร้าวของกริฟฟิท</h2>
-    <div class="sub-card" style="border-left:4px solid var(--warning);">
-      <h3>ทำไมเซรามิกถึง "เปราะ (Brittle)" และไม่มี Plastic Deformation ที่อุณหภูมิห้อง?</h3>
-      <p>ในโลหะ อะตอมมีทะเลอิเล็กตรอนรองรับ เมื่อเกิดความเค้น ระนาบอะตอมสามารถเลื่อนไถลผ่านกันได้ (Dislocation Slip) ทำให้โลหะมีความเหนียว ยืดได้ ดัดงอได้ แต่ในเซรามิก:</p>
-      <ol style="margin-left:1.5rem; line-height:1.7;">
-        <li><strong>พันธะไอออนิก:</strong> ระนาบประกอบด้วยไอออนบวกและลบสลับกัน หากเกิดการเลื่อนไถลเพียง 1 ช่วงอะตอม ไอออนประจุเดียวกันจะมาประจันหน้ากัน เกิด <em>แรงผลักทางไฟฟ้าสถิตมหาศาล (Electrostatic Repulsion)</em> ทำให้ผลึกแยกออกจากกันทันที</li>
-        <li><strong>พันธะโคเวเลนต์:</strong> มีทิศทางของพันธะที่แข็งแรงมาก (Highly directional) การจะเลื่อนระนาบต้องทำลายพันธะพลังงานสูงพร้อมกันจำนวนมาก</li>
-        <li><strong>จำนวน Slip System ต่ำ:</strong> เซรามิกมีระบบการเลื่อนน้อยมาก ไม่เพียงพอต่อเกณฑ์ของ Von Mises (ต้องมีอย่างน้อย 5 ระบบอิสระ)</li>
-      </ol>
-    </div>
-
-    <div class="sub-card">
-      <h3>ทฤษฎีรอยร้าวของกริฟฟิท (Griffith Flaw Theory)</h3>
-      <p>ความแข็งแรงจริงของเซรามิกต่ำกว่าความแข็งแรงทางทฤษฎีมากถึง 100-1000 เท่า เนื่องจากมี <strong>รอยร้าวหรือตำหนิขนาดเล็ก (Microcracks / Flaws)</strong> ภายในเนื้อชิ้นงาน ความเค้นวิกฤตที่ทำให้เกิดการแตกหักแบบเปราะอย่างเฉียบพลัน คำนวณได้จาก:</p>
-      <div style="text-align:center; margin:1.2rem 0; font-size:1.25rem; font-weight:700; color:var(--primary); background:var(--opt-bg); padding:1rem; border-radius:12px;">
-        $$\sigma_f = \left( rac{2 E \gamma_s}{\pi a} 
-ight)^{1/2}$$
-      </div>
-      <p style="font-size:0.9rem; color:var(--text-muted);">โดยที่: $E$ = มอดุลัสของยัง (Young's modulus), $\gamma_s$ = พลังงานพื้นผิวจำเพาะ, $a$ = ความยาวของรอยร้าวที่ผิว (หรือครึ่งหนึ่งของรอยร้าวภายใน) $
-ightarrow$ <strong>ความแข็งแรงผกผันกับ $\sqrt{a}$</strong></p>
-    </div>
-
-    <div class="sub-card">
-      <h3>การทดสอบความต้านทานแรงดัดงอ 3 จุด (3-Point Bending / Flexural Strength)</h3>
-      <p>เซรามิกไม่สามารถทดสอบแรงดึงโดยตรง (Tensile test) ได้ง่าย เพราะจับยึดแล้วแตกหักที่ปากจับ จึงนิยมทดสอบแรงดัดขวาง (Flexure test):</p>
-      <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; margin-top:8px;">
-        <strong>สำหรับชิ้นงานหน้าตัดสี่เหลี่ยมผืนผ้า (กว้าง $b$, หนา $d$, ระยะห่างฐานรอง $L$):</strong>
-        <div style="text-align:center; margin:0.8rem 0; font-size:1.15rem; font-weight:700; color:var(--text);">
-          $$\sigma_{fs} = rac{3 F L}{2 b d^2}$$
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTENT CHAPTER 3 -->
-  <section id="c-part3" class="card">
-    <h2>3. เทคนิคการขึ้นรูปเซรามิกดั้งเดิมและสมัยใหม่ (Forming & Sintering)</h2>
-    
-    <div class="grid-2">
-      <div class="sub-card">
-        <h3 style="color:var(--primary);">1. สลิปคาสติ้ง (Slip Casting)</h3>
-        <p>การขึ้นรูปด้วยการเทน้ำดิน (Slip = ดินเหนียว + ทราย + น้ำ + Deflocculant) ลงในแบบหล่อปูนปลาสเตอร์ (Plaster of Paris):</p>
-        <ul style="margin-left:1.2rem; font-size:0.92rem; line-height:1.6;">
-          <li><strong>กลไก:</strong> รูพรุนละเอียดในปูนปลาสเตอร์ดูดน้ำออกจากน้ำดินด้วย <strong>แรงคาพิลลารี (Capillary Suction)</strong></li>
-          <li><strong>Drain Casting (หล่อเททิ้ง):</strong> เทน้ำดินส่วนเกินออกเมื่อผนังได้ความหนาที่ต้องการ ได้ชิ้นงานกลวง เช่น แจกัน ถ้วยกาแฟ</li>
-          <li><strong>Solid Casting (หล่อตัน):</strong> เติมน้ำดินต่อเนื่องจนเต็มทั้งชิ้นงาน เช่น ชักโครก อ่างล้างหน้า</li>
-        </ul>
-      </div>
-
-      <div class="sub-card">
-        <h3 style="color:var(--secondary);">2. พลาสติกฟอร์มมิ่ง (Plastic Forming)</h3>
-        <p>ใช้ดินผสมน้ำประมาณ 15-25% จนเกิดสภาพพลาสติก (Plasticity) สามารถปั้นหรือรีดขึ้นรูปได้:</p>
-        <ul style="margin-left:1.2rem; font-size:0.92rem; line-height:1.6;">
-          <li><strong>Jiggering & Jolleying:</strong> การหมุนแป้นแล้วใช้ใบมีดปาดขึ้นรูปจาน ชาม ทรงกลมสมมาตร</li>
-          <li><strong>Extrusion (การอัดรีด):</strong> อัดดินผ่านหัวดาย (Die) ได้ผลิตภัณฑ์หน้าตัดคงที่ เช่น ท่อเซรามิก อิฐกลวง กระเบื้อง</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="sub-card">
-      <h3>การเผาประสานและการแน่นตัว (Sintering & Firing Shrinkage)</h3>
-      <p>หลังการอบแห้ง (Drying) ชิ้นงานเขียว (Green body) จะถูกนำไปเผาที่อุณหภูมิสูง ($1,000 - 1,400^\circ	ext{C}$):</p>
-      <ul>
-        <li><strong>Driving Force:</strong> การลดลงของพื้นที่ผิวรวมและพลังงานอิสระที่ผิว (Surface Free Energy)</li>
-        <li><strong>Solid-State Sintering:</strong> อะตอมแพร่ผ่านขอบเกรนและเนื้อผลึก เกิดคอคอดเชื่อมระหว่างอนุภาค (Neck Growth) รูพรุนเล็กลงและหายไป</li>
-        <li><strong>Vitrification (การเกิดเฟสแก้ว):</strong> เฟสฟลักซ์หลอมเหลวไหลเข้าเติมเต็มช่องว่างระหว่างเม็ดผลึก เมื่อเย็นตัวกลายเป็นเนื้อแก้วประสานที่มีความหนาแน่นสูงและไม่ดูดซึมน้ำ (Porcelain)</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CONTENT CHAPTER 4 -->
-  <section id="c-part4" class="card">
-    <h2>4. เคมีของน้ำเคลือบเซรามิกและข้อบกพร่อง (Glazes & Defects)</h2>
-    <p>น้ำเคลือบ (Glaze) คือชั้นแก้วซิลิเกตบางๆ ที่เคลือบบนผิวภาชนะเซรามิกเพื่อความสวยงาม ทำความสะอาดง่าย และกันน้ำซึม</p>
-
-    <div class="sub-card">
-      <h3>องค์ประกอบหลัก 3 ส่วนของน้ำเคลือบ (Seger Formula Concept)</h3>
-      <div class="grid-3" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:10px;">
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; border-top:4px solid #0071e3;">
-          <strong style="color:#0071e3;">1. Glass Former (ตัวสร้างแก้ว)</strong>
-          <p style="font-size:0.88rem; margin-top:6px;">$	ext{SiO}_2$ (ซิลิกา), $	ext{B}_2	ext{O}_3$ ทำหน้าที่สร้างโครงข่ายแก้วสามมิติ เพิ่มความแข็ง ทนสารเคมี</p>
-        </div>
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; border-top:4px solid #34c759;">
-          <strong style="color:#34c759;">2. Fluxes / Melters (ตัวลดจุดหลอม)</strong>
-          <p style="font-size:0.88rem; margin-top:6px;">$	ext{Na}_2	ext{O}, 	ext{K}_2	ext{O}, 	ext{CaO}, 	ext{MgO}, 	ext{ZnO}, 	ext{PbO}$ ช่วยทำลายโครงข่ายซิลิกา ลดอุณหภูมิหลอมตัว</p>
-        </div>
-        <div style="background:var(--subcard-bg); padding:1rem; border-radius:12px; border-top:4px solid #ff9500;">
-          <strong style="color:#ff9500;">3. Stabilizer / Refractory (ตัวเพิ่มความหนืด)</strong>
-          <p style="font-size:0.88rem; margin-top:6px;">$	ext{Al}_2	ext{O}_3$ (อะลูมินา) ป้องกันไม่ให้น้ำเคลือบไหลย้อยลงจากผนังชิ้นงานขณะหลอม</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>ข้อบกพร่อง (Defect)</th>
-            <th>ลักษณะที่พบ</th>
-            <th>สาเหตุทางวัสดุศาสตร์</th>
-            <th>แนวทางแก้ไข</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Crazing (รานเคลือบ)</strong></td>
-            <td>เกิดเส้นแตกลายงาเป็นร่างแหบนชั้นเคลือบ</td>
-            <td>เคลือบมีค่าสัมประสิทธิ์การขยายตัวทางความร้อนสูงกว่าเนื้อดิน ($lpha_{glaze} > lpha_{body}$) ขณะเย็นตัว เคลือบหดตัวมากกว่าจนเกิด <em>แรงดึง (Tensile stress)</em></td>
-            <td>เพิ่ม $	ext{SiO}_2$ หรือ $	ext{Al}_2	ext{O}_3$ ในเคลือบ, ลดสาร Flux ที่มี $lpha$ สูง ($	ext{Na}_2	ext{O}, 	ext{K}_2	ext{O}$), หรือเพิ่มฟรีซิลิกาในเนื้อดิน</td>
-          </tr>
-          <tr>
-            <td><strong>Peeling / Shivering (เคลือบร่อน)</strong></td>
-            <td>เคลือบกระเทาะร่อนหลุดออกจากขอบหรือมุม</td>
-            <td>เคลือบมีค่า $lpha_{glaze} \ll lpha_{body}$ มากเกินไป ทำให้เกิด <em>แรงอัด (Compressive stress)</em> มหาศาลจนเคลือบโก่งตัวหลุด</td>
-            <td>ลด $	ext{SiO}_2$ ในเคลือบ หรือเพิ่ม Flux</td>
-          </tr>
-          <tr>
-            <td><strong>Crawling (เคลือบร่น / กอง)</strong></td>
-            <td>เคลือบหดตัวรวมกันเป็นหยดก้อน เผยให้เห็นเนื้อดินเปลือย</td>
-            <td>แรงยึดเกาะระหว่างเคลือบกับเนื้อดินไม่ดี เกิดจากมีฝุ่น ผงแป้ง คราบไขมัน หรือเคลือบหนาเกินไป ดินหดตัวตอนแห้งมากจนเคลือบแตกร้าว</td>
-            <td>ทำความสะอาดผิวชิ้นงานก่อนเคลือบ, ลดความหนาของชั้นเคลือบ, ลดสารที่ทำให้หดตัวสูง เช่น ดินดำ</td>
-          </tr>
-          <tr>
-            <td><strong>Pinholes (ตามด / รูเข็ม)</strong></td>
-            <td>เกิดรูพรุนขนาดเล็กคล้ายรอยเข็มเจาะทั่วผิวเคลือบ</td>
-            <td>แก๊สที่เกิดจากการสลายตัวของสารอินทรีย์หรือคาร์บอเนตระเหยดันทะลุเคลือบขณะหนืดตัว และหลอมเรียบกลับมาไม่ทันก่อนเตาเย็น</td>
-            <td>เผาดิบ (Bisque fire) ให้สุกตัวหมดจดก่อนเคลือบ, แช่อุณหภูมิสูงสุด (Soaking) ให้น้ำเคลือบหลอมเรียบเนียน</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- CONTENT CHAPTER 5 -->
-  <section id="c-part5" class="card">
-    <h2>5. วัสดุศาสตร์บ้านดิน และเซรามิกขั้นสูง (Earthen Homes & Advanced Ceramics)</h2>
-    <div class="sub-card">
-      <h3>วิทยาศาสตร์วัสดุของ "บ้านดิน" (Earthen Home Materials Science)</h3>
-      <p>บ้านดินเป็นตัวอย่างคลาสสิกของการใช้วัสดุผสมธรรมชาติ (Natural Composite) ตามภูมิปัญญาผสมผสานหลักการเซรามิก:</p>
-      <ul>
-        <li><strong>ดินเหนียว (Clay Matrix):</strong> ทำหน้าที่เป็นตัวประสาน (Binder) ให้สภาพพลาสติกและการยึดเกาะ</li>
-        <li><strong>ทราย (Sand Aggregate):</strong> โครงสร้างรับแรง (Skeleton) ช่วยลดการหดตัวและการแตกร้าวขณะแห้ง</li>
-        <li><strong>แกลบ / ฟางข้าว (Fibers):</strong> เสริมแรงดึง (Tensile Reinforcement) และสร้างโพรงอากาศขนาดเล็กเพื่อเป็นฉนวน</li>
-        <li><strong>Thermal Mass & Thermal Lag:</strong> ผนังดินหนามีความจุความร้อนจำเพาะสูง ในเวลากลางวัน ผนังดินจะดูดซับความร้อนจากภายนอกไว้โดยไม่ถ่ายทอดเข้าสู่ในบ้านทันที (หน่วงเวลา 8-12 ชม.) และค่อยๆ คายความร้อนออกมาในเวลากลางคืน ทำให้อุณหภูมิภายในคงที่ตลอดวัน</li>
-      </ul>
-    </div>
-
-    <div class="sub-card">
-      <h3>สรุปเซรามิกขั้นสูง (Advanced / Technical Ceramics)</h3>
-      <div class="grid-2">
-        <div>
-          <strong>ออกไซด์เซรามิก (Oxides):</strong>
-          <ul style="font-size:0.9rem; margin-top:6px;">
-            <li><strong>$	ext{Al}_2	ext{O}_3$ (Alumina):</strong> ฉนวนไฟฟ้าแรงสูง หัวเทียน ชิ้นส่วนทนการสึกหรอ</li>
-            <li><strong>$	ext{ZrO}_2$ (Zirconia):</strong> ความเหนียวสูง (Transformation Toughening) ใช้ทำมีดเซรามิก ข้อต่อเทียมทางการแพทย์</li>
-            <li><strong>$	ext{BaTiO}_3$ (Barium Titanate):</strong> สารไดอิเล็กทริกสูงยิ่งยวดสำหรับตัวเก็บประจุ (Capacitors) และ Piezoelectric</li>
-          </ul>
-        </div>
-        <div>
-          <strong>นอนออกไซด์เซรามิก (Non-Oxides):</strong>
-          <ul style="font-size:0.9rem; margin-top:6px;">
-            <li><strong>$	ext{SiC}$ (Silicon Carbide):</strong> แข็งแกร่งมาก ทนอุณหภูมิสูงกว่า 1,600°C ทำแผ่นเกราะกันกระสุน องค์ประกอบฮีตเตอร์เตาอบ</li>
-            <li><strong>$	ext{Si}_3	ext{N}_4$ (Silicon Nitride):</strong> ทนการเปลี่ยนแปลงอุณหภูมิเฉียบพลัน (Thermal Shock) ทำตลับลูกปืนเทอร์โบชาร์จเจอร์</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERAMICS QUIZ BANK -->
-  <section id="c-quiz" class="card">
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:1.5rem;">
+  
+    <div class="notice-banner lms-notice">
+      <div style="font-size:1.6rem;">💡</div>
       <div>
-        <h2 style="margin:0;">📝 คลังข้อสอบวิชาเซรามิก (316-211)</h2>
-        <p style="color:var(--text-muted); margin:4px 0 0;">ทดสอบความรู้ 10 ข้อ พร้อมระบบตรวจคะแนนและคำอธิบายเฉลยทันที</p>
+        <strong>ต้องการอ่านสรุปทบทวนบทเรียน หรือฝึกทำโจทย์แนวข้อสอบ?</strong><br>
+        <span style="color:var(--muted); font-size:0.85rem;">เราได้แยกเนื้อหาสรุปเจาะลึก 5 บท, สูตรคำนวณ, คลังข้อสอบพร้อมเฉลย และ Ultra Cheat Sheet ไว้ในหน้าเฉพาะแล้ว</span>
       </div>
-      <div id="c-quiz-score-badge" style="display:none; padding:8px 18px; border-radius:999px; background:var(--primary-light); color:var(--primary); font-weight:800; font-size:1.1rem;">
-        คะแนนของคุณ: <span id="c-score-text">0</span> / 10
-      </div>
+      <a href="ceramic_summary.html" class="notice-banner-btn btn-to-study">📖 เปิดหน้าสรุปเนื้อหา & แนวข้อสอบ</a>
     </div>
-
-    <div id="c-quiz-container">
-      <!-- Generated via JS -->
-    </div>
-
-    <div style="text-align:center; margin-top:2rem;">
-      <button class="nav-tool-btn" style="padding:12px 32px; font-size:1rem; border-radius:999px; background:var(--primary); color:white;" onclick="checkCeramicsQuiz()">✅ ส่งคำตอบ & ตรวจคะแนนเซรามิก</button>
-    </div>
-  </section>
-
-  <!-- CERAMICS ULTRA CHEAT SHEET -->
-  <section id="c-ultra" class="ultra-card" style="margin-top:2rem;">
-    <h2>⚡ สรุปหัวใจสำคัญวิชาเซรามิก (Ultra Cheat Sheet 1 นาที)</h2>
-    <div class="grid-2" style="margin-top:1.2rem;">
-      <div class="summary-box">
-        <h4 style="color:var(--primary);">🎯 โครงสร้าง & พฤติกรรมเปราะ</h4>
-        <p>• เซรามิกเปราะเพราะ <strong>พันธะไอออนิกผลักกัน</strong> เมื่อระนาบเลื่อนไถล (No plastic slip)</p>
-        <p>• ความแข็งแรงถูกจำกัดโดย <strong>ขนาดรอยร้าวที่ใหญ่ที่สุด</strong> ตามสูตร Griffith: $\sigma_f \propto 1/\sqrt{a}$</p>
-        <p>• ทดสอบแรงดัด 3 จุด: $\sigma_{fs} = rac{3FL}{2bd^2}$</p>
-        <p>• ข้อบกพร่องคู่ Cation+Anion vacancy = <strong>Schottky</strong></p>
-      </div>
-      <div class="summary-box">
-        <h4 style="color:var(--accent);">🎯 การขึ้นรูป & น้ำเคลือบ</h4>
-        <p>• Slip casting อาศัย <strong>แรงดูดคาพิลลารี</strong> ของปูนปลาสเตอร์</p>
-        <p>• การเผาประสาน (Sintering) เกิดจาก <strong>การลดลงของพลังงานพื้นผิว</strong></p>
-        <p>• เคลือบราน (Crazing): $lpha_{glaze} > lpha_{body}$ $
-ightarrow$ แก้โดยเพิ่ม $	ext{SiO}_2$</p>
-        <p>• เคลือบร่อน (Peeling): $lpha_{glaze} < lpha_{body}$ มากเกินไป</p>
-        <p>• บ้านดินเย็นสบายเพราะ <strong>Thermal Mass</strong> หน่วงเวลาถ่ายเทความร้อน</p>
-      </div>
-    </div>
-  </section>
-
+    
   </main>
+
   </div>
 
   <!-- FLOATING NOTEPAD -->
