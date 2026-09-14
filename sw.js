@@ -47,6 +47,9 @@ self.addEventListener('fetch', (event) => {
   // Only handle GET
   if (req.method !== 'GET') return;
 
+  // Never intercept API requests
+  if (url.pathname.includes('/api/')) return;
+
   // Always fetch auth.js and login.html live from network (NO CACHE)
   if (url.pathname.endsWith('auth.js') || url.pathname.endsWith('login.html')) {
     event.respondWith(

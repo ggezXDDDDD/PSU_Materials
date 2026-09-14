@@ -366,17 +366,11 @@
       const saved = localStorage.getItem('psu_theme');
       if (saved) document.documentElement.setAttribute('data-theme', saved);
 
-      // IMMEDIATE PURGE of any old/invalid session from previous tests
+      // Clean legacy session keys
       try {
-        const raw = sessionStorage.getItem('psu_portal_session') || localStorage.getItem('psu_portal_remember');
-        if (raw) {
-          const d = JSON.parse(raw);
-          if (!d || (d.studentId !== '6810210432' && d.studentId !== 's6810210432')) {
-            sessionStorage.clear();
-            localStorage.removeItem('psu_portal_session');
-            localStorage.removeItem('psu_portal_remember');
-          }
-        }
+        sessionStorage.removeItem('psu_portal_session');
+        localStorage.removeItem('psu_portal_session');
+        localStorage.removeItem('psu_portal_remember');
       } catch(e) {}
 
       // Purge old service worker caches

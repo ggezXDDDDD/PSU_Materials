@@ -5,3 +5,6 @@ logs/
 __pycache__/
 *.pyc
 node_modules/
+.server_secret
+.env
+*.env

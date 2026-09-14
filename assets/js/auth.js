@@ -1,241 +1,293 @@
 /**
- * PSU Materials Portal - Cryptographic Zero-Knowledge Client Authentication Guard
- * Uses Salted SHA-256 (Web Crypto API with pure JS fallback).
- * Plaintext credentials are NEVER stored anywhere in the codebase.
+ * PSU Materials Portal - Client Authentication Guard
+ * 
+ * SECURITY ARCHITECTURE (Zero-Trust Client):
+ * - NO credentials, NO salts, and NO password hashes exist in frontend code.
+ * - Client-side storage (sessionStorage/localStorage) is NEVER trusted as proof of authentication.
+ * - Access is strictly validated by the Backend via HMAC-SHA256 Cryptographic Tokens.
+ * - Any session tampering in browser DevTools is immediately rejected by the Server with 401.
  */
 
 const PSU_AUTH = {
-  STORAGE_KEY: 'psu_portal_session',
-  REMEMBER_KEY: 'psu_portal_remember',
+  TOKEN_KEY: 'psu_auth_token',
+  USER_KEY: 'psu_auth_user',
+  REMEMBER_KEY: 'psu_auth_remember',
 
-  // Cryptographic Salt and Target Hash for authorized account
-  SALT: 'PSU_MATERIALS_PORTAL_SALT_2026_SECURE_V1',
-  AUTH_HASH: '6f01bf8bb49aeca544df34fc67401dd868d4f4c37da9b013fad4a01ebbcc8b32',
-  STUDENT_ID: '6810210432',
+  // Resolve Backend API URL
+  getApiBase() {
+    // 1. Explicit global override
+    if (window.PSU_AUTH_API_URL) {
+      return window.PSU_AUTH_API_URL.replace(/\/$/, '');
+    }
 
-  // Clean student ID helper (handles 6810210432, s6810210432, 6810210432@psu.ac.th)
-  cleanStudentId(input) {
-    return (input || '').trim().toLowerCase().replace(/@.*$/, '').replace(/^s/, '');
+    // 2. Config object
+    if (window.PSU_AUTH_CONFIG && window.PSU_AUTH_CONFIG.API_URL) {
+      return window.PSU_AUTH_CONFIG.API_URL.replace(/\/$/, '');
+    }
+
+    // 3. Same-origin backend (Local server, Docker, VPS, Reverse Proxy)
+    if (window.location.origin && window.location.origin.startsWith('http')) {
+      return `${window.location.origin}/api/auth`;
+    }
+
+    // 4. Default fallback for local testing
+    return 'http://localhost:8000/api/auth';
   },
 
-  // SHA-256 computation using Web Crypto API with portable fallback
-  async hashCredential(studentId, password) {
-    const cleanUser = this.cleanStudentId(studentId);
-    const cleanPass = (password || '').trim();
-    const message = `${this.SALT}:${cleanUser}:${cleanPass}`;
-
-    if (window.crypto && window.crypto.subtle && window.crypto.subtle.digest) {
-      try {
-        const encoder = new TextEncoder();
-        const data = encoder.encode(message);
-        const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-      } catch (err) {
-        console.warn('SubtleCrypto error, falling back to JS SHA-256:', err);
-      }
+  // Retrieve token from storage (unverified until backend check)
+  getStoredToken() {
+    try {
+      return sessionStorage.getItem(this.TOKEN_KEY) || localStorage.getItem(this.TOKEN_KEY) || '';
+    } catch (e) {
+      return '';
     }
-
-    // Pure JavaScript SHA-256 Fallback
-    return this._sha256Fallback(message);
   },
 
-  // Fallback SHA-256 implementation
-  _sha256Fallback(ascii) {
-    function rightRotate(value, amount) {
-      return (value >>> amount) | (value << (32 - amount));
-    }
-    const mathPow = Math.pow;
-    const maxWord = mathPow(2, 32);
-    let lengthProperty = 'length';
-    let i, j;
-    let result = '';
-    const words = [];
-    const asciiBitLength = ascii[lengthProperty] * 8;
-    let hash = [];
-    const k = [];
-    let primeCounter = 0;
-
-    const isPrime = (candidate) => {
-      for (let factor = 2, max = Math.sqrt(candidate); factor <= max; factor++) {
-        if (candidate % factor === 0) return false;
-      }
-      return true;
-    };
-
-    for (let candidate = 2; primeCounter < 64; candidate++) {
-      if (isPrime(candidate)) {
-        if (primeCounter < 8) {
-          hash[primeCounter] = (mathPow(candidate, 0.5) * maxWord) | 0;
-        }
-        k[primeCounter] = (mathPow(candidate, 1 / 3) * maxWord) | 0;
-        primeCounter++;
-      }
-    }
-
-    ascii += '\x80';
-    while ((ascii[lengthProperty] % 64) - 56) ascii += '\x00';
-    for (i = 0; i < ascii[lengthProperty]; i++) {
-      j = ascii.charCodeAt(i);
-      words[i >> 2] |= j << (((3 - i) % 4) * 8);
-    }
-    words[words[lengthProperty]] = (asciiBitLength / maxWord) | 0;
-    words[words[lengthProperty]] = asciiBitLength;
-
-    for (j = 0; j < words[lengthProperty]; ) {
-      const w = words.slice(j, (j += 16));
-      const oldHash = hash;
-      hash = hash.slice(0, 8);
-
-      for (i = 0; i < 64; i++) {
-        const w15 = w[i - 15], w2 = w[i - 2];
-        const s0 = rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15 >>> 3);
-        const s1 = rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2 >>> 10);
-        w[i] = (i < 16) ? w[i] : (w[i - 16] + s0 + w[i - 7] + s1) | 0;
-
-        const ch = (hash[4] & hash[5]) ^ (~hash[4] & hash[6]);
-        const maj = (hash[0] & hash[1]) ^ (hash[0] & hash[2]) ^ (hash[1] & hash[2]);
-        const temp1 = (hash[7] + (rightRotate(hash[4], 6) ^ rightRotate(hash[4], 11) ^ rightRotate(hash[4], 25)) + ch + k[i] + w[i]) | 0;
-        const temp2 = ((rightRotate(hash[0], 2) ^ rightRotate(hash[0], 13) ^ rightRotate(hash[0], 22)) + maj) | 0;
-
-        hash = [(temp1 + temp2) | 0].concat(hash);
-        hash[4] = (hash[4] + temp1) | 0;
-        hash.pop();
-      }
-
-      for (i = 0; i < 8; i++) {
-        hash[i] = (hash[i] + oldHash[i]) | 0;
-      }
-    }
-
-    for (i = 0; i < 8; i++) {
-      for (let b = 3; b >= 0; b--) {
-        const byte = (hash[i] >> (b * 8)) & 255;
-        result += (byte < 16 ? '0' : '') + byte.toString(16);
-      }
-    }
-    return result;
-  },
-
-  // Clear all invalid or old sessions
+  // Clear all local session tokens
   clearSession() {
     try {
-      sessionStorage.removeItem(this.STORAGE_KEY);
+      sessionStorage.removeItem(this.TOKEN_KEY);
+      sessionStorage.removeItem(this.USER_KEY);
+      localStorage.removeItem(this.TOKEN_KEY);
+      localStorage.removeItem(this.USER_KEY);
       localStorage.removeItem(this.REMEMBER_KEY);
-      sessionStorage.clear();
-      localStorage.removeItem('psu_portal_remember');
+      // Clean legacy keys if any
+      sessionStorage.removeItem('psu_portal_session');
       localStorage.removeItem('psu_portal_session');
+      localStorage.removeItem('psu_portal_remember');
     } catch (e) {}
   },
 
-  // Check if current user is logged in
-  isAuthenticated() {
-    const session = sessionStorage.getItem(this.STORAGE_KEY) || localStorage.getItem(this.REMEMBER_KEY);
-    if (!session) return false;
-    try {
-      const data = JSON.parse(session);
-      const isAllowedId = data && (data.studentId === this.STUDENT_ID || data.studentId === 's' + this.STUDENT_ID);
-      if (isAllowedId && data.loggedInAt) {
-        return true;
+  // Anti-Blink Content Shield: Locks protected DOM before server verification
+  applyShield() {
+    if (document.getElementById('psu-auth-shield')) return;
+    const style = document.createElement('style');
+    style.id = 'psu-auth-shield';
+    style.innerHTML = `
+      body {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transition: opacity 0.25s ease-in !important;
       }
-      this.clearSession();
-      return false;
-    } catch (e) {
-      this.clearSession();
-      return false;
+    `;
+    document.head.appendChild(style);
+  },
+
+  // Remove shield once server verification confirms valid session
+  removeShield() {
+    const shield = document.getElementById('psu-auth-shield');
+    if (shield) {
+      shield.remove();
+    }
+    if (document.body) {
+      document.body.style.opacity = '1';
+      document.body.style.visibility = 'visible';
+      document.body.style.pointerEvents = 'auto';
     }
   },
 
-  // Get logged-in student info
-  getUser() {
-    if (!this.isAuthenticated()) return null;
+  // SERVER-SIDE VERIFICATION: Query backend to validate cryptographic token
+  async verifySessionWithServer(token) {
+    if (!token) return { valid: false, message: 'No token' };
+
+    const apiBase = this.getApiBase();
     try {
-      const session = sessionStorage.getItem(this.STORAGE_KEY) || localStorage.getItem(this.REMEMBER_KEY);
-      return JSON.parse(session);
-    } catch (e) {
-      return null;
+      const response = await fetch(`${apiBase}/verify`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ token }),
+        cache: 'no-store'
+      });
+
+      if (!response.ok) {
+        return { valid: false, status: response.status };
+      }
+
+      const data = await response.json();
+      if (data && data.success && data.valid) {
+        return { valid: true, user: data.user };
+      }
+      return { valid: false, message: data.message || 'Invalid token' };
+    } catch (err) {
+      console.warn('Auth backend verification error:', err);
+      // If network/server unreachable, fail safe: DO NOT allow unauthorized access
+      return { valid: false, error: err };
     }
   },
 
-  // Attempt login via Salted SHA-256 verification
+  // Login via Server-Side Authentication
   async login(studentId, password, rememberMe = false) {
-    const cleanId = this.cleanStudentId(studentId);
+    const cleanId = (studentId || '').trim();
     const cleanPw = (password || '').trim();
 
     if (!cleanId || !cleanPw) {
       return { success: false, message: 'กรุณากรอกรหัสนักศึกษาและรหัสผ่าน' };
     }
 
+    const apiBase = this.getApiBase();
     try {
-      const hash = await this.hashCredential(cleanId, cleanPw);
-      if (hash === this.AUTH_HASH && cleanId === this.STUDENT_ID) {
-        const sessionData = {
-          studentId: this.STUDENT_ID,
-          studentName: 'Kongpop',
-          token: this.AUTH_HASH,
-          loggedInAt: new Date().toISOString(),
-          rememberMe: Boolean(rememberMe)
-        };
+      const response = await fetch(`${apiBase}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          studentId: cleanId,
+          password: cleanPw
+        }),
+        cache: 'no-store'
+      });
 
-        const serialized = JSON.stringify(sessionData);
-        sessionStorage.setItem(this.STORAGE_KEY, serialized);
+      const data = await response.json();
+
+      if (response.ok && data.success && data.token) {
+        // Save signed token
+        sessionStorage.setItem(this.TOKEN_KEY, data.token);
+        if (data.user) {
+          sessionStorage.setItem(this.USER_KEY, JSON.stringify(data.user));
+        }
 
         if (rememberMe) {
-          localStorage.setItem(this.REMEMBER_KEY, serialized);
+          localStorage.setItem(this.TOKEN_KEY, data.token);
+          if (data.user) {
+            localStorage.setItem(this.USER_KEY, JSON.stringify(data.user));
+          }
+          localStorage.setItem(this.REMEMBER_KEY, 'true');
         } else {
+          localStorage.removeItem(this.TOKEN_KEY);
+          localStorage.removeItem(this.USER_KEY);
           localStorage.removeItem(this.REMEMBER_KEY);
         }
 
-        return { success: true, user: sessionData };
+        return { success: true, user: data.user, token: data.token };
       }
+
+      this.clearSession();
+      return {
+        success: false,
+        message: data.message || 'รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง'
+      };
     } catch (err) {
-      console.error('Login verification error:', err);
+      console.error('Login network error:', err);
+      return {
+        success: false,
+        message: 'ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ตรวจสอบสิทธิ์ได้ กรุณาตรวจสอบการเชื่อมต่อ'
+      };
+    }
+  },
+
+  // Logout & Revoke Session on Server
+  async logout() {
+    const token = this.getStoredToken();
+    const apiBase = this.getApiBase();
+
+    if (token) {
+      try {
+        await fetch(`${apiBase}/logout`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ token }),
+          cache: 'no-store'
+        });
+      } catch (e) {}
     }
 
     this.clearSession();
-    return { 
-      success: false, 
-      message: 'รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง' 
-    };
-  },
 
-  // Log out
-  logout() {
-    this.clearSession();
     const isPagesDir = window.location.pathname.includes('/pages/');
     const loginUrl = isPagesDir ? '../login.html' : './login.html';
     window.location.href = loginUrl;
   },
 
-  // Gatekeeper redirect logic
-  guard() {
-    const path = window.location.pathname;
-    const isLoginPage = path.endsWith('login.html');
-    const authed = this.isAuthenticated();
-
-    if (!authed && !isLoginPage) {
-      const currentTarget = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
-      const isPagesDir = path.includes('/pages/');
-      const loginUrl = isPagesDir ? `../login.html?redirect=${currentTarget}` : `./login.html?redirect=${currentTarget}`;
-      window.location.replace(loginUrl);
-    } else if (authed && isLoginPage) {
-      const params = new URLSearchParams(window.location.search);
-      const target = params.get('redirect') ? decodeURIComponent(params.get('redirect')) : './index.html';
-      window.location.replace(target);
+  // Get active user data (if verified)
+  getUser() {
+    try {
+      const raw = sessionStorage.getItem(this.USER_KEY) || localStorage.getItem(this.USER_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
     }
   },
 
-  // Inject UI elements
+  // Gatekeeper: Executes immediately on page load
+  async guard() {
+    const path = window.location.pathname;
+    const isLoginPage = path.endsWith('login.html');
+
+    if (!isLoginPage) {
+      // 1. Immediately apply anti-blink shield to protect page contents
+      this.applyShield();
+
+      const token = this.getStoredToken();
+      if (!token) {
+        // No token present -> redirect to login immediately
+        this.redirectToLogin();
+        return;
+      }
+
+      // 2. Validate token signature and revocation with Server
+      const result = await this.verifySessionWithServer(token);
+      if (result.valid) {
+        // Authenticated by Server -> Remove shield & unlock DOM
+        this.removeShield();
+        if (result.user) {
+          sessionStorage.setItem(this.USER_KEY, JSON.stringify(result.user));
+          this.updateBadges(result.user);
+        }
+      } else {
+        // Tampered token (PoC test) or expired -> Purge and kick out to login
+        console.warn('Unauthorized session detected by server. Purging local storage.');
+        this.clearSession();
+        this.redirectToLogin();
+      }
+    } else {
+      // On login.html: If already have a valid session on server, redirect to index
+      const token = this.getStoredToken();
+      if (token) {
+        const result = await this.verifySessionWithServer(token);
+        if (result.valid) {
+          const params = new URLSearchParams(window.location.search);
+          const target = params.get('redirect') ? decodeURIComponent(params.get('redirect')) : './index.html';
+          window.location.replace(target);
+        } else {
+          this.clearSession();
+        }
+      }
+    }
+  },
+
+  // Helper: Redirect to login with current target preserved
+  redirectToLogin() {
+    const currentTarget = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
+    const isPagesDir = window.location.pathname.includes('/pages/');
+    const loginUrl = isPagesDir ? `../login.html?redirect=${currentTarget}` : `./login.html?redirect=${currentTarget}`;
+    window.location.replace(loginUrl);
+  },
+
+  // Helper: Update Top Bar badges
+  updateBadges(user) {
+    if (!user) return;
+    document.querySelectorAll('.auth-user-badge').forEach(badge => {
+      badge.innerHTML = `👤 <strong>${user.studentId}</strong> <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981; margin-left:4px;" title="ออนไลน์ (ยืนยันผ่าน Server)"></span>`;
+    });
+  },
+
+  // Inject UI Event Listeners
   initUI() {
     document.addEventListener('DOMContentLoaded', () => {
       const user = this.getUser();
-      if (!user) return;
+      if (user) {
+        this.updateBadges(user);
+      }
 
-      const userBadges = document.querySelectorAll('.auth-user-badge');
-      userBadges.forEach(badge => {
-        badge.innerHTML = `👤 <strong>${user.studentId}</strong> <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981; margin-left:4px;" title="ออนไลน์"></span>`;
-      });
-
+      // Wire up logout buttons
       document.querySelectorAll('.btn-portal-logout').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
@@ -248,6 +300,6 @@ const PSU_AUTH = {
   }
 };
 
-// Immediately guard execution
+// Immediately execute Gatekeeper
 PSU_AUTH.guard();
 PSU_AUTH.initUI();
