@@ -12,15 +12,41 @@
 const PSU_AUTH = {
   // Resolve Backend API URL
   getApiBase() {
-    if (window.PSU_AUTH_API_URL) {
+    // 1. Explicit global window override
+    if (window.PSU_AUTH_API_URL && typeof window.PSU_AUTH_API_URL === 'string') {
       return window.PSU_AUTH_API_URL.replace(/\/$/, '');
     }
+
+    // 2. Global config object
     if (window.PSU_AUTH_CONFIG && window.PSU_AUTH_CONFIG.API_URL) {
       return window.PSU_AUTH_CONFIG.API_URL.replace(/\/$/, '');
     }
+
+    // 3. HTML Meta tag: <meta name="psu-auth-api" content="https://...">
+    if (typeof document !== 'undefined' && typeof document.querySelector === 'function') {
+      const metaApi = document.querySelector('meta[name="psu-auth-api"]')?.getAttribute('content');
+      if (metaApi) {
+        return metaApi.trim().replace(/\/$/, '');
+      }
+    }
+
+    // 4. Local development server (localhost / 127.0.0.1)
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return `${window.location.origin}/api/auth`;
+    }
+
+    // 5. GitHub Pages deployment (https://<username>.github.io/<repo>/api/auth)
+    if (window.location.hostname.endsWith('github.io')) {
+      const pathSegments = window.location.pathname.split('/').filter(Boolean);
+      const repoName = pathSegments.length > 0 ? `/${pathSegments[0]}` : '';
+      return `${window.location.origin}${repoName}/api/auth`;
+    }
+
+    // 6. Generic same-origin fallback
     if (window.location.origin && window.location.origin.startsWith('http')) {
       return `${window.location.origin}/api/auth`;
     }
+
     return 'http://localhost:8000/api/auth';
   },
 
@@ -80,10 +106,17 @@ const PSU_AUTH = {
 
       if (!response.ok) {
         this._currentUser = null;
+        return { authenticated: false, status: response.status };
+      }
+
+      let data = null;
+      try {
+        data = await response.json();
+      } catch (e) {
+        this._currentUser = null;
         return { authenticated: false };
       }
 
-      const data = await response.json();
       if (data && data.authenticated && data.user) {
         this._currentUser = data.user;
         return { authenticated: true, user: data.user };
@@ -92,7 +125,7 @@ const PSU_AUTH = {
       this._currentUser = null;
       return { authenticated: false };
     } catch (err) {
-      console.warn('Backend session verification unreachable:', err);
+      console.warn('Backend session verification unreachable (fail closed):', err);
       this._currentUser = null;
       return { authenticated: false, error: err };
     }
@@ -122,7 +155,15 @@ const PSU_AUTH = {
         cache: 'no-store'
       });
 
-      const data = await response.json();
+      let data = {};
+      try {
+        data = await response.json();
+      } catch (e) {
+        return {
+          success: false,
+          message: `ไม่พบบริการ Backend API หรือเซิร์ฟเวอร์ยังไม่เปิดใช้งาน (HTTP ${response.status} ที่ ${apiBase})`
+        };
+      }
 
       if (response.ok && data.success) {
         this._currentUser = data.user;
@@ -136,10 +177,10 @@ const PSU_AUTH = {
         message: data.message || 'รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง'
       };
     } catch (err) {
-      console.error('Login network error:', err);
+      console.error('Login network error (fail closed):', err);
       return {
         success: false,
-        message: 'ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ตรวจสอบสิทธิ์ได้ กรุณาตรวจสอบว่าเซิร์ฟเวอร์เปิดใช้งานอยู่'
+        message: `ไม่สามารถเชื่อมต่อ Backend API ที่ ${apiBase} กรุณาตรวจสอบว่าเซิร์ฟเวอร์เปิดใช้งานอยู่`
       };
     }
   },
