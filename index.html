@@ -9,7 +9,9 @@
 <body>
   <div class="portal-layout">
     
-    <!-- SIDEBAR NAVIGATION -->
+    <!-- SIDEBAR NAVIGATION (CLEAN & MINIMALIST) -->
+    
+    <!-- SIDEBAR NAVIGATION (CLEAN & MINIMALIST) -->
     <aside id="portal-sidebar" class="sidebar">
       <div style="padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--glass-hairline); display:flex; align-items:center; justify-content:space-between;">
         <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main);">
@@ -22,7 +24,7 @@
       </div>
 
       <div class="sidebar-nav" style="padding: 1rem 0.8rem; overflow-y: auto; max-height: calc(100vh - 120px);">
-        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 0.4rem 0.6rem; letter-spacing: 0.05em;">ภาพรวมระบบ</div>
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 0.4rem 0.6rem 0.2rem; letter-spacing: 0.05em;">ภาพรวมระบบ</div>
         <a href="index.html" class="side-item active">
           <div class="side-left"><span class="side-icon">🏠</span> <span>หน้าหลัก Dashboard</span></div>
         </a>
@@ -35,130 +37,78 @@
           <span class="side-badge" style="color: var(--accent-blue);">กันยายน</span>
         </a>
 
-        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 1rem 0.6rem 0.4rem; letter-spacing: 0.05em;">รายวิชา (แยกไฟล์/งาน/สรุป)</div>
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 1.2rem 0.6rem 0.4rem; letter-spacing: 0.05em; border-top: 1px solid var(--glass-hairline); margin-top: 0.8rem;">🔬 วิชาเอกวัสดุศาสตร์</div>
         
-        <div style="margin-bottom: 6px;">
-          <a href="pages/metallurgy.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
-            <div class="side-left">
-              <span class="side-icon">⚙️</span>
-              <span style="font-weight: 600;">โลหะวิทยา 1</span>
-            </div>
-            <span class="side-badge" style="font-size:0.68rem;">5 งาน</span>
-          </a>
-          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
-            <a href="pages/metallurgy.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
-            <a href="pages/metallurgy_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
-            <a href="pages/metallurgy_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
-          </div>
-        </div>
+            <a href="pages/metallurgy.html" class="side-item ">
+              <div class="side-left">
+                <span class="side-icon">⚙️</span>
+                <span>โลหะวิทยา 1</span>
+              </div>
+              <span class="side-badge">5 งาน</span>
+            </a>
+            
+            <a href="pages/ceramic.html" class="side-item ">
+              <div class="side-left">
+                <span class="side-icon">🏺</span>
+                <span>เซรามิกเบื้องต้น</span>
+              </div>
+              <span class="side-badge">4 งาน</span>
+            </a>
+            
+            <a href="pages/polymer.html" class="side-item ">
+              <div class="side-left">
+                <span class="side-icon">🧪</span>
+                <span>พอลิเมอร์เบื้องต้น</span>
+              </div>
+              <span class="side-badge">7 งาน</span>
+            </a>
+            
+
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; padding: 1.2rem 0.6rem 0.4rem; letter-spacing: 0.05em; border-top: 1px solid var(--glass-hairline); margin-top: 0.8rem;">🌿 วิชาศึกษาทั่วไป (GenEd)</div>
         
-        <div style="margin-bottom: 6px;">
-          <a href="pages/ceramic.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
-            <div class="side-left">
-              <span class="side-icon">🏺</span>
-              <span style="font-weight: 600;">เซรามิกเบื้องต้น</span>
-            </div>
-            <span class="side-badge" style="font-size:0.68rem;">4 งาน</span>
-          </a>
-          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
-            <a href="pages/ceramic.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
-            <a href="pages/ceramic_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
-            <a href="pages/ceramic_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 6px;">
-          <a href="pages/polymer.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
-            <div class="side-left">
-              <span class="side-icon">🧪</span>
-              <span style="font-weight: 600;">พอลิเมอร์เบื้องต้น</span>
-            </div>
-            <span class="side-badge" style="font-size:0.68rem;">7 งาน</span>
-          </a>
-          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
-            <a href="pages/polymer.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
-            <a href="pages/polymer_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
-            <a href="pages/polymer_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 6px;">
-          <a href="pages/biology.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
-            <div class="side-left">
-              <span class="side-icon">🌿</span>
-              <span style="font-weight: 600;">ชีววิทยา</span>
-            </div>
-            <span class="side-badge" style="font-size:0.68rem;">7 งาน</span>
-          </a>
-          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
-            <a href="pages/biology.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
-            <a href="pages/biology_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
-            <a href="pages/biology_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 6px;">
-          <a href="pages/biolab.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
-            <div class="side-left">
-              <span class="side-icon">🔬</span>
-              <span style="font-weight: 600;">ปฏิบัติการชีววิทยา</span>
-            </div>
-            <span class="side-badge" style="font-size:0.68rem;">8 งาน</span>
-          </a>
-          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
-            <a href="pages/biolab.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
-            <a href="pages/biolab_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
-            <a href="pages/biolab_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 6px;">
-          <a href="pages/greenlove.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
-            <div class="side-left">
-              <span class="side-icon">🌱</span>
-              <span style="font-weight: 600;">GreenLove</span>
-            </div>
-            <span class="side-badge" style="font-size:0.68rem;">23 งาน</span>
-          </a>
-          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
-            <a href="pages/greenlove.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
-            <a href="pages/greenlove_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
-            <a href="pages/greenlove_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 6px;">
-          <a href="pages/cybersecurity.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
-            <div class="side-left">
-              <span class="side-icon">🛡️</span>
-              <span style="font-weight: 600;">Cybersecurity</span>
-            </div>
-            <span class="side-badge" style="font-size:0.68rem;">4 งาน</span>
-          </a>
-          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
-            <a href="pages/cybersecurity.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
-            <a href="pages/cybersecurity_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
-            <a href="pages/cybersecurity_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 6px;">
-          <a href="pages/other_courses.html" class="side-item " style="padding: 8px 12px; font-size: 0.88rem;">
-            <div class="side-left">
-              <span class="side-icon">🌐</span>
-              <span style="font-weight: 600;">วิชาศึกษาทั่วไปอื่นๆ</span>
-            </div>
-            <span class="side-badge" style="font-size:0.68rem;">9 งาน</span>
-          </a>
-          <div style="display: flex; gap: 4px; padding-left: 28px; margin-top: 2px;">
-            <a href="pages/other_courses.html" title="สไลด์ & เอกสาร" style="font-size:0.75rem; color:var(--text-tertiary); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,0,0,0.03);">📁 สไลด์</a>
-            <a href="pages/other_courses_tasks.html" title="งาน & การบ้าน" style="font-size:0.75rem; color:var(--accent-blue); text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(0,113,227,0.08); font-weight:600;">📋 งาน</a>
-            <a href="pages/other_courses_summary.html" title="สรุปเนื้อหา" style="font-size:0.75rem; color:#8b5cf6; text-decoration:none; padding:2px 6px; border-radius:6px; background:rgba(139,92,246,0.08); font-weight:600;">📖 สรุป</a>
-          </div>
-        </div>
-        
+            <a href="pages/biology.html" class="side-item ">
+              <div class="side-left">
+                <span class="side-icon">🌿</span>
+                <span>ชีววิทยา</span>
+              </div>
+              <span class="side-badge">7 งาน</span>
+            </a>
+            
+            <a href="pages/biolab.html" class="side-item ">
+              <div class="side-left">
+                <span class="side-icon">🔬</span>
+                <span>ปฏิบัติการชีววิทยา</span>
+              </div>
+              <span class="side-badge">8 งาน</span>
+            </a>
+            
+            <a href="pages/greenlove.html" class="side-item ">
+              <div class="side-left">
+                <span class="side-icon">🌱</span>
+                <span>GreenLove</span>
+              </div>
+              <span class="side-badge">23 งาน</span>
+            </a>
+            
+            <a href="pages/cybersecurity.html" class="side-item ">
+              <div class="side-left">
+                <span class="side-icon">🛡️</span>
+                <span>Cybersecurity</span>
+              </div>
+              <span class="side-badge">4 งาน</span>
+            </a>
+            
+            <a href="pages/other_courses.html" class="side-item ">
+              <div class="side-left">
+                <span class="side-icon">🌐</span>
+                <span>วิชาศึกษาทั่วไปอื่นๆ</span>
+              </div>
+              <span class="side-badge">9 งาน</span>
+            </a>
+            
       </div>
     </aside>
+    
     
 
     <main class="main-content">
@@ -166,7 +116,7 @@
         <div style="font-weight:700; font-size:1.1rem; color:var(--text-main);">PSU Materials Portal</div>
         <div style="display:flex; align-items:center; gap:10px;">
           <button id="theme-toggle-btn" onclick="toggleTheme()" style="background:transparent; border:1px solid var(--glass-hairline); border-radius:999px; padding:6px 12px; cursor:pointer;">🌓</button>
-          <a href="tasks.html" style="padding:6px 16px; border-radius:999px; background:#1d1d1f; color:#fff; text-decoration:none; font-size:0.84rem; font-weight:600;">📋 งานทั้งหมด (15)</a>
+          <a href="tasks.html" style="padding:6px 16px; border-radius:999px; background:#1d1d1f; color:#fff; text-decoration:none; font-size:0.84rem; font-weight:600;">📋 งานทั้งหมด (67)</a>
         </div>
       </header>
 
@@ -187,7 +137,7 @@
               <span style="font-size:2rem;">📋</span>
               <div>
                 <div style="font-weight:800; font-size:1.05rem; color:var(--text-main);">ศูนย์รวมงานทั้งหมดใน LMS</div>
-                <div style="font-size:0.82rem; color:var(--text-secondary);">67 รายการ • ค้นหาและกรองสถานะได้ทันที</div>
+                <div style="font-size:0.82rem; color:var(--text-secondary);">67 รายการ • จัดกลุ่มแยกตามวิชา พับ/ขยายได้</div>
               </div>
             </div>
             <span style="font-weight:800; color:var(--accent-blue); font-size:1.2rem;">➔</span>
@@ -206,144 +156,156 @@
         </div>
       </div>
 
-      <!-- COURSE DIRECTORY -->
-      <div style="display:flex; align-items:center; justify-content:space-between; margin:2rem 0 1rem;">
-        <div>
-          <h2 style="font-size:1.35rem; font-weight:800; margin:0;">📚 รายวิชาทั้งหมด (Course Directory)</h2>
-          <div style="font-size:0.85rem; color:var(--text-tertiary);">คลิกเลือกเพื่อดูสไลด์, รายการงาน LMS หรือสรุปเตรียมสอบของแต่ละวิชา</div>
+      <!-- GROUP 1: MAJOR COURSES -->
+      <div style="margin:2.5rem 0 1rem;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <h2 style="font-size:1.3rem; font-weight:800; margin:0;">🔬 วิชาเอกภาควิชาวัสดุศาสตร์ (Materials Science Major)</h2>
+          <span style="font-size:0.75rem; font-weight:700; padding:2px 8px; border-radius:999px; background:rgba(0,113,227,0.1); color:var(--accent-blue);">3 วิชา</span>
         </div>
+        <div style="font-size:0.85rem; color:var(--text-tertiary); margin-top:2px;">วิชาเอกบังคับประจำหลักสูตรวิศวกรรม/วิทยาศาสตร์วัสดุ</div>
       </div>
-
       <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:16px;">
         
-    <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
-      <div>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-          <span style="font-size:2rem;">⚙️</span>
-          <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">316-221</span>
+            <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <span style="font-size:2rem;">⚙️</span>
+                  <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">316-221</span>
+                </div>
+                <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">โลหะวิทยา 1</div>
+                <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 24 ไฟล์ • งาน LMS 5 งาน</div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
+                <a href="pages/metallurgy.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
+                <a href="pages/metallurgy_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (5)</a>
+                <a href="pages/metallurgy_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
+              </div>
+            </div>
+            
+            <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <span style="font-size:2rem;">🏺</span>
+                  <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">316-222</span>
+                </div>
+                <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">เซรามิกเบื้องต้น</div>
+                <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 6 ไฟล์ • งาน LMS 4 งาน</div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
+                <a href="pages/ceramic.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
+                <a href="pages/ceramic_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (4)</a>
+                <a href="pages/ceramic_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
+              </div>
+            </div>
+            
+            <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <span style="font-size:2rem;">🧪</span>
+                  <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">316-223</span>
+                </div>
+                <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">พอลิเมอร์เบื้องต้น</div>
+                <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 9 ไฟล์ • งาน LMS 7 งาน</div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
+                <a href="pages/polymer.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
+                <a href="pages/polymer_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (7)</a>
+                <a href="pages/polymer_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
+              </div>
+            </div>
+            
+      </div>
+
+      <!-- GROUP 2: GENED COURSES -->
+      <div style="margin:3rem 0 1rem;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <h2 style="font-size:1.3rem; font-weight:800; margin:0;">🌿 วิชาศึกษาทั่วไป (General Education)</h2>
+          <span style="font-size:0.75rem; font-weight:700; padding:2px 8px; border-radius:999px; background:rgba(16,185,129,0.1); color:#10b981;">5 วิชา</span>
         </div>
-        <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">โลหะวิทยา 1</div>
-        <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 24 ไฟล์ • งาน LMS 5 งาน</div>
+        <div style="font-size:0.85rem; color:var(--text-tertiary); margin-top:2px;">หมวดวิทยาศาสตร์และเทคโนโลยี และวิชาพัฒนานักศึกษา</div>
       </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
-        <a href="pages/metallurgy.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
-        <a href="pages/metallurgy_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (5)</a>
-        <a href="pages/metallurgy_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
-      </div>
-    </div>
-    
-    <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
-      <div>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-          <span style="font-size:2rem;">🏺</span>
-          <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">316-222</span>
-        </div>
-        <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">เซรามิกเบื้องต้น</div>
-        <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 6 ไฟล์ • งาน LMS 4 งาน</div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
-        <a href="pages/ceramic.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
-        <a href="pages/ceramic_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (4)</a>
-        <a href="pages/ceramic_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
-      </div>
-    </div>
-    
-    <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
-      <div>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-          <span style="font-size:2rem;">🧪</span>
-          <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">316-223</span>
-        </div>
-        <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">พอลิเมอร์เบื้องต้น</div>
-        <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 9 ไฟล์ • งาน LMS 7 งาน</div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
-        <a href="pages/polymer.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
-        <a href="pages/polymer_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (7)</a>
-        <a href="pages/polymer_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
-      </div>
-    </div>
-    
-    <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
-      <div>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-          <span style="font-size:2rem;">🌿</span>
-          <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">330-101</span>
-        </div>
-        <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">ชีววิทยา</div>
-        <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 0 ไฟล์ • งาน LMS 7 งาน</div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
-        <a href="pages/biology.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
-        <a href="pages/biology_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (7)</a>
-        <a href="pages/biology_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
-      </div>
-    </div>
-    
-    <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
-      <div>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-          <span style="font-size:2rem;">🔬</span>
-          <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">331-101</span>
-        </div>
-        <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">ปฏิบัติการชีววิทยา</div>
-        <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 0 ไฟล์ • งาน LMS 8 งาน</div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
-        <a href="pages/biolab.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
-        <a href="pages/biolab_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (8)</a>
-        <a href="pages/biolab_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
-      </div>
-    </div>
-    
-    <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
-      <div>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-          <span style="font-size:2rem;">🌱</span>
-          <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">200-103</span>
-        </div>
-        <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">GreenLove</div>
-        <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 0 ไฟล์ • งาน LMS 23 งาน</div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
-        <a href="pages/greenlove.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
-        <a href="pages/greenlove_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (23)</a>
-        <a href="pages/greenlove_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
-      </div>
-    </div>
-    
-    <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
-      <div>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-          <span style="font-size:2rem;">🛡️</span>
-          <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">B03-001</span>
-        </div>
-        <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">Cybersecurity</div>
-        <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 0 ไฟล์ • งาน LMS 4 งาน</div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
-        <a href="pages/cybersecurity.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
-        <a href="pages/cybersecurity_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (4)</a>
-        <a href="pages/cybersecurity_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
-      </div>
-    </div>
-    
-    <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
-      <div>
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-          <span style="font-size:2rem;">🌐</span>
-          <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">GE-OTHER</span>
-        </div>
-        <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">วิชาศึกษาทั่วไปอื่นๆ</div>
-        <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 0 ไฟล์ • งาน LMS 9 งาน</div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
-        <a href="pages/other_courses.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
-        <a href="pages/other_courses_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (9)</a>
-        <a href="pages/other_courses_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
-      </div>
-    </div>
-    
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:16px;">
+        
+            <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <span style="font-size:2rem;">🌿</span>
+                  <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">330-101</span>
+                </div>
+                <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">ชีววิทยา</div>
+                <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 0 ไฟล์ • งาน LMS 7 งาน</div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
+                <a href="pages/biology.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
+                <a href="pages/biology_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (7)</a>
+                <a href="pages/biology_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
+              </div>
+            </div>
+            
+            <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <span style="font-size:2rem;">🔬</span>
+                  <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">331-101</span>
+                </div>
+                <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">ปฏิบัติการชีววิทยา</div>
+                <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 0 ไฟล์ • งาน LMS 8 งาน</div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
+                <a href="pages/biolab.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
+                <a href="pages/biolab_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (8)</a>
+                <a href="pages/biolab_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
+              </div>
+            </div>
+            
+            <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <span style="font-size:2rem;">🌱</span>
+                  <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">200-103</span>
+                </div>
+                <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">GreenLove</div>
+                <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 0 ไฟล์ • งาน LMS 23 งาน</div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
+                <a href="pages/greenlove.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
+                <a href="pages/greenlove_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (23)</a>
+                <a href="pages/greenlove_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
+              </div>
+            </div>
+            
+            <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <span style="font-size:2rem;">🛡️</span>
+                  <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">B03-001</span>
+                </div>
+                <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">Cybersecurity</div>
+                <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 0 ไฟล์ • งาน LMS 4 งาน</div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
+                <a href="pages/cybersecurity.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
+                <a href="pages/cybersecurity_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (4)</a>
+                <a href="pages/cybersecurity_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
+              </div>
+            </div>
+            
+            <div class="card-glass" style="padding:1.6rem 1.8rem; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <span style="font-size:2rem;">🌐</span>
+                  <span style="font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,0.05);">GE-OTHER</span>
+                </div>
+                <div style="font-weight:800; font-size:1.15rem; color:var(--text-main); margin-bottom:4px;">วิชาศึกษาทั่วไปอื่นๆ</div>
+                <div style="font-size:0.84rem; color:var(--text-secondary); margin-bottom:14px;">คลังสไลด์ 0 ไฟล์ • งาน LMS 9 งาน</div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; margin-top:10px;">
+                <a href="pages/other_courses.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--surface-glass-sub); border:1px solid var(--glass-hairline); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--text-main);">📁 สไลด์</a>
+                <a href="pages/other_courses_tasks.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:var(--accent-blue-soft); border:1px solid rgba(0,113,227,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:var(--accent-blue);">📋 งาน (9)</a>
+                <a href="pages/other_courses_summary.html" style="text-align:center; padding:8px 4px; border-radius:10px; background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.15); text-decoration:none; font-size:0.78rem; font-weight:700; color:#8b5cf6;">📖 สรุป</a>
+              </div>
+            </div>
+            
       </div>
     </main>
   </div>

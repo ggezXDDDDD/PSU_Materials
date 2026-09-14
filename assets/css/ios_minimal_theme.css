@@ -445,3 +445,170 @@ html[data-rainbow="true"] .rainbow-speed-banner {
   background: #fff;
   color: #141416;
 }
+
+
+/* ==========================================================================
+   SMOOTH ACCORDION & COURSE SUB-SECTION STYLING
+   ========================================================================== */
+.course-task-section {
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: var(--surface-glass);
+  box-shadow: var(--glass-shadow);
+  transition: box-shadow 0.3s var(--ios-ease), transform 0.3s var(--ios-ease);
+}
+.course-task-section:hover {
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.course-task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.6rem;
+  cursor: pointer;
+  user-select: none;
+  background: var(--surface-glass-sub);
+  border-bottom: 1px solid var(--glass-hairline);
+  transition: background 0.22s var(--ios-ease);
+}
+.course-task-header:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+[data-theme="dark"] .course-task-header:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.course-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.course-header-chevron {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  transition: transform 0.3s var(--ios-ease);
+  display: inline-block;
+  width: 16px;
+  text-align: center;
+}
+.course-header-chevron.collapsed {
+  transform: rotate(-90deg);
+}
+
+.course-header-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.course-header-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+.course-header-sub {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+.course-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.badge-task-count {
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-blue-soft);
+  color: var(--accent-blue);
+  border: 1px solid rgba(0, 113, 227, 0.15);
+  white-space: nowrap;
+}
+.btn-goto-course {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--glass-hairline);
+  transition: all 0.2s var(--ios-ease);
+}
+.btn-goto-course:hover {
+  background: #1d1d1f;
+  color: #fff;
+}
+[data-theme="dark"] .btn-goto-course:hover {
+  background: #fff;
+  color: #141416;
+}
+
+/* 60fps Modern CSS Grid Accordion Transition */
+.course-task-body-wrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.35s var(--ios-ease), opacity 0.28s ease;
+  opacity: 1;
+}
+.course-task-body-wrapper.collapsed {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+.course-task-body-inner {
+  overflow: hidden;
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+/* Sub-group headers inside courses */
+.task-subgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.task-subgroup-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--glass-hairline);
+  margin-bottom: 4px;
+}
+
+/* Controls bar */
+.tasks-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+.btn-toggle-all {
+  background: var(--surface-glass);
+  border: 1px solid var(--glass-hairline);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s var(--ios-ease);
+}
+.btn-toggle-all:hover {
+  background: var(--surface-hover);
+  border-color: var(--text-secondary);
+}
