@@ -269,5 +269,32 @@
       if (saved) document.documentElement.setAttribute('data-theme', saved);
     })();
   </script>
+
+  <div id="toast" class="toast-notification" style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:#1d1d1f; color:#fff; padding:10px 22px; border-radius:999px; font-weight:600; font-size:0.88rem; box-shadow:0 10px 30px rgba(0,0,0,0.25); display:none; z-index:9999;">
+    📋 คัดลอกโจทย์เรียบร้อยแล้ว
+  </div>
+  <script>
+    function copyPromptText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('📋 คัดลอกโจทย์เรียบร้อยแล้ว');
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('📋 คัดลอกโจทย์เรียบร้อยแล้ว');
+      });
+    }
+    function showToast(msg) {
+      let toast = document.getElementById('toast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 2200);
+    }
+  </script>
+
 </body>
 </html>
