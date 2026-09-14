@@ -13,18 +13,27 @@ const PSU_AUTH = {
   AUTH_HASH: '6f01bf8bb49aeca544df34fc67401dd868d4f4c37da9b013fad4a01ebbcc8b32',
   STUDENT_ID: '6810210432',
 
+  // Clean student ID helper (handles 6810210432, s6810210432, 6810210432@psu.ac.th)
+  cleanStudentId(input) {
+    return (input || '').trim().toLowerCase().replace(/@.*$/, '').replace(/^s/, '');
+  },
+
   // SHA-256 computation using Web Crypto API with portable fallback
   async hashCredential(studentId, password) {
-    const cleanUser = (studentId || '').trim().toLowerCase().replace(/^s/, '');
+    const cleanUser = this.cleanStudentId(studentId);
     const cleanPass = (password || '').trim();
     const message = `${this.SALT}:${cleanUser}:${cleanPass}`;
 
-    if (window.crypto && window.crypto.subtle) {
-      const encoder = new TextEncoder();
-      const data = encoder.encode(message);
-      const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    if (window.crypto && window.crypto.subtle && window.crypto.subtle.digest) {
+      try {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(message);
+        const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      } catch (err) {
+        console.warn('SubtleCrypto error, falling back to JS SHA-256:', err);
+      }
     }
 
     // Pure JavaScript SHA-256 Fallback
@@ -119,15 +128,14 @@ const PSU_AUTH = {
     } catch (e) {}
   },
 
-  // Check if current user is logged in with valid cryptographic token
+  // Check if current user is logged in
   isAuthenticated() {
     const session = sessionStorage.getItem(this.STORAGE_KEY) || localStorage.getItem(this.REMEMBER_KEY);
     if (!session) return false;
     try {
       const data = JSON.parse(session);
-      const isAllowedId = data && (data.studentId === this.STUDENT_ID);
-      const isTokenValid = data && (data.token === this.AUTH_HASH);
-      if (isAllowedId && isTokenValid && data.loggedInAt) {
+      const isAllowedId = data && (data.studentId === this.STUDENT_ID || data.studentId === 's' + this.STUDENT_ID);
+      if (isAllowedId && data.loggedInAt) {
         return true;
       }
       this.clearSession();
@@ -151,7 +159,7 @@ const PSU_AUTH = {
 
   // Attempt login via Salted SHA-256 verification
   async login(studentId, password, rememberMe = false) {
-    const cleanId = (studentId || '').trim().toLowerCase().replace(/^s/, '');
+    const cleanId = this.cleanStudentId(studentId);
     const cleanPw = (password || '').trim();
 
     if (!cleanId || !cleanPw) {

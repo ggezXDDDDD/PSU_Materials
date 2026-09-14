@@ -1,15 +1,13 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v5';
+const CACHE_NAME = 'psu-materials-v6';
 
 const STATIC_ASSETS = [
   './',
   './index.html',
   './tasks.html',
   './calendar.html',
-  './login.html',
   './manifest.json',
   './assets/css/ios_minimal_theme.css',
-  './assets/js/auth.js',
   './assets/js/fuse.min.js',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',
@@ -26,7 +24,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate: Clean old caches
+// Activate: Clean old caches immediately
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -41,7 +39,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: Network First with Cache Fallback for HTML, Cache First for assets
+// Fetch: Always bypass cache for auth & login
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   const url = new URL(req.url);
@@ -49,21 +47,15 @@ self.addEventListener('fetch', (event) => {
   // Only handle GET
   if (req.method !== 'GET') return;
 
-  // HTML pages: Network First, fallback to cache
-    // Always fetch auth.js from network first to ensure instant credential changes
-  if (url.pathname.endsWith('auth.js')) {
+  // Always fetch auth.js and login.html live from network (NO CACHE)
+  if (url.pathname.endsWith('auth.js') || url.pathname.endsWith('login.html')) {
     event.respondWith(
-      fetch(req)
-        .then((networkRes) => {
-          const resClone = networkRes.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, resClone));
-          return networkRes;
-        })
-        .catch(() => caches.match(req))
+      fetch(req, { cache: 'no-store' }).catch(() => caches.match(req))
     );
     return;
   }
 
+  // HTML pages: Network First, fallback to cache
   if (req.headers.get('accept') && req.headers.get('accept').includes('text/html')) {
     event.respondWith(
       fetch(req)
