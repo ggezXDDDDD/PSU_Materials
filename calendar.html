@@ -3,71 +3,311 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>📅 ปฏิทินส่งงาน & ตารางสอบ | PSU Materials</title>
+  <title>📅 ปฏิทินส่งงาน & ตารางสอบ | PSU Materials Portal</title>
   <link rel="stylesheet" href="assets/css/ios_minimal_theme.css">
   <style>
-    .cal-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 10px;
-    }
-    .cal-day-header {
-      padding: 10px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-    }
-    .cal-cell {
-      min-height: 110px;
-      background: var(--surface-glass);
-      backdrop-filter: var(--ios-blur);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-lg);
-      padding: 10px;
+    /* CALENDAR COMPONENT STYLES */
+    .cal-controls-row {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 1.5rem;
+    }
+    .month-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--glass-border-light);
+      background: var(--glass-bg-light);
+      backdrop-filter: var(--ios-blur-subtle);
+      -webkit-backdrop-filter: var(--ios-blur-subtle);
+      color: var(--text-main);
+      font-size: 0.9rem;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.22s var(--ios-ease);
     }
+    .month-nav-btn:hover {
+      background: #1d1d1f;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .month-quick-pills {
+      display: flex;
+      gap: 6px;
+      background: var(--glass-bg-subtle);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--glass-border-light);
+    }
+    .month-pill-btn {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s var(--ios-ease);
+    }
+    .month-pill-btn:hover {
+      color: var(--text-main);
+    }
+    .month-pill-btn.active {
+      background: #1d1d1f;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    [data-theme="dark"] .month-pill-btn.active {
+      background: rgba(255,255,255,0.9);
+      color: #000;
+    }
+
+    .course-filter-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .filter-chip {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--glass-border-light);
+      background: var(--glass-bg-light);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 0.2s var(--ios-ease);
+    }
+    .filter-chip:hover {
+      color: var(--text-main);
+      border-color: var(--text-main);
+    }
+    .filter-chip.active {
+      background: var(--accent-blue);
+      color: #fff;
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+    }
+
+    /* GRID */
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+    .cal-day-header {
+      padding: 10px 4px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .cal-cell {
+      min-height: 118px;
+      background: var(--glass-bg-light);
+      backdrop-filter: var(--ios-blur-subtle);
+      -webkit-backdrop-filter: var(--ios-blur-subtle);
+      border: 1px solid var(--glass-border-light);
+      border-radius: 16px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.25s var(--ios-ease);
+      position: relative;
+    }
     .cal-cell:hover {
-      background: var(--surface-hover);
       transform: translateY(-2px);
-      box-shadow: var(--glass-shadow-hover);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      border-color: var(--accent-blue);
+      background: #ffffff;
+      z-index: 5;
+    }
+    [data-theme="dark"] .cal-cell:hover {
+      background: rgba(30, 41, 59, 0.85);
+    }
+    .cal-cell.other-month {
+      opacity: 0.28;
+      background: transparent;
+      cursor: default;
+    }
+    .cal-cell.other-month:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: var(--glass-border-light);
     }
     .cal-cell.today {
       border: 2px solid var(--accent-blue);
-      box-shadow: 0 0 0 3px var(--accent-blue-soft);
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.18);
+      background: rgba(0, 113, 227, 0.03);
     }
-    .cal-cell.has-tasks {
-      background: rgba(255, 255, 255, 0.9);
+    .cal-cell-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
     }
     .cal-date-num {
       font-weight: 800;
       font-size: 0.95rem;
+      color: var(--text-main);
+    }
+    .today-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--accent-blue);
+      color: #fff;
     }
     .cal-task-pill {
       font-size: 0.72rem;
       font-weight: 700;
-      padding: 3px 6px;
-      border-radius: 6px;
+      padding: 3px 7px;
+      border-radius: 8px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: transform 0.15s ease;
     }
-    .cal-task-urgent { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
-    .cal-task-quiz { background: rgba(0, 113, 227, 0.15); color: #0071e3; }
-    .cal-task-normal { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; }
+    .cal-task-pill:hover {
+      transform: scale(1.02);
+    }
+    .more-tasks-pill {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--text-secondary);
+      background: rgba(0,0,0,0.05);
+      border-radius: 999px;
+      padding: 2px 6px;
+      text-align: center;
+    }
+    [data-theme="dark"] .more-tasks-pill {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* INTERACTIVE MODAL */
+    .modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-content {
+      background: var(--glass-bg-light);
+      border: 1px solid var(--glass-border-light);
+      border-radius: 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      max-width: 620px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-theme="dark"] .modal-content {
+      background: #18181b;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    @keyframes modalSlideUp {
+      from { opacity: 0; transform: translateY(20px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-header {
+      padding: 1.4rem 1.8rem;
+      border-bottom: 1px solid var(--glass-border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-body {
+      padding: 1.5rem 1.8rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--text-tertiary);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .modal-close-btn:hover {
+      background: rgba(0,0,0,0.06);
+      color: var(--text-main);
+    }
+
+    /* AGENDA LIST */
+    .agenda-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      background: var(--glass-bg-light);
+      border: 1px solid var(--glass-border-light);
+      border-radius: 18px;
+      transition: all 0.25s var(--ios-ease);
+      margin-bottom: 10px;
+    }
+    .agenda-card:hover {
+      transform: translateX(4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+    .agenda-date-box {
+      min-width: 70px;
+      text-align: center;
+      padding: 8px;
+      border-radius: 14px;
+      background: rgba(0, 113, 227, 0.08);
+      color: var(--accent-blue);
+    }
+    .agenda-date-num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .agenda-date-month {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
   </style>
 </head>
 <body>
   <div class="portal-layout">
     
-    <!-- SIDEBAR NAVIGATION -->
-    
-    <!-- SIDEBAR NAVIGATION (CLEAN & MINIMALIST) -->
     <aside id="portal-sidebar" class="sidebar">
       <div style="padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--glass-hairline); display:flex; align-items:center; justify-content:space-between;">
         <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main);">
@@ -84,7 +324,7 @@
         <a href="index.html" class="side-item ">
           <div class="side-left"><span class="side-icon">🏠</span> <span>หน้าหลัก Dashboard</span></div>
         </a>
-        <a href="tasks.html" class="side-item ">
+        <a href="tasks.html" class="side-item">
           <div class="side-left"><span class="side-icon">📋</span> <span>งานทั้งหมดใน LMS</span></div>
           <span class="side-badge" style="background: rgba(239,68,68,0.12); color: #ef4444; font-weight: 800;">67 งาน</span>
         </a>
@@ -164,8 +404,6 @@
             
       </div>
     </aside>
-    
-    
 
     <main class="main-content">
       <header class="main-top-bar">
@@ -180,100 +418,387 @@
 
       <div class="card-glass" style="padding:2rem 2.2rem; margin-bottom:1.5rem;">
         <div style="display:inline-block; font-size:0.8rem; font-weight:800; padding:4px 12px; border-radius:999px; background:var(--accent-blue-soft); color:var(--accent-blue); margin-bottom:10px;">
-          📅 MONTHLY DEADLINES VIEW • กันยายน 2569
+          📅 ACADEMIC CALENDAR & DEADLINE RADAR • ภาคการศึกษา 1/2569
         </div>
-        <h1 style="font-size:2rem; font-weight:800; margin:0 0 10px; letter-spacing:-0.02em;">ปฏิทินกำหนดส่งงานและสอบย่อย</h1>
-        <p style="color:var(--text-secondary); margin:0; font-size:0.96rem;">คลิกที่วันที่เพื่อเปิดดูรายละเอียดงาน คำสั่งจากอาจารย์ และลิงก์ส่งงานในระบบ LMS</p>
+        <h1 style="font-size:2rem; font-weight:800; margin:0 0 10px; letter-spacing:-0.02em;">ปฏิทินกำหนดส่งงานและสอบย่อย (ครบทั้ง 67 งาน)</h1>
+        <p style="color:var(--text-secondary); margin:0; font-size:0.96rem;">
+          ติดตามกำหนดส่งการบ้าน รายงานกลุ่ม ควิซเก็บคะแนน และการสอบย่อยจากระบบ PSU LMS คลิกที่ช่องวันเพื่อเปิดดูรายละเอียดและส่งงาน
+        </p>
       </div>
 
+      <!-- MAIN CALENDAR CARD -->
       <div class="card-glass" style="padding:1.8rem 2rem; margin-bottom:2rem;">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
-          <div style="font-weight:800; font-size:1.3rem;">กันยายน 2569 (September 2026)</div>
-          <div style="display:flex; gap:10px; font-size:0.8rem;">
-            <span style="display:flex; align-items:center; gap:5px;"><span style="width:8px; height:8px; border-radius:50%; background:#ef4444;"></span> งานด่วน</span>
-            <span style="display:flex; align-items:center; gap:5px;"><span style="width:8px; height:8px; border-radius:50%; background:#0071e3;"></span> ควิซ LMS</span>
-            <span style="display:flex; align-items:center; gap:5px;"><span style="width:8px; height:8px; border-radius:50%; background:#8b5cf6;"></span> แบบฝึกหัด</span>
+        
+        <!-- Controls row -->
+        <div class="cal-controls-row">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <button class="month-nav-btn" onclick="changeMonth(-1)">◀ ก่อนหน้า</button>
+            <h2 id="current-month-label" style="font-size:1.45rem; font-weight:800; margin:0; letter-spacing:-0.02em; min-width:220px; text-align:center;">
+              กันยายน 2569
+            </h2>
+            <button class="month-nav-btn" onclick="changeMonth(1)">ถัดไป ▶</button>
+          </div>
+
+          <!-- Quick month jump buttons -->
+          <div class="month-quick-pills">
+            <button class="month-pill-btn" onclick="jumpToMonth(2026, 7)">ก.ค. 69</button>
+            <button class="month-pill-btn" onclick="jumpToMonth(2026, 8)">ส.ค. 69</button>
+            <button class="month-pill-btn active" id="btn-month-sep" onclick="jumpToMonth(2026, 9)">ก.ย. 69 (ปัจจุบัน)</button>
+            <button class="month-pill-btn" onclick="jumpToMonth(2026, 10)">ต.ค. 69 (งานใหญ่)</button>
           </div>
         </div>
 
-        <div class="cal-grid">
-          <div class="cal-day-header">จันทร์</div>
-          <div class="cal-day-header">อังคาร</div>
-          <div class="cal-day-header">พุธ</div>
-          <div class="cal-day-header">พฤหัสบดี</div>
-          <div class="cal-day-header">ศุกร์</div>
-          <div class="cal-day-header" style="color:#0071e3;">เสาร์</div>
-          <div class="cal-day-header" style="color:#ef4444;">อาทิตย์</div>
+        <!-- Course filter chips -->
+        <div class="course-filter-chips">
+          <button class="filter-chip active" data-filter="all" onclick="filterByCourse('all')">🌈 ทั้งหมด (67 งาน)</button>
+          <button class="filter-chip" data-filter="metal" onclick="filterByCourse('metal')">⚙️ โลหะวิทยา (5)</button>
+          <button class="filter-chip" data-filter="ceram" onclick="filterByCourse('ceram')">🏺 เซรามิก (4)</button>
+          <button class="filter-chip" data-filter="poly" onclick="filterByCourse('poly')">🧪 พอลิเมอร์ (7)</button>
+          <button class="filter-chip" data-filter="bio" onclick="filterByCourse('bio')">🌿 ชีววิทยา (7)</button>
+          <button class="filter-chip" data-filter="biolab" onclick="filterByCourse('biolab')">🔬 ปฏิบัติการ (8)</button>
+          <button class="filter-chip" data-filter="greenlove" onclick="filterByCourse('greenlove')">🌱 GreenLove (23)</button>
+          <button class="filter-chip" data-filter="cyber" onclick="filterByCourse('cyber')">🛡️ Cybersecurity (4)</button>
+          <button class="filter-chip" data-filter="other" onclick="filterByCourse('other')">🌐 วิชาทั่วไปอื่นๆ (9)</button>
+        </div>
 
-          <div class="cal-cell" style="opacity:0.4;"><span class="cal-date-num">31</span></div>
-          <div class="cal-cell"><span class="cal-date-num">1</span></div>
-          <div class="cal-cell"><span class="cal-date-num">2</span></div>
-          <div class="cal-cell"><span class="cal-date-num">3</span></div>
-          <div class="cal-cell"><span class="cal-date-num">4</span></div>
-          <div class="cal-cell"><span class="cal-date-num">5</span></div>
-          <div class="cal-cell"><span class="cal-date-num">6</span></div>
-
-          <div class="cal-cell"><span class="cal-date-num">7</span></div>
-          <div class="cal-cell"><span class="cal-date-num">8</span></div>
-          <div class="cal-cell"><span class="cal-date-num">9</span></div>
-          <div class="cal-cell"><span class="cal-date-num">10</span></div>
-          <div class="cal-cell"><span class="cal-date-num">11</span></div>
-          <div class="cal-cell has-tasks" onclick="alert('กำหนดส่ง: Bonus Challenge GreenLove 12/9/2569')">
-            <span class="cal-date-num">12</span>
-            <div class="cal-task-pill cal-task-urgent">🌱 Bonus GreenLove</div>
-          </div>
-          <div class="cal-cell today has-tasks" onclick="alert('วันนี้: กำหนดส่งงาน LMS และแบบฝึกหัดประจำสัปดาห์')">
-            <span class="cal-date-num" style="color:var(--accent-blue);">13 (วันนี้)</span>
-            <div class="cal-task-pill cal-task-urgent">⚙️ รายงานโลหะวิทยา</div>
-            <div class="cal-task-pill cal-task-quiz">🏺 ควิซเซรามิก 1</div>
-          </div>
-
-          <div class="cal-cell"><span class="cal-date-num">14</span></div>
-          <div class="cal-cell has-tasks" onclick="alert('กำหนดส่ง: ควิซชีววิทยา และแล็ปเคมี')">
-            <span class="cal-date-num">15</span>
-            <div class="cal-task-pill cal-task-quiz">🌿 Quiz ชีววิทยา</div>
-          </div>
-          <div class="cal-cell"><span class="cal-date-num">16</span></div>
-          <div class="cal-cell"><span class="cal-date-num">17</span></div>
-          <div class="cal-cell"><span class="cal-date-num">18</span></div>
-          <div class="cal-cell"><span class="cal-date-num">19</span></div>
-          <div class="cal-cell has-tasks" onclick="alert('กำหนดส่ง: แบบฝึกหัดพอลิเมอร์ บทที่ 2')">
-            <span class="cal-date-num">20</span>
-            <div class="cal-task-pill cal-task-normal">🧪 การบ้านพอลิเมอร์</div>
-          </div>
-
-          <div class="cal-cell"><span class="cal-date-num">21</span></div>
-          <div class="cal-cell"><span class="cal-date-num">22</span></div>
-          <div class="cal-cell"><span class="cal-date-num">23</span></div>
-          <div class="cal-cell"><span class="cal-date-num">24</span></div>
-          <div class="cal-cell"><span class="cal-date-num">25</span></div>
-          <div class="cal-cell"><span class="cal-date-num">26</span></div>
-          <div class="cal-cell"><span class="cal-date-num">27</span></div>
-
-          <div class="cal-cell"><span class="cal-date-num">28</span></div>
-          <div class="cal-cell"><span class="cal-date-num">29</span></div>
-          <div class="cal-cell has-tasks" onclick="alert('กำหนดส่ง: รายงานกลุ่มปลายเดือน & ควิซท้ายบท')">
-            <span class="cal-date-num">30</span>
-            <div class="cal-task-pill cal-task-urgent">🛡️ Cybersecurity Lab</div>
-          </div>
-          <div class="cal-cell" style="opacity:0.4;"><span class="cal-date-num">1</span></div>
-          <div class="cal-cell" style="opacity:0.4;"><span class="cal-date-num">2</span></div>
-          <div class="cal-cell" style="opacity:0.4;"><span class="cal-date-num">3</span></div>
-          <div class="cal-cell" style="opacity:0.4;"><span class="cal-date-num">4</span></div>
+        <!-- 7-day grid -->
+        <div class="cal-grid" id="calendar-grid">
+          <!-- Populated by JS -->
         </div>
       </div>
+
+      <!-- UPCOMING DEADLINES SECTION -->
+      <div class="card-glass" style="padding:1.8rem 2rem; margin-bottom:2rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+          <div>
+            <div style="font-size:0.8rem; font-weight:800; color:var(--accent-blue); text-transform:uppercase; letter-spacing:0.05em;">UPCOMING AGENDA</div>
+            <h3 style="font-size:1.35rem; font-weight:800; margin:2px 0 0;">🚨 กำหนดส่งที่กำลังมาถึง (Upcoming Deadlines)</h3>
+          </div>
+          <span style="font-size:0.85rem; color:var(--text-tertiary);">เรียงลำดับตามวันที่กำหนดส่งจริง</span>
+        </div>
+
+        <div id="upcoming-agenda-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
     </main>
   </div>
 
+  <!-- INTERACTIVE DAY DETAIL MODAL -->
+  <div id="day-modal" class="modal-backdrop" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <div id="modal-date-subtitle" style="font-size:0.8rem; font-weight:800; color:var(--accent-blue); text-transform:uppercase;">กำหนดการในวันนี้</div>
+          <h3 id="modal-date-title" style="margin:2px 0 0; font-size:1.3rem; font-weight:800;">วันที่</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeModalDirect()">✕</button>
+      </div>
+      <div class="modal-body" id="modal-tasks-container">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST POPUP -->
+  <div id="toast" class="toast-notification" style="position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:#1d1d1f; color:#fff; padding:10px 22px; border-radius:999px; font-weight:600; font-size:0.88rem; box-shadow:0 10px 30px rgba(0,0,0,0.25); display:none; z-index:99999;">
+    📋 คัดลอกโจทย์เรียบร้อยแล้ว
+  </div>
+
   <script>
+    // Embedded Complete 67 Tasks
+    const ALL_TASKS = [{"id": "554087", "course_tag": "metal", "course_name": "โลหะวิทยา 1", "course_code": "316-221", "course_icon": "⚙️", "course_color": "#ef4444", "title": "ส่งรายงานกลุ่ม (Group Report Submission)", "section": "รายงานการศึกษาค้นคว้าวิชาโลหะวิทยา (Section รายงาน)", "prompt": "ให้ตัวแทนกลุ่ม 1 คน ส่งรายงานเป็นไฟล์ PDF ภายในวันที่ 9 ตุลาคม 2569 เวลา 23:59 น.", "due_th": "วันศุกร์ที่ 9 ตุลาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-10-09", "points": "สัดส่วนคะแนนรายงานกลุ่ม", "status": "pending", "submission": "ตัวแทนกลุ่มส่ง 1 คน (ไฟล์ PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=554087", "is_quiz": false, "is_urgent": true}, {"id": "407532", "course_tag": "metal", "course_name": "โลหะวิทยา 1", "course_code": "316-221", "course_icon": "⚙️", "course_color": "#0071e3", "title": "สอบย่อยครั้งที่ 1 (Quiz 1)", "section": "Unit 1 โครงสร้างผลึก และ Unit 2 ข้อบกพร่องในผลึกโลหะ", "prompt": "ขอบเขต: Unit 1 โครงสร้างผลึก และ Unit 2 ข้อบกพร่องในผลึกโลหะ (แบบทดสอบออนไลน์ในระบบ)", "due_th": "วันเสาร์ที่ 5 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-05", "points": "คะแนนเก็บ Quiz 1", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=407532", "is_quiz": true, "is_urgent": false}, {"id": "430364", "course_tag": "metal", "course_name": "โลหะวิทยา 1", "course_code": "316-221", "course_icon": "⚙️", "course_color": "#ef4444", "title": "สอบย่อยครั้งที่ 2 (บทที่ 6-7) แผนภาพเฟสและการอบชุบ", "section": "Unit 6 แผนภาพเฟส Fe-C และ Unit 7 การอบชุบความร้อนเหล็กกล้า", "prompt": "ข้อสอบมีทั้งหมด 30 ข้อ คิดเป็น 15% สอบวันอาทิตย์ที่ 13 กันยายน 2569 เวลา 13:00 - 15:00 น.", "due_th": "วันอาทิตย์ที่ 13 กันยายน 2569 เวลา 15:00 น.", "due_time": "13:00 - 15:00 น.", "iso_date": "2026-09-13", "points": "15% (30 ข้อ)", "status": "quiz", "submission": "สอบออนไลน์ผ่านระบบ LMS (120 นาที)", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=430364", "is_quiz": true, "is_urgent": true}, {"id": "metal_ex1", "course_tag": "metal", "course_name": "โลหะวิทยา 1", "course_code": "316-221", "course_icon": "⚙️", "course_color": "#10b981", "title": "แบบฝึกหัดที่ 1 : ระนาบและทิศทางผลึก (Miller Indices)", "section": "Unit 1 โครงสร้างผลึกโลหะ", "prompt": "วาดและคำนวณหาดัชนีมิลเลอร์ [uvw], (hkl), คำนวณความหนาแน่นเชิงเส้น (LD) และเชิงระนาบ (PD)", "due_th": "วันพุธที่ 15 กรกฎาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-07-15", "points": "แบบฝึกหัดทบทวน", "status": "exercise", "submission": "ทำแบบฝึกหัดในเอกสารชีทเรียน", "url": "01_วิชาเอก_Materials/01_โลหะวิทยา_Metallurgy/03_แบบฝึกหัดและเฉลย/316-221%20แบบฝึกหัดที่%201%20ระนาบและทิศทาง.pdf", "is_quiz": false, "is_urgent": false}, {"id": "660457", "course_tag": "metal", "course_name": "โลหะวิทยา 1", "course_code": "316-221", "course_icon": "⚙️", "course_color": "#8b5cf6", "title": "คะแนนสอบกลางภาค (Midterm Examination Score)", "section": "การประเมินผลกลางภาค", "prompt": "คะแนนสอบกลางภาค คิดเป็นสัดส่วนคะแนนเก็บ 20% ของรายวิชา • บันทึกคะแนนแล้ว: 3.00 / 20.00", "due_th": "วันจันทร์ที่ 24 สิงหาคม 2569 เวลา 12:00 น.", "due_time": "12:00 น.", "iso_date": "2026-08-24", "points": "บันทึกคะแนน: 3.00 / 20.00", "status": "graded", "submission": "ตรวจและบันทึกคะแนนแล้ว", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=660457", "is_quiz": false, "is_urgent": false}, {"id": "168814", "course_tag": "ceram", "course_name": "เซรามิกเบื้องต้น", "course_code": "316-211", "course_icon": "🏺", "course_color": "#ef4444", "title": "Assignment I : สรุปและผังความคิดความรู้เบื้องต้น & ขั้นตอนการผลิต", "section": "Lecture I: Introduction to ceramic materials", "prompt": "ให้ นศ. ทำสรุป/ผังความคิดหัวข้อ: 1. Definition, history and categories of ceramic materials 2. ขั้นตอนการทำผลิตภัณฑ์เซรามิก", "due_th": "วันอาทิตย์ที่ 20 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-20", "points": "10 คะแนน", "status": "pending", "submission": "ส่งไฟล์ผังความคิด/รายงาน PDF", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=168814", "is_quiz": false, "is_urgent": true}, {"id": "666087", "course_tag": "ceram", "course_name": "เซรามิกเบื้องต้น", "course_code": "316-211", "course_icon": "🏺", "course_color": "#0071e3", "title": "Quiz #1 ceramics (Kowit's lecture)", "section": "บรรยาย อ.โกวิทย์ - การทดสอบความรู้พื้นฐานเซรามิก", "prompt": "แบบทดสอบออนไลน์เก็บคะแนนวิชาเซรามิกในระบบ LMS สามารถกดเข้าไปทำได้ทันที", "due_th": "วันศุกร์ที่ 18 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-18", "points": "คะแนนเก็บ Quiz 1", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=666087", "is_quiz": true, "is_urgent": false}, {"id": "666777", "course_tag": "ceram", "course_name": "เซรามิกเบื้องต้น", "course_code": "316-211", "course_icon": "🏺", "course_color": "#0071e3", "title": "Quiz #2 ceramics (Kowit's lecture)", "section": "บรรยาย อ.โกวิทย์ - การทดสอบความรู้เซรามิก ครั้งที่ 2", "prompt": "แบบทดสอบออนไลน์เก็บคะแนนวิชาเซรามิกในระบบ LMS ครั้งที่ 2", "due_th": "วันศุกร์ที่ 25 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-25", "points": "คะแนนเก็บ Quiz 2", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=666777", "is_quiz": true, "is_urgent": false}, {"id": "656679", "course_tag": "ceram", "course_name": "เซรามิกเบื้องต้น", "course_code": "316-211", "course_icon": "🏺", "course_color": "#10b981", "title": "ออกแบบผลิตภัณฑ์ 1 : กำหนดโจทย์ 4W และรูปภาพประกอบ", "section": "ออกแบบผลิตภัณฑ์ (Product Design)", "prompt": "กำหนดโจทย์ What Where When Why พร้อมแนบรูปที่เกี่ยวข้องกับสิ่งที่ออกแบบมากที่สุด 1 รูป (ส่งไฟล์ สมุดโน้ตไม่มีชื่อ.pdf แล้ว)", "due_th": "วันพุธที่ 5 สิงหาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-08-05", "points": "ส่งแล้ว (Submitted)", "status": "submitted", "submission": "ส่งไฟล์ PDF ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=656679", "is_quiz": false, "is_urgent": false}, {"id": "311795", "course_tag": "poly", "course_name": "พอลิเมอร์เบื้องต้น", "course_code": "342-201", "course_icon": "🧪", "course_color": "#ef4444", "title": "ส่ง Take Home Final Examination Assignment (23 คะแนน)", "section": "10. Take Home Final Examination = 23 คะแนน (อ.สิริญญา)", "prompt": "แบบทดสอบปลายภาคแบบ Take Home Final Examination คิดเป็นคะแนนเก็บสำคัญ 23 คะแนน ในระบบ LMS2", "due_th": "วันอาทิตย์ที่ 4 ตุลาคม 2569 เวลา 00:00 น.", "due_time": "00:00 น.", "iso_date": "2026-10-04", "points": "23 คะแนน (Final)", "status": "pending", "submission": "ส่งไฟล์ข้อสอบ Take-home PDF", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=311795", "is_quiz": false, "is_urgent": true}, {"id": "311782", "course_tag": "poly", "course_name": "พอลิเมอร์เบื้องต้น", "course_code": "342-201", "course_icon": "🧪", "course_color": "#f59e0b", "title": "ส่ง Assigned Presentation: Selected Commercial Polymers (8 คะแนน)", "section": "8. Commercial polymers and utilization = 8 คะแนน (อ.สิริญญา)", "prompt": "มอบหมายให้ตัวแทนกลุ่มส่ง ส่งทาง LMS2 ภายใน จันทร์ ที่ 5 ตุลาคม 2569 ก่อน 23.59 น.", "due_th": "วันจันทร์ที่ 5 ตุลาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-10-05", "points": "8 คะแนน", "status": "pending", "submission": "ตัวแทนกลุ่มส่ง 1 คน", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=311782", "is_quiz": false, "is_urgent": true}, {"id": "57224", "course_tag": "poly", "course_name": "พอลิเมอร์เบื้องต้น", "course_code": "342-201", "course_icon": "🧪", "course_color": "#8b5cf6", "title": "Quiz : Bulk polymerization", "section": "Part 2-อ.ชวนพิศ : เนื้อหา", "prompt": "ควิซออนไลน์เรื่องการสังเคราะห์แบบ Bulk Polymerization", "due_th": "วันศุกร์ที่ 24 กรกฎาคม 2569 เวลา 09:00 น.", "due_time": "09:00 น.", "iso_date": "2026-07-24", "points": "คะแนนเก็บ Quiz", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=57224", "is_quiz": true, "is_urgent": false}, {"id": "57225", "course_tag": "poly", "course_name": "พอลิเมอร์เบื้องต้น", "course_code": "342-201", "course_icon": "🧪", "course_color": "#8b5cf6", "title": "Quiz : Solution Polymerization", "section": "Part 2-อ.ชวนพิศ : เนื้อหา", "prompt": "ควิซออนไลน์เรื่องการสังเคราะห์แบบ Solution Polymerization", "due_th": "วันศุกร์ที่ 24 กรกฎาคม 2569 เวลา 09:00 น.", "due_time": "09:00 น.", "iso_date": "2026-07-24", "points": "คะแนนเก็บ Quiz", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=57225", "is_quiz": true, "is_urgent": false}, {"id": "57226", "course_tag": "poly", "course_name": "พอลิเมอร์เบื้องต้น", "course_code": "342-201", "course_icon": "🧪", "course_color": "#8b5cf6", "title": "Quiz : Suspension polymerization", "section": "Part 2-อ.ชวนพิศ : เนื้อหา", "prompt": "ควิซออนไลน์เรื่องกระบวนการ Suspension Polymerization", "due_th": "วันพุธที่ 5 สิงหาคม 2569 เวลา 09:00 น.", "due_time": "09:00 น.", "iso_date": "2026-08-05", "points": "คะแนนเก็บ Quiz", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=57226", "is_quiz": true, "is_urgent": false}, {"id": "57227", "course_tag": "poly", "course_name": "พอลิเมอร์เบื้องต้น", "course_code": "342-201", "course_icon": "🧪", "course_color": "#8b5cf6", "title": "Quiz : Emulsion polymerization", "section": "Part 2-อ.ชวนพิศ : เนื้อหา", "prompt": "ควิซออนไลน์เรื่องกลไกการเกิด Emulsion Polymerization และการใช้ไมเซลล์", "due_th": "วันพุธที่ 5 สิงหาคม 2569 เวลา 09:00 น.", "due_time": "09:00 น.", "iso_date": "2026-08-05", "points": "คะแนนเก็บ Quiz", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=57227", "is_quiz": true, "is_urgent": false}, {"id": "poly_grp", "course_tag": "poly", "course_name": "พอลิเมอร์เบื้องต้น", "course_code": "342-201", "course_icon": "🧪", "course_color": "#f59e0b", "title": "ส่งโครงร่างและบทคัดย่อโครงงานกลุ่มพอลิเมอร์", "section": "โครงงานกลุ่มและกรณีศึกษาพอลิเมอร์เชิงพาณิชย์", "prompt": "ส่งหัวข้อและโครงร่างนำเสนอการประยุกต์ใช้วัสดุพอลิเมอร์ในอุตสาหกรรม", "due_th": "วันจันทร์ที่ 28 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-28", "points": "5 คะแนน", "status": "pending", "submission": "ส่งตัวแทนกลุ่ม 1 คน (PDF)", "url": "pages/polymer_tasks.html", "is_quiz": false, "is_urgent": true}, {"id": "305506", "course_tag": "bio", "course_name": "ชีววิทยา", "course_code": "330-101", "course_icon": "🌿", "course_color": "#10b981", "title": "รายละเอียดเกี่ยวกับการเรียนและการสอน (Systematics & Classification)", "section": "9. Systematics and classification _ผศ.ดร.เจริญศักดิ์", "prompt": "ให้นักศึกษาศึกษาเอกสารประกอบการสอนหัวข้อ Systematics and Classification แล้วส่งบันทึกสรุปสาระสำคัญ การจัดหมวดหมู่สิ่งมีชีวิต 3 โดเมน 6 อาณาจักร และหลักการสร้าง Phylogenetic tree ความยาว 1-2 หน้า A4", "due_th": "วันศุกร์ที่ 1 กันยายน 2569 เวลา 12:00 น.", "due_time": "12:00 น.", "iso_date": "2026-09-01", "points": "5 คะแนน", "status": "pending", "submission": "ส่งเดี่ยว (ไฟล์ PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=305506", "is_quiz": false, "is_urgent": false}, {"id": "666774", "course_tag": "bio", "course_name": "ชีววิทยา", "course_code": "330-101", "course_icon": "🌿", "course_color": "#ef4444", "title": "Evolution and adaptation (วิวัฒนาการและการปรับตัวของสิ่งมีชีวิต)", "section": "19. วิวัฒนาการและการปรับตัวของสิ่งมีชีวิต _รศ.ดร.จารุวรรณ", "prompt": "นักศึกษาทำ assignment ได้ตั้งแต่วันที่ 25 ก.ย. เวลา 09:00 น. ถึง 29 ก.ย. เวลา 16:30 น. ตอบคำถามกรณีศึกษาเรื่อง Natural Selection, กลไกวิวัฒนาการระดับยีน และการปรับตัวของสิ่งมีชีวิตในสภาวะแวดล้อมที่เปลี่ยนแปลง", "due_th": "วันอังคารที่ 29 กันยายน 2569 เวลา 16:30 น.", "due_time": "16:30 น.", "iso_date": "2026-09-29", "points": "10 คะแนน (งานเก็บคะแนนสำคัญ)", "status": "pending", "submission": "ส่งงานเดี่ยวในระบบ LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=666774", "is_quiz": false, "is_urgent": true}, {"id": "665573", "course_tag": "bio", "course_name": "ชีววิทยา", "course_code": "330-101", "course_icon": "🌿", "course_color": "#ef4444", "title": "ปัญหาสิ่งแวดล้อม ecosystem services and SDGs", "section": "20. ปัญหาสิ่งแวดล้อมโลก การอนุรักษ์ ecosystem service และเป้าหมายการพัฒนาอย่างยั่งยืน _รศ.ดร.จารุวรรณ", "prompt": "เปิดให้ทำตั้งแต่ 28 ก.ย. เวลา 09:00 น. ถึง 5 ต.ค. 2569 เวลา 16:30 น. ให้นักศึกษาวิเคราะห์ปัญหาสิ่งแวดล้อมโลก 1 ประเด็น เชื่อมโยงกับบทบาทของ Ecosystem Services และแนวทางแก้ปัญหาตามเป้าหมายการพัฒนาอย่างยั่งยืน (SDGs)", "due_th": "วันจันทร์ที่ 5 ตุลาคม 2569 เวลา 16:30 น.", "due_time": "16:30 น.", "iso_date": "2026-10-05", "points": "10 คะแนน (งานเก็บคะแนนสำคัญ)", "status": "pending", "submission": "ส่งไฟล์รายงานเดี่ยว (PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=665573", "is_quiz": false, "is_urgent": true}, {"id": "642862", "course_tag": "bio", "course_name": "ชีววิทยา", "course_code": "330-101", "course_icon": "🌿", "course_color": "#0071e3", "title": "Introduction to Biology, Life Chemistry & Cells (ควิซประจำบท)", "section": "Introduction to Biology, Life Chemistry & Cells [7 hr.]", "prompt": "แบบทดสอบออนไลน์วัดความรู้พื้นฐานเคมีของสิ่งมีชีวิต โครงสร้างและหน้าที่ของเซลล์ ออร์แกเนลล์ และการลำเลียงสารผ่านเยื่อหุ้มเซลล์ (20 ข้อ 30 นาที)", "due_th": "วันพุธที่ 15 กรกฎาคม 2569 เวลา 00:00 น.", "due_time": "00:00 น.", "iso_date": "2026-07-15", "points": "สัดส่วนคะแนนเก็บ 5%", "status": "quiz", "submission": "ทำควิซออนไลน์ผ่าน LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=642862", "is_quiz": true, "is_urgent": false}, {"id": "534377", "course_tag": "bio", "course_name": "ชีววิทยา", "course_code": "330-101", "course_icon": "🌿", "course_color": "#0071e3", "title": "แบบทดสอบหลังเรียน (Systematics & Classification Post-test)", "section": "9. Systematics and classification _ผศ.ดร.เจริญศักดิ์", "prompt": "แบบทดสอบหลังเรียน (Post-test) วัดความเข้าใจเรื่องอนุกรมวิธาน ไดโคโทมัสคีย์ การจัดหมวดหมู่ 3 โดเมน 6 อาณาจักร และสายวิวัฒนาการ", "due_th": "วันอังคารที่ 8 กันยายน 2569 เวลา 15:10 น.", "due_time": "15:10 น.", "iso_date": "2026-09-08", "points": "5 คะแนน", "status": "quiz", "submission": "ทำควิซออนไลน์ผ่าน LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=534377", "is_quiz": true, "is_urgent": false}, {"id": "542541", "course_tag": "bio", "course_name": "ชีววิทยา", "course_code": "330-101", "course_icon": "🌿", "course_color": "#10b981", "title": "แบบทดสอบหลังเรียน Animal Development และ Animal Tissue", "section": "13-14. Animal development & Animal tissue_อ.อริยา", "prompt": "แบบทดสอบหลังเรียนวัดความเข้าใจการเจริญเติบโตของตัวอ่อน (Cleavage, Blastulation, Gastrulation) และประเภทเนื้อเยื่อสัตว์ 4 ชนิด", "due_th": "วันศุกร์ที่ 4 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-04", "points": "ได้คะแนน 10.00 / 10.00 เต็ม!", "status": "graded", "submission": "ตรวจแล้ว (10/10 เต็ม)", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=542541", "is_quiz": true, "is_urgent": false}, {"id": "653458", "course_tag": "bio", "course_name": "ชีววิทยา", "course_code": "330-101", "course_icon": "🌿", "course_color": "#8b5cf6", "title": "Post-test Animal Behavior & Ecology", "section": "18. Ecology _รศ.ดร.กริ่งผกา", "prompt": "แบบทดสอบในหัวข้อ Animal Behavior และ Ecology จำนวน 8 ข้อ ใช้เวลาทำข้อสอบ 10 นาที ทำได้ 1 ครั้ง หมดเวลาทำข้อสอบวันที่ 5 ต.ค. 69 เวลา 23:59 น.", "due_th": "วันจันทร์ที่ 5 ตุลาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-10-05", "points": "8 ข้อ (เก็บคะแนน 5%)", "status": "quiz", "submission": "ทำควิซออนไลน์ในระบบ (10 นาที)", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=653458", "is_quiz": true, "is_urgent": true}, {"id": "652253", "course_tag": "biolab", "course_name": "ปฏิบัติการชีววิทยา", "course_code": "331-101", "course_icon": "🔬", "course_color": "#f59e0b", "title": "ส่ง Report Lab 3 การแบ่งเซลล์ (Cell Division - รวมทุก Sections)", "section": "ปฏิบัติการที่ 3 การแบ่งเซลล์ (Cell division)", "prompt": "ให้นักศึกษาทุก Section ส่งรายงานผลการทดลองการแบ่งเซลล์แบบไมโทซิส (Mitosis) ในปลายรากหอม และไมโอซิส (Meiosis) ในอับละอองเรณู พร้อมภาพวาด/ภาพถ่ายใต้กล้องจุลทรรศน์และตารางบันทึกผลการทดลอง", "due_th": "วันศุกร์ที่ 31 กรกฎาคม 2569 เวลา 10:00 น.", "due_time": "10:00 น.", "iso_date": "2026-07-31", "points": "10 คะแนน", "status": "pending", "submission": "ส่งรายงานไฟล์ PDF", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=652253", "is_quiz": false, "is_urgent": false}, {"id": "661966", "course_tag": "biolab", "course_name": "ปฏิบัติการชีววิทยา", "course_code": "331-101", "course_icon": "🔬", "course_color": "#f59e0b", "title": "รายงานปฏิบัติการที่ 5 อาณาจักรพืช (Plantae Report)", "section": "ปฏิบัติการที่ 5 อาณาจักรพืช (Plantae)", "prompt": "ส่งรายงานผลการศึกษาสัณฐานวิทยาและกายวิภาคของพืชกลุ่มไม่มีท่อลำเลียง พืชมีท่อลำเลียงไร้เมล็ด พืชเมล็ดเปลือย และพืชดอก", "due_th": "วันจันทร์ที่ 31 สิงหาคม 2569 เวลา 00:00 น.", "due_time": "00:00 น.", "iso_date": "2026-08-31", "points": "10 คะแนน", "status": "pending", "submission": "ส่งรายงานไฟล์ PDF", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=661966", "is_quiz": false, "is_urgent": false}, {"id": "499731", "course_tag": "biolab", "course_name": "ปฏิบัติการชีววิทยา", "course_code": "331-101", "course_icon": "🔬", "course_color": "#0071e3", "title": "แบบทดสอบก่อนเรียน ปฏิบัติการที่ 2 (Pre-test Energy & Life)", "section": "ปฏิบัติการที่ 2 พลังงานกับชีวิต (Energy and life)", "prompt": "แบบทดสอบก่อนเข้าทำปฏิบัติการเรื่อง ปฏิกิริยาของเอนไซม์ Catalase การหมักของยีสต์ และการสังเคราะห์ด้วยแสง (จำนวน 5 ข้อ เวลา 10 นาที)", "due_th": "วันศุกร์ที่ 17 กรกฎาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-07-17", "points": "5 คะแนน", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=499731", "is_quiz": true, "is_urgent": false}, {"id": "499733", "course_tag": "biolab", "course_name": "ปฏิบัติการชีววิทยา", "course_code": "331-101", "course_icon": "🔬", "course_color": "#0071e3", "title": "แบบทดสอบหลังเรียน ปฏิบัติการที่ 2 (Post-test Energy & Life)", "section": "ปฏิบัติการที่ 2 พลังงานกับชีวิต (Energy and life)", "prompt": "แบบทดสอบวัดผลสัมฤทธิ์หลังทำแล็บ การแปลผลกราฟผลของอุณหภูมิและ pH ต่ออัตราการเกิดปฏิกิริยาของเอนไซม์", "due_th": "วันศุกร์ที่ 17 กรกฎาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-07-17", "points": "5 คะแนน", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=499733", "is_quiz": true, "is_urgent": false}, {"id": "653879", "course_tag": "biolab", "course_name": "ปฏิบัติการชีววิทยา", "course_code": "331-101", "course_icon": "🔬", "course_color": "#10b981", "title": "แบบฝึกหัด LAB Cell Division (ทบทวนก่อนสอบ)", "section": "ปฏิบัติการที่ 3 การแบ่งเซลล์ (Cell division)", "prompt": "แบบฝึกหัดออนไลน์ทบทวนขั้นตอน Prophase, Metaphase, Anaphase, Telophase และฝึกการจำแนกเซลล์ระยะต่างๆ จากภาพถ่ายสไลด์จริงใต้กล้องจุลทรรศน์", "due_th": "วันเสาร์ที่ 8 สิงหาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-08-08", "points": "แบบฝึกหัดทบทวน", "status": "quiz", "submission": "แบบฝึกหัดออนไลน์ในระบบ", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=653879", "is_quiz": true, "is_urgent": false}, {"id": "661148", "course_tag": "biolab", "course_name": "ปฏิบัติการชีววิทยา", "course_code": "331-101", "course_icon": "🔬", "course_color": "#0071e3", "title": "แบบทดสอบก่อนเรียน ปฏิบัติการที่ 6 เนื้อเยื่อพืชพื้นฐาน (Plant Tissue)", "section": "ปฏิบัติการที่ 6 เนื้อเยื่อพืชพื้นฐาน (Plant tissue)", "prompt": "ทำข้อสอบได้วันที่ 29 สิงหาคม 2569 เวลา 08:00 น. ถึง 30 สิงหาคม 2569 เวลา 23:59 น. ทำข้อสอบได้คนละ 1 ครั้ง เวลา 10 นาที ขอบเขต: เนื้อเยื่อเจริญและเนื้อเยื่อถาวร", "due_th": "วันอาทิตย์ที่ 30 สิงหาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-08-30", "points": "5 คะแนน", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=661148", "is_quiz": true, "is_urgent": false}, {"id": "549343", "course_tag": "biolab", "course_name": "ปฏิบัติการชีววิทยา", "course_code": "331-101", "course_icon": "🔬", "course_color": "#ef4444", "title": "แบบทดสอบเก็บคะเเนน ปฏิบัติการที่ 8 (Animal Development & Histology)", "section": "ปฏิบัติการที่ 8 การเจริญและเนื้อเยื่อของสัตว์ (Animal development and histology)", "prompt": "แบบทดสอบเก็บคะแนนปฏิบัติการ การจำแนกภาพตัดขวางเนื้อเยื่อสัตว์ 4 กลุ่มหลัก และขั้นตอนการเจริญของตัวอ่อนไก่ (Chick Embryo)", "due_th": "วันเสาร์ที่ 19 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-19", "points": "10 คะแนน (เก็บคะแนนแล็บ)", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=549343", "is_quiz": true, "is_urgent": true}, {"id": "554981", "course_tag": "biolab", "course_name": "ปฏิบัติการชีววิทยา", "course_code": "331-101", "course_icon": "🔬", "course_color": "#8b5cf6", "title": "แบบฝึกหัดเก็บคะแนน ปฏิบัติการที่ 9 ระบบอวัยวะของสัตว์ (Animal Organ System)", "section": "ปฏิบัติการที่ 9 ระบบอวัยวะของสัตว์ (Animal organ system)", "prompt": "แบบฝึกหัดเก็บคะแนนประจำบท โครงสร้างและหน้าที่ของระบบทางเดินอาหาร ระบบหมุนเวียนเลือด และระบบขับถ่ายของสัตว์มีกระดูกสันหลัง", "due_th": "วันอังคารที่ 6 ตุลาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-10-06", "points": "10 คะแนน (เก็บคะแนนแล็บ)", "status": "quiz", "submission": "แบบฝึกหัดออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=554981", "is_quiz": true, "is_urgent": true}, {"id": "634510", "course_tag": "cyber", "course_name": "Cybersecurity", "course_code": "B03-001", "course_icon": "🛡️", "course_color": "#f59e0b", "title": "ศึกษาดูงาน PSU CyberDay 2026", "section": "ความสำคัญของ Cybersecurity", "prompt": "ให้นักศึกษาเข้าร่วมกิจกรรม PSU CyberDay 2026 รับฟังการบรรยายพิเศษจากผู้เชี่ยวชาญด้านความปลอดภัยทางไซเบอร์ แล้วจัดทำสรุปประเด็นสำคัญและแนวทางป้องกันภัยคุกคามที่ได้รับ ความยาว 1 หน้า A4", "due_th": "วันอาทิตย์ที่ 9 สิงหาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-08-09", "points": "10 คะแนน", "status": "pending", "submission": "ส่งรายงานเดี่ยว (ไฟล์ PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=634510", "is_quiz": false, "is_urgent": false}, {"id": "634511", "course_tag": "cyber", "course_name": "Cybersecurity", "course_code": "B03-001", "course_icon": "🛡️", "course_color": "#10b981", "title": "บทเรียนออนไลน์เรื่อง ความมั่นคงปลอดภัยไซเบอร์และข้อมูลส่วนบุคคลในชีวิตประจำวัน (MOOC)", "section": "MOOC - ความมั่นคงปลอดภัยไซเบอร์และข้อมูลส่วนบุคคลในชีวิตประจำวัน", "prompt": "เรียนบทเรียนออนไลน์ MOOC ผ่านระบบ ThaiMOOC / PSU MOOC ครบทุกบทเรียน และแนบภาพหลักฐานผลการทดสอบท้ายบทเรียนหรือใบประกาศนียบัตร", "due_th": "วันอังคารที่ 15 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-15", "points": "15 คะแนน (MOOC)", "status": "submitted", "submission": "ส่งไฟล์ภาพหรือเอกสารยืนยันใน LMS (ส่งแล้ว)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=634511", "is_quiz": false, "is_urgent": false}, {"id": "634512", "course_tag": "cyber", "course_name": "Cybersecurity", "course_code": "B03-001", "course_icon": "🛡️", "course_color": "#ef4444", "title": "ส่งใบประกาศนียบัตร 2 Smart Defense: An Introduction to Cybersecurity", "section": "เรียน Smart Defense: An Introduction to Cybersecurity (ออนไลน์)", "prompt": "เรียนจบหลักสูตรออนไลน์ชุดที่ 2 'Introduction to Cybersecurity' ผ่านเกณฑ์แบบทดสอบท้ายบท 80% ขึ้นไป และอัปโหลดไฟล์ Certificate (PDF หรือ PNG)", "due_th": "วันเสาร์ที่ 10 ตุลาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-10-10", "points": "15 คะแนน", "status": "pending", "submission": "อัปโหลดใบประกาศนียบัตร (Certificate PDF/PNG)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=634512", "is_quiz": false, "is_urgent": true}, {"id": "634513", "course_tag": "cyber", "course_name": "Cybersecurity", "course_code": "B03-001", "course_icon": "🛡️", "course_color": "#ef4444", "title": "ส่งใบประกาศนียบัตร 3 Smart Defense: Cyber Threat Management", "section": "เรียน Smart Defense: Cyber Threat Management (ออนไลน์)", "prompt": "เรียนจบหลักสูตรออนไลน์ชุดที่ 3 'Cyber Threat Management' การจัดการความเสี่ยง มัลแวร์ และการป้องกันข้อมูลรั่วไหล อัปโหลดใบรับรอง Certificate เป็นหลักฐาน", "due_th": "วันเสาร์ที่ 10 ตุลาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-10-10", "points": "15 คะแนน", "status": "pending", "submission": "อัปโหลดใบประกาศนียบัตร (Certificate PDF/PNG)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=634513", "is_quiz": false, "is_urgent": true}, {"id": "647700", "course_tag": "other", "course_name": "วิชาศึกษาทั่วไปอื่นๆ", "course_code": "820-100", "course_icon": "🌐", "course_color": "#0071e3", "title": "Pre-test ระบบการคิดของสมอง (Brain & Critical Thinking)", "section": "Topic 2: ระบบการคิดของสมอง (ดร.จงดี / ดร.นิภาพร)", "prompt": "แบบทดสอบก่อนเรียนประเมินความรู้เบื้องต้นเรื่องกระบวนการทำงานของสมอง สมองส่วนหน้า (Executive Functions: EF) และกลไกการตัดสินใจ เปิดให้ทำถึง 10 ก.ค. เวลา 18:00 น.", "due_th": "วันศุกร์ที่ 10 กรกฎาคม 2569 เวลา 18:00 น.", "due_time": "18:00 น.", "iso_date": "2026-07-10", "points": "5 คะแนน", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=647700", "is_quiz": true, "is_urgent": false}, {"id": "647702", "course_tag": "other", "course_name": "วิชาศึกษาทั่วไปอื่นๆ", "course_code": "820-100", "course_icon": "🌐", "course_color": "#0071e3", "title": "Post-test ระบบการคิดของสมอง (Brain & Critical Thinking)", "section": "Topic 2: ระบบการคิดของสมอง", "prompt": "แบบทดสอบหลังเรียนวัดการเรียนรู้การคิดเชิงวิพากษ์ (Critical Thinking) และการประยุกต์ใช้ทักษะสมองในการแก้ปัญหาประจำวัน เปิดให้ทำ 10 - 17 ก.ค. 69", "due_th": "วันศุกร์ที่ 17 กรกฎาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-07-17", "points": "5 คะแนน", "status": "quiz", "submission": "ควิซออนไลน์ในระบบ LMS", "url": "https://lms.psu.ac.th/mod/quiz/view.php?id=647702", "is_quiz": true, "is_urgent": false}, {"id": "545600", "course_tag": "other", "course_name": "วิชาศึกษาทั่วไปอื่นๆ", "course_code": "950-102", "course_icon": "🌐", "course_color": "#f59e0b", "title": "เฉพาะนักศึกษาที่ขาดเรียนสัปดาห์ที่ ๑ (ความคิด ความเชื่อ และวิถีตน)", "section": "ความคิด ความเชื่อ และวิถีตน / สติและความรู้สึกตัว", "prompt": "สำหรับนักศึกษาที่ไม่ได้เข้าชั้นเรียนในสัปดาห์ที่ 1 ให้ศึกษาคลิปบรรยายย้อนหลัง และเขียนสรุปสะท้อนคิด (Reflection) เรื่อง สติและการรู้เท่าทันตนเอง ความยาว 1 หน้า A4", "due_th": "วันอาทิตย์ที่ 7 กันยายน 2569 เวลา 16:30 น.", "due_time": "16:30 น.", "iso_date": "2026-09-07", "points": "5 คะแนนชดเชย", "status": "pending", "submission": "ส่งรายงานเดี่ยว (ไฟล์ PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=545600", "is_quiz": false, "is_urgent": false}, {"id": "546849", "course_tag": "other", "course_name": "วิชาศึกษาทั่วไปอื่นๆ", "course_code": "950-102", "course_icon": "🌐", "course_color": "#f59e0b", "title": "เฉพาะนักศึกษาที่ขาดเรียนเท่านั้น (ชีวิตท่ามกลางความหลากหลาย)", "section": "ชีวิตท่ามกลางความหลากหลาย", "prompt": "งานชดเชยการเข้าชั้นเรียนเรื่อง ความหลากหลายทางวัฒนธรรมและสังคม ให้นักศึกษาวิเคราะห์กรณีศึกษาความขัดแย้งและการอยู่ร่วมกันอย่างสันติ ความยาว 1-2 หน้า A4", "due_th": "วันพฤหัสบดีที่ 17 กันยายน 2569 เวลา 17:00 น.", "due_time": "17:00 น.", "iso_date": "2026-09-17", "points": "5 คะแนนชดเชย", "status": "pending", "submission": "ส่งรายงานเดี่ยว (ไฟล์ PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=546849", "is_quiz": false, "is_urgent": true}, {"id": "552401", "course_tag": "other", "course_name": "วิชาศึกษาทั่วไปอื่นๆ", "course_code": "950-102", "course_icon": "🌐", "course_color": "#f59e0b", "title": "ลิ้งแบบทดสอบหลังเรียน 5 คะแนน (การปรับตัวกับการเปลี่ยนแปลงทางสังคม)", "section": "การปรับตัวกับการเปลี่ยนแปลงทางสังคม", "prompt": "กดเข้าทำแบบทดสอบหลังเรียนออนไลน์ตามลิงก์ที่อาจารย์มอบหมาย วัดความเข้าใจเรื่องการปรับตัวในยุคดิจิทัลและการรู้เท่าทันการเปลี่ยนแปลงทางสังคม", "due_th": "วันพุธที่ 30 กันยายน 2569 เวลา 23:00 น.", "due_time": "23:00 น.", "iso_date": "2026-09-30", "points": "5 คะแนนเต็ม", "status": "pending", "submission": "ทำแบบทดสอบออนไลน์ตามลิงก์ใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=552401", "is_quiz": false, "is_urgent": true}, {"id": "550831", "course_tag": "other", "course_name": "วิชาศึกษาทั่วไปอื่นๆ", "course_code": "950-102", "course_icon": "🌐", "course_color": "#f59e0b", "title": "สไลด์ประกอบการบรรยาย และรายละเอียดการมอบหมายงานกลุ่มเป้าหมายชีวิต", "section": "รายงานและใบงานประจำวิชาชีวิตที่ดี", "prompt": "ศึกษาเอกสารสไลด์และส่งรายงานสรุปกิจกรรมกลุ่ม 'เป้าหมายชีวิตและคุณค่าที่ยึดถือ' พร้อมระบุบทบาทหน้าที่ของสมาชิกทุกคน จัดทำเป็นรายงานกลุ่ม 1 เล่ม", "due_th": "วันพุธที่ 30 กันยายน 2569 เวลา 23:00 น.", "due_time": "23:00 น.", "iso_date": "2026-09-30", "points": "10 คะแนน (งานกลุ่ม)", "status": "pending", "submission": "ตัวแทนกลุ่มส่งไฟล์รายงาน PDF", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=550831", "is_quiz": false, "is_urgent": true}, {"id": "550832", "course_tag": "other", "course_name": "วิชาศึกษาทั่วไปอื่นๆ", "course_code": "950-102", "course_icon": "🌐", "course_color": "#f59e0b", "title": "งานสำหรับนักศึกษาที่ขาดเรียนวันแรก (ชีวิตที่ดี ปฐมนิเทศ)", "section": "ชดเชยการปฐมนิเทศและบทนำ", "prompt": "งานชดเชยคาบปฐมนิเทศ: ให้นักศึกษาแนะนำตนเองและเขียนความคาดหวังต่อวิชาชีวิตที่ดี พร้อมแผนการพัฒนาตนเองตลอดภาคการศึกษา ความยาว 1 หน้า A4", "due_th": "วันพุธที่ 30 กันยายน 2569 เวลา 23:00 น.", "due_time": "23:00 น.", "iso_date": "2026-09-30", "points": "5 คะแนนชดเชย", "status": "pending", "submission": "ส่งรายงานเดี่ยว (ไฟล์ PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=550832", "is_quiz": false, "is_urgent": true}, {"id": "546511", "course_tag": "other", "course_name": "วิชาศึกษาทั่วไปอื่นๆ", "course_code": "950-102", "course_icon": "🌐", "course_color": "#10b981", "title": "ส่งงานจากห้องเรียน \"สิทธิและศักดิ์ศรีความเป็นมนุษย์\"", "section": "สิทธิและศักดิ์ศรีความเป็นมนุษย์", "prompt": "ส่งใบงานกิจกรรมในห้องเรียนเรื่อง สิทธิมนุษยชน ศักดิ์ศรีความเป็นมนุษย์ และการเคารพความแตกต่างในสังคมประชาธิปไตย (ส่งไฟล์ใบงานที่สแกนเป็น PDF พร้อมลายเซ็น)", "due_th": "วันพฤหัสบดีที่ 4 กันยายน 2569 เวลา 17:00 น.", "due_time": "17:00 น.", "iso_date": "2026-09-04", "points": "10 คะแนน (ส่งแล้ว)", "status": "submitted", "submission": "ส่งไฟล์ใบงานที่สแกน (PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=546511", "is_quiz": false, "is_urgent": false}, {"id": "546754", "course_tag": "other", "course_name": "วิชาศึกษาทั่วไปอื่นๆ", "course_code": "950-102", "course_icon": "🌐", "course_color": "#f59e0b", "title": "งานสำหรับนักศึกษาขาดเรียน \"สิทธิและศักดิ์ศรีความเป็นมนุษย์\"", "section": "งานชดเชยสิทธิและศักดิ์ศรีความเป็นมนุษย์", "prompt": "สำหรับผู้ที่ไม่ได้ร่วมกิจกรรมในห้องเรียน ให้ค้นคว้าบทความข่าวเกี่ยวกับประเด็นการละเมิดสิทธิมนุษยชน 1 ข่าว พร้อมเขียนบทวิเคราะห์เชิงวิจารณ์ 1 หน้ากระดาษ A4", "due_th": "วันพุธที่ 10 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-10", "points": "5 คะแนนชดเชย", "status": "pending", "submission": "ส่งรายงานเดี่ยว (ไฟล์ PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=546754", "is_quiz": false, "is_urgent": false}, {"id": "save_earth_w11", "course_tag": "other", "course_name": "วิชาศึกษาทั่วไปอื่นๆ", "course_code": "820-100", "course_icon": "🌐", "course_color": "#ef4444", "title": "ส่งงานสัปดาห์ที่ 11 Save Earth Save Us", "section": "สัปดาห์ที่ 11 การอนุรักษ์พลังงานและสิ่งแวดล้อม", "prompt": "ส่งรายงานผลการสำรวจการใช้พลังงานในที่พักอาศัยและแนวทางลดการปล่อยก๊าซเรือนกระจก", "due_th": "วันจันทร์ที่ 14 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-14", "points": "10 คะแนน", "status": "pending", "submission": "ส่งงานผ่านระบบ LMS", "url": "https://lms.psu.ac.th/course/view.php?id=572", "is_quiz": false, "is_urgent": true}, {"id": "477379", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 28/8/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 1 ประจำวันที่ 28/8/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันศุกร์ที่ 28 สิงหาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-08-28", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=477379", "is_quiz": false, "is_urgent": false}, {"id": "477757", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 29/8/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 2 ประจำวันที่ 29/8/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันเสาร์ที่ 29 สิงหาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-08-29", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=477757", "is_quiz": false, "is_urgent": false}, {"id": "478069", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 30/8/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 3 ประจำวันที่ 30/8/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันอาทิตย์ที่ 30 สิงหาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-08-30", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=478069", "is_quiz": false, "is_urgent": false}, {"id": "478488", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 31/8/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 4 ประจำวันที่ 31/8/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันจันทร์ที่ 31 สิงหาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-08-31", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=478488", "is_quiz": false, "is_urgent": false}, {"id": "478879", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 1/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 5 ประจำวันที่ 1/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันอังคารที่ 1 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-01", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=478879", "is_quiz": false, "is_urgent": false}, {"id": "478880", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 2/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 6 ประจำวันที่ 2/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันพุธที่ 2 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-02", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=478880", "is_quiz": false, "is_urgent": false}, {"id": "479516", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 3/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 7 ประจำวันที่ 3/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันพฤหัสบดีที่ 3 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-03", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=479516", "is_quiz": false, "is_urgent": false}, {"id": "479713", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 4/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 8 ประจำวันที่ 4/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันศุกร์ที่ 4 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-04", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=479713", "is_quiz": false, "is_urgent": false}, {"id": "480377", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 5/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 9 ประจำวันที่ 5/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันเสาร์ที่ 5 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-05", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=480377", "is_quiz": false, "is_urgent": false}, {"id": "480694", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 6/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 10 ประจำวันที่ 6/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันอาทิตย์ที่ 6 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-06", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=480694", "is_quiz": false, "is_urgent": false}, {"id": "480850", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 7/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 11 ประจำวันที่ 7/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันจันทร์ที่ 7 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-07", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=480850", "is_quiz": false, "is_urgent": false}, {"id": "481202", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 8/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 12 ประจำวันที่ 8/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันอังคารที่ 8 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-08", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=481202", "is_quiz": false, "is_urgent": false}, {"id": "481203", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 9/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 13 ประจำวันที่ 9/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันพุธที่ 9 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-09", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=481203", "is_quiz": false, "is_urgent": false}, {"id": "481622", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 10/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 14 ประจำวันที่ 10/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันพฤหัสบดีที่ 10 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-10", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=481622", "is_quiz": false, "is_urgent": false}, {"id": "482256", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 11/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 15 ประจำวันที่ 11/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันศุกร์ที่ 11 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-11", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=482256", "is_quiz": false, "is_urgent": false}, {"id": "482257", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 12/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 16 ประจำวันที่ 12/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันเสาร์ที่ 12 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-12", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=482257", "is_quiz": false, "is_urgent": false}, {"id": "482407", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 13/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 17 ประจำวันที่ 13/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันอาทิตย์ที่ 13 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-13", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=482407", "is_quiz": false, "is_urgent": false}, {"id": "482493", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#ef4444", "title": "ส่ง Bonus Challenge 14/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 18 ประจำวันที่ 14/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันจันทร์ที่ 14 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-14", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=482493", "is_quiz": false, "is_urgent": true}, {"id": "482796", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Bonus Challenge 15/9/2569", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 19 ประจำวันที่ 15/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันอังคารที่ 15 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-15", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=482796", "is_quiz": false, "is_urgent": false}, {"id": "483109", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#ef4444", "title": "ส่ง Bonus Challenge 16/9/2569 (ส่ง Bonus วันสุดท้าย!)", "section": "GreenLove Daily Challenge (กิจกรรมรักษ์โลกสะสมแต้ม)", "prompt": "ส่งภาพถ่ายและบันทึกกิจกรรมประจำวันรักษ์โลก GreenLove Daily Bonus Challenge ครั้งที่ 20 ประจำวันที่ 16/9/2569: บันทึกการลงมือปฏิบัติจริงในการลดขยะ พร้อมบรรยายสั้นๆ", "due_th": "วันพุธที่ 16 กันยายน 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-09-16", "points": "Bonus +1 คะแนน", "status": "pending", "submission": "ส่งไฟล์รูปถ่าย + บรรยายใน LMS", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=483109", "is_quiz": false, "is_urgent": true}, {"id": "351013", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Homework Week 3 พลาสติกแต่ละหมายเลขในชีวิตประจำวัน", "section": "6 July - 12 July", "prompt": "สำรวจผลิตภัณฑ์พลาสติกในชีวิตประจำวัน ถ่ายรูปสัญลักษณ์รีไซเคิลหมายเลข 1-7 พร้อมวิเคราะห์คุณสมบัติและวงจรรีไซเคิล", "due_th": "วันศุกร์ที่ 17 กรกฎาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-07-17", "points": "10 คะแนน", "status": "pending", "submission": "ส่งรายงานเดี่ยว (ไฟล์ PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=351013", "is_quiz": false, "is_urgent": false}, {"id": "466072", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#059669", "title": "ส่ง Homework Week 7 รูปฉลากเขียวของผลิตภัณฑ์ในชีวิตประจำวัน", "section": "3 August - 9 August", "prompt": "ค้นหาและถ่ายภาพผลิตภัณฑ์ที่ได้รับเครื่องหมายฉลากเขียว (Green Label) อย่างน้อย 3 ชนิด พร้อมอธิบายเหตุผล", "due_th": "วันศุกร์ที่ 7 สิงหาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-08-07", "points": "10 คะแนน", "status": "pending", "submission": "ส่งรายงานเดี่ยว (ไฟล์ PDF)", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=466072", "is_quiz": false, "is_urgent": false}, {"id": "416869", "course_tag": "greenlove", "course_name": "GreenLove", "course_code": "200-103", "course_icon": "🌱", "course_color": "#10b981", "title": "Bonus 3% ส่งรูป เที่ยวงานเกษตร ม.อ. แบบรักษ์โลกของตนเอง", "section": "10 August - 16 August", "prompt": "ส่งรูปถ่ายตนเองขณะร่วมกิจกรรมเที่ยวงานเกษตรภาคใต้ ม.อ. โดยมีองค์ประกอบการรักษ์โลก คนละ 1 รูป", "due_th": "วันอังคารที่ 18 สิงหาคม 2569 เวลา 23:59 น.", "due_time": "23:59 น.", "iso_date": "2026-08-18", "points": "Bonus +3%", "status": "pending", "submission": "ส่งภาพถ่ายเดี่ยว 1 รูป", "url": "https://lms.psu.ac.th/mod/assign/view.php?id=416869", "is_quiz": false, "is_urgent": false}];
+
+    let currentYear = 2026;
+    let currentMonth = 9; // September
+    let currentFilter = 'all';
+
+    const MONTH_NAMES_TH = [
+      '', 'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+      'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+    ];
+    const MONTH_NAMES_EN = [
+      '', 'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    function renderCalendar() {
+      const grid = document.getElementById('calendar-grid');
+      const label = document.getElementById('current-month-label');
+      label.textContent = `${MONTH_NAMES_TH[currentMonth]} ${currentYear + 543} (${MONTH_NAMES_EN[currentMonth]} ${currentYear})`;
+
+      // Update quick pills
+      document.querySelectorAll('.month-pill-btn').forEach(btn => {
+        const isCurrent = btn.textContent.includes(MONTH_NAMES_TH[currentMonth].substring(0, 3));
+        btn.classList.toggle('active', isCurrent);
+      });
+
+      // Headers
+      let html = `
+        <div class="cal-day-header">จันทร์</div>
+        <div class="cal-day-header">อังคาร</div>
+        <div class="cal-day-header">พุธ</div>
+        <div class="cal-day-header">พฤหัสบดี</div>
+        <div class="cal-day-header">ศุกร์</div>
+        <div class="cal-day-header" style="color:var(--accent-blue);">เสาร์</div>
+        <div class="cal-day-header" style="color:#ef4444;">อาทิตย์</div>
+      `;
+
+      // First day of month (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+      const firstDayDate = new Date(currentYear, currentMonth - 1, 1);
+      let startDay = firstDayDate.getDay(); 
+      // convert so Monday = 0, Sunday = 6
+      startDay = (startDay === 0) ? 6 : startDay - 1;
+
+      // Days in current month
+      const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
+      // Days in previous month
+      const daysInPrevMonth = new Date(currentYear, currentMonth - 1, 0).getDate();
+
+      // Leading days from previous month
+      for (let i = startDay - 1; i >= 0; i--) {
+        const prevNum = daysInPrevMonth - i;
+        html += `<div class="cal-cell other-month"><span class="cal-date-num">${prevNum}</span></div>`;
+      }
+
+      // Current month days
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayStr = String(day).padStart(2, '0');
+        const monthStr = String(currentMonth).padStart(2, '0');
+        const isoDate = `${currentYear}-${monthStr}-${dayStr}`;
+
+        const isToday = (currentYear === 2026 && currentMonth === 9 && day === 14);
+
+        // Filter tasks for this date
+        const dayTasks = ALL_TASKS.filter(t => {
+          const matchesDate = t.iso_date === isoDate;
+          const matchesFilter = (currentFilter === 'all' || t.course_tag === currentFilter);
+          return matchesDate && matchesFilter;
+        });
+
+        let tasksHtml = '';
+        const maxDisplay = 2;
+        dayTasks.slice(0, maxDisplay).forEach(t => {
+          tasksHtml += `
+            <div class="cal-task-pill" style="background:${t.course_color}1a; color:${t.course_color}; border:1px solid ${t.course_color}40;">
+              <span>${t.course_icon}</span>
+              <span>${t.title}</span>
+            </div>
+          `;
+        });
+
+        if (dayTasks.length > maxDisplay) {
+          tasksHtml += `<div class="more-tasks-pill">+${dayTasks.length - maxDisplay} งานเพิ่มเติม</div>`;
+        }
+
+        const hasTasksClass = dayTasks.length > 0 ? 'has-tasks' : '';
+        const todayClass = isToday ? 'today' : '';
+
+        html += `
+          <div class="cal-cell ${todayClass} ${hasTasksClass}" onclick="openDayModal('${isoDate}', ${day})">
+            <div class="cal-cell-header">
+              <span class="cal-date-num">${day}</span>
+              ${isToday ? '<span class="today-badge">วันนี้</span>' : ''}
+            </div>
+            ${tasksHtml}
+          </div>
+        `;
+      }
+
+      // Trailing days for next month to complete row of 7
+      const totalCells = startDay + daysInMonth;
+      const remainingCells = (7 - (totalCells % 7)) % 7;
+      for (let nextDay = 1; nextDay <= remainingCells; nextDay++) {
+        html += `<div class="cal-cell other-month"><span class="cal-date-num">${nextDay}</span></div>`;
+      }
+
+      grid.innerHTML = html;
+    }
+
+    function changeMonth(delta) {
+      currentMonth += delta;
+      if (currentMonth > 12) {
+        currentMonth = 1;
+        currentYear++;
+      } else if (currentMonth < 1) {
+        currentMonth = 12;
+        currentYear--;
+      }
+      renderCalendar();
+    }
+
+    function jumpToMonth(year, month) {
+      currentYear = year;
+      currentMonth = month;
+      renderCalendar();
+    }
+
+    function filterByCourse(tag) {
+      currentFilter = tag;
+      document.querySelectorAll('.filter-chip').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-filter') === tag);
+      });
+      renderCalendar();
+      renderAgenda();
+    }
+
+    // MODAL
+    function openDayModal(isoDate, dayNum) {
+      const dayTasks = ALL_TASKS.filter(t => t.iso_date === isoDate);
+      const modal = document.getElementById('day-modal');
+      const titleEl = document.getElementById('modal-date-title');
+      const subtitleEl = document.getElementById('modal-date-subtitle');
+      const container = document.getElementById('modal-tasks-container');
+
+      const dateObj = new Date(isoDate);
+      const dayNames = ['วันอาทิตย์', 'วันจันทร์', 'วันอังคาร', 'วันพุธ', 'วันพฤหัสบดี', 'วันศุกร์', 'วันเสาร์'];
+      const thaiDayName = dayNames[dateObj.getDay()];
+
+      titleEl.textContent = `${thaiDayName}ที่ ${dayNum} ${MONTH_NAMES_TH[currentMonth]} ${currentYear + 543}`;
+      subtitleEl.textContent = `พบงานทั้งหมด ${dayTasks.length} รายการ`;
+
+      if (dayTasks.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:2.5rem 1rem; color:var(--text-tertiary);">
+            <div style="font-size:2.5rem; margin-bottom:8px;">☕</div>
+            <div style="font-weight:700; font-size:1.1rem; color:var(--text-main);">ไม่มีกำหนดส่งงานในวันนี้</div>
+            <div style="font-size:0.88rem; margin-top:4px;">พักผ่อนให้สบาย หรือทบทวนบทเรียนล่วงหน้า</div>
+          </div>
+        `;
+      } else {
+        let html = '';
+        dayTasks.forEach(t => {
+          html += `
+            <div style="border-left:5px solid ${t.course_color}; background:var(--glass-bg-subtle); padding:16px 18px; border-radius:18px; border:1px solid var(--glass-border-light);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <span style="font-size:0.82rem; font-weight:800; color:${t.course_color};">${t.course_icon} ${t.course_name} ${t.course_code}</span>
+                <span style="font-size:0.75rem; font-weight:800; padding:2px 8px; border-radius:999px; background:${t.course_color}1a; color:${t.course_color};">${t.due_time}</span>
+              </div>
+              <div style="font-weight:800; font-size:1.05rem; margin-bottom:4px; color:var(--text-main);">${t.title}</div>
+              <div style="font-size:0.82rem; color:var(--text-tertiary); margin-bottom:10px;">${t.section}</div>
+              
+              <div style="background:var(--surface-hover); padding:10px 14px; border-radius:12px; font-size:0.86rem; line-height:1.5; margin-bottom:12px; color:var(--text-secondary);">
+                <strong>📝 คำสั่งอาจารย์:</strong> "${t.prompt}"
+              </div>
+
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:0.82rem;">
+                <span>💯 <strong>คะแนน:</strong> ${t.points || 'มีคะแนนเก็บ'}</span>
+                <div style="display:flex; gap:8px;">
+                  <button class="month-nav-btn" style="padding:6px 14px; font-size:0.82rem;" onclick="copyPromptById('${t.id}')">📋 คัดลอกโจทย์</button>
+                  <a href="${t.url}" target="_blank" style="padding:6px 16px; border-radius:999px; background:${t.course_color}; color:#fff; text-decoration:none; font-weight:700; font-size:0.82rem;">🔗 ส่งงานใน LMS</a>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        container.innerHTML = html;
+      }
+
+      modal.style.display = 'flex';
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'day-modal') {
+        document.getElementById('day-modal').style.display = 'none';
+      }
+    }
+    function closeModalDirect() {
+      document.getElementById('day-modal').style.display = 'none';
+    }
+
+    // AGENDA
+    function renderAgenda() {
+      const container = document.getElementById('upcoming-agenda-list');
+      // Filter upcoming from 2026-09-14 onwards
+      const upcoming = ALL_TASKS
+        .filter(t => {
+          const isAfterOrToday = t.iso_date >= '2026-09-14';
+          const matchesFilter = (currentFilter === 'all' || t.course_tag === currentFilter);
+          return isAfterOrToday && matchesFilter;
+        })
+        .sort((a, b) => a.iso_date.localeCompare(b.iso_date));
+
+      if (upcoming.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:2rem; color:var(--text-tertiary);">ไม่มีกำหนดส่งงานตามเงื่อนไขที่เลือก</div>`;
+        return;
+      }
+
+      let html = '';
+      upcoming.forEach(t => {
+        const parts = t.iso_date.split('-');
+        const day = parts[2];
+        const monthNum = parseInt(parts[1], 10);
+        const monthShort = MONTH_NAMES_TH[monthNum].substring(0, 3);
+        const isToday = t.iso_date === '2026-09-14';
+
+        html += `
+          <div class="agenda-card" style="border-left:5px solid ${t.course_color};">
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div class="agenda-date-box" style="background:${t.course_color}1a; color:${t.course_color};">
+                <div class="agenda-date-num">${day}</div>
+                <div class="agenda-date-month">${monthShort}</div>
+              </div>
+              <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:3px; flex-wrap:wrap;">
+                  <span style="font-size:0.8rem; font-weight:800; color:${t.course_color};">${t.course_icon} ${t.course_name}</span>
+                  ${isToday ? '<span class="today-badge" style="background:#ef4444;">ส่งวันนี้!</span>' : ''}
+                  ${t.is_urgent && !isToday ? '<span style="font-size:0.72rem; font-weight:800; color:#ef4444; background:rgba(239,68,68,0.12); padding:2px 8px; border-radius:999px;">ด่วน</span>' : ''}
+                </div>
+                <div style="font-weight:800; font-size:1.02rem; color:var(--text-main); margin-bottom:2px;">${t.title}</div>
+                <div style="font-size:0.82rem; color:var(--text-tertiary);">${t.due_th} • 💯 ${t.points}</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+              <button class="month-nav-btn" style="padding:6px 12px; font-size:0.8rem;" onclick="copyPromptById('${t.id}')">📋 คัดลอกโจทย์</button>
+              <a href="${t.url}" target="_blank" style="padding:8px 18px; border-radius:999px; background:${t.course_color}; color:#fff; text-decoration:none; font-weight:700; font-size:0.84rem; white-space:nowrap;">🔗 ส่งใน LMS</a>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function copyPromptById(id) {
+      const task = ALL_TASKS.find(t => t.id === id);
+      if (task && task.prompt) {
+        copyPromptText(task.prompt);
+      }
+    }
+
+    function copyPromptText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('📋 คัดลอกโจทย์เรียบร้อยแล้ว');
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('📋 คัดลอกโจทย์เรียบร้อยแล้ว');
+      });
+    }
+
+    function showToast(msg) {
+      let toast = document.getElementById('toast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 2200);
+    }
+
     function toggleTheme() {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
       localStorage.setItem('psu_theme', isDark ? 'light' : 'dark');
     }
+
     (function() {
       const saved = localStorage.getItem('psu_theme');
       if (saved) document.documentElement.setAttribute('data-theme', saved);
+      renderCalendar();
+      renderAgenda();
     })();
   </script>
 </body>
