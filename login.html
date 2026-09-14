@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เข้าสู่ระบบ | PSU Materials Hub Academic Portal</title>
+  
+  <!-- PWA & Mobile Meta -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#1d1d1f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="PSU Materials">
+  <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg">
+
+  <link rel="stylesheet" href="assets/css/ios_minimal_theme.css">
+  <script src="assets/js/auth.js"></script>
+
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 10%, rgba(0, 113, 227, 0.08) 0%, transparent 60%), var(--bg-base);
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    .login-wrapper {
+      width: 100%;
+      max-width: 440px;
+      animation: loginFadeIn 0.5s var(--ios-ease);
+    }
+
+    @keyframes loginFadeIn {
+      from { opacity: 0; transform: translateY(18px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .login-card {
+      background: var(--surface-glass);
+      backdrop-filter: var(--ios-blur);
+      -webkit-backdrop-filter: var(--ios-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
+      padding: 2.5rem 2.2rem;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    [data-theme="dark"] .login-card {
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .brand-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .brand-icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: #1d1d1f;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      margin-bottom: 1rem;
+    }
+    [data-theme="dark"] .brand-icon-box {
+      background: #fff;
+      color: #141416;
+    }
+
+    .brand-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+    }
+
+    .brand-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 13px 16px;
+      padding-left: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--glass-hairline);
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s var(--ios-ease);
+      box-sizing: border-box;
+    }
+
+    [data-theme="dark"] .login-input {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .login-input:focus {
+      background: #ffffff;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.18);
+    }
+    [data-theme="dark"] .login-input:focus {
+      background: #202024;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      font-size: 1.1rem;
+      color: var(--text-tertiary);
+      pointer-events: none;
+    }
+
+    .toggle-pw-btn {
+      position: absolute;
+      right: 12px;
+      background: transparent;
+      border: none;
+      color: var(--text-tertiary);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 6px;
+      transition: color 0.2s ease;
+    }
+    .toggle-pw-btn:hover {
+      color: var(--text-main);
+    }
+
+    .remember-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      font-size: 0.84rem;
+    }
+
+    .remember-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .remember-checkbox {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent-blue);
+      cursor: pointer;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 14px;
+      background: #1d1d1f;
+      color: #ffffff;
+      border: none;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s var(--ios-ease);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover {
+      background: #333336;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    [data-theme="dark"] .btn-submit {
+      background: #ffffff;
+      color: #141416;
+    }
+    [data-theme="dark"] .btn-submit:hover {
+      background: #e5e5ea;
+    }
+
+    .error-box {
+      display: none;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #ef4444;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      animation: shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-1px, 0, 0); }
+      20%, 80% { transform: translate3d(2px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+      40%, 60% { transform: translate3d(3px, 0, 0); }
+    }
+
+    .hint-footer {
+      margin-top: 1.8rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--glass-hairline);
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+    }
+
+    .hint-code {
+      display: inline-block;
+      background: var(--surface-glass-sub);
+      padding: 2px 7px;
+      border-radius: 6px;
+      border: 1px solid var(--glass-hairline);
+      font-weight: 700;
+      color: var(--accent-blue);
+    }
+
+    .theme-toggle-floating {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--surface-glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="theme-toggle-floating" onclick="toggleTheme()" title="สลับธีม สว่าง/มืด">🌓</button>
+
+  <div class="login-wrapper">
+    <div class="login-card" id="card-login">
+      <div class="brand-header">
+        <div class="brand-icon-box">PSU</div>
+        <h1 class="brand-title">PSU Materials Portal</h1>
+        <p class="brand-subtitle">ระบบสารสนเทศและติดตามกำหนดส่งงาน LMS ภาควิชาวัสดุศาสตร์</p>
+      </div>
+
+      <div id="login-error" class="error-box">
+        <!-- Error text injected here -->
+      </div>
+
+      <form id="login-form" onsubmit="handleLoginSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="input-student-id">รหัสนักศึกษา (PSU Student ID)</label>
+          <div class="input-wrapper">
+            <span class="input-icon">👤</span>
+            <input 
+              type="text" 
+              id="input-student-id" 
+              class="login-input" 
+              placeholder="เช่น 6710123456 หรือ s6710123456" 
+              autocomplete="username" 
+              required
+              autofocus
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="input-password">รหัสผ่าน (Password / PSU Passport)</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🔒</span>
+            <input 
+              type="password" 
+              id="input-password" 
+              class="login-input" 
+              placeholder="กรอกรหัสผ่านเพื่อเข้าใช้งาน" 
+              autocomplete="current-password" 
+              required
+            >
+            <button type="button" class="toggle-pw-btn" onclick="togglePasswordVisibility()" title="แสดง/ซ่อนรหัสผ่าน">👁️</button>
+          </div>
+        </div>
+
+        <div class="remember-row">
+          <label class="remember-label">
+            <input type="checkbox" id="check-remember" class="remember-checkbox" checked>
+            <span>จดจำฉันไว้ในระบบ</span>
+          </label>
+          <span style="color:var(--text-tertiary); font-size:0.8rem;">🔒 ระบบปลอดภัย</span>
+        </div>
+
+        <button type="submit" id="btn-submit-text" class="btn-submit">
+          <span>เข้าสู่ระบบ (Sign In)</span>
+          <span>→</span>
+        </button>
+      </form>
+
+      <div class="hint-footer">
+        💡 <strong>คำแนะนำการเข้าสู่ระบบ:</strong><br>
+        ใช้นามผู้ใช้รหัสนักศึกษา และรหัสผ่านสาขา: <span class="hint-code">psu2026</span> หรือ <span class="hint-code">materials67</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme toggle logic
+    function toggleTheme() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('psu_theme', isDark ? 'light' : 'dark');
+    }
+    (function() {
+      const saved = localStorage.getItem('psu_theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+
+    // Password visibility toggle
+    function togglePasswordVisibility() {
+      const pwInput = document.getElementById('input-password');
+      if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+      } else {
+        pwInput.type = 'password';
+      }
+    }
+
+    // Submit handler
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const studentId = document.getElementById('input-student-id').value;
+      const password = document.getElementById('input-password').value;
+      const rememberMe = document.getElementById('check-remember').checked;
+      const errBox = document.getElementById('login-error');
+      const submitBtn = document.getElementById('btn-submit-text');
+
+      errBox.style.display = 'none';
+      submitBtn.innerHTML = '<span>กำลังเข้าสู่ระบบ...</span>';
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        const res = PSU_AUTH.login(studentId, password, rememberMe);
+        if (res.success) {
+          submitBtn.innerHTML = '<span>✅ สำเร็จ! กำลังนำเข้าสู่ระบบ...</span>';
+          
+          // Determine redirect target
+          const params = new URLSearchParams(window.location.search);
+          const target = params.get('redirect') ? decodeURIComponent(params.get('redirect')) : './index.html';
+          
+          setTimeout(() => {
+            window.location.href = target;
+          }, 350);
+        } else {
+          submitBtn.innerHTML = '<span>เข้าสู่ระบบ (Sign In)</span><span>→</span>';
+          submitBtn.disabled = false;
+          errBox.textContent = res.message;
+          errBox.style.display = 'block';
+          // Re-trigger animation
+          errBox.style.animation = 'none';
+          void errBox.offsetWidth;
+          errBox.style.animation = 'shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both';
+        }
+      }, 300);
+    }
+  </script>
+</body>
+</html>
