@@ -612,3 +612,212 @@ html[data-rainbow="true"] .rainbow-speed-banner {
   background: var(--surface-hover);
   border-color: var(--text-secondary);
 }
+
+/* ==========================================================================
+   iOS LIQUID GLASS — SHARED VISUAL & MOTION LAYER
+   Kept in the shared theme so dashboard, LMS and every subject page move as
+   one product. Motion is compositor-friendly and gracefully reduced by OS.
+   ========================================================================== */
+:root {
+  --liquid-blue: rgba(58, 143, 255, 0.22);
+  --liquid-violet: rgba(157, 105, 255, 0.17);
+  --liquid-mint: rgba(45, 212, 191, 0.14);
+  --liquid-glass: rgba(255, 255, 255, 0.58);
+  --liquid-edge: rgba(255, 255, 255, 0.78);
+  --liquid-shadow: 0 22px 65px rgba(48, 64, 105, 0.12),
+    0 2px 10px rgba(22, 32, 58, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  --liquid-shadow-hover: 0 30px 80px rgba(48, 64, 105, 0.18),
+    0 5px 18px rgba(22, 32, 58, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  --motion-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-theme="dark"] {
+  --liquid-blue: rgba(41, 151, 255, 0.22);
+  --liquid-violet: rgba(139, 92, 246, 0.18);
+  --liquid-mint: rgba(45, 212, 191, 0.1);
+  --liquid-glass: rgba(22, 27, 40, 0.57);
+  --liquid-edge: rgba(255, 255, 255, 0.13);
+  --liquid-shadow: 0 24px 70px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --liquid-shadow-hover: 0 32px 85px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg-base, var(--bg, #f5f5f7));
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  isolation: isolate;
+  background-color: transparent !important;
+  background-image:
+    radial-gradient(circle at 12% 8%, var(--liquid-blue), transparent 34%),
+    radial-gradient(circle at 88% 14%, var(--liquid-violet), transparent 30%),
+    radial-gradient(circle at 55% 96%, var(--liquid-mint), transparent 33%),
+    linear-gradient(145deg, rgba(255,255,255,0.42), rgba(239,244,255,0.14)) !important;
+  background-attachment: fixed !important;
+}
+
+body::before,
+body::after {
+  content: "" !important;
+  position: fixed !important;
+  width: min(54rem, 72vw) !important;
+  height: min(54rem, 72vw) !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+  z-index: -2 !important;
+  opacity: 0.55 !important;
+  filter: blur(75px) !important;
+  will-change: transform;
+}
+
+body::before {
+  top: -28rem !important;
+  left: -18rem !important;
+  background: radial-gradient(circle, rgba(81, 151, 255, 0.3), transparent 68%) !important;
+  animation: liquid-drift-a 18s ease-in-out infinite alternate !important;
+}
+
+body::after {
+  right: -22rem !important;
+  bottom: -30rem !important;
+  background: radial-gradient(circle, rgba(160, 108, 255, 0.24), transparent 68%) !important;
+  animation: liquid-drift-b 22s ease-in-out infinite alternate !important;
+}
+
+@keyframes liquid-drift-a {
+  to { transform: translate3d(10vw, 12vh, 0) scale(1.12); }
+}
+
+@keyframes liquid-drift-b {
+  to { transform: translate3d(-12vw, -9vh, 0) scale(1.16); }
+}
+
+/* Glass surfaces shared by both the compact portal and long-form study pages. */
+:where(.card-glass, .glass-panel, .assignment-card, .file-item-card,
+  .summary-card, .stat-card-glass, .card, .hero, .concept-card,
+  .course-task-section, .table-container, .quiz-card, .note-panel,
+  .course-3way-switcher, .subject-subnav, .tasks-control-bar) {
+  border-color: var(--liquid-edge) !important;
+  box-shadow: var(--liquid-shadow) !important;
+  backdrop-filter: blur(30px) saturate(185%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(185%) !important;
+}
+
+:where(.card-glass, .glass-panel, .assignment-card, .file-item-card,
+  .summary-card, .stat-card-glass, .card, .hero, .concept-card,
+  .course-task-section, .quiz-card) {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.55s var(--motion-fluid),
+    box-shadow 0.55s var(--motion-fluid),
+    border-color 0.35s ease,
+    background-color 0.35s ease !important;
+}
+
+:where(.card-glass, .assignment-card, .file-item-card, .card, .concept-card,
+  .quiz-card)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(360px circle at var(--glass-x, 50%) var(--glass-y, 0%),
+    rgba(255, 255, 255, 0.5), transparent 55%);
+  transition: opacity 0.35s ease;
+}
+
+:where(.card-glass, .assignment-card, .file-item-card, .card, .concept-card,
+  .quiz-card) > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(.card-glass, .assignment-card, .file-item-card, .card, .concept-card,
+    .quiz-card):hover {
+    transform: translate3d(0, -6px, 0) scale(1.008);
+    box-shadow: var(--liquid-shadow-hover) !important;
+    border-color: rgba(255, 255, 255, 0.94) !important;
+  }
+
+  :where(.card-glass, .assignment-card, .file-item-card, .card, .concept-card,
+    .quiz-card):hover::after { opacity: 0.72; }
+}
+
+:where(.sidebar, .main-top-bar, .top-nav, nav) {
+  backdrop-filter: blur(34px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(34px) saturate(190%) !important;
+  transition: background-color 0.4s var(--motion-fluid),
+    box-shadow 0.4s var(--motion-fluid),
+    border-color 0.4s ease,
+    transform 0.4s var(--motion-fluid) !important;
+}
+
+:where(.main-top-bar, .top-nav, nav).is-scrolled {
+  box-shadow: 0 16px 45px rgba(31, 47, 82, 0.14),
+    inset 0 1px 0 rgba(255,255,255,0.55) !important;
+}
+
+:where(a, button, .filter-pill, .course-task-header, [role="button"]) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(a, button, .filter-pill, [role="button"]):focus-visible {
+  outline: 3px solid rgba(0, 113, 227, 0.38) !important;
+  outline-offset: 3px;
+}
+
+:where(a, button, .filter-pill, [role="button"]).ios-pressed {
+  transform: scale(0.965) !important;
+  transition-duration: 90ms !important;
+}
+
+/* Scroll reveal is enabled only after JS initializes, so content never vanishes
+   if scripts are blocked. */
+.ios-motion-ready .ios-reveal {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0) scale(0.985);
+}
+
+.ios-motion-ready .ios-reveal.ios-reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: opacity 0.7s var(--motion-fluid),
+    transform 0.7s var(--motion-fluid);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+::selection {
+  background: rgba(0, 113, 227, 0.2);
+}
+
+@media (max-width: 900px) {
+  .main-content { padding: 1.2rem 1rem 4rem; }
+  .main-top-bar { margin: -1.2rem -1rem 1.25rem; padding: 0 1rem; }
+  :where(.card-glass, .assignment-card, .file-item-card, .card, .hero) {
+    border-radius: 20px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ios-motion-ready .ios-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
