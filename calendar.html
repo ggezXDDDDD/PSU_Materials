@@ -6,6 +6,27 @@
   <title>📅 ปฏิทินส่งงาน & ตารางสอบ | PSU Materials Portal</title>
   <link rel="stylesheet" href="assets/css/ios_minimal_theme.css">
   <style>
+    /* GLOBAL OVERFLOW SAFEGUARDS */
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    .portal-layout {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    .main-content {
+      min-width: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+    .card-glass {
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
     /* CALENDAR COMPONENT STYLES */
     .cal-controls-row {
       display: flex;
@@ -14,6 +35,22 @@
       flex-wrap: wrap;
       gap: 14px;
       margin-bottom: 1.5rem;
+      max-width: 100%;
+    }
+    .month-nav-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .current-month-title {
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -0.02em;
+      min-width: 180px;
+      text-align: center;
+      color: var(--text-main);
     }
     .month-nav-btn {
       display: inline-flex;
@@ -26,15 +63,20 @@
       backdrop-filter: var(--ios-blur-subtle);
       -webkit-backdrop-filter: var(--ios-blur-subtle);
       color: var(--text-main);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.22s var(--ios-ease);
+      white-space: nowrap;
     }
     .month-nav-btn:hover {
       background: #1d1d1f;
       color: #fff;
       transform: translateY(-1px);
+    }
+    [data-theme="dark"] .month-nav-btn:hover {
+      background: #fff;
+      color: #000;
     }
     .month-quick-pills {
       display: flex;
@@ -43,6 +85,13 @@
       padding: 4px;
       border-radius: 999px;
       border: 1px solid var(--glass-border-light);
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .month-quick-pills::-webkit-scrollbar {
+      display: none;
     }
     .month-pill-btn {
       padding: 6px 14px;
@@ -54,6 +103,8 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s var(--ios-ease);
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .month-pill-btn:hover {
       color: var(--text-main);
@@ -73,6 +124,7 @@
       gap: 6px;
       flex-wrap: wrap;
       margin-bottom: 1.5rem;
+      max-width: 100%;
     }
     .filter-chip {
       padding: 6px 14px;
@@ -84,6 +136,7 @@
       cursor: pointer;
       color: var(--text-secondary);
       transition: all 0.2s var(--ios-ease);
+      white-space: nowrap;
     }
     .filter-chip:hover {
       color: var(--text-main);
@@ -96,11 +149,34 @@
       box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
     }
 
-    /* GRID */
+    /* CALENDAR GRID WRAPPER & CELLS (PREVENT HORIZONTAL OVERFLOW) */
+    .cal-grid-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0, 113, 227, 0.25) transparent;
+      border-radius: 18px;
+    }
+    .cal-grid-wrapper::-webkit-scrollbar {
+      height: 6px;
+    }
+    .cal-grid-wrapper::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.03);
+      border-radius: 999px;
+    }
+    .cal-grid-wrapper::-webkit-scrollbar-thumb {
+      background: rgba(0, 113, 227, 0.22);
+      border-radius: 999px;
+    }
+
     .cal-grid {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
+      grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 8px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .cal-day-header {
       padding: 10px 4px;
@@ -110,21 +186,32 @@
       color: var(--text-tertiary);
       letter-spacing: 0.05em;
       text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
     }
+    .day-name-short {
+      display: none;
+    }
+
     .cal-cell {
-      min-height: 118px;
+      min-height: 112px;
+      min-width: 0;
+      overflow: hidden;
       background: var(--glass-bg-light);
       backdrop-filter: var(--ios-blur-subtle);
       -webkit-backdrop-filter: var(--ios-blur-subtle);
       border: 1px solid var(--glass-border-light);
       border-radius: 16px;
-      padding: 8px 10px;
+      padding: 7px 8px;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 4px;
       cursor: pointer;
-      transition: all 0.25s var(--ios-ease);
+      transition: all 0.22s var(--ios-ease);
       position: relative;
+      box-sizing: border-box;
     }
     .cal-cell:hover {
       transform: translateY(-2px);
@@ -156,36 +243,56 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 2px;
+      min-width: 0;
     }
     .cal-date-num {
       font-weight: 800;
       font-size: 0.95rem;
       color: var(--text-main);
+      line-height: 1;
     }
     .today-badge {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 800;
-      padding: 2px 7px;
+      padding: 2px 6px;
       border-radius: 999px;
       background: var(--accent-blue);
       color: #fff;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .cal-task-pill {
       font-size: 0.72rem;
       font-weight: 700;
-      padding: 3px 7px;
+      padding: 3px 6px;
       border-radius: 8px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       display: flex;
       align-items: center;
       gap: 4px;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
       transition: transform 0.15s ease;
+      cursor: pointer;
     }
     .cal-task-pill:hover {
-      transform: scale(1.02);
+      transform: translateY(-1px);
+    }
+    .cal-task-pill .pill-icon {
+      flex-shrink: 0;
+      font-size: 0.76rem;
+      line-height: 1;
+    }
+    .cal-task-pill .pill-title {
+      flex: 1 1 auto;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+      font-size: 0.72rem;
+      line-height: 1.25;
     }
     .more-tasks-pill {
       font-size: 0.68rem;
@@ -195,9 +302,64 @@
       border-radius: 999px;
       padding: 2px 6px;
       text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     [data-theme="dark"] .more-tasks-pill {
       background: rgba(255,255,255,0.1);
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 900px) {
+      .main-content {
+        padding: 1.2rem 1rem 4rem !important;
+        max-width: 100vw !important;
+      }
+      .main-top-bar {
+        margin: -1.2rem -1rem 1.2rem !important;
+        padding: 0 1rem !important;
+      }
+      .card-glass {
+        padding: 1.2rem 1rem !important;
+      }
+      .cal-grid {
+        min-width: 650px;
+      }
+      .day-name-full {
+        display: none;
+      }
+      .day-name-short {
+        display: inline;
+      }
+      .cal-controls-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .month-nav-container {
+        justify-content: space-between;
+        width: 100%;
+      }
+      .month-quick-pills {
+        width: 100%;
+      }
+      .course-filter-chips {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .agenda-card {
+        flex-direction: column;
+        align-items: flex-start !important;
+      }
+      .agenda-card > div:last-child {
+        width: 100%;
+        justify-content: space-between;
+      }
     }
 
     /* INTERACTIVE MODAL */
@@ -431,9 +593,9 @@
         
         <!-- Controls row -->
         <div class="cal-controls-row">
-          <div style="display:flex; align-items:center; gap:10px;">
+          <div class="month-nav-container">
             <button class="month-nav-btn" onclick="changeMonth(-1)">◀ ก่อนหน้า</button>
-            <h2 id="current-month-label" style="font-size:1.45rem; font-weight:800; margin:0; letter-spacing:-0.02em; min-width:220px; text-align:center;">
+            <h2 id="current-month-label" class="current-month-title">
               กันยายน 2569
             </h2>
             <button class="month-nav-btn" onclick="changeMonth(1)">ถัดไป ▶</button>
@@ -461,9 +623,11 @@
           <button class="filter-chip" data-filter="other" onclick="filterByCourse('other')">🌐 วิชาทั่วไปอื่นๆ (9)</button>
         </div>
 
-        <!-- 7-day grid -->
-        <div class="cal-grid" id="calendar-grid">
-          <!-- Populated by JS -->
+        <!-- 7-day grid wrapper for overflow protection -->
+        <div class="cal-grid-wrapper">
+          <div class="cal-grid" id="calendar-grid">
+            <!-- Populated by JS -->
+          </div>
         </div>
       </div>
 
@@ -536,13 +700,13 @@
 
       // Headers
       let html = `
-        <div class="cal-day-header">จันทร์</div>
-        <div class="cal-day-header">อังคาร</div>
-        <div class="cal-day-header">พุธ</div>
-        <div class="cal-day-header">พฤหัสบดี</div>
-        <div class="cal-day-header">ศุกร์</div>
-        <div class="cal-day-header" style="color:var(--accent-blue);">เสาร์</div>
-        <div class="cal-day-header" style="color:#ef4444;">อาทิตย์</div>
+        <div class="cal-day-header"><span class="day-name-full">จันทร์</span><span class="day-name-short">จ.</span></div>
+        <div class="cal-day-header"><span class="day-name-full">อังคาร</span><span class="day-name-short">อ.</span></div>
+        <div class="cal-day-header"><span class="day-name-full">พุธ</span><span class="day-name-short">พ.</span></div>
+        <div class="cal-day-header"><span class="day-name-full">พฤหัสบดี</span><span class="day-name-short">พฤ.</span></div>
+        <div class="cal-day-header"><span class="day-name-full">ศุกร์</span><span class="day-name-short">ศ.</span></div>
+        <div class="cal-day-header" style="color:var(--accent-blue);"><span class="day-name-full">เสาร์</span><span class="day-name-short">ส.</span></div>
+        <div class="cal-day-header" style="color:#ef4444;"><span class="day-name-full">อาทิตย์</span><span class="day-name-short">อา.</span></div>
       `;
 
       // First day of month (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
@@ -581,9 +745,9 @@
         const maxDisplay = 2;
         dayTasks.slice(0, maxDisplay).forEach(t => {
           tasksHtml += `
-            <div class="cal-task-pill" style="background:${t.course_color}1a; color:${t.course_color}; border:1px solid ${t.course_color}40;">
-              <span>${t.course_icon}</span>
-              <span>${t.title}</span>
+            <div class="cal-task-pill" style="background:${t.course_color}1a; color:${t.course_color}; border:1px solid ${t.course_color}40;" title="${t.title.replace(/"/g, '&quot;')}">
+              <span class="pill-icon">${t.course_icon}</span>
+              <span class="pill-title">${t.title}</span>
             </div>
           `;
         });
@@ -734,22 +898,22 @@
 
         html += `
           <div class="agenda-card" style="border-left:5px solid ${t.course_color};">
-            <div style="display:flex; align-items:center; gap:16px;">
-              <div class="agenda-date-box" style="background:${t.course_color}1a; color:${t.course_color};">
+            <div style="display:flex; align-items:center; gap:16px; min-width:0; flex:1;">
+              <div class="agenda-date-box" style="background:${t.course_color}1a; color:${t.course_color}; flex-shrink:0;">
                 <div class="agenda-date-num">${day}</div>
                 <div class="agenda-date-month">${monthShort}</div>
               </div>
-              <div>
+              <div style="min-width:0; flex:1;">
                 <div style="display:flex; align-items:center; gap:8px; margin-bottom:3px; flex-wrap:wrap;">
                   <span style="font-size:0.8rem; font-weight:800; color:${t.course_color};">${t.course_icon} ${t.course_name}</span>
                   ${isToday ? '<span class="today-badge" style="background:#ef4444;">ส่งวันนี้!</span>' : ''}
                   ${t.is_urgent && !isToday ? '<span style="font-size:0.72rem; font-weight:800; color:#ef4444; background:rgba(239,68,68,0.12); padding:2px 8px; border-radius:999px;">ด่วน</span>' : ''}
                 </div>
-                <div style="font-weight:800; font-size:1.02rem; color:var(--text-main); margin-bottom:2px;">${t.title}</div>
+                <div style="font-weight:800; font-size:1.02rem; color:var(--text-main); margin-bottom:2px; word-break:break-word;">${t.title}</div>
                 <div style="font-size:0.82rem; color:var(--text-tertiary);">${t.due_th} • 💯 ${t.points}</div>
               </div>
             </div>
-            <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:8px; flex-shrink:0; flex-wrap:wrap;">
               <button class="month-nav-btn" style="padding:6px 12px; font-size:0.8rem;" onclick="copyPromptById('${t.id}')">📋 คัดลอกโจทย์</button>
               <a href="${t.url}" target="_blank" style="padding:8px 18px; border-radius:999px; background:${t.course_color}; color:#fff; text-decoration:none; font-weight:700; font-size:0.84rem; white-space:nowrap;">🔗 ส่งใน LMS</a>
             </div>
