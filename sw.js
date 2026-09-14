@@ -1,5 +1,5 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v1';
+const CACHE_NAME = 'psu-materials-v4';
 
 const STATIC_ASSETS = [
   './',
@@ -50,6 +50,20 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return;
 
   // HTML pages: Network First, fallback to cache
+    // Always fetch auth.js from network first to ensure instant credential changes
+  if (url.pathname.endsWith('auth.js')) {
+    event.respondWith(
+      fetch(req)
+        .then((networkRes) => {
+          const resClone = networkRes.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, resClone));
+          return networkRes;
+        })
+        .catch(() => caches.match(req))
+    );
+    return;
+  }
+
   if (req.headers.get('accept') && req.headers.get('accept').includes('text/html')) {
     event.respondWith(
       fetch(req)

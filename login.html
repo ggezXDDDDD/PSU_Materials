@@ -15,7 +15,7 @@
   <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg">
 
   <link rel="stylesheet" href="assets/css/ios_minimal_theme.css">
-  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/auth.js?v=3"></script>
 
   <style>
     body {
@@ -310,7 +310,7 @@
               type="text" 
               id="input-student-id" 
               class="login-input" 
-              placeholder="เช่น 6710123456 หรือ s6710123456" 
+              placeholder="เช่น 6810210432" 
               autocomplete="username" 
               required
               autofocus
@@ -339,7 +339,7 @@
             <input type="checkbox" id="check-remember" class="remember-checkbox" checked>
             <span>จดจำฉันไว้ในระบบ</span>
           </label>
-          <span style="color:var(--text-tertiary); font-size:0.8rem;">🔒 ระบบปลอดภัย</span>
+          <span style="color:var(--text-tertiary); font-size:0.8rem;">🔒 ระบบเฉพาะบุคคล</span>
         </div>
 
         <button type="submit" id="btn-submit-text" class="btn-submit">
@@ -349,13 +349,13 @@
       </form>
 
       <div class="hint-footer">
-        💡 <strong>คำแนะนำการเข้าสู่ระบบ:</strong><br>
-        ใช้นามผู้ใช้รหัสนักศึกษา และรหัสผ่านสาขา: <span class="hint-code">psu2026</span> หรือ <span class="hint-code">materials67</span>
+        🔒 <strong>ระบบสารสนเทศส่วนบุคคล (Private Portal):</strong><br>
+        อนุญาตเฉพาะบัญชีนักศึกษาที่ได้รับสิทธิ์ในการเข้าใช้งานเท่านั้น
       </div>
     </div>
   </div>
 
-  <script>
+    <script>
     // Theme toggle logic
     function toggleTheme() {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -365,6 +365,19 @@
     (function() {
       const saved = localStorage.getItem('psu_theme');
       if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+      // IMMEDIATE PURGE of any old/invalid session from previous tests
+      try {
+        const raw = sessionStorage.getItem('psu_portal_session') || localStorage.getItem('psu_portal_remember');
+        if (raw) {
+          const d = JSON.parse(raw);
+          if (!d || (d.studentId !== '6810210432' && d.studentId !== 's6810210432')) {
+            sessionStorage.clear();
+            localStorage.removeItem('psu_portal_session');
+            localStorage.removeItem('psu_portal_remember');
+          }
+        }
+      } catch(e) {}
     })();
 
     // Password visibility toggle
@@ -377,42 +390,45 @@
       }
     }
 
-    // Submit handler
+    // Submit handler with Salted SHA-256 verification
     function handleLoginSubmit(e) {
       e.preventDefault();
-      const studentId = document.getElementById('input-student-id').value;
-      const password = document.getElementById('input-password').value;
+      const studentId = (document.getElementById('input-student-id').value || '').trim();
+      const password = (document.getElementById('input-password').value || '').trim();
       const rememberMe = document.getElementById('check-remember').checked;
       const errBox = document.getElementById('login-error');
       const submitBtn = document.getElementById('btn-submit-text');
 
       errBox.style.display = 'none';
-      submitBtn.innerHTML = '<span>กำลังเข้าสู่ระบบ...</span>';
+      submitBtn.innerHTML = '<span>กำลังตรวจสอบข้อมูล...</span>';
       submitBtn.disabled = true;
 
-      setTimeout(() => {
-        const res = PSU_AUTH.login(studentId, password, rememberMe);
-        if (res.success) {
-          submitBtn.innerHTML = '<span>✅ สำเร็จ! กำลังนำเข้าสู่ระบบ...</span>';
-          
-          // Determine redirect target
-          const params = new URLSearchParams(window.location.search);
-          const target = params.get('redirect') ? decodeURIComponent(params.get('redirect')) : './index.html';
-          
-          setTimeout(() => {
-            window.location.href = target;
-          }, 350);
-        } else {
+      setTimeout(async () => {
+        try {
+          const res = await PSU_AUTH.login(studentId, password, rememberMe);
+          if (res.success) {
+            submitBtn.innerHTML = '<span>✅ สำเร็จ! กำลังนำเข้าสู่ระบบ...</span>';
+            const params = new URLSearchParams(window.location.search);
+            const target = params.get('redirect') ? decodeURIComponent(params.get('redirect')) : './index.html';
+            setTimeout(() => {
+              window.location.href = target;
+            }, 350);
+          } else {
+            submitBtn.innerHTML = '<span>เข้าสู่ระบบ (Sign In)</span><span>→</span>';
+            submitBtn.disabled = false;
+            errBox.textContent = res.message || 'รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง';
+            errBox.style.display = 'block';
+            errBox.style.animation = 'none';
+            void errBox.offsetWidth;
+            errBox.style.animation = 'shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both';
+          }
+        } catch (err) {
           submitBtn.innerHTML = '<span>เข้าสู่ระบบ (Sign In)</span><span>→</span>';
           submitBtn.disabled = false;
-          errBox.textContent = res.message;
+          errBox.textContent = 'เกิดข้อผิดพลาดในการตรวจสอบความปลอดภัย';
           errBox.style.display = 'block';
-          // Re-trigger animation
-          errBox.style.animation = 'none';
-          void errBox.offsetWidth;
-          errBox.style.animation = 'shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both';
         }
-      }, 300);
+      }, 150);
     }
   </script>
 </body>
