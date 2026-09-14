@@ -27,7 +27,7 @@ else:
 
 INDEX_HTML = os.path.join(PORTAL_DIR, "index.html")
 DATA_DIR = os.path.join(PORTAL_DIR, "data")
-LOG_DIR = os.path.join(PORTAL_DIR, "logs")
+LOG_DIR = os.path.join(PORTAL_DIR, "runtime", "logs")
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(LOG_DIR, exist_ok=True)
 

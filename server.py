@@ -26,6 +26,8 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 # ==============================================================================
 WORKSPACE = os.path.dirname(os.path.abspath(__file__))
 PORT = int(os.environ.get("PORT", 8000))
+RUNTIME_DIR = os.path.join(WORKSPACE, "runtime")
+os.makedirs(RUNTIME_DIR, exist_ok=True)
 
 # Authorized Credentials (Evaluated strictly on Server-Side)
 AUTHORIZED_STUDENT_ID = os.environ.get("AUTH_STUDENT_ID", "6810210432")
@@ -42,7 +44,15 @@ COOKIE_NAME = "psu_session"
 
 # Server-Side Active Session Store (session_id -> session_data)
 SERVER_SESSIONS = {}
-SESSIONS_FILE = os.path.join(WORKSPACE, ".sessions.json")
+SESSIONS_FILE = os.path.join(RUNTIME_DIR, "sessions.json")
+LEGACY_SESSIONS_FILE = os.path.join(WORKSPACE, ".sessions.json")
+
+# Migrate session state created by older versions without breaking local login.
+if not os.path.exists(SESSIONS_FILE) and os.path.exists(LEGACY_SESSIONS_FILE):
+    try:
+        os.replace(LEGACY_SESSIONS_FILE, SESSIONS_FILE)
+    except OSError:
+        pass
 
 def load_sessions():
     global SERVER_SESSIONS

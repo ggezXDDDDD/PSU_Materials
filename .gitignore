@@ -1,7 +1,11 @@
 .DS_Store
+# Local runtime state (sessions, secrets and generated logs)
+runtime/
+# Legacy runtime locations used by older processes
 logs/
 *.log
 *.command
+!scripts/launchers/*.command
 __pycache__/
 *.pyc
 node_modules/
