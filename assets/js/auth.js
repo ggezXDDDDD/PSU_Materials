@@ -1,64 +1,33 @@
 /**
  * PSU Materials Portal - Client Authentication Guard
- * 
- * SECURITY ARCHITECTURE (Zero-Trust Client):
- * - NO credentials, NO salts, and NO password hashes exist in frontend code.
- * - Client-side storage (sessionStorage/localStorage) is NEVER trusted as proof of authentication.
- * - Access is strictly validated by the Backend via HMAC-SHA256 Cryptographic Tokens.
- * - Any session tampering in browser DevTools is immediately rejected by the Server with 401.
+ *
+ * PURE SERVER-SIDE SESSION ARCHITECTURE:
+ * - NO password hashes, NO salts, and NO credentials in frontend code.
+ * - sessionStorage and localStorage are NEVER used to determine authentication.
+ * - Authentication is strictly maintained by the Backend via HttpOnly; SameSite Cookies.
+ * - Modifying sessionStorage or localStorage in DevTools has ZERO effect on access.
+ * - Protected pages verify session state directly with the Backend on page load.
  */
 
 const PSU_AUTH = {
-  TOKEN_KEY: 'psu_auth_token',
-  USER_KEY: 'psu_auth_user',
-  REMEMBER_KEY: 'psu_auth_remember',
-
   // Resolve Backend API URL
   getApiBase() {
-    // 1. Explicit global override
     if (window.PSU_AUTH_API_URL) {
       return window.PSU_AUTH_API_URL.replace(/\/$/, '');
     }
-
-    // 2. Config object
     if (window.PSU_AUTH_CONFIG && window.PSU_AUTH_CONFIG.API_URL) {
       return window.PSU_AUTH_CONFIG.API_URL.replace(/\/$/, '');
     }
-
-    // 3. Same-origin backend (Local server, Docker, VPS, Reverse Proxy)
     if (window.location.origin && window.location.origin.startsWith('http')) {
       return `${window.location.origin}/api/auth`;
     }
-
-    // 4. Default fallback for local testing
     return 'http://localhost:8000/api/auth';
   },
 
-  // Retrieve token from storage (unverified until backend check)
-  getStoredToken() {
-    try {
-      return sessionStorage.getItem(this.TOKEN_KEY) || localStorage.getItem(this.TOKEN_KEY) || '';
-    } catch (e) {
-      return '';
-    }
-  },
+  // Active user data in memory (populated ONLY after server confirms session)
+  _currentUser: null,
 
-  // Clear all local session tokens
-  clearSession() {
-    try {
-      sessionStorage.removeItem(this.TOKEN_KEY);
-      sessionStorage.removeItem(this.USER_KEY);
-      localStorage.removeItem(this.TOKEN_KEY);
-      localStorage.removeItem(this.USER_KEY);
-      localStorage.removeItem(this.REMEMBER_KEY);
-      // Clean legacy keys if any
-      sessionStorage.removeItem('psu_portal_session');
-      localStorage.removeItem('psu_portal_session');
-      localStorage.removeItem('psu_portal_remember');
-    } catch (e) {}
-  },
-
-  // Anti-Blink Content Shield: Locks protected DOM before server verification
+  // Anti-Blink Content Shield: Conceals protected DOM until server confirms session
   applyShield() {
     if (document.getElementById('psu-auth-shield')) return;
     const style = document.createElement('style');
@@ -68,7 +37,7 @@ const PSU_AUTH = {
         opacity: 0 !important;
         visibility: hidden !important;
         pointer-events: none !important;
-        transition: opacity 0.25s ease-in !important;
+        transition: opacity 0.2s ease-in !important;
       }
     `;
     document.head.appendChild(style);
@@ -87,40 +56,50 @@ const PSU_AUTH = {
     }
   },
 
-  // SERVER-SIDE VERIFICATION: Query backend to validate cryptographic token
-  async verifySessionWithServer(token) {
-    if (!token) return { valid: false, message: 'No token' };
+  // Clean any old or legacy client-side storage keys
+  purgeClientStorage() {
+    try {
+      sessionStorage.clear();
+      localStorage.removeItem('psu_portal_session');
+      localStorage.removeItem('psu_portal_remember');
+      localStorage.removeItem('psu_auth_token');
+      localStorage.removeItem('psu_auth_user');
+      localStorage.removeItem('psu_auth_remember');
+    } catch (e) {}
+  },
 
+  // SERVER-SIDE VERIFICATION: Query backend to check active server session
+  async checkServerSession() {
     const apiBase = this.getApiBase();
     try {
-      const response = await fetch(`${apiBase}/verify`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ token }),
+      const response = await fetch(`${apiBase}/session`, {
+        method: 'GET',
+        credentials: 'include', // Transmits HttpOnly cookie automatically
         cache: 'no-store'
       });
 
       if (!response.ok) {
-        return { valid: false, status: response.status };
+        this._currentUser = null;
+        return { authenticated: false };
       }
 
       const data = await response.json();
-      if (data && data.success && data.valid) {
-        return { valid: true, user: data.user };
+      if (data && data.authenticated && data.user) {
+        this._currentUser = data.user;
+        return { authenticated: true, user: data.user };
       }
-      return { valid: false, message: data.message || 'Invalid token' };
+
+      this._currentUser = null;
+      return { authenticated: false };
     } catch (err) {
-      console.warn('Auth backend verification error:', err);
-      // If network/server unreachable, fail safe: DO NOT allow unauthorized access
-      return { valid: false, error: err };
+      console.warn('Backend session verification unreachable:', err);
+      this._currentUser = null;
+      return { authenticated: false, error: err };
     }
   },
 
   // Login via Server-Side Authentication
-  async login(studentId, password, rememberMe = false) {
+  async login(studentId, password) {
     const cleanId = (studentId || '').trim();
     const cleanPw = (password || '').trim();
 
@@ -132,6 +111,7 @@ const PSU_AUTH = {
     try {
       const response = await fetch(`${apiBase}/login`, {
         method: 'POST',
+        credentials: 'include', // Receives HttpOnly cookie
         headers: {
           'Content-Type': 'application/json'
         },
@@ -144,29 +124,13 @@ const PSU_AUTH = {
 
       const data = await response.json();
 
-      if (response.ok && data.success && data.token) {
-        // Save signed token
-        sessionStorage.setItem(this.TOKEN_KEY, data.token);
-        if (data.user) {
-          sessionStorage.setItem(this.USER_KEY, JSON.stringify(data.user));
-        }
-
-        if (rememberMe) {
-          localStorage.setItem(this.TOKEN_KEY, data.token);
-          if (data.user) {
-            localStorage.setItem(this.USER_KEY, JSON.stringify(data.user));
-          }
-          localStorage.setItem(this.REMEMBER_KEY, 'true');
-        } else {
-          localStorage.removeItem(this.TOKEN_KEY);
-          localStorage.removeItem(this.USER_KEY);
-          localStorage.removeItem(this.REMEMBER_KEY);
-        }
-
-        return { success: true, user: data.user, token: data.token };
+      if (response.ok && data.success) {
+        this._currentUser = data.user;
+        this.purgeClientStorage();
+        return { success: true, user: data.user };
       }
 
-      this.clearSession();
+      this._currentUser = null;
       return {
         success: false,
         message: data.message || 'รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง'
@@ -175,90 +139,65 @@ const PSU_AUTH = {
       console.error('Login network error:', err);
       return {
         success: false,
-        message: 'ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ตรวจสอบสิทธิ์ได้ กรุณาตรวจสอบการเชื่อมต่อ'
+        message: 'ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ตรวจสอบสิทธิ์ได้ กรุณาตรวจสอบว่าเซิร์ฟเวอร์เปิดใช้งานอยู่'
       };
     }
   },
 
-  // Logout & Revoke Session on Server
+  // Logout & Invalidate Server-Side Session
   async logout() {
-    const token = this.getStoredToken();
     const apiBase = this.getApiBase();
+    try {
+      await fetch(`${apiBase}/logout`, {
+        method: 'POST',
+        credentials: 'include',
+        cache: 'no-store'
+      });
+    } catch (e) {}
 
-    if (token) {
-      try {
-        await fetch(`${apiBase}/logout`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify({ token }),
-          cache: 'no-store'
-        });
-      } catch (e) {}
-    }
-
-    this.clearSession();
+    this._currentUser = null;
+    this.purgeClientStorage();
 
     const isPagesDir = window.location.pathname.includes('/pages/');
     const loginUrl = isPagesDir ? '../login.html' : './login.html';
     window.location.href = loginUrl;
   },
 
-  // Get active user data (if verified)
+  // Get active student info (retrieved strictly from verified server session)
   getUser() {
-    try {
-      const raw = sessionStorage.getItem(this.USER_KEY) || localStorage.getItem(this.USER_KEY);
-      return raw ? JSON.parse(raw) : null;
-    } catch (e) {
-      return null;
-    }
+    return this._currentUser;
   },
 
   // Gatekeeper: Executes immediately on page load
   async guard() {
+    // Purge any deceptive client-side storage keys immediately
+    this.purgeClientStorage();
+
     const path = window.location.pathname;
     const isLoginPage = path.endsWith('login.html');
 
     if (!isLoginPage) {
-      // 1. Immediately apply anti-blink shield to protect page contents
+      // 1. Immediately shield page contents
       this.applyShield();
 
-      const token = this.getStoredToken();
-      if (!token) {
-        // No token present -> redirect to login immediately
-        this.redirectToLogin();
-        return;
-      }
+      // 2. Query Server for active session (via HttpOnly cookie)
+      const session = await this.checkServerSession();
 
-      // 2. Validate token signature and revocation with Server
-      const result = await this.verifySessionWithServer(token);
-      if (result.valid) {
+      if (session.authenticated) {
         // Authenticated by Server -> Remove shield & unlock DOM
         this.removeShield();
-        if (result.user) {
-          sessionStorage.setItem(this.USER_KEY, JSON.stringify(result.user));
-          this.updateBadges(result.user);
-        }
+        this.updateBadges(session.user);
       } else {
-        // Tampered token (PoC test) or expired -> Purge and kick out to login
-        console.warn('Unauthorized session detected by server. Purging local storage.');
-        this.clearSession();
+        // Unauthenticated or tampered -> Redirect to login immediately
         this.redirectToLogin();
       }
     } else {
-      // On login.html: If already have a valid session on server, redirect to index
-      const token = this.getStoredToken();
-      if (token) {
-        const result = await this.verifySessionWithServer(token);
-        if (result.valid) {
-          const params = new URLSearchParams(window.location.search);
-          const target = params.get('redirect') ? decodeURIComponent(params.get('redirect')) : './index.html';
-          window.location.replace(target);
-        } else {
-          this.clearSession();
-        }
+      // On login.html: If already have an active server session, redirect to index
+      const session = await this.checkServerSession();
+      if (session.authenticated) {
+        const params = new URLSearchParams(window.location.search);
+        const target = params.get('redirect') ? decodeURIComponent(params.get('redirect')) : './index.html';
+        window.location.replace(target);
       }
     }
   },
@@ -275,16 +214,15 @@ const PSU_AUTH = {
   updateBadges(user) {
     if (!user) return;
     document.querySelectorAll('.auth-user-badge').forEach(badge => {
-      badge.innerHTML = `👤 <strong>${user.studentId}</strong> <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981; margin-left:4px;" title="ออนไลน์ (ยืนยันผ่าน Server)"></span>`;
+      badge.innerHTML = `👤 <strong>${user.studentId}</strong> <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981; margin-left:4px;" title="ออนไลน์ (เซสชันได้รับการยืนยันจากเซิร์ฟเวอร์)"></span>`;
     });
   },
 
   // Inject UI Event Listeners
   initUI() {
     document.addEventListener('DOMContentLoaded', () => {
-      const user = this.getUser();
-      if (user) {
-        this.updateBadges(user);
+      if (this._currentUser) {
+        this.updateBadges(this._currentUser);
       }
 
       // Wire up logout buttons

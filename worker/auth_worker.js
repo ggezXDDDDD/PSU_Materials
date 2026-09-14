@@ -1,11 +1,11 @@
 /**
  * PSU Materials Portal - Cloudflare Worker Serverless Authentication Backend
- * Deployable to Cloudflare Workers for 100% free serverless backend when using GitHub Pages
+ * Deployable to Cloudflare Workers for 100% free serverless backend with HttpOnly cookies
  *
  * Endpoints:
- * - POST /api/auth/login
- * - POST /api/auth/verify
- * - POST /api/auth/logout
+ * - POST /api/auth/login   -> Sets HttpOnly; SameSite=Lax; Secure cookie
+ * - GET  /api/auth/session -> Validates session cookie
+ * - POST /api/auth/logout  -> Invalidates session cookie
  *
  * Environment Secrets required in Cloudflare Worker:
  * - PORTAL_SECRET_KEY: A long random secret string (e.g. 64 hex characters)
@@ -18,16 +18,16 @@ const DEFAULT_SECRET = "PSU_PORTAL_FALLBACK_KEY_CHANGE_IN_CF_ENV_V1";
 const DEFAULT_STUDENT_ID = "6810210432";
 const DEFAULT_SALT = "PSU_MATERIALS_PORTAL_SALT_2026_SECURE_V1";
 const DEFAULT_PASSWORD_HASH = "6f01bf8bb49aeca544df34fc67401dd868d4f4c37da9b013fad4a01ebbcc8b32";
+const COOKIE_NAME = "psu_session";
+const SESSION_TTL = 7 * 86400; // 7 days
 
-// In-memory revocation set (or use Cloudflare KV for persistent revocation)
-const REVOKED_JTIS = new Set();
+// In-memory revocation set (or Cloudflare KV)
+const REVOKED_SESSIONS = new Set();
 
 function b64urlEncode(buf) {
   let bin = "";
   const bytes = new Uint8Array(buf);
-  for (let i = 0; i < bytes.byteLength; i++) {
-    bin += String.fromCharCode(bytes[i]);
-  }
+  for (let i = 0; i < bytes.byteLength; i++) bin += String.fromCharCode(bytes[i]);
   return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
@@ -36,9 +36,7 @@ function b64urlDecode(str) {
   while (str.length % 4) str += "=";
   const bin = atob(str);
   const bytes = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) {
-    bytes[i] = bin.charCodeAt(i);
-  }
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
   return bytes.buffer;
 }
 
@@ -53,14 +51,14 @@ async function getHmacKey(secret) {
   );
 }
 
-async function createToken(studentId, secret) {
+async function createSessionId(studentId, secret) {
   const now = Math.floor(Date.now() / 1000);
   const header = { alg: "HS256", typ: "JWT" };
   const payload = {
     sub: studentId,
     name: "Kongpop",
     iat: now,
-    exp: now + 7 * 86400,
+    exp: now + SESSION_TTL,
     jti: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2)
   };
 
@@ -76,9 +74,9 @@ async function createToken(studentId, secret) {
   return `${hStr}.${pStr}.${sigStr}`;
 }
 
-async function verifyToken(token, secret, studentId) {
-  if (!token || typeof token !== "string") return null;
-  const parts = token.split(".");
+async function verifySessionId(sessionId, secret, expectedStudentId) {
+  if (!sessionId || typeof sessionId !== "string") return null;
+  const parts = sessionId.split(".");
   if (parts.length !== 3) return null;
 
   try {
@@ -93,10 +91,10 @@ async function verifyToken(token, secret, studentId) {
     const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(parts[1])));
     const now = Math.floor(Date.now() / 1000);
     if (payload.exp < now) return null;
-    if (REVOKED_JTIS.has(payload.jti)) return null;
+    if (REVOKED_SESSIONS.has(payload.jti)) return null;
 
     const cleanSub = String(payload.sub || "").trim().toLowerCase().replace(/^s/, "");
-    if (cleanSub !== studentId) return null;
+    if (cleanSub !== expectedStudentId) return null;
 
     return payload;
   } catch (e) {
@@ -114,17 +112,36 @@ async function checkPassword(user, pass, salt, expectedHash) {
   return hex === expectedHash;
 }
 
-function jsonResponse(data, status = 200) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      "Cache-Control": "no-store, no-cache, must-revalidate"
-    }
+function parseCookies(cookieHeader) {
+  const list = {};
+  if (!cookieHeader) return list;
+  cookieHeader.split(";").forEach((cookie) => {
+    let [name, ...rest] = cookie.split("=");
+    name = name?.trim();
+    if (!name) return;
+    const value = rest.join("=").trim();
+    list[name] = decodeURIComponent(value);
   });
+  return list;
+}
+
+function jsonResponse(data, status = 200, origin = "*", setCookie = null, clearCookie = false) {
+  const headers = new Headers({
+    "Content-Type": "application/json; charset=utf-8",
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Credentials": "true",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Cache-Control": "no-store, no-cache, must-revalidate"
+  });
+
+  if (setCookie) {
+    headers.append("Set-Cookie", `${COOKIE_NAME}=${setCookie}; Max-Age=${SESSION_TTL}; Path=/; HttpOnly; SameSite=Lax; Secure`);
+  } else if (clearCookie) {
+    headers.append("Set-Cookie", `${COOKIE_NAME}=; Max-Age=0; Path=/; HttpOnly; SameSite=Lax; Secure`);
+  }
+
+  return new Response(JSON.stringify(data), { status, headers });
 }
 
 export default {
@@ -134,14 +151,16 @@ export default {
     const salt = env.AUTH_SALT || DEFAULT_SALT;
     const expectedHash = env.AUTH_PASSWORD_HASH || DEFAULT_PASSWORD_HASH;
 
+    const origin = request.headers.get("Origin") || "*";
     const url = new URL(request.url);
 
-    // Handle CORS pre-flight
+    // Handle CORS preflight
     if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,
         headers: {
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": origin,
+          "Access-Control-Allow-Credentials": "true",
           "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
           "Access-Control-Max-Age": "86400"
@@ -149,69 +168,52 @@ export default {
       });
     }
 
-    if (request.method === "POST") {
+    const cookies = parseCookies(request.headers.get("Cookie"));
+    const currentSessionId = cookies[COOKIE_NAME];
+
+    // 1. POST /api/auth/login
+    if (request.method === "POST" && url.pathname === "/api/auth/login") {
       let body = {};
-      try {
-        body = await request.json();
-      } catch (e) {}
+      try { body = await request.json(); } catch (e) {}
 
-      // 1. POST /api/auth/login
-      if (url.pathname === "/api/auth/login") {
-        const u = body.studentId;
-        const p = body.password;
-        const isOk = await checkPassword(u, p, salt, expectedHash);
-        if (isOk) {
-          const token = await createToken(studentId, secret);
-          return jsonResponse({
-            success: true,
-            token,
-            user: { studentId, studentName: "Kongpop" }
-          });
-        }
-        return jsonResponse({ success: false, message: "รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง" }, 401);
+      const isOk = await checkPassword(body.studentId, body.password, salt, expectedHash);
+      if (isOk) {
+        const sid = await createSessionId(studentId, secret);
+        return jsonResponse({
+          success: true,
+          user: { studentId, studentName: "Kongpop" }
+        }, 200, origin, sid);
       }
-
-      // 2. POST /api/auth/verify
-      if (url.pathname === "/api/auth/verify") {
-        let token = "";
-        const authH = request.headers.get("Authorization");
-        if (authH && authH.startsWith("Bearer ")) {
-          token = authH.substring(7).trim();
-        } else if (body.token) {
-          token = body.token;
-        }
-
-        const payload = await verifyToken(token, secret, studentId);
-        if (payload) {
-          return jsonResponse({
-            success: true,
-            valid: true,
-            user: { studentId: payload.sub, studentName: payload.name }
-          });
-        }
-        return jsonResponse({ success: false, valid: false, message: "Session ไม่ถูกต้องหรือหมดอายุ" }, 401);
-      }
-
-      // 3. POST /api/auth/logout
-      if (url.pathname === "/api/auth/logout") {
-        let token = "";
-        const authH = request.headers.get("Authorization");
-        if (authH && authH.startsWith("Bearer ")) token = authH.substring(7).trim();
-        else if (body.token) token = body.token;
-
-        if (token) {
-          try {
-            const parts = token.split(".");
-            if (parts.length === 3) {
-              const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(parts[1])));
-              if (payload.jti) REVOKED_JTIS.add(payload.jti);
-            }
-          } catch (e) {}
-        }
-        return jsonResponse({ success: true, message: "ออกจากระบบเรียบร้อยแล้ว" });
-      }
+      return jsonResponse({ success: false, message: "รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง" }, 401, origin);
     }
 
-    return jsonResponse({ error: "Not Found" }, 404);
+    // 2. GET /api/auth/session
+    if ((request.method === "GET" || request.method === "POST") && (url.pathname === "/api/auth/session" || url.pathname === "/api/auth/verify")) {
+      const payload = await verifySessionId(currentSessionId, secret, studentId);
+      if (payload) {
+        return jsonResponse({
+          success: true,
+          authenticated: true,
+          user: { studentId: payload.sub, studentName: payload.name }
+        }, 200, origin);
+      }
+      return jsonResponse({ success: false, authenticated: false, message: "Session ไม่ถูกต้องหรือหมดอายุ" }, 401, origin, null, true);
+    }
+
+    // 3. POST /api/auth/logout
+    if (request.method === "POST" && url.pathname === "/api/auth/logout") {
+      if (currentSessionId) {
+        try {
+          const parts = currentSessionId.split(".");
+          if (parts.length === 3) {
+            const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(parts[1])));
+            if (payload.jti) REVOKED_SESSIONS.add(payload.jti);
+          }
+        } catch (e) {}
+      }
+      return jsonResponse({ success: true, message: "ออกจากระบบเรียบร้อยแล้ว" }, 200, origin, null, true);
+    }
+
+    return jsonResponse({ error: "Not Found" }, 404, origin);
   }
 };

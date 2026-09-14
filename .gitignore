@@ -8,3 +8,4 @@ node_modules/
 .server_secret
 .env
 *.env
+.sessions.json
