@@ -10,7 +10,7 @@ const PSU_AUTH = {
 
   // Cryptographic Salt and Target Hash for authorized account
   SALT: 'PSU_MATERIALS_PORTAL_SALT_2026_SECURE_V1',
-  AUTH_HASH: '1a92847f425cb99bc9144ee58e6b0c6f70aa22ac4f2297233e131d0af00f63d1',
+  AUTH_HASH: '6f01bf8bb49aeca544df34fc67401dd868d4f4c37da9b013fad4a01ebbcc8b32',
   STUDENT_ID: '6810210432',
 
   // SHA-256 computation using Web Crypto API with portable fallback
