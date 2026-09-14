@@ -1,0 +1,49 @@
+name: Link Validator & PWA Integrity Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate All Internal Hyperlinks
+        run: |
+          python3 -c "
+          import os, glob, re
+          files = glob.glob('**/*.html', recursive=True)
+          broken = 0
+          for f in files:
+              with open(f, 'r', encoding='utf-8') as fh:
+                  content = fh.read()
+              for m in re.finditer(r'href=["\']([^"\'#:]+)["\']', content):
+                  target = m.group(1)
+                  if target.startswith(('http', 'mailto:', 'tel:', 'javascript:')): continue
+                  base = os.path.dirname(f)
+                  t_path = os.path.normpath(os.path.join(base, target))
+                  if not os.path.exists(t_path):
+                      print(f'BROKEN LINK in {f}: {target}')
+                      broken += 1
+          if broken > 0:
+              print(f'FAILED: {broken} broken links found')
+              exit(1)
+          else:
+              print(f'SUCCESS: Checked {len(files)} files, 0 broken links!')
+          "
+
+      - name: Check PWA Manifest & Service Worker
+        run: |
+          test -f manifest.json && echo "manifest.json OK"
+          test -f sw.js && echo "sw.js OK"
+          test -f assets/icons/icon-192.png && echo "icon-192 OK"

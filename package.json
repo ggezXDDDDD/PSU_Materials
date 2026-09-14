@@ -1,0 +1,14 @@
+{
+  "name": "psu-materials",
+  "version": "1.0.0",
+  "description": "PSU Materials Science Academic Portal & LMS Deadline Radar",
+  "scripts": {
+    "dev": "python3 dev.py",
+    "format": "prettier --write \"**/*.{html,css,js,json}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js,json}\"",
+    "check:links": "python3 scripts/verify_links.py"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6"
+  }
+}
