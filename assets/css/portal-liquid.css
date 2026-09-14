@@ -1,0 +1,144 @@
+/* Liquid Workspace design language for every Portal page.
+   Scoped to keep the dedicated OS demo's window geometry independent. */
+html:root {
+  --portal-ink: #243649;
+  --portal-muted: #52697c;
+  --portal-panel: rgba(248,253,255,.44);
+  --portal-sub: rgba(237,248,255,.25);
+  --portal-edge: rgba(255,255,255,.76);
+  --portal-shadow: 0 16px 46px rgba(56,85,120,.09), inset 0 1px 1px rgba(255,255,255,.65), inset 0 -1px 0 rgba(255,255,255,.10);
+  --portal-base: #e4ecf1;
+  --portal-tint: rgba(151,189,212,.23);
+  --portal-ease: cubic-bezier(.22,1,.36,1);
+}
+html:root[data-theme="dark"] {
+  --portal-ink: #e2ecf5;
+  --portal-muted: #a3b7c9;
+  --portal-panel: rgba(26,43,59,.56);
+  --portal-sub: rgba(45,64,82,.36);
+  --portal-edge: rgba(214,238,255,.19);
+  --portal-shadow: 0 18px 48px rgba(0,0,0,.18), inset 0 1px 1px rgba(225,245,255,.10), inset 0 -1px 0 rgba(225,245,255,.03);
+  --portal-base: #101e2b;
+  --portal-tint: rgba(123,169,196,.22);
+}
+/* Legacy pages define their own tokens; aliases keep their content readable. */
+html:root {
+  --bg-base: var(--portal-base) !important;
+  --bg: var(--portal-base) !important;
+  --text-main: var(--portal-ink) !important;
+  --text: var(--portal-ink) !important;
+  --text-secondary: var(--portal-muted) !important;
+  --text-tertiary: var(--portal-muted) !important;
+  --text-muted: var(--portal-muted) !important;
+  --surface-glass: var(--portal-panel) !important;
+  --card-bg: var(--portal-panel) !important;
+  --surface-glass-sub: var(--portal-sub) !important;
+  --subcard-bg: var(--portal-sub) !important;
+  --nav-bg: var(--portal-panel) !important;
+  --glass-border: var(--portal-edge) !important;
+  --card-border: var(--portal-edge) !important;
+  --glass-shadow: var(--portal-shadow) !important;
+  --card-shadow: var(--portal-shadow) !important;
+  --glass-bg-light: var(--portal-panel) !important;
+  --glass-bg-subtle: var(--portal-sub) !important;
+  --glass-border-light: var(--portal-edge) !important;
+  --table-header: var(--portal-tint) !important;
+  --table-even: var(--portal-sub) !important;
+  --font-stack: -apple-system,BlinkMacSystemFont,"SF Pro Display","Sukhumvit Set","Noto Sans Thai",sans-serif !important;
+}
+html body:not(.liquid-workspace) {
+  font-family: var(--font-stack) !important;
+  color: var(--portal-ink) !important;
+  background-color: var(--portal-base) !important;
+  background-image: radial-gradient(ellipse at 15% 5%,rgba(248,239,220,.55),transparent 50%),radial-gradient(ellipse at 85% 70%,rgba(167,211,218,.45),transparent 60%),radial-gradient(ellipse at 0% 50%,rgba(143,174,212,.4),transparent 55%) !important;
+  background-attachment: fixed !important;
+}
+html[data-theme="dark"] body:not(.liquid-workspace) {
+  background-image:radial-gradient(ellipse at 10% 30%,rgba(97,131,159,.18),transparent 55%),radial-gradient(ellipse at 90% 70%,rgba(92,151,153,.13),transparent 60%) !important;
+  color-scheme: dark;
+}
+html body:not(.liquid-workspace)::before,
+html body:not(.liquid-workspace)::after {
+  width:65vw !important;height:60vw !important;filter:blur(65px) !important;opacity:.28 !important;
+  animation:portal-ambient 18s ease-in-out infinite alternate !important;
+  background:radial-gradient(ellipse,#91b6d2,transparent 68%) !important;
+}
+html body:not(.liquid-workspace)::after {background:radial-gradient(ellipse,#b8d8cc,transparent 68%) !important;animation-delay:-9s !important;}
+@keyframes portal-ambient {to{transform:translate3d(8vw,-5vh,0) rotate(9deg)}}
+html body:not(.liquid-workspace) :is(.card-glass,.glass-panel,.assignment-card,.file-item-card,.summary-card,.stat-card-glass,.card,.hero,.concept-card,.course-task-section,.quiz-card,.login-card,.agenda-card,.modal-content,.note-panel,.file-hub-section) {
+  background:linear-gradient(135deg,rgba(255,255,255,.13),transparent 45%),var(--portal-panel) !important;
+  border:1px solid var(--portal-edge);
+  border-color:var(--portal-edge) !important;
+  border-radius:28px !important;
+  box-shadow:var(--portal-shadow) !important;
+  backdrop-filter:blur(24px) saturate(145%) !important;
+  -webkit-backdrop-filter:blur(24px) saturate(145%) !important;
+}
+/* Nested content needs less blur; preserve colored course/status accents. */
+html body:not(.liquid-workspace) :is(.card,.card-glass,.course-task-section) :is(.assignment-card,.concept-card,.quiz-card,.file-item-card) {
+  backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2) !important;
+  background:var(--portal-sub) !important;
+}
+html body:not(.liquid-workspace) :is(.main-top-bar,.top-nav,.sidebar) {
+  background:linear-gradient(135deg,rgba(255,255,255,.15),transparent),var(--portal-panel) !important;
+  border:1px solid var(--portal-edge) !important;
+  border-radius:24px !important;
+  backdrop-filter:blur(28px) saturate(145%) !important;
+  -webkit-backdrop-filter:blur(28px) saturate(145%) !important;
+  box-shadow:var(--portal-shadow) !important;
+}
+html body:not(.liquid-workspace) .portal-layout {gap:20px;padding:20px;overflow:visible !important;}
+html body:not(.liquid-workspace) .sidebar {top:20px;height:calc(100dvh - 40px);width:260px;min-width:260px;}
+html body:not(.liquid-workspace) .main-content {padding:0 10px 60px;overflow:visible !important;}
+html body:not(.liquid-workspace) .main-top-bar {top:20px;margin:0 0 28px;padding:12px 18px;height:auto;min-height:64px;gap:12px;}
+html body:not(.liquid-workspace) .main-top-bar.is-scrolled {background:var(--portal-panel) !important;backdrop-filter:blur(36px) saturate(155%) !important;}
+html body:not(.liquid-workspace) :is(.side-item.active,.filter-pill.active,.subject-subnav a.active,.course-3way-tab.active,.mode-tab.active) {
+  background:linear-gradient(130deg,rgba(255,255,255,.2),transparent),var(--portal-tint) !important;
+  color:var(--portal-ink) !important;border:1px solid var(--portal-edge) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 10px rgba(44,73,95,.04) !important;
+}
+html body:not(.liquid-workspace) .side-item {border:1px solid transparent;font-weight:500;min-height:44px;}
+html body:not(.liquid-workspace) .side-item.active .side-badge {color:var(--portal-ink) !important;background:var(--portal-sub) !important;}
+html body:not(.liquid-workspace) :is(.course-3way-switcher,.subject-subnav,.filter-pills-bar,.assign-prompt-box,.course-task-header) {background:var(--portal-sub) !important;box-shadow:none !important;}
+html body:not(.liquid-workspace) :is(h1,.hero-title) {font-weight:550 !important;letter-spacing:-.035em !important;line-height:1.25;}
+html body:not(.liquid-workspace) h2 {font-weight:600 !important;letter-spacing:-.025em;}
+html body:not(.liquid-workspace) :is(button,.btn-lms-submit,.file-btn-open,.btn-goto-course,.subnav-btn-lms-highlight,.main-top-bar>a) {
+  font-family:var(--font-stack) !important;
+  transition:transform .28s var(--portal-ease),background-color .25s,box-shadow .25s !important;
+}
+html body:not(.liquid-workspace) :is(.btn-lms-submit,.file-btn-open,.btn-goto-course,.month-nav-btn,.btn-toggle-all,.filter-pill,.login-btn,.btn-submit,.nav-btn,.portal-menu-button,#theme-toggle-btn) {
+  background:linear-gradient(140deg,rgba(255,255,255,.21),transparent),var(--portal-tint) !important;
+  color:var(--portal-ink) !important;border:1px solid var(--portal-edge) !important;
+  border-radius:15px !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 12px rgba(41,73,103,.04) !important;
+}
+html body:not(.liquid-workspace) :is(.search-input-glass,.login-input,select,textarea) {background:var(--portal-sub) !important;border-color:var(--portal-edge) !important;color:var(--portal-ink) !important;}
+html body:not(.liquid-workspace) :is(.cal-day,.calendar-day) {background:var(--portal-sub);border-color:var(--portal-edge);}
+html body:not(.liquid-workspace) .modal-backdrop {backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+html body:not(.liquid-workspace) :focus-visible {outline:3px solid #6294b8 !important;outline-offset:3px;}
+html body:not(.liquid-workspace) .card-glow {opacity:.15 !important;}
+html body:not(.liquid-workspace) .portal-menu-button {display:none;min-width:42px;height:42px;cursor:pointer;font-size:19px;}
+.portal-menu-backdrop {display:none;}
+@media(min-width:901px){html body:not(.liquid-workspace) .portal-layout.sidebar-collapsed .sidebar{width:0;min-width:0;opacity:0;pointer-events:none;overflow:hidden;border:0 !important;}}
+@media(hover:hover) and (pointer:fine){html body:not(.liquid-workspace) :is(.card-glass,.assignment-card,.file-item-card,.card,.concept-card,.quiz-card):hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(56,85,120,.12),inset 0 1px 0 rgba(255,255,255,.45) !important;}}
+@media(max-width:1100px){html body:not(.liquid-workspace) .main-top-bar{flex-wrap:wrap;}html body:not(.liquid-workspace) .main-top-bar>div{flex-wrap:wrap;}}
+@media(max-width:900px){
+  html body:not(.liquid-workspace) .portal-layout{padding:12px;gap:0;}
+  html body:not(.liquid-workspace) .main-content{padding:0 0 90px;}
+  html body:not(.liquid-workspace) .main-top-bar{top:12px;padding:10px 12px;margin-bottom:20px;}
+  html body:not(.liquid-workspace) .sidebar{left:12px;top:12px;height:calc(100dvh - 24px);width:min(290px,85vw);transform:translateX(calc(-100% - 24px)) !important;z-index:1100;visibility:hidden;transition:transform .35s var(--portal-ease),visibility .35s !important;}
+  html body:not(.liquid-workspace) .sidebar.portal-menu-open{transform:none !important;visibility:visible;}
+  html body:not(.liquid-workspace) .portal-menu-button{display:inline-grid;place-items:center;}
+  .portal-menu-backdrop:not([hidden]){display:block;position:fixed;inset:0;z-index:1050;background:rgba(16,30,43,.22);backdrop-filter:blur(5px);border:0;}
+  html body:not(.liquid-workspace) :is(.mobile-menu-toggle,.mobile-menu-btn,.sidebar-toggle-btn){display:none !important;}
+  html body:not(.liquid-workspace) :is(.card-glass,.card,.hero,.login-card){border-radius:24px !important;}
+}
+@media(max-width:600px){
+  html body:not(.liquid-workspace) .main-top-bar>div:first-child{font-size:.95rem !important;}
+  html body:not(.liquid-workspace) .main-top-bar>div:last-child{gap:6px !important;font-size:.75rem;}
+  html body:not(.liquid-workspace) .main-content>.card-glass{padding:22px 18px !important;}
+  html body:not(.liquid-workspace) .main-content>.card-glass>div[style*="grid-template-columns:1fr 1fr;"]{grid-template-columns:1fr !important;}
+  html body:not(.liquid-workspace) .main-content>div[style*="minmax(280px"]{grid-template-columns:minmax(0,1fr) !important;}
+  html body:not(.liquid-workspace) .assign-actions-row{flex-wrap:wrap;}
+}
+@media(prefers-reduced-motion:reduce){html body:not(.liquid-workspace)::before,html body:not(.liquid-workspace)::after{animation:none !important;}html body:not(.liquid-workspace) *{scroll-behavior:auto !important;}}

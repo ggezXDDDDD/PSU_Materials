@@ -1,5 +1,5 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v9-liquid-workspace';
+const CACHE_NAME = 'psu-materials-v10-portal-liquid';
 
 const STATIC_ASSETS = [
   './',
@@ -8,6 +8,7 @@ const STATIC_ASSETS = [
   './calendar.html',
   './manifest.json',
   './assets/css/ios_minimal_theme.css',
+  './assets/css/portal-liquid.css?v=20260915_02',
   './assets/js/ios_motion.js',
   './assets/css/liquid-workspace.css?v=1',
   './assets/js/liquid-workspace.js?v=1',

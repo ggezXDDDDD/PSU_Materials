@@ -18,7 +18,8 @@
   ].join(',');
 
   function setupReveal() {
-    const items = Array.from(document.querySelectorAll(revealSelector));
+    const items = Array.from(document.querySelectorAll(revealSelector))
+      .filter(item => !item.parentElement.closest(revealSelector));
     if (!items.length) return;
 
     document.documentElement.classList.add('ios-motion-ready');
@@ -38,13 +39,13 @@
         entry.target.classList.add('ios-reveal-visible');
         observer.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+    }, { rootMargin: '0px 0px -24px 0px', threshold: 0 });
 
     items.forEach((item) => observer.observe(item));
   }
 
   function setupGlassShine() {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (reduceMotion.matches || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     document.querySelectorAll(shineSelector).forEach((surface) => {
       surface.addEventListener('pointermove', (event) => {
         const rect = surface.getBoundingClientRect();
@@ -52,6 +53,64 @@
         surface.style.setProperty('--glass-y', `${event.clientY - rect.top}px`);
       }, { passive: true });
     });
+  }
+
+  function setupPortalNavigation() {
+    const sidebar = document.querySelector('.sidebar');
+    const toolbar = document.querySelector('.main-top-bar');
+    if (!sidebar || !toolbar) return;
+    sidebar.id = sidebar.id || 'portal-sidebar';
+    const toggle = document.createElement('button');
+    toggle.className = 'portal-menu-button';
+    toggle.type = 'button';
+    toggle.textContent = '☰';
+    toggle.setAttribute('aria-label', 'เปิดเมนูรายวิชา');
+    toggle.setAttribute('aria-controls', sidebar.id);
+    toggle.setAttribute('aria-expanded', 'false');
+    toolbar.prepend(toggle);
+    const backdrop = document.createElement('button');
+    backdrop.className = 'portal-menu-backdrop';
+    backdrop.type = 'button';
+    backdrop.hidden = true;
+    backdrop.tabIndex = -1;
+    backdrop.setAttribute('aria-label', 'ปิดเมนูรายวิชา');
+    document.body.append(backdrop);
+    const close = () => {
+      sidebar.classList.remove('portal-menu-open');
+      sidebar.inert = matchMedia('(max-width: 900px)').matches;
+      backdrop.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    toggle.addEventListener('click', () => {
+      const open = !sidebar.classList.contains('portal-menu-open');
+      sidebar.inert = !open;
+      sidebar.classList.toggle('portal-menu-open', open);
+      backdrop.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) requestAnimationFrame(() => sidebar.querySelector('a')?.focus());
+    });
+    backdrop.addEventListener('click', () => { close(); toggle.focus(); });
+    document.addEventListener('keydown', event => {
+      if (!sidebar.classList.contains('portal-menu-open')) return;
+      if (event.key === 'Escape') { close(); toggle.focus(); }
+      if (event.key === 'Tab') {
+        const links = [...sidebar.querySelectorAll('a,button')].filter(el => el.getClientRects().length);
+        const first = links[0], last = links[links.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
+    });
+    matchMedia('(max-width: 900px)').addEventListener('change', close);
+    close();
+    const nav = sidebar.querySelector('.sidebar-nav');
+    if (nav && !nav.querySelector('[data-workspace-link]')) {
+      const link = document.createElement('a');
+      link.href = new URL(location.pathname.includes('/pages/') ? '../liquid-glass.html' : './liquid-glass.html', location.href).href;
+      link.className = 'side-item';
+      link.dataset.workspaceLink = '';
+      link.textContent = '✦ Liquid Workspace';
+      nav.prepend(link);
+    }
   }
 
   function setupPressFeedback() {
@@ -87,6 +146,7 @@
   }
 
   function init() {
+    setupPortalNavigation();
     setupReveal();
     setupGlassShine();
     setupPressFeedback();
