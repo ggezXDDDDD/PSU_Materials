@@ -1,9 +1,12 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v10-portal-liquid';
+const CACHE_NAME = 'psu-materials-v11-clear-navigation';
 
 const STATIC_ASSETS = [
   './',
   './index.html',
+  './courses.html',
+  './assets/js/portal-shell.js?v=20260915_03',
+  './assets/css/portal-redesign.css?v=20260915_03',
   './tasks.html',
   './calendar.html',
   './manifest.json',
