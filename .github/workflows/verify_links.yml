@@ -2,9 +2,9 @@ name: Link Validator & PWA Integrity Check
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   validate:
@@ -16,21 +16,22 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Validate All Internal Hyperlinks
         run: |
           python3 -c "
           import os, glob, re
           from urllib.parse import unquote
-          files = glob.glob('**/*.html', recursive=True)
+          excluded = {'.git', 'android', 'node_modules', 'runtime', 'logs', 'web', '__pycache__'}
+          files = [f for f in glob.glob('**/*.html', recursive=True) if not excluded.intersection(f.split(os.sep))]
           broken = 0
           for f in files:
               with open(f, 'r', encoding='utf-8') as fh:
                   content = fh.read()
               content_no_script = re.sub(r'<script.*?>.*?</script>', '', content, flags=re.DOTALL)
               for m in re.finditer(r'href=[\"\']([^\"\'#:]+)[\"\']', content_no_script):
-                  target = unquote(m.group(1))
+              target = unquote(m.group(1)).split('?', 1)[0]
                   if target.startswith(('http', 'mailto:', 'tel:', 'javascript:')): continue
                   base = os.path.dirname(f)
                   t_path = os.path.normpath(os.path.join(base, target))
