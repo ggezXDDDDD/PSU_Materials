@@ -21,6 +21,8 @@ import server
 
 TEST_PORT = 8998
 BASE_URL = f"http://127.0.0.1:{TEST_PORT}"
+REQUEST_TIMEOUT = 3
+SERVER_START_TIMEOUT = 5
 
 def run_test_server():
     server.PORT = TEST_PORT
@@ -37,7 +39,7 @@ def http_post(endpoint: str, data: dict, headers: dict = None):
     opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
     req = urllib.request.Request(url, data=body, headers=req_headers, method="POST")
     try:
-        with opener.open(req) as resp:
+        with opener.open(req, timeout=REQUEST_TIMEOUT) as resp:
             return resp.status, json.loads(resp.read().decode("utf-8")), resp.headers
     except urllib.error.HTTPError as e:
         try:
@@ -61,7 +63,7 @@ def http_get(endpoint: str, headers: dict = None, follow_redirect: bool = False)
     opener = urllib.request.build_opener(*handlers)
     req = urllib.request.Request(url, headers=req_headers, method="GET")
     try:
-        with opener.open(req) as resp:
+        with opener.open(req, timeout=REQUEST_TIMEOUT) as resp:
             raw = resp.read().decode("utf-8", errors="ignore")
             try:
                 data = json.loads(raw)
@@ -83,6 +85,18 @@ def extract_cookie(headers):
         return parts.strip()
     return ""
 
+def wait_for_test_server():
+    deadline = time.monotonic() + SERVER_START_TIMEOUT
+    while time.monotonic() < deadline:
+        try:
+            status, _, _ = http_get("/api/auth/session")
+            if status in (200, 401):
+                return
+        except (urllib.error.URLError, TimeoutError):
+            pass
+        time.sleep(0.05)
+    raise RuntimeError(f"Test server did not become ready within {SERVER_START_TIMEOUT} seconds")
+
 def main():
     print("═" * 70)
     print(" 🛡️  STARTING SERVER-SIDE SESSION & POC VERIFICATION SUITE")
@@ -91,7 +105,7 @@ def main():
     # Start background server
     t = threading.Thread(target=run_test_server, daemon=True)
     t.start()
-    time.sleep(1)
+    wait_for_test_server()
 
     passed_count = 0
     total_tests = 8

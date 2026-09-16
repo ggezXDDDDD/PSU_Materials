@@ -2,7 +2,7 @@ import os
 import re
 import urllib.parse
 
-WORKSPACE = '/Users/kongpop/Desktop/PSU_Materials'
+WORKSPACE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXCLUDED_DIRS = {'.git', 'android', 'node_modules', 'runtime', 'logs', 'web', '__pycache__'}
 broken = []
 total_links = 0
