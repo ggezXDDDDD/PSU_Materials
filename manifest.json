@@ -1,6 +1,7 @@
 {
   "name": "PSU Materials Hub | Academic Portal",
   "short_name": "PSU Materials",
+  "id": "./",
   "description": "Academic portal and LMS deadline tracker for PSU Materials Science students",
   "start_url": "./index.html",
   "scope": "./",
@@ -31,5 +32,15 @@
     "education",
     "productivity",
     "utilities"
+  ],
+  "shortcuts": [
+    {
+      "name": "งานทั้งหมด",
+      "url": "./tasks.html"
+    },
+    {
+      "name": "ปฏิทิน",
+      "url": "./calendar.html"
+    }
   ]
 }

@@ -1,17 +1,19 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v12-mobile-foundation';
+const CACHE_NAME = 'psu-materials-v13-pwa-shell';
 
 const STATIC_ASSETS = [
   './',
   './index.html',
   './courses.html',
   './assets/js/portal-shell.js?v=20260915_03',
-  './assets/css/portal-redesign.css?v=20260915_03',
   './tasks.html',
   './calendar.html',
+  './offline.html',
   './manifest.json',
-  './assets/css/ios_minimal_theme.css',
-  './assets/css/portal-liquid.css?v=20260915_02',
+  './assets/css/ios_minimal_theme.css?v=20260916_02',
+  './assets/css/portal-liquid.css?v=20260916_02',
+  './assets/css/portal-redesign.css?v=20260916_02',
+  './assets/js/pwa.js?v=20260916_02',
   './assets/js/ios_motion.js',
   './assets/css/liquid-workspace.css?v=1',
   './assets/js/liquid-workspace.js?v=1',
@@ -74,7 +76,7 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE_NAME).then((cache) => cache.put(req, resClone));
           return networkRes;
         })
-        .catch(() => caches.match(req).then((cached) => cached || caches.match('./index.html')))
+        .catch(() => caches.match(req).then((cached) => cached || caches.match('./offline.html')))
     );
     return;
   }
