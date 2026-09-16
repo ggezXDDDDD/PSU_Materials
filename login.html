@@ -19,12 +19,12 @@
 
   <style>
     body {
-      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       justify-content: center;
       background: radial-gradient(circle at 50% 10%, rgba(0, 113, 227, 0.08) 0%, transparent 60%), var(--bg-base);
-      padding: 20px;
+      padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
       box-sizing: border-box;
       overflow-x: hidden;
     }
@@ -282,6 +282,13 @@
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       transition: all 0.2s ease;
+    }
+
+    @media (max-width: 600px) {
+      body { align-items: flex-start; }
+      .login-wrapper { margin: auto 0; }
+      .login-card { padding: 2rem 1.25rem; }
+      .theme-toggle-floating { top: max(16px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right)); }
     }
   </style>
   <script src="assets/js/ios_motion.js?v=20260915_02" defer></script>

@@ -314,8 +314,10 @@ html body.portal-redesign .course-3way-tab {
   .shell-bottom-nav a {
     display: grid;
     justify-items: center;
+    align-content: center;
     gap: 3px;
     padding: 7px 4px;
+    min-height: 48px;
     text-decoration: none;
     color: var(--portal-muted);
     border-radius: 19px;
@@ -383,7 +385,7 @@ html body.portal-redesign .course-3way-tab {
     font-size: 11px;
   }
   .portal-redesign .main-content {
-    padding-bottom: 110px !important;
+    padding-bottom: calc(110px + env(safe-area-inset-bottom)) !important;
   }
 }
 @media (prefers-reduced-motion: no-preference) {

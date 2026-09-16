@@ -1,5 +1,5 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v11-clear-navigation';
+const CACHE_NAME = 'psu-materials-v12-mobile-foundation';
 
 const STATIC_ASSETS = [
   './',
