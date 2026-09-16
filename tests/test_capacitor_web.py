@@ -2,6 +2,7 @@
 """Small regression check for the Capacitor web staging step."""
 
 from pathlib import Path
+from json import loads
 from subprocess import run
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -12,4 +13,6 @@ for path in ("index.html", "assets/js/auth.js", "pages/polymer.html", "data/task
 assert not (ROOT / "web" / "server.py").exists()
 mobile_css = (ROOT / "web" / "assets/css/portal-liquid.css").read_text(encoding="utf-8")
 assert "backdrop-filter:blur(5px)" not in mobile_css
+assert "isDevelopmentServer" in (ROOT / "web" / "assets/js/pwa.js").read_text(encoding="utf-8")
+assert "server" not in loads((ROOT / "capacitor.config.json").read_text(encoding="utf-8"))
 print("Capacitor web staging: PASS")

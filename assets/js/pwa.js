@@ -1,5 +1,8 @@
 // PWA service-worker registration and Chromium install prompt.
 (function () {
+  // Live Reload uses an HTTP development server. Do not let the production PWA
+  // cache hide the latest local HTML, CSS, or JavaScript after a refresh.
+  const isDevelopmentServer = location.protocol === 'http:';
   const getInstallButton = () => {
     let button = document.getElementById('pwa-install-btn');
     if (button) return button;
@@ -17,7 +20,7 @@
     return button;
   };
 
-  if ('serviceWorker' in navigator) {
+  if (!isDevelopmentServer && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       // Determine correct sw.js path depending on page depth
       const isPagesDir = window.location.pathname.includes('/pages/');
@@ -37,6 +40,7 @@
   // Optional Install Prompt for Android / Desktop Chrome
   let deferredPrompt;
   window.addEventListener('beforeinstallprompt', (e) => {
+    if (isDevelopmentServer) return;
     e.preventDefault();
     deferredPrompt = e;
     const installBtn = getInstallButton();

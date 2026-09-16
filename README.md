@@ -120,6 +120,21 @@ cd android && ./gradlew assembleDebug
 
 ต้องมี JDK 21 และ Android SDK สำหรับการ build ในเครื่อง ส่วน GitHub Actions จะสร้าง artifact ชื่อ `PSU-Materials-debug-apk` เมื่อ push การเปลี่ยนแปลงที่เกี่ยวข้องกับ Android หรือสั่งรัน workflow ด้วยตนเอง
 
+### Live Reload บน Android (development only)
+
+Web layer (HTML/CSS/JS) ใช้ source เดียวกับเว็บ, PWA และ Android ส่วน native จะเปลี่ยนเฉพาะเมื่อเพิ่ม plugin, permission, manifest หรือ native configuration เท่านั้น จึงไม่ต้องสร้าง APK ใหม่ทุกครั้งที่แก้ UI
+
+แนะนำ USB เพราะไม่เปิด development server ไปยังเครือข่าย:
+
+1. เปิด USB debugging และเสียบ Android กับเครื่องพัฒนา
+2. Terminal แรก: `bun run dev:lan`
+3. Terminal ที่สอง: `bun run android:live:usb`
+4. หลัง app เปิดแล้ว แก้ HTML/CSS/JS และ reload app เพื่อเห็นผลทันทีโดยไม่ต้อง download/install APK ใหม่
+
+ทางเลือก Wi-Fi: ให้มือถือและเครื่องพัฒนาอยู่ Wi-Fi เดียวกัน แล้วใช้ `bun run android:live:lan` แทน USB
+
+คำสั่ง Live Reload สร้าง development app ที่ชี้ไปยัง server ชั่วคราวเท่านั้น; ห้ามใช้เป็น production build. หากต้องกลับไปเป็น bundled app ให้ใช้ `bun run android:sync` แล้ว build APK ปกติอีกครั้ง. เวอร์ชันใน `package.json` คือ native app version; web layer ยังใช้ source เดียวกันและยังไม่มี OTA updater.
+
 ---
 
-*สร้างและพัฒนาด้วย Antigravity AI Coding Assistant 🚀*
+_สร้างและพัฒนาด้วย Antigravity AI Coding Assistant 🚀_

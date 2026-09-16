@@ -4,11 +4,14 @@
   "description": "PSU Materials Science Academic Portal & LMS Deadline Radar",
   "scripts": {
     "dev": "python3 dev.py",
+    "dev:lan": "PORT=8000 python3 dev.py",
     "format": "prettier --write \"**/*.{html,css,js,json}\"",
     "format:check": "prettier --check \"**/*.{html,css,js,json}\"",
     "check:links": "python3 scripts/verify_links.py",
     "android:prepare": "python3 scripts/prepare_capacitor_web.py",
     "android:sync": "bun run android:prepare && cap sync android",
+    "android:live:usb": "cap run android --live-reload --host localhost --port 8000 --forwardPorts 8000:8000",
+    "android:live:lan": "cap run android --live-reload --port 8000",
     "test:android:web": "python3 tests/test_capacitor_web.py"
   },
   "devDependencies": {
