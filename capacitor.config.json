@@ -1,0 +1,9 @@
+{
+  "appId": "th.ac.psu.materials.portal",
+  "appName": "PSU Materials",
+  "webDir": "web",
+  "backgroundColor": "#0d1b2a",
+  "android": {
+    "allowMixedContent": false
+  }
+}

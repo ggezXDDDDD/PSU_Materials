@@ -108,6 +108,18 @@ PSU_Materials/
 2. ระบบจะดึงข้อมูลจาก Safari ที่ล็อกอิน LMS ไว้ นำมาประมวลผล อัปเดตหน้าเว็บ และ Push ขึ้น GitHub ให้อัตโนมัติใน 5 วินาที
 3. หน้าเว็บทั้งบนเครื่องและบนมือถือจะได้รับการอัปเดตทันทีครับ!
 
+## 🤖 Android debug APK
+
+เว็บและ Android ใช้ source เดียวกันผ่าน Capacitor โดยไม่แยกหน้าเว็บอีกชุดหนึ่ง
+
+```bash
+bun install
+bun run android:sync
+cd android && ./gradlew assembleDebug
+```
+
+ต้องมี JDK 21 และ Android SDK สำหรับการ build ในเครื่อง ส่วน GitHub Actions จะสร้าง artifact ชื่อ `PSU-Materials-debug-apk` เมื่อ push การเปลี่ยนแปลงที่เกี่ยวข้องกับ Android หรือสั่งรัน workflow ด้วยตนเอง
+
 ---
 
 *สร้างและพัฒนาด้วย Antigravity AI Coding Assistant 🚀*

@@ -3,12 +3,13 @@ import re
 import urllib.parse
 
 WORKSPACE = '/Users/kongpop/Desktop/PSU_Materials'
+EXCLUDED_DIRS = {'.git', 'android', 'node_modules', 'runtime', 'logs', 'web', '__pycache__'}
 broken = []
 total_links = 0
 html_files = []
 
 for root, dirs, files in os.walk(WORKSPACE):
-    if '.git' in root: continue
+    dirs[:] = [name for name in dirs if name not in EXCLUDED_DIRS]
     for f in files:
         if f.endswith('.html'):
             html_files.append(os.path.join(root, f))

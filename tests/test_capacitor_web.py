@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+"""Small regression check for the Capacitor web staging step."""
+
+from pathlib import Path
+from subprocess import run
+
+ROOT = Path(__file__).resolve().parent.parent
+run(["python3", "scripts/prepare_capacitor_web.py"], cwd=ROOT, check=True)
+
+for path in ("index.html", "assets/js/auth.js", "pages/polymer.html", "data/tasks_live.json"):
+    assert (ROOT / "web" / path).is_file(), path
+assert not (ROOT / "web" / "server.py").exists()
+print("Capacitor web staging: PASS")

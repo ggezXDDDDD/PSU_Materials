@@ -9,6 +9,7 @@ logs/
 __pycache__/
 *.pyc
 node_modules/
+web/
 .server_secret
 .env
 *.env
