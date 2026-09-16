@@ -20,30 +20,30 @@ jobs:
 
       - name: Validate All Internal Hyperlinks
         run: |
-          python3 -c "
-          import os, glob, re
+          python3 <<'PY'
+          import glob
+          import os
+          import re
           from urllib.parse import unquote
+
           excluded = {'.git', 'android', 'node_modules', 'runtime', 'logs', 'web', '__pycache__'}
           files = [f for f in glob.glob('**/*.html', recursive=True) if not excluded.intersection(f.split(os.sep))]
           broken = 0
           for f in files:
-              with open(f, 'r', encoding='utf-8') as fh:
+              with open(f, encoding='utf-8') as fh:
                   content = fh.read()
-              content_no_script = re.sub(r'<script.*?>.*?</script>', '', content, flags=re.DOTALL)
-              for m in re.finditer(r'href=[\"\']([^\"\'#:]+)[\"\']', content_no_script):
-              target = unquote(m.group(1)).split('?', 1)[0]
-                  if target.startswith(('http', 'mailto:', 'tel:', 'javascript:')): continue
-                  base = os.path.dirname(f)
-                  t_path = os.path.normpath(os.path.join(base, target))
-                  if not os.path.exists(t_path):
+              content = re.sub(r'<script.*?>.*?</script>', '', content, flags=re.DOTALL)
+              for match in re.finditer(r'href=["\']([^"\'#:]+)["\']', content):
+                  target = unquote(match.group(1)).split('?', 1)[0]
+                  if target.startswith(('http', 'mailto:', 'tel:', 'javascript:')):
+                      continue
+                  if not os.path.exists(os.path.normpath(os.path.join(os.path.dirname(f), target))):
                       print(f'BROKEN LINK in {f}: {target}')
                       broken += 1
-          if broken > 0:
-              print(f'FAILED: {broken} broken links found')
-              exit(1)
-          else:
-              print(f'SUCCESS: Checked {len(files)} files, 0 broken links!')
-          "
+          if broken:
+              raise SystemExit(f'FAILED: {broken} broken links found')
+          print(f'SUCCESS: Checked {len(files)} files, 0 broken links!')
+          PY
 
       - name: Check PWA Manifest & Service Worker
         run: |
