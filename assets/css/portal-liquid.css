@@ -123,13 +123,15 @@ html body:not(.liquid-workspace) .portal-menu-button {display:none;min-width:42p
 @media(hover:hover) and (pointer:fine){html body:not(.liquid-workspace) :is(.card-glass,.assignment-card,.file-item-card,.card,.concept-card,.quiz-card):hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(56,85,120,.12),inset 0 1px 0 rgba(255,255,255,.45) !important;}}
 @media(max-width:1100px){html body:not(.liquid-workspace) .main-top-bar{flex-wrap:wrap;}html body:not(.liquid-workspace) .main-top-bar>div{flex-wrap:wrap;}}
 @media(max-width:900px){
+  html,html body:not(.liquid-workspace){max-width:100%;overflow-x:clip;}
   html body:not(.liquid-workspace) .portal-layout{padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));gap:0;}
-  html body:not(.liquid-workspace) .main-content{padding:0 0 calc(102px + env(safe-area-inset-bottom));}
+  html body:not(.liquid-workspace) .portal-layout,html body:not(.liquid-workspace) .main-content{min-width:0;max-width:100%;overflow-x:clip !important;}
+  html body:not(.liquid-workspace) .main-content{width:100%;padding:0 0 calc(102px + env(safe-area-inset-bottom));}
   html body:not(.liquid-workspace) .main-top-bar{top:12px;padding:10px 12px;margin-bottom:20px;}
   html body:not(.liquid-workspace) .sidebar{left:max(12px,env(safe-area-inset-left));top:max(12px,env(safe-area-inset-top));bottom:max(12px,env(safe-area-inset-bottom));height:auto;width:min(290px,85vw);transform:translateX(calc(-100% - 24px)) !important;z-index:1100;visibility:hidden;transition:transform .35s var(--portal-ease),visibility .35s !important;}
   html body:not(.liquid-workspace) .sidebar.portal-menu-open{transform:none !important;visibility:visible;}
   html body:not(.liquid-workspace) .portal-menu-button{display:inline-grid;place-items:center;}
-  .portal-menu-backdrop:not([hidden]){display:block;position:fixed;inset:0;z-index:1050;background:rgba(16,30,43,.22);backdrop-filter:blur(5px);border:0;}
+  .portal-menu-backdrop:not([hidden]){display:block;position:fixed;inset:0;z-index:1050;background:rgba(16,30,43,.16);border:0;}
   html body:not(.liquid-workspace) :is(.mobile-menu-toggle,.mobile-menu-btn,.sidebar-toggle-btn){display:none !important;}
   html body:not(.liquid-workspace) :is(.card-glass,.card,.hero,.login-card){border-radius:24px !important;}
 }
@@ -139,6 +141,9 @@ html body:not(.liquid-workspace) .portal-menu-button {display:none;min-width:42p
   html body:not(.liquid-workspace) .main-content>.card-glass{padding:22px 18px !important;}
   html body:not(.liquid-workspace) .main-content>.card-glass>div[style*="grid-template-columns:1fr 1fr;"]{grid-template-columns:1fr !important;}
   html body:not(.liquid-workspace) .main-content>div[style*="minmax(280px"]{grid-template-columns:minmax(0,1fr) !important;}
+  html body:not(.liquid-workspace) .course-3way-switcher-wrapper{overflow-x:auto;overscroll-behavior-x:contain;}
+  html body:not(.liquid-workspace) .course-3way-switcher{min-width:0;}
+  html body:not(.liquid-workspace) .course-3way-tab{min-width:0;overflow:hidden;}
   html body:not(.liquid-workspace) .assign-actions-row{flex-wrap:wrap;}
 }
 @media(prefers-reduced-motion:reduce){html body:not(.liquid-workspace)::before,html body:not(.liquid-workspace)::after{animation:none !important;}html body:not(.liquid-workspace) *{scroll-behavior:auto !important;}}

@@ -1,5 +1,5 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v13-pwa-shell';
+const CACHE_NAME = 'psu-materials-v14-mobile-layout';
 
 const STATIC_ASSETS = [
   './',
@@ -10,9 +10,9 @@ const STATIC_ASSETS = [
   './calendar.html',
   './offline.html',
   './manifest.json',
-  './assets/css/ios_minimal_theme.css?v=20260916_02',
-  './assets/css/portal-liquid.css?v=20260916_02',
-  './assets/css/portal-redesign.css?v=20260916_02',
+  './assets/css/ios_minimal_theme.css?v=20260916_03',
+  './assets/css/portal-liquid.css?v=20260916_03',
+  './assets/css/portal-redesign.css?v=20260916_03',
   './assets/js/pwa.js?v=20260916_02',
   './assets/js/ios_motion.js',
   './assets/css/liquid-workspace.css?v=1',
