@@ -2,22 +2,6 @@ name: Android debug APK
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "android/**"
-      - "assets/**"
-      - "data/**"
-      - "pages/**"
-      - "01_วิชาเอก_Materials/**"
-      - "02_วิชาศึกษาทั่วไป_GenEd/**"
-      - "*.html"
-      - "manifest.json"
-      - "sw.js"
-      - "capacitor.config.json"
-      - "package.json"
-      - "bun.lock"
-      - "scripts/prepare_capacitor_web.py"
 
 jobs:
   build:
