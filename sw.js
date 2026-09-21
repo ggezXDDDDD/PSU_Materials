@@ -1,9 +1,11 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v15-live-reload-safe';
+const CACHE_NAME = 'psu-materials-v16-home-lobby';
 
 const STATIC_ASSETS = [
   './',
   './index.html',
+  './assets/css/home-lobby.css?v=20260921_01',
+  './assets/js/home-lobby.js?v=20260921_01',
   './courses.html',
   './assets/js/portal-shell.js?v=20260915_03',
   './tasks.html',

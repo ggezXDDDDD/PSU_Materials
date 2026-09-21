@@ -20,6 +20,8 @@
     <script src="./assets/js/pwa.js?v=20260916_03" defer></script>
     <script src="assets/js/ios_motion.js?v=20260915_02" defer></script>
     <script src="assets/js/portal-shell.js?v=20260915_03" defer></script>
+    <link rel="stylesheet" href="assets/css/home-lobby.css?v=20260921_01" />
+    <script type="module" src="assets/js/home-lobby.js?v=20260921_01"></script>
   </head>
   <body>
     <div class="portal-layout">
@@ -298,6 +300,85 @@
             เลือกสิ่งที่ต้องการทำ แล้วไปต่อได้ทันที<br />เอกสาร งาน และกำหนดส่ง
             แยกเป็นสัดส่วนในพื้นที่เดียวกัน
           </p>
+        </section>
+        <section class="home-lobby" aria-labelledby="lobby-title">
+          <div class="lobby-heading">
+            <div>
+              <p class="lobby-eyebrow">MATERIALS · EXPLORATION LAB</p>
+              <h2 id="lobby-title">พื้นที่เล็ก ๆ สำหรับไอเดียใหญ่</h2>
+            </div>
+            <label class="lobby-quality" hidden
+              >มุมมอง
+              <select id="lobby-quality">
+                <option value="auto">อัตโนมัติ</option>
+                <option value="high">3D ละเอียด</option>
+                <option value="balanced">3D ประหยัด</option>
+                <option value="lite">2D</option>
+              </select>
+            </label>
+          </div>
+          <div class="lobby-stage" id="lobby-stage">
+            <div class="lobby-illustration" aria-hidden="true">
+              <svg viewBox="0 0 800 340" fill="none">
+                <ellipse
+                  cx="400"
+                  cy="265"
+                  rx="270"
+                  ry="44"
+                  fill="#0b2539"
+                  opacity=".5"
+                />
+                <path
+                  d="M130 220 400 90 670 220 400 320Z"
+                  fill="#183e55"
+                  stroke="#6aa8c0"
+                />
+                <path
+                  d="M130 220v16l270 104 270-104v-16L400 320Z"
+                  fill="#102c42"
+                />
+                <path
+                  d="m400 70 65 88-65 78-65-78Z"
+                  fill="#5396af"
+                  fill-opacity=".3"
+                  stroke="#92d6e6"
+                  stroke-width="2"
+                />
+                <path
+                  d="m400 70 12 99-12 67-65-78 77 11 53-11M400 236l12-67"
+                  stroke="#92d6e6"
+                />
+                <path
+                  d="m220 215 30-50 30 50Zm300 0 30-50 30 50Z"
+                  fill="#80b7c7"
+                  fill-opacity=".5"
+                  stroke="#b6e2e9"
+                />
+                <ellipse cx="400" cy="255" rx="48" ry="16" stroke="#92d6e6" />
+              </svg>
+            </div>
+            <div id="lobby-canvas" aria-hidden="true"></div>
+            <nav class="lobby-destinations" aria-label="ทางลัดห้องทดลอง">
+              <a href="courses.html" data-lobby-route="courses"
+                ><span aria-hidden="true">▦</span> รายวิชาและเอกสาร
+                <span aria-hidden="true">↗</span></a
+              >
+              <a href="calendar.html" data-lobby-route="calendar"
+                ><span aria-hidden="true">▤</span> ปฏิทิน
+                <span aria-hidden="true">↗</span></a
+              >
+              <a href="tasks.html" data-lobby-route="tasks"
+                ><span aria-hidden="true">☑</span> งานทั้งหมด
+                <span aria-hidden="true">↗</span></a
+              >
+            </nav>
+          </div>
+          <div class="lobby-footer">
+            <p id="lobby-status" role="status">
+              เลือกปลายทางได้ทันทีในมุมมอง 2D
+            </p>
+            <span>ภาพจำลองเชิงตกแต่ง · ไม่ใช่แบบจำลองผลึก</span>
+          </div>
         </section>
         <section class="home-actions">
           <a href="courses.html" class="card-glass home-action featured"
