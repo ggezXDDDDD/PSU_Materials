@@ -1,5 +1,5 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v18-password-reset';
+const CACHE_NAME = 'psu-materials-v20-calendar-aquaglass';
 
 const STATIC_ASSETS = [
   './',
@@ -8,6 +8,8 @@ const STATIC_ASSETS = [
   './assets/js/home-lobby.js?v=20260922_01',
   './assets/css/aquaglass.css?v=20260922_01',
   './assets/css/home-aquaglass.css?v=20260922_01',
+  './assets/css/tasks-aquaglass.css?v=20260922_01',
+  './assets/css/calendar-aquaglass.css?v=20260922_01',
   './assets/js/home-overview.js?v=20260922_01',
   './courses.html',
   './assets/js/portal-shell.js?v=20260915_03',
