@@ -224,7 +224,7 @@ def main():
 
     import hashlib
     salt = "PSU_MATERIALS_PORTAL_SALT_2026_SECURE_V1"
-    target_hash = "6f01bf8bb49aeca544df34fc67401dd868d4f4c37da9b013fad4a01ebbcc8b32"
+    target_hash = "e5b252c70a0b4176f1356e4576f2dee839c7cf702a59a3b06ff8bc2bba618a22"
     valid_id = "6810210432"
     now = int(time.time())
 

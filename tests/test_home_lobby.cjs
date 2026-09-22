@@ -30,6 +30,7 @@ const base = process.env.PSU_TEST_URL || "http://127.0.0.1:8765";
     for (const width of [360, 390, 412, 480, 768, 1440]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(base + "/index.html");
+      await page.locator(".home-lobby").scrollIntoViewIfNeeded();
       await page.locator(".home-lobby[data-ready]").waitFor();
       assert(
         await page.evaluate(
@@ -58,7 +59,6 @@ const base = process.env.PSU_TEST_URL || "http://127.0.0.1:8765";
           await card.scrollIntoViewIfNeeded();
         }
         await page.evaluate(() => scrollTo(0, 0));
-        await page.locator(".home-lobby[data-ready]").waitFor();
         await page.screenshot({
           path: `/tmp/psu-lobby-${width}.png`,
           fullPage: true,
@@ -78,6 +78,7 @@ const base = process.env.PSU_TEST_URL || "http://127.0.0.1:8765";
     assert.equal(await page.locator("#lobby-quality").inputValue(), "lite");
     assert.equal(await page.locator("#lobby-canvas canvas").count(), 0);
     await page.selectOption("#lobby-quality", "balanced");
+    await page.locator(".home-lobby").scrollIntoViewIfNeeded();
     await page.locator(".home-lobby[data-ready]").waitFor();
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.waitForFunction(
@@ -131,6 +132,7 @@ const base = process.env.PSU_TEST_URL || "http://127.0.0.1:8765";
     await fallback.route("**/vendor/three/**", (route) => route.abort());
     const p = await fallback.newPage();
     await p.goto(base + "/index.html");
+    await p.locator(".home-lobby").scrollIntoViewIfNeeded();
     await p.waitForFunction(() =>
       document.getElementById("lobby-status").textContent.includes("ไม่พร้อม"),
     );
@@ -149,6 +151,7 @@ const base = process.env.PSU_TEST_URL || "http://127.0.0.1:8765";
     });
     const noGPU = await unsupported.newPage();
     await noGPU.goto(base + "/index.html");
+    await noGPU.locator(".home-lobby").scrollIntoViewIfNeeded();
     await noGPU.waitForFunction(() =>
       document.getElementById("lobby-status").textContent.includes("ไม่พร้อม"),
     );

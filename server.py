@@ -35,7 +35,7 @@ SALT = os.environ.get("AUTH_SALT", "PSU_MATERIALS_PORTAL_SALT_2026_SECURE_V1")
 # Salted SHA-256 target hash for authorized student account
 AUTHORIZED_PASSWORD_HASH = os.environ.get(
     "AUTH_PASSWORD_HASH",
-    "6f01bf8bb49aeca544df34fc67401dd868d4f4c37da9b013fad4a01ebbcc8b32"
+    "e5b252c70a0b4176f1356e4576f2dee839c7cf702a59a3b06ff8bc2bba618a22"
 )
 
 # Session Lifetime: 7 days

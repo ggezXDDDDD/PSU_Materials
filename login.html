@@ -15,7 +15,7 @@
   <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg">
 
   <link rel="stylesheet" href="assets/css/ios_minimal_theme.css?v=20260916_03">
-  <script src="assets/js/auth.js?v=20260914_2340"></script>
+  <script src="assets/js/auth.js?v=20260922_01"></script>
   <script src="assets/js/pwa.js?v=20260916_03" defer></script>
 
   <style>
@@ -329,14 +329,14 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="input-password">รหัสผ่าน (Password / PSU Passport)</label>
+          <label class="form-label" for="input-password">รหัสผ่าน Portal</label>
           <div class="input-wrapper">
             <span class="input-icon">🔒</span>
             <input 
               type="password" 
               id="input-password" 
               class="login-input" 
-              placeholder="กรอกรหัสผ่านเพื่อเข้าใช้งาน" 
+              placeholder="กรอกรหัสผ่าน Portal ที่ตั้งไว้"
               autocomplete="current-password" 
               required
             >
@@ -383,15 +383,9 @@
         localStorage.removeItem('psu_portal_remember');
       } catch(e) {}
 
-      // Purge old service worker caches
+      // Ask the browser to check for an updated service worker. Its own lifecycle
+      // removes obsolete caches; deleting every cache here can remove the active one.
       try {
-        if ('caches' in window) {
-          caches.keys().then(keys => {
-            keys.forEach(k => {
-              if (k !== 'psu-materials-v6') caches.delete(k);
-            });
-          });
-        }
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.getRegistrations().then(regs => {
             regs.forEach(r => r.update());

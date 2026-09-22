@@ -101,7 +101,7 @@ async function start() {
       renderer.domElement.remove();
       links.forEach((a) => a.removeAttribute("data-active"));
     };
-    mesh(new THREE.CylinderGeometry(3.3, 3.45, 0.23, 6), 0x20495e, 0, -0.35, 0);
+    mesh(new THREE.CylinderGeometry(3.3, 3.45, 0.23, 6), 0x98cddc, 0, -0.35, 0);
     const ring = mesh(
       new THREE.TorusGeometry(2.85, 0.018, 4, 64),
       0x88cddd,

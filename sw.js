@@ -1,11 +1,14 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v16-home-lobby';
+const CACHE_NAME = 'psu-materials-v18-password-reset';
 
 const STATIC_ASSETS = [
   './',
   './index.html',
   './assets/css/home-lobby.css?v=20260921_01',
-  './assets/js/home-lobby.js?v=20260921_01',
+  './assets/js/home-lobby.js?v=20260922_01',
+  './assets/css/aquaglass.css?v=20260922_01',
+  './assets/css/home-aquaglass.css?v=20260922_01',
+  './assets/js/home-overview.js?v=20260922_01',
   './courses.html',
   './assets/js/portal-shell.js?v=20260915_03',
   './tasks.html',
@@ -60,6 +63,9 @@ self.addEventListener('fetch', (event) => {
 
   // Never intercept API requests
   if (url.pathname.includes('/api/')) return;
+
+  // Home explicitly requests fresh snapshot data; never serve its cached copy.
+  if (url.pathname.endsWith('/data/tasks_live.json') && req.cache === 'no-store') return;
 
   // Always fetch auth.js and login.html live from network (NO CACHE)
   if (url.pathname.endsWith('auth.js') || url.pathname.endsWith('login.html')) {

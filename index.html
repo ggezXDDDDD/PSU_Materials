@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PSU Materials Science & LMS Academic Intelligence Hub</title>
-    <script src="./assets/js/auth.js?v=20260914_2340"></script>
+    <script src="./assets/js/auth.js?v=20260922_01"></script>
     <link
       rel="stylesheet"
-      href="assets/css/ios_minimal_theme.css?v=20260916_03"
+      href="assets/css/portal-redesign.css?v=20260916_03"
     />
+    <link rel="stylesheet" href="assets/css/aquaglass.css?v=20260922_01" />
     <!-- PWA & Apple Mobile Meta -->
     <link rel="manifest" href="./manifest.json" />
-    <meta name="theme-color" content="#1d1d1f" />
+    <meta name="theme-color" content="#ecf7fa" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="PSU Materials" />
@@ -21,9 +22,35 @@
     <script src="assets/js/ios_motion.js?v=20260915_02" defer></script>
     <script src="assets/js/portal-shell.js?v=20260915_03" defer></script>
     <link rel="stylesheet" href="assets/css/home-lobby.css?v=20260921_01" />
-    <script type="module" src="assets/js/home-lobby.js?v=20260921_01"></script>
+    <link rel="stylesheet" href="assets/css/home-aquaglass.css?v=20260922_01" />
+    <script type="module" src="assets/js/home-lobby.js?v=20260922_01"></script>
+    <script src="assets/js/home-overview.js?v=20260922_01" defer></script>
   </head>
-  <body>
+  <body class="ag-root ag-home">
+    <a class="ag-skip" href="#home-main">ข้ามไปเนื้อหา</a>
+    <nav class="ag-rail ag-glass" aria-label="เมนูหลักบนเดสก์ท็อป">
+      <a
+        class="ag-monogram"
+        href="index.html"
+        aria-label="PSU Materials หน้าหลัก"
+        >M<span>·</span></a
+      >
+      <a class="ag-nav-item" href="index.html" aria-current="page"
+        ><span aria-hidden="true">⌂</span><small>หน้าหลัก</small></a
+      >
+      <a class="ag-nav-item" href="courses.html"
+        ><span aria-hidden="true">▦</span><small>รายวิชา</small></a
+      >
+      <a class="ag-nav-item" href="tasks.html"
+        ><span aria-hidden="true">☑</span><small>งานทั้งหมด</small></a
+      >
+      <a class="ag-nav-item" href="calendar.html"
+        ><span aria-hidden="true">▤</span><small>ปฏิทิน</small></a
+      >
+      <a class="ag-nav-item ag-nav-back" href="liquid-glass.html"
+        ><span aria-hidden="true">◷</span><small>โฟกัส</small></a
+      >
+    </nav>
     <div class="portal-layout">
       <aside id="portal-sidebar" class="sidebar">
         <div
@@ -221,7 +248,7 @@
           </a>
         </div>
       </aside>
-      <main class="main-content">
+      <main id="home-main" class="main-content">
         <header class="main-top-bar">
           <div
             style="font-weight: 700; font-size: 1.1rem; color: var(--text-main)"
@@ -293,15 +320,102 @@
             >
           </div>
         </header>
-        <section class="home-intro">
-          <p class="eyebrow">PSU MATERIALS · YOUR LEARNING SPACE</p>
-          <h1>วันนี้ เริ่มเรียนรู้อะไรดี</h1>
-          <p>
-            เลือกสิ่งที่ต้องการทำ แล้วไปต่อได้ทันที<br />เอกสาร งาน และกำหนดส่ง
-            แยกเป็นสัดส่วนในพื้นที่เดียวกัน
-          </p>
+        <section class="home-intro ag-hero">
+          <div class="ag-hero-copy">
+            <p class="ag-eyebrow">
+              <span class="ag-dot"></span> PSU MATERIALS · EXPLORE / LEARN /
+              CREATE
+            </p>
+            <h1>วันนี้ เริ่มเรียนรู้<br /><em>อะไรดี</em></h1>
+            <p class="ag-intro">
+              เลือกสิ่งที่ต้องการทำ แล้วไปต่อได้ทันที<br />เอกสาร งาน
+              และกำหนดส่ง แยกเป็นสัดส่วนในพื้นที่เดียวกัน
+            </p>
+            <div class="ag-actions">
+              <a class="ag-button ag-button--primary" href="tasks.html"
+                >ดูงานทั้งหมด <span aria-hidden="true">↗</span></a
+              ><a class="ag-button ag-button--secondary" href="#home-lobby"
+                >สำรวจ 3D Lobby <span aria-hidden="true">↓</span></a
+              >
+            </div>
+          </div>
+          <figure class="home-companion">
+            <img
+              id="home-mascot"
+              src="assets/images/mascot/mascot-welcome.webp"
+              width="1254"
+              height="1254"
+              alt="มาสคอตแมวสีขาวสวมแว่นฟ้าและกระเป๋า PSU ทักทาย"
+              decoding="async"
+            />
+            <figcaption class="ag-glass">
+              เรื่องเล็ก ๆ วันนี้ อาจเป็นไอเดียใหญ่พรุ่งนี้
+            </figcaption>
+          </figure>
         </section>
-        <section class="home-lobby" aria-labelledby="lobby-title">
+        <section class="home-actions">
+          <a href="courses.html" class="card-glass home-action featured"
+            ><span class="action-icon">▦</span>
+            <h2>รายวิชาของฉัน</h2>
+            <p>เลือกวิชา แล้วเปิดเอกสาร งาน หรือสรุป</p>
+            <span class="action-link">เปิดรายวิชาของฉัน ↗</span></a
+          ><a href="tasks.html" class="card-glass home-action"
+            ><span class="action-icon">☑</span>
+            <h2>งานทั้งหมด</h2>
+            <p>ค้นหาโจทย์ กรองสถานะ และเปิดหน้าส่งงานใน LMS</p>
+            <span class="action-link">เปิดงานทั้งหมด ↗</span></a
+          ><a href="calendar.html" class="card-glass home-action"
+            ><span class="action-icon">▤</span>
+            <h2>ปฏิทิน</h2>
+            <p>ดูกำหนดส่งและวันสอบ วางแผนการเรียนตามเดือน</p>
+            <span class="action-link">เปิดปฏิทิน ↗</span></a
+          >
+        </section>
+        <section class="home-overview" aria-label="ภาพรวมการเรียน">
+          <article class="ag-card home-snapshot">
+            <div class="ag-card-top">
+              <div>
+                <p class="ag-eyebrow">FROM YOUR LMS SNAPSHOT</p>
+                <h2>แวะดูงานที่ซิงค์ไว้</h2>
+              </div>
+              <a href="tasks.html" class="ag-button ag-button--secondary"
+                >งานทั้งหมด ↗</a
+              >
+            </div>
+            <p id="home-snapshot-status" class="ag-caption" role="status">
+              เปิดหน้า Tasks เพื่อดูรายการงานทั้งหมด
+            </p>
+            <ul id="home-snapshot-list" class="home-snapshot-list"></ul>
+          </article>
+          <article class="ag-card home-calendar">
+            <div class="ag-card-top">
+              <div>
+                <p class="ag-eyebrow">PLAN A LITTLE AHEAD</p>
+                <h2 id="home-month-label">ปฏิทินของฉัน</h2>
+              </div>
+              <a
+                href="calendar.html"
+                class="ag-icon-button"
+                aria-label="เปิดปฏิทินกำหนดส่งและสอบ"
+                >↗</a
+              >
+            </div>
+            <div
+              class="home-month"
+              id="home-month"
+              role="group"
+              aria-label="ปฏิทินเดือนปัจจุบัน"
+            ></div>
+            <p class="ag-caption">
+              แสดงวันปัจจุบัน · ดูกำหนดส่งและสอบในปฏิทินหลัก
+            </p>
+          </article>
+        </section>
+        <section
+          id="home-lobby"
+          class="home-lobby"
+          aria-labelledby="lobby-title"
+        >
           <div class="lobby-heading">
             <div>
               <p class="lobby-eyebrow">MATERIALS · EXPLORATION LAB</p>
@@ -330,12 +444,12 @@
                 />
                 <path
                   d="M130 220 400 90 670 220 400 320Z"
-                  fill="#183e55"
+                  fill="#a1d4e2"
                   stroke="#6aa8c0"
                 />
                 <path
                   d="M130 220v16l270 104 270-104v-16L400 320Z"
-                  fill="#102c42"
+                  fill="#73afc6"
                 />
                 <path
                   d="m400 70 65 88-65 78-65-78Z"
@@ -379,24 +493,6 @@
             </p>
             <span>ภาพจำลองเชิงตกแต่ง · ไม่ใช่แบบจำลองผลึก</span>
           </div>
-        </section>
-        <section class="home-actions">
-          <a href="courses.html" class="card-glass home-action featured"
-            ><span class="action-icon">▦</span>
-            <h2>รายวิชาของฉัน</h2>
-            <p>เลือกวิชา แล้วเปิดเอกสาร งาน หรือสรุป</p>
-            <span class="action-link">เปิดรายวิชาของฉัน ↗</span></a
-          ><a href="tasks.html" class="card-glass home-action"
-            ><span class="action-icon">☑</span>
-            <h2>งานทั้งหมด</h2>
-            <p>ค้นหาโจทย์ กรองสถานะ และเปิดหน้าส่งงานใน LMS</p>
-            <span class="action-link">เปิดงานทั้งหมด ↗</span></a
-          ><a href="calendar.html" class="card-glass home-action"
-            ><span class="action-icon">▤</span>
-            <h2>ปฏิทิน</h2>
-            <p>ดูกำหนดส่งและวันสอบ วางแผนการเรียนตามเดือน</p>
-            <span class="action-link">เปิดปฏิทิน ↗</span></a
-          >
         </section>
         <div class="section-heading"><h2>พื้นที่สำหรับการเรียนรู้</h2></div>
         <section class="home-secondary">
