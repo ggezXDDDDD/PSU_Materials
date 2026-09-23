@@ -1,25 +1,25 @@
 /* Liquid Workspace design language for every Portal page.
    Scoped to keep the dedicated OS demo's window geometry independent. */
 html:root {
-  --portal-ink: #243649;
-  --portal-muted: #52697c;
-  --portal-panel: rgba(248,253,255,.44);
-  --portal-sub: rgba(237,248,255,.25);
-  --portal-edge: rgba(255,255,255,.76);
-  --portal-shadow: 0 16px 46px rgba(56,85,120,.09), inset 0 1px 1px rgba(255,255,255,.65), inset 0 -1px 0 rgba(255,255,255,.10);
-  --portal-base: #e4ecf1;
-  --portal-tint: rgba(151,189,212,.23);
+  --portal-ink: #16374a;
+  --portal-muted: #496c7b;
+  --portal-panel: rgba(244,252,255,.80);
+  --portal-sub: rgba(224,245,250,.52);
+  --portal-edge: rgba(255,255,255,.86);
+  --portal-shadow: 0 5px 0 rgba(160,206,220,.24), 0 14px 30px rgba(40,98,120,.08), inset 0 1px 1px rgba(255,255,255,.82);
+  --portal-base: #ecf7fa;
+  --portal-tint: rgba(79,180,209,.20);
   --portal-ease: cubic-bezier(.22,1,.36,1);
 }
 html:root[data-theme="dark"] {
-  --portal-ink: #e2ecf5;
-  --portal-muted: #a3b7c9;
-  --portal-panel: rgba(26,43,59,.56);
-  --portal-sub: rgba(45,64,82,.36);
-  --portal-edge: rgba(214,238,255,.19);
-  --portal-shadow: 0 18px 48px rgba(0,0,0,.18), inset 0 1px 1px rgba(225,245,255,.10), inset 0 -1px 0 rgba(225,245,255,.03);
-  --portal-base: #101e2b;
-  --portal-tint: rgba(123,169,196,.22);
+  --portal-ink: #e9f7fb;
+  --portal-muted: #b3ced7;
+  --portal-panel: rgba(32,68,83,.91);
+  --portal-sub: rgba(36,76,92,.52);
+  --portal-edge: rgba(174,223,230,.23);
+  --portal-shadow: 0 5px 0 rgba(9,31,41,.42), 0 14px 30px rgba(6,25,35,.30), inset 0 1px rgba(204,239,255,.13);
+  --portal-base: #102b37;
+  --portal-tint: rgba(79,180,209,.20);
 }
 /* Legacy pages define their own tokens; aliases keep their content readable. */
 html:root {
@@ -50,20 +50,20 @@ html body:not(.liquid-workspace) {
   font-family: var(--font-stack) !important;
   color: var(--portal-ink) !important;
   background-color: var(--portal-base) !important;
-  background-image: radial-gradient(ellipse at 15% 5%,rgba(248,239,220,.55),transparent 50%),radial-gradient(ellipse at 85% 70%,rgba(167,211,218,.45),transparent 60%),radial-gradient(ellipse at 0% 50%,rgba(143,174,212,.4),transparent 55%) !important;
+  background-image: radial-gradient(ellipse at 78% 8%,rgba(201,237,247,.72),transparent 46%),radial-gradient(ellipse at 4% 55%,rgba(255,255,255,.82),transparent 48%),radial-gradient(ellipse at 95% 90%,rgba(159,223,224,.30),transparent 48%) !important;
   background-attachment: fixed !important;
 }
 html[data-theme="dark"] body:not(.liquid-workspace) {
-  background-image:radial-gradient(ellipse at 10% 30%,rgba(97,131,159,.18),transparent 55%),radial-gradient(ellipse at 90% 70%,rgba(92,151,153,.13),transparent 60%) !important;
+  background-image:radial-gradient(ellipse at 75% 0,rgba(37,98,115,.40),transparent 50%),radial-gradient(ellipse at 10% 65%,rgba(33,83,91,.28),transparent 55%) !important;
   color-scheme: dark;
 }
 html body:not(.liquid-workspace)::before,
 html body:not(.liquid-workspace)::after {
   width:65vw !important;height:60vw !important;filter:blur(65px) !important;opacity:.28 !important;
   animation:portal-ambient 18s ease-in-out infinite alternate !important;
-  background:radial-gradient(ellipse,#91b6d2,transparent 68%) !important;
+  background:radial-gradient(ellipse,#90d7e7,transparent 68%) !important;
 }
-html body:not(.liquid-workspace)::after {background:radial-gradient(ellipse,#b8d8cc,transparent 68%) !important;animation-delay:-9s !important;}
+html body:not(.liquid-workspace)::after {background:radial-gradient(ellipse,#9bded2,transparent 68%) !important;animation-delay:-9s !important;}
 @keyframes portal-ambient {to{transform:translate3d(8vw,-5vh,0) rotate(9deg)}}
 html body:not(.liquid-workspace) :is(.card-glass,.glass-panel,.assignment-card,.file-item-card,.summary-card,.stat-card-glass,.card,.hero,.concept-card,.course-task-section,.quiz-card,.login-card,.agenda-card,.modal-content,.note-panel,.file-hub-section) {
   background:linear-gradient(135deg,rgba(255,255,255,.13),transparent 45%),var(--portal-panel) !important;
@@ -117,6 +117,18 @@ html body:not(.liquid-workspace) :is(.cal-day,.calendar-day) {background:var(--p
 html body:not(.liquid-workspace) .modal-backdrop {backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
 html body:not(.liquid-workspace) :focus-visible {outline:3px solid #6294b8 !important;outline-offset:3px;}
 html body:not(.liquid-workspace) .card-glow {opacity:.15 !important;}
+html body:not(.liquid-workspace) :is(.hero,.main-content>.card-glass:first-of-type) {position:relative;overflow:hidden;}
+html body:not(.liquid-workspace) :is(.hero,.main-content>.card-glass:first-of-type)::after {
+  content:"";position:absolute;z-index:0;right:18px;top:50%;width:112px;height:132px;transform:translateY(-50%);
+  background:url("../images/mascot/mascot-welcome.webp") center/contain no-repeat;opacity:.94;pointer-events:none;
+}
+html body:not(.liquid-workspace) :is(.hero,.main-content>.card-glass:first-of-type)>* {position:relative;z-index:1;}
+html body:not(.liquid-workspace) .hero {padding-right:138px !important;}
+html body:not(.liquid-workspace) .brand-icon-box {position:relative;background:linear-gradient(145deg,#2fa9e3,#1769b2) !important;box-shadow:0 8px 20px rgba(33,130,191,.22) !important;}
+html body:not(.liquid-workspace) .brand-icon-box::after {
+  content:"";position:absolute;right:-23px;bottom:-18px;width:42px;height:48px;
+  background:url("../images/mascot/mascot-welcome.webp") center/contain no-repeat;pointer-events:none;
+}
 html body:not(.liquid-workspace) .portal-menu-button {display:none;min-width:42px;height:42px;cursor:pointer;font-size:19px;}
 .portal-menu-backdrop {display:none;}
 @media(min-width:901px){html body:not(.liquid-workspace) .portal-layout.sidebar-collapsed .sidebar{width:0;min-width:0;opacity:0;pointer-events:none;overflow:hidden;border:0 !important;}}
@@ -134,6 +146,8 @@ html body:not(.liquid-workspace) .portal-menu-button {display:none;min-width:42p
   .portal-menu-backdrop:not([hidden]){display:block;position:fixed;inset:0;z-index:1050;background:rgba(16,30,43,.16);border:0;}
   html body:not(.liquid-workspace) :is(.mobile-menu-toggle,.mobile-menu-btn,.sidebar-toggle-btn){display:none !important;}
   html body:not(.liquid-workspace) :is(.card-glass,.card,.hero,.login-card){border-radius:24px !important;}
+  html body:not(.liquid-workspace) .hero {padding-right:92px !important;}
+  html body:not(.liquid-workspace) :is(.hero,.main-content>.card-glass:first-of-type)::after {right:8px;width:78px;height:96px;opacity:.88;}
 }
 @media(max-width:600px){
   html body:not(.liquid-workspace) .main-top-bar>div:first-child{font-size:.95rem !important;}

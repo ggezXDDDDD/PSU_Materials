@@ -1,5 +1,5 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = 'psu-materials-v20-calendar-aquaglass';
+const CACHE_NAME = 'psu-materials-v21-aquaglass-portal';
 
 const STATIC_ASSETS = [
   './',
@@ -18,11 +18,11 @@ const STATIC_ASSETS = [
   './offline.html',
   './manifest.json',
   './assets/css/ios_minimal_theme.css?v=20260916_03',
-  './assets/css/portal-liquid.css?v=20260916_03',
+  './assets/css/portal-liquid.css?v=20260923_01',
   './assets/css/portal-redesign.css?v=20260916_03',
   './assets/js/pwa.js?v=20260916_03',
   './assets/js/ios_motion.js',
-  './assets/css/liquid-workspace.css?v=1',
+  './assets/css/liquid-workspace.css?v=20260923_01',
   './assets/js/liquid-workspace.js?v=1',
   './assets/js/fuse.min.js',
   './assets/icons/icon-192.png',
