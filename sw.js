@@ -16,6 +16,7 @@ const STATIC_ASSETS = [
   './tasks.html',
   './calendar.html',
   './offline.html',
+  './assets/images/mascot/mascot-welcome.webp',
   './manifest.json',
   './assets/css/ios_minimal_theme.css?v=20260916_03',
   './assets/css/portal-liquid.css?v=20260923_01',
