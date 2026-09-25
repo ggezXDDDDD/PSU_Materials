@@ -1,0 +1,150 @@
+/**
+ * PSU Materials Portal - 3D Spatial Tilt & Parallax System
+ * AquaGlass & iOS 27 Liquid 3D Interaction Engine
+ */
+
+:root {
+  --tilt-perspective: 1200px;
+  --tilt-max-deg: 8deg;
+}
+
+/* Perspective Context */
+.has-tilt-3d,
+.portal-layout,
+.home-lobby,
+.desktop {
+  perspective: var(--tilt-perspective);
+}
+
+/* 3D Tilt Card Base */
+.tilt-card,
+[data-tilt-3d],
+.home-action,
+.card-glass,
+.directory-card,
+.glass-window {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    border-color 0.25s ease;
+  position: relative;
+}
+
+/* Instant tracking during active pointer movement */
+.tilt-card.is-tilting,
+[data-tilt-3d].is-tilting,
+.home-action.is-tilting,
+.card-glass.is-tilting,
+.directory-card.is-tilting,
+.glass-window.is-tilting {
+  transition:
+    transform 0.08s ease-out,
+    box-shadow 0.15s ease-out;
+}
+
+/* Dynamic 3D Glare Reflection Layer */
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    circle 320px at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, var(--glare-opacity, 0.25)) 0%,
+    rgba(255, 255, 255, calc(var(--glare-opacity, 0.25) * 0.3)) 40%,
+    transparent 80%
+  );
+  mix-blend-mode: overlay;
+}
+
+[data-theme="dark"] .tilt-glare,
+html[data-theme="dark"] .tilt-glare {
+  background: radial-gradient(
+    circle 320px at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(146, 214, 230, var(--glare-opacity, 0.35)) 0%,
+    rgba(115, 175, 198, calc(var(--glare-opacity, 0.35) * 0.35)) 45%,
+    transparent 80%
+  );
+  mix-blend-mode: screen;
+}
+
+.tilt-card:hover .tilt-glare,
+[data-tilt-3d]:hover .tilt-glare,
+.home-action:hover .tilt-glare,
+.card-glass:hover .tilt-glare,
+.directory-card:hover .tilt-glare,
+.glass-window:hover .tilt-glare {
+  opacity: 1;
+}
+
+/* 3D Depth Floating Children */
+.tilt-depth-1,
+[data-tilt-depth="1"] {
+  transform: translateZ(12px);
+  transform-style: preserve-3d;
+}
+
+.tilt-depth-2,
+[data-tilt-depth="2"] {
+  transform: translateZ(24px);
+  transform-style: preserve-3d;
+}
+
+.tilt-depth-3,
+[data-tilt-depth="3"] {
+  transform: translateZ(38px);
+  transform-style: preserve-3d;
+}
+
+.tilt-depth-4,
+[data-tilt-depth="4"] {
+  transform: translateZ(52px);
+  transform-style: preserve-3d;
+}
+
+/* Floating interactive badges & icons inside cards */
+.home-action .action-icon,
+.directory-card h2,
+.directory-links,
+.glass-window .window-handle {
+  transform: translateZ(18px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Enhanced 3D elevation hover state */
+.tilt-elevate:hover {
+  filter: drop-shadow(0 20px 30px rgba(16, 37, 54, 0.12));
+}
+
+[data-theme="dark"] .tilt-elevate:hover {
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.45));
+}
+
+/* Accessibility: Strict Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .tilt-card,
+  [data-tilt-3d],
+  .home-action,
+  .card-glass,
+  .directory-card,
+  .glass-window,
+  .tilt-depth-1,
+  .tilt-depth-2,
+  .tilt-depth-3,
+  .tilt-depth-4,
+  .home-action .action-icon,
+  .directory-card h2,
+  .directory-links,
+  .glass-window .window-handle {
+    transform: none !important;
+    transition: none !important;
+  }
+  .tilt-glare {
+    display: none !important;
+  }
+}

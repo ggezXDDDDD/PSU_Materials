@@ -23,8 +23,10 @@
     <script src="assets/js/portal-shell.js?v=20260915_03" defer></script>
     <link rel="stylesheet" href="assets/css/home-lobby.css?v=20260921_01" />
     <link rel="stylesheet" href="assets/css/home-aquaglass.css?v=20260922_01" />
+    <link rel="stylesheet" href="assets/css/tilt-3d.css?v=20260925_01" />
     <script type="module" src="assets/js/home-lobby.js?v=20260922_01"></script>
     <script src="assets/js/home-overview.js?v=20260922_01" defer></script>
+    <script src="assets/js/tilt-3d.js?v=20260925_01" defer></script>
   </head>
   <body class="ag-root ag-home">
     <a class="ag-skip" href="#home-main">ข้ามไปเนื้อหา</a>
@@ -431,7 +433,67 @@
               </select>
             </label>
           </div>
+          <div class="crystal-hud-bar">
+            <div
+              class="crystal-tabs"
+              role="tablist"
+              aria-label="เลือกแบบจำลองผลึก 3D"
+            >
+              <button
+                type="button"
+                class="crystal-tab active"
+                data-crystal="fcc"
+                role="tab"
+                aria-selected="true"
+              >
+                <span class="c-code">FCC</span>
+                <span class="c-desc">Face-Centered</span>
+              </button>
+              <button
+                type="button"
+                class="crystal-tab"
+                data-crystal="bcc"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="c-code">BCC</span>
+                <span class="c-desc">Body-Centered</span>
+              </button>
+              <button
+                type="button"
+                class="crystal-tab"
+                data-crystal="hcp"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="c-code">HCP</span>
+                <span class="c-desc">Hexagonal</span>
+              </button>
+              <button
+                type="button"
+                class="crystal-tab"
+                data-crystal="orb"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="c-code">ORB</span>
+                <span class="c-desc">Liquid Orb</span>
+              </button>
+            </div>
+            <div class="crystal-info-pill" id="crystal-info" aria-live="polite">
+              <span class="ci-badge">FCC</span>
+              <span class="ci-stat"
+                >APF: <strong>0.74</strong> · CN: <strong>12</strong></span
+              >
+              <span class="ci-examples"
+                >ตัวอย่าง: ทองแดง (Cu), อลูมิเนียม (Al), ทองคำ (Au)</span
+              >
+            </div>
+          </div>
           <div class="lobby-stage" id="lobby-stage">
+            <span class="crystal-hint" aria-hidden="true"
+              >🖱️ ลากหมุน 360° · แตะสลับผลึก</span
+            >
             <div class="lobby-illustration" aria-hidden="true">
               <svg viewBox="0 0 800 340" fill="none">
                 <ellipse

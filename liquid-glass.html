@@ -1,43 +1,301 @@
 <!doctype html>
 <html lang="th">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Liquid Workspace · PSU Materials</title>
-  <script src="assets/js/auth.js?v=20260922_01"></script>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#ecf7fa">
-  <link rel="stylesheet" href="assets/css/ios_minimal_theme.css?v=20260916_03">
-  <link rel="stylesheet" href="assets/css/liquid-workspace.css?v=20260923_01">
-  <script src="assets/js/liquid-workspace.js?v=1" defer></script>
-  <script src="assets/js/pwa.js?v=20260916_03" defer></script>
-</head>
-<body class="liquid-workspace">
-  <div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
-  <header class="glass-navbar glass-panel">
-    <a class="wordmark" href="index.html"><span class="brand-mark">P</span> Materials<span class="muted"> / workspace</span></a>
-    <nav aria-label="Workspace"><span class="nav-indicator" aria-hidden="true"></span><button class="selected" data-view="workspace">Workspace</button><button data-view="focus">Focus</button></nav>
-    <div class="nav-tools"><button class="glass-button icon-button" data-panel="notifications" aria-label="เปิดการแจ้งเตือน">♧</button><button class="glass-button icon-button" data-panel="controls" aria-label="เปิด Control Center">☷</button><button class="glass-button icon-button" id="theme" aria-label="สลับ Light และ Dark Mode">◐</button></div>
-  </header>
-  <main id="workspace-main">
-    <section class="workspace-hero"><p class="eyebrow"><span></span> YOUR SPACE TO DISCOVER</p><h1>A little clarity.<br><span>A world of materials.</span></h1><p>พื้นที่เล็ก ๆ สำหรับไอเดียใหญ่ ๆ<br>เอกสาร การเรียน และช่วงเวลาโฟกัส — อยู่ใกล้มือเสมอ</p><button class="glass-button primary" id="arrange">จัดพื้นที่ของฉัน <span>↗</span></button><span class="hero-caption">PSU MATERIALS SCIENCE · LIQUID WORKSPACE</span></section>
-    <section class="desktop" aria-label="หน้าต่างแอปพลิเคชัน">
-      <article class="glass-window glass-panel" id="library" tabindex="-1" aria-label="Materials Library" style="--wx:0px;--wy:30px;--ww:390px">
-        <header class="window-handle"><div class="traffic"><button data-action="close" aria-label="ปิด Library"></button><button data-action="minimize" aria-label="ย่อ Library"></button><button data-action="maximize" aria-label="ขยาย Library"></button></div><span>Materials Library</span><span class="window-symbol">▦</span></header>
-        <div class="window-content"><p class="eyebrow">COLLECTION 01 / YOUR COURSES</p><h2>Small things.<br>Extraordinary science.</h2><div class="material-art" aria-hidden="true"><div class="orb"></div><span>STRUCTURE → POSSIBILITY</span></div><a class="course-row" href="pages/metallurgy.html"><span class="course-icon blue">◈</span><span>โลหะวิทยา<small>Metallurgy · Explore the structure</small></span><b>↗</b></a><a class="course-row" href="pages/polymer.html"><span class="course-icon violet">⌘</span><span>พอลิเมอร์<small>Polymers · Connect the possibilities</small></span><b>↗</b></a><a class="course-row" href="pages/ceramic.html"><span class="course-icon peach">◒</span><span>เซรามิก<small>Ceramics · Shape something new</small></span><b>↗</b></a></div>
-      </article>
-      <article class="glass-window glass-panel" id="focus" tabindex="-1" aria-label="Focus Studio" style="--wx:416px;--wy:0px;--ww:340px">
-        <header class="window-handle"><div class="traffic"><button data-action="close" aria-label="ปิด Focus"></button><button data-action="minimize" aria-label="ย่อ Focus"></button><button data-action="maximize" aria-label="ขยาย Focus"></button></div><span>Focus Studio</span><span class="window-symbol">◷</span></header>
-        <div class="window-content focus-content"><p class="eyebrow">ONE THING AT A TIME</p><div class="timer-ring"><div><span id="timer">25:00</span><small>พื้นที่สำหรับสมาธิของคุณ</small></div></div><h2>Make room for focus.</h2><p class="muted">พักสิ่งรบกวน แล้วเริ่มจากทีละนิด</p><button class="glass-button primary" id="start-timer">เริ่มโฟกัส <span>▷</span></button><button class="text-button" id="reset-timer">เริ่มเวลาใหม่</button></div>
-      </article>
-      <article class="glass-window glass-panel" id="notes" tabindex="-1" aria-label="Quick Notes" style="--wx:650px;--wy:335px;--ww:330px">
-        <header class="window-handle"><div class="traffic"><button data-action="close" aria-label="ปิด Notes"></button><button data-action="minimize" aria-label="ย่อ Notes"></button><button data-action="maximize" aria-label="ขยาย Notes"></button></div><span>Quick Notes</span><span class="window-symbol">✎</span></header>
-        <div class="window-content"><p class="eyebrow">A THOUGHT WORTH KEEPING</p><h2>Capture the spark.</h2><label class="sr-only" for="note">บันทึกส่วนตัว</label><textarea id="note" placeholder="ไอเดียวันนี้เริ่มจากอะไร…" rows="4"></textarea><div class="notes-footer"><span id="save-state">เก็บเฉพาะบนอุปกรณ์นี้</span><button class="text-button" id="about">เกี่ยวกับพื้นที่นี้ ↗</button></div></div>
-      </article>
-    </section>
-  </main>
-  <aside class="floating-panel glass-panel" id="controls" role="dialog" aria-label="Control Center" hidden><header><h2>Control Center</h2><button class="icon-button glass-button" data-dismiss aria-label="ปิด Control Center">×</button></header><p class="muted">Make this space yours.</p><label class="control-row"><span>Dark appearance<small>แสงที่สบายตา</small></span><input id="dark-toggle" class="toggle-switch" type="checkbox"></label><label class="control-row"><span>Ambient motion<small>แสงพื้นหลังเคลื่อนไหว</small></span><input id="motion-toggle" class="toggle-switch" type="checkbox" checked></label><button class="glass-button" id="reset-layout">คืนค่าตำแหน่งหน้าต่าง</button></aside>
-  <aside class="floating-panel glass-panel" id="notifications" role="dialog" aria-label="Notification Center" hidden><header><h2>Notifications</h2><button class="icon-button glass-button" data-dismiss aria-label="ปิดการแจ้งเตือน">×</button></header><div class="notification"><span class="course-icon blue">✦</span><div><strong>Your workspace is ready.</strong><p>เปิดหน้าต่างจาก Dock แล้วจัดพื้นที่ในแบบของคุณ</p><small>WORKSPACE · ข้อความต้อนรับ</small></div></div><a href="tasks.html" class="glass-button">ดูงานทั้งหมดใน LMS ↗</a></aside>
-  <dialog class="glass-modal glass-panel" id="about-modal"><form method="dialog"><button class="glass-button icon-button modal-close" aria-label="ปิด">×</button></form><span class="modal-emblem">✦</span><p class="eyebrow">DESIGNED FOR YOUR FLOW</p><h2>A calmer place to learn.</h2><p>ลากแถบชื่อหน้าต่างเพื่อจัดวาง ใช้ปุ่มสีเหลืองเพื่อย่อไปที่ Dock และปุ่มสีเขียวเพื่อขยาย บนมือถือหน้าต่างจะเปิดเป็น sheet ที่ปัดลงเพื่อปิดได้</p><p class="muted">บันทึกเก็บบนเบราว์เซอร์นี้ ส่วนเอกสารและงานเชื่อมกับ Portal เดิม</p><form method="dialog"><button class="glass-button primary">เข้าใจแล้ว</button></form></dialog>
-  <footer class="glass-dock glass-panel" aria-label="Application Dock"><a class="dock-item" href="index.html" aria-label="Portal Home"><span class="dock-icon home">⌂</span><span class="dock-label">Portal</span></a><span class="dock-divider"></span><button class="dock-item running" data-app="library" aria-label="เปิด Materials Library"><span class="dock-icon library">▦</span><span class="dock-label">Library</span></button><button class="dock-item running" data-app="focus" aria-label="เปิด Focus Studio"><span class="dock-icon focus">◷</span><span class="dock-label">Focus</span></button><button class="dock-item running" data-app="notes" aria-label="เปิด Quick Notes"><span class="dock-icon notes">✎</span><span class="dock-label">Notes</span></button><span class="dock-divider"></span><button class="dock-item" data-panel="controls" aria-label="เปิด Control Center"><span class="dock-icon settings">☷</span><span class="dock-label">Controls</span></button></footer>
-  <div class="toast glass-panel" role="status" id="toast" hidden></div>
-</body></html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Liquid Workspace · PSU Materials</title>
+    <script src="assets/js/auth.js?v=20260922_01"></script>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#ecf7fa" />
+    <link
+      rel="stylesheet"
+      href="assets/css/ios_minimal_theme.css?v=20260916_03"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/css/liquid-workspace.css?v=20260923_01"
+    />
+    <link rel="stylesheet" href="assets/css/tilt-3d.css?v=20260925_01" />
+    <script src="assets/js/liquid-workspace.js?v=2" defer></script>
+    <script src="assets/js/tilt-3d.js?v=20260925_01" defer></script>
+    <script src="assets/js/pwa.js?v=20260916_03" defer></script>
+  </head>
+  <body class="liquid-workspace">
+    <div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
+    <header class="glass-navbar glass-panel">
+      <a class="wordmark" href="index.html"
+        ><span class="brand-mark">P</span> Materials<span class="muted">
+          / workspace</span
+        ></a
+      >
+      <nav aria-label="Workspace">
+        <span class="nav-indicator" aria-hidden="true"></span
+        ><button class="selected" data-view="workspace">Workspace</button
+        ><button data-view="focus">Focus</button>
+      </nav>
+      <div class="nav-tools">
+        <button
+          class="glass-button icon-button"
+          data-panel="notifications"
+          aria-label="เปิดการแจ้งเตือน"
+        >
+          ♧</button
+        ><button
+          class="glass-button icon-button"
+          data-panel="controls"
+          aria-label="เปิด Control Center"
+        >
+          ☷</button
+        ><button
+          class="glass-button icon-button"
+          id="theme"
+          aria-label="สลับ Light และ Dark Mode"
+        >
+          ◐
+        </button>
+      </div>
+    </header>
+    <main id="workspace-main">
+      <section class="workspace-hero">
+        <p class="eyebrow"><span></span> YOUR SPACE TO DISCOVER</p>
+        <h1>A little clarity.<br /><span>A world of materials.</span></h1>
+        <p>
+          พื้นที่เล็ก ๆ สำหรับไอเดียใหญ่ ๆ<br />เอกสาร การเรียน และช่วงเวลาโฟกัส
+          — อยู่ใกล้มือเสมอ
+        </p>
+        <button class="glass-button primary" id="arrange">
+          จัดพื้นที่ของฉัน <span>↗</span></button
+        ><span class="hero-caption"
+          >PSU MATERIALS SCIENCE · LIQUID WORKSPACE</span
+        >
+      </section>
+      <section class="desktop" aria-label="หน้าต่างแอปพลิเคชัน">
+        <article
+          class="glass-window glass-panel"
+          id="library"
+          tabindex="-1"
+          aria-label="Materials Library"
+          style="--wx: 0px; --wy: 30px; --ww: 390px"
+        >
+          <header class="window-handle">
+            <div class="traffic">
+              <button data-action="close" aria-label="ปิด Library"></button
+              ><button data-action="minimize" aria-label="ย่อ Library"></button
+              ><button
+                data-action="maximize"
+                aria-label="ขยาย Library"
+              ></button>
+            </div>
+            <span>Materials Library</span><span class="window-symbol">▦</span>
+          </header>
+          <div class="window-content">
+            <p class="eyebrow">COLLECTION 01 / YOUR COURSES</p>
+            <h2>Small things.<br />Extraordinary science.</h2>
+            <div class="material-art" aria-hidden="true">
+              <div class="orb"></div>
+              <span>STRUCTURE → POSSIBILITY</span>
+            </div>
+            <a class="course-row" href="pages/metallurgy.html"
+              ><span class="course-icon blue">◈</span
+              ><span
+                >โลหะวิทยา<small
+                  >Metallurgy · Explore the structure</small
+                ></span
+              ><b>↗</b></a
+            ><a class="course-row" href="pages/polymer.html"
+              ><span class="course-icon violet">⌘</span
+              ><span
+                >พอลิเมอร์<small
+                  >Polymers · Connect the possibilities</small
+                ></span
+              ><b>↗</b></a
+            ><a class="course-row" href="pages/ceramic.html"
+              ><span class="course-icon peach">◒</span
+              ><span>เซรามิก<small>Ceramics · Shape something new</small></span
+              ><b>↗</b></a
+            >
+          </div>
+        </article>
+        <article
+          class="glass-window glass-panel"
+          id="focus"
+          tabindex="-1"
+          aria-label="Focus Studio"
+          style="--wx: 416px; --wy: 0px; --ww: 340px"
+        >
+          <header class="window-handle">
+            <div class="traffic">
+              <button data-action="close" aria-label="ปิด Focus"></button
+              ><button data-action="minimize" aria-label="ย่อ Focus"></button
+              ><button data-action="maximize" aria-label="ขยาย Focus"></button>
+            </div>
+            <span>Focus Studio</span><span class="window-symbol">◷</span>
+          </header>
+          <div class="window-content focus-content">
+            <p class="eyebrow">ONE THING AT A TIME</p>
+            <div class="timer-ring">
+              <div>
+                <span id="timer">25:00</span
+                ><small>พื้นที่สำหรับสมาธิของคุณ</small>
+              </div>
+            </div>
+            <h2>Make room for focus.</h2>
+            <p class="muted">พักสิ่งรบกวน แล้วเริ่มจากทีละนิด</p>
+            <button class="glass-button primary" id="start-timer">
+              เริ่มโฟกัส <span>▷</span></button
+            ><button class="text-button" id="reset-timer">เริ่มเวลาใหม่</button>
+          </div>
+        </article>
+        <article
+          class="glass-window glass-panel"
+          id="notes"
+          tabindex="-1"
+          aria-label="Quick Notes"
+          style="--wx: 650px; --wy: 335px; --ww: 330px"
+        >
+          <header class="window-handle">
+            <div class="traffic">
+              <button data-action="close" aria-label="ปิด Notes"></button
+              ><button data-action="minimize" aria-label="ย่อ Notes"></button
+              ><button data-action="maximize" aria-label="ขยาย Notes"></button>
+            </div>
+            <span>Quick Notes</span><span class="window-symbol">✎</span>
+          </header>
+          <div class="window-content">
+            <p class="eyebrow">A THOUGHT WORTH KEEPING</p>
+            <h2>Capture the spark.</h2>
+            <label class="sr-only" for="note">บันทึกส่วนตัว</label
+            ><textarea
+              id="note"
+              placeholder="ไอเดียวันนี้เริ่มจากอะไร…"
+              rows="4"
+            ></textarea>
+            <div class="notes-footer">
+              <span id="save-state">เก็บเฉพาะบนอุปกรณ์นี้</span
+              ><button class="text-button" id="about">
+                เกี่ยวกับพื้นที่นี้ ↗
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+    <aside
+      class="floating-panel glass-panel"
+      id="controls"
+      role="dialog"
+      aria-label="Control Center"
+      hidden
+    >
+      <header>
+        <h2>Control Center</h2>
+        <button
+          class="icon-button glass-button"
+          data-dismiss
+          aria-label="ปิด Control Center"
+        >
+          ×
+        </button>
+      </header>
+      <p class="muted">Make this space yours.</p>
+      <label class="control-row"
+        ><span>Dark appearance<small>แสงที่สบายตา</small></span
+        ><input id="dark-toggle" class="toggle-switch" type="checkbox" /></label
+      ><label class="control-row"
+        ><span>Ambient motion<small>แสงพื้นหลังเคลื่อนไหว</small></span
+        ><input
+          id="motion-toggle"
+          class="toggle-switch"
+          type="checkbox"
+          checked /></label
+      ><button class="glass-button" id="reset-layout">
+        คืนค่าตำแหน่งหน้าต่าง
+      </button>
+    </aside>
+    <aside
+      class="floating-panel glass-panel"
+      id="notifications"
+      role="dialog"
+      aria-label="Notification Center"
+      hidden
+    >
+      <header>
+        <h2>Notifications</h2>
+        <button
+          class="icon-button glass-button"
+          data-dismiss
+          aria-label="ปิดการแจ้งเตือน"
+        >
+          ×
+        </button>
+      </header>
+      <div class="notification">
+        <span class="course-icon blue">✦</span>
+        <div>
+          <strong>Your workspace is ready.</strong>
+          <p>เปิดหน้าต่างจาก Dock แล้วจัดพื้นที่ในแบบของคุณ</p>
+          <small>WORKSPACE · ข้อความต้อนรับ</small>
+        </div>
+      </div>
+      <a href="tasks.html" class="glass-button">ดูงานทั้งหมดใน LMS ↗</a>
+    </aside>
+    <dialog class="glass-modal glass-panel" id="about-modal">
+      <form method="dialog">
+        <button class="glass-button icon-button modal-close" aria-label="ปิด">
+          ×
+        </button>
+      </form>
+      <span class="modal-emblem">✦</span>
+      <p class="eyebrow">DESIGNED FOR YOUR FLOW</p>
+      <h2>A calmer place to learn.</h2>
+      <p>
+        ลากแถบชื่อหน้าต่างเพื่อจัดวาง ใช้ปุ่มสีเหลืองเพื่อย่อไปที่ Dock
+        และปุ่มสีเขียวเพื่อขยาย บนมือถือหน้าต่างจะเปิดเป็น sheet
+        ที่ปัดลงเพื่อปิดได้
+      </p>
+      <p class="muted">
+        บันทึกเก็บบนเบราว์เซอร์นี้ ส่วนเอกสารและงานเชื่อมกับ Portal เดิม
+      </p>
+      <form method="dialog">
+        <button class="glass-button primary">เข้าใจแล้ว</button>
+      </form>
+    </dialog>
+    <footer class="glass-dock glass-panel" aria-label="Application Dock">
+      <a class="dock-item" href="index.html" aria-label="Portal Home"
+        ><span class="dock-icon home">⌂</span
+        ><span class="dock-label">Portal</span></a
+      ><span class="dock-divider"></span
+      ><button
+        class="dock-item running"
+        data-app="library"
+        aria-label="เปิด Materials Library"
+      >
+        <span class="dock-icon library">▦</span
+        ><span class="dock-label">Library</span></button
+      ><button
+        class="dock-item running"
+        data-app="focus"
+        aria-label="เปิด Focus Studio"
+      >
+        <span class="dock-icon focus">◷</span
+        ><span class="dock-label">Focus</span></button
+      ><button
+        class="dock-item running"
+        data-app="notes"
+        aria-label="เปิด Quick Notes"
+      >
+        <span class="dock-icon notes">✎</span
+        ><span class="dock-label">Notes</span></button
+      ><span class="dock-divider"></span
+      ><button
+        class="dock-item"
+        data-panel="controls"
+        aria-label="เปิด Control Center"
+      >
+        <span class="dock-icon settings">☷</span
+        ><span class="dock-label">Controls</span>
+      </button>
+    </footer>
+    <div class="toast glass-panel" role="status" id="toast" hidden></div>
+  </body>
+</html>
