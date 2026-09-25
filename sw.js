@@ -1,5 +1,5 @@
 // PSU Materials Portal - Service Worker
-const CACHE_NAME = "psu-materials-v22-aquaglass-3d";
+const CACHE_NAME = "psu-materials-v23-spatial-companions";
 
 const STATIC_ASSETS = [
   "./",
@@ -10,8 +10,8 @@ const STATIC_ASSETS = [
   "./assets/css/home-aquaglass.css?v=20260922_01",
   "./assets/css/tasks-aquaglass.css?v=20260922_01",
   "./assets/css/calendar-aquaglass.css?v=20260922_01",
-  "./assets/css/tilt-3d.css?v=20260925_01",
-  "./assets/js/tilt-3d.js?v=20260925_01",
+  "./assets/css/tilt-3d.css?v=20260925_02",
+  "./assets/js/tilt-3d.js?v=20260925_02",
   "./assets/js/home-overview.js?v=20260922_01",
   "./courses.html",
   "./assets/js/portal-shell.js?v=20260915_03",

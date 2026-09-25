@@ -1,150 +1,218 @@
-/**
- * PSU Materials Portal - 3D Spatial Tilt & Parallax System
- * AquaGlass & iOS 27 Liquid 3D Interaction Engine
- */
-
-:root {
-  --tilt-perspective: 1200px;
-  --tilt-max-deg: 8deg;
+/* Raised glass surfaces, dimensional mascot stages, and restrained pointer tilt. */
+.spatial-portal {
+  --spatial-edge: rgba(109, 175, 201, 0.35);
+  --spatial-shadow: rgba(29, 87, 119, 0.13);
+  --spatial-stage: #d6eef6;
 }
-
-/* Perspective Context */
-.has-tilt-3d,
-.portal-layout,
-.home-lobby,
-.desktop {
-  perspective: var(--tilt-perspective);
+html[data-theme="dark"] .spatial-portal {
+  --spatial-edge: rgba(134, 204, 230, 0.22);
+  --spatial-shadow: rgba(0, 0, 0, 0.35);
+  --spatial-stage: #234551;
 }
-
-/* 3D Tilt Card Base */
-.tilt-card,
-[data-tilt-3d],
-.home-action,
-.card-glass,
-.directory-card,
-.glass-window {
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition:
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.35s ease,
-    border-color 0.25s ease;
+.spatial-portal
+  :is(
+    .home-action,
+    .directory-card,
+    .ag-card,
+    .cal-card,
+    .agenda-card,
+    .stat-box
+  ) {
+  border: 1px solid var(--spatial-edge);
+  box-shadow:
+    inset 0 2px 1px #ffffff65,
+    0 5px 0 -1px var(--spatial-stage),
+    0 6px 0 var(--spatial-edge),
+    0 18px 32px -14px var(--spatial-shadow);
+}
+.tilt-card {
   position: relative;
-}
-
-/* Instant tracking during active pointer movement */
-.tilt-card.is-tilting,
-[data-tilt-3d].is-tilting,
-.home-action.is-tilting,
-.card-glass.is-tilting,
-.directory-card.is-tilting,
-.glass-window.is-tilting {
+  transform-style: preserve-3d;
   transition:
-    transform 0.08s ease-out,
-    box-shadow 0.15s ease-out;
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
-
-/* Dynamic 3D Glare Reflection Layer */
-.tilt-glare {
+.tilt-card.is-tilting {
+  transition: transform 0.12s ease-out;
+  will-change: transform;
+}
+.tilt-card::after {
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--glare-x, 50%) var(--glare-y, 0%),
+    #ffffff36,
+    transparent 65%
+  );
   pointer-events: none;
-  z-index: 10;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  background: radial-gradient(
-    circle 320px at var(--glare-x, 50%) var(--glare-y, 50%),
-    rgba(255, 255, 255, var(--glare-opacity, 0.25)) 0%,
-    rgba(255, 255, 255, calc(var(--glare-opacity, 0.25) * 0.3)) 40%,
-    transparent 80%
-  );
-  mix-blend-mode: overlay;
 }
-
-[data-theme="dark"] .tilt-glare,
-html[data-theme="dark"] .tilt-glare {
-  background: radial-gradient(
-    circle 320px at var(--glare-x, 50%) var(--glare-y, 50%),
-    rgba(146, 214, 230, var(--glare-opacity, 0.35)) 0%,
-    rgba(115, 175, 198, calc(var(--glare-opacity, 0.35) * 0.35)) 45%,
-    transparent 80%
-  );
-  mix-blend-mode: screen;
-}
-
-.tilt-card:hover .tilt-glare,
-[data-tilt-3d]:hover .tilt-glare,
-.home-action:hover .tilt-glare,
-.card-glass:hover .tilt-glare,
-.directory-card:hover .tilt-glare,
-.glass-window:hover .tilt-glare {
-  opacity: 1;
-}
-
-/* 3D Depth Floating Children */
-.tilt-depth-1,
-[data-tilt-depth="1"] {
-  transform: translateZ(12px);
-  transform-style: preserve-3d;
-}
-
-.tilt-depth-2,
-[data-tilt-depth="2"] {
-  transform: translateZ(24px);
-  transform-style: preserve-3d;
-}
-
-.tilt-depth-3,
-[data-tilt-depth="3"] {
-  transform: translateZ(38px);
-  transform-style: preserve-3d;
-}
-
-.tilt-depth-4,
-[data-tilt-depth="4"] {
-  transform: translateZ(52px);
-  transform-style: preserve-3d;
-}
-
-/* Floating interactive badges & icons inside cards */
-.home-action .action-icon,
-.directory-card h2,
-.directory-links,
-.glass-window .window-handle {
+.tilt-card :is(.action-icon, h2) {
   transform: translateZ(18px);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-/* Enhanced 3D elevation hover state */
-.tilt-elevate:hover {
-  filter: drop-shadow(0 20px 30px rgba(16, 37, 54, 0.12));
+html body.spatial-portal main .spatial-hero {
+  position: relative;
+  min-height: 330px;
+  padding-right: clamp(230px, 28%, 320px) !important;
+  overflow: hidden;
+  isolation: isolate;
 }
-
-[data-theme="dark"] .tilt-elevate:hover {
-  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.45));
+html body.spatial-portal main .spatial-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transform: none;
+  pointer-events: none;
+  width: 280px;
+  height: 280px;
+  right: -20px;
+  top: -60px;
+  border: 1px solid var(--spatial-edge);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 25%,
+    #ffffffb3,
+    #99d9f13b 40%,
+    #68afd530 65%,
+    transparent 70%
+  );
+  box-shadow: inset -16px -16px 35px #65a9c424;
 }
-
-/* Accessibility: Strict Reduced Motion */
+.spatial-companion {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(190px, 24%, 270px);
+  margin: 0;
+  text-align: center;
+  pointer-events: none;
+}
+html body.spatial-portal main .spatial-hero > .spatial-companion {
+  position: absolute !important;
+}
+.spatial-companion::before,
+.home-companion::before {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 32px;
+  height: 42px;
+  border: 1px solid var(--spatial-edge);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #80b7cc80, #e4f7fa80 65%);
+  box-shadow:
+    0 9px 0 var(--spatial-stage),
+    0 10px 0 var(--spatial-edge),
+    0 24px 25px var(--spatial-shadow);
+}
+.spatial-companion img {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 14px 9px var(--spatial-shadow));
+}
+.spatial-companion figcaption {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  margin-top: 4px;
+  padding: 7px 12px;
+  border: 1px solid var(--spatial-edge);
+  border-radius: 16px;
+  background: var(--portal-panel, var(--panel, #e5f4f8));
+  color: var(--portal-ink, var(--ink, #254958));
+  font-size: 11px;
+  line-height: 1.6;
+  box-shadow: 0 5px 14px var(--spatial-shadow);
+}
+.spatial-portal .home-companion {
+  position: relative;
+  isolation: isolate;
+}
+.home-companion::before {
+  bottom: 55px;
+  z-index: -1;
+}
+.spatial-portal .has-companion {
+  padding-right: 96px;
+}
+.spatial-companion--small {
+  width: 88px;
+  right: 6px;
+  top: 12px;
+  transform: rotate(9deg);
+}
+.spatial-companion--small::before {
+  bottom: 3px;
+  height: 16px;
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .spatial-companion:not(.spatial-companion--small) img,
+  .spatial-portal .home-companion img {
+    animation: companion-float 6s ease-in-out infinite;
+  }
+}
+@keyframes companion-float {
+  50% {
+    transform: translateY(-9px) rotate(2deg);
+  }
+}
+@media (max-width: 700px) {
+  html body.spatial-portal main .spatial-hero {
+    padding-right: 20px !important;
+    min-height: 0;
+  }
+  html
+    body.spatial-portal
+    main
+    .spatial-hero
+    > .spatial-companion:not(.spatial-companion--small) {
+    position: relative !important;
+    top: auto;
+    right: auto;
+    transform: none;
+    width: 165px;
+    margin: 12px auto 20px;
+  }
+  .spatial-companion--small {
+    width: 70px;
+  }
+  .spatial-portal .has-companion {
+    padding-right: 80px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .tilt-card,
-  [data-tilt-3d],
-  .home-action,
-  .card-glass,
-  .directory-card,
-  .glass-window,
-  .tilt-depth-1,
-  .tilt-depth-2,
-  .tilt-depth-3,
-  .tilt-depth-4,
-  .home-action .action-icon,
-  .directory-card h2,
-  .directory-links,
-  .glass-window .window-handle {
+  .tilt-card :is(.action-icon, h2) {
     transform: none !important;
-    transition: none !important;
+    transition: none;
   }
-  .tilt-glare {
-    display: none !important;
+  .spatial-companion img,
+  .spatial-portal .home-companion img {
+    animation: none !important;
   }
+}
+.motion-off .spatial-companion img,
+.low-effects .spatial-companion img {
+  animation: none !important;
+}
+
+.spatial-portal .directory-card {
+  border-radius: 24px;
+}
+
+/* Legacy course headers already paint a mascot in this pseudo-element. */
+.spatial-portal .hero.spatial-hero::after {
+  display: none;
+}
+
+/* Keep the workspace label in the text column, clear of the companion stage. */
+.spatial-portal .spatial-hero .hero-caption {
+  position: static;
+  display: block;
+  margin-top: 16px;
 }

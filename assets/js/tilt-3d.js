@@ -1,192 +1,135 @@
-/**
- * PSU Materials Portal - Universal 3D Spatial Tilt & Parallax Controller
- * Zero-dependency, lightweight, touch & gyro friendly 3D interaction.
- */
+/* Shared spatial styling and the existing mascot extracted from the แมว reference. */
 (() => {
   "use strict";
+  const asset = new URL(
+    "../images/mascot/mascot-welcome.webp",
+    document.currentScript.src,
+  ).href;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const fine = matchMedia(
+    "(hover: hover) and (pointer: fine) and (min-width: 701px)",
+  );
+  const selector = ".home-action, .directory-card, .stat-box, [data-tilt-3d]";
+  const active = new WeakSet();
+  const resets = new Set();
 
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (reduced.matches) return;
-
-  const CARD_SELECTOR = [
-    ".tilt-card",
-    "[data-tilt-3d]",
-    ".home-action",
-    ".directory-card",
-    ".glass-window",
-    ".cal-card",
-    ".agenda-card",
-    ".stat-box",
-    ".card-glass:not(.portal-layout):not(.sidebar):not(.main-top-bar)",
-  ].join(", ");
-
-  const activeCards = new WeakSet();
+  function companion(caption, small = false) {
+    const figure = document.createElement("figure");
+    figure.className = small
+      ? "spatial-companion spatial-companion--small"
+      : "spatial-companion";
+    const img = document.createElement("img");
+    img.src = asset;
+    img.alt = small ? "" : "แมวสีขาวสวมแว่นฟ้าและกระเป๋า PSU";
+    img.width = 1254;
+    img.height = 1254;
+    img.decoding = "async";
+    if (small) img.loading = "lazy";
+    img.addEventListener("error", () => {
+      figure.hidden = true;
+    });
+    figure.append(img);
+    if (caption) {
+      const label = document.createElement("figcaption");
+      label.textContent = caption;
+      figure.append(label);
+    } else figure.setAttribute("aria-hidden", "true");
+    return figure;
+  }
 
   function initCard(card) {
-    if (!card || activeCards.has(card)) return;
-    if (
-      card.matches('[data-tilt="none"]') ||
-      card.closest('[data-tilt="none"]')
-    )
-      return;
-
-    activeCards.add(card);
+    if (active.has(card) || card.closest('[data-tilt="none"]')) return;
+    active.add(card);
     card.classList.add("tilt-card");
-
-    // Ensure glare element exists if enabled
-    const enableGlare = card.getAttribute("data-tilt-glare") !== "false";
-    let glare = null;
-    if (enableGlare) {
-      glare = card.querySelector(".tilt-glare");
-      if (!glare) {
-        glare = document.createElement("span");
-        glare.className = "tilt-glare";
-        glare.setAttribute("aria-hidden", "true");
-        card.appendChild(glare);
-      }
-    }
-
-    const maxRotation = parseFloat(card.getAttribute("data-tilt-max") || "8");
-    const scale = parseFloat(card.getAttribute("data-tilt-scale") || "1.02");
-    let rafId = 0;
-
-    function onPointerMove(e) {
-      if (reduced.matches) return;
-      const rect = card.getBoundingClientRect();
-      if (!rect.width || !rect.height) return;
-
-      const clientX = e.clientX ?? (e.touches && e.touches[0]?.clientX);
-      const clientY = e.clientY ?? (e.touches && e.touches[0]?.clientY);
-      if (clientX === undefined || clientY === undefined) return;
-
-      const px = Math.max(
-        -1,
-        Math.min(1, ((clientX - rect.left) / rect.width) * 2 - 1),
-      );
-      const py = Math.max(
-        -1,
-        Math.min(1, ((clientY - rect.top) / rect.height) * 2 - 1),
-      );
-
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        card.classList.add("is-tilting");
-        const rotX = -py * maxRotation;
-        const rotY = px * maxRotation;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(${scale}, ${scale}, ${scale})`;
-
-        if (glare) {
-          const glareX = ((px + 1) / 2) * 100;
-          const glareY = ((py + 1) / 2) * 100;
-          const distance = Math.hypot(px, py);
-          const opacity = Math.min(0.65, 0.2 + distance * 0.45);
-
-          card.style.setProperty("--glare-x", `${glareX.toFixed(1)}%`);
-          card.style.setProperty("--glare-y", `${glareY.toFixed(1)}%`);
-          card.style.setProperty("--glare-opacity", opacity.toFixed(2));
-        }
-      });
-    }
-
-    function onPointerLeave() {
-      if (rafId) cancelAnimationFrame(rafId);
+    let frame = 0;
+    const reset = () => {
+      cancelAnimationFrame(frame);
       card.classList.remove("is-tilting");
-      card.style.transform = "";
+      card.style.removeProperty("transform");
       card.style.removeProperty("--glare-x");
       card.style.removeProperty("--glare-y");
-      card.style.removeProperty("--glare-opacity");
-    }
-
-    card.addEventListener("pointermove", onPointerMove, { passive: true });
-    card.addEventListener("pointerleave", onPointerLeave);
-    card.addEventListener("pointercancel", onPointerLeave);
-  }
-
-  function scanAndInit(root = document) {
-    if (reduced.matches) return;
-    const cards = root.querySelectorAll(CARD_SELECTOR);
-    for (let i = 0; i < cards.length; i++) {
-      initCard(cards[i]);
-    }
-  }
-
-  // Mobile Device Orientation Parallax (subtle motion on phone tilt)
-  let gyroBound = false;
-  function initGyroscope() {
-    if (gyroBound || reduced.matches || !window.DeviceOrientationEvent) return;
-    gyroBound = true;
-
-    let gyroFrame = 0;
-    window.addEventListener(
-      "deviceorientation",
-      (e) => {
-        if (!e.gamma || !e.beta) return;
-        if (gyroFrame) return;
-
-        gyroFrame = requestAnimationFrame(() => {
-          gyroFrame = 0;
-          const tiltX = Math.max(-10, Math.min(10, e.gamma / 3.5)); // roll (-10 to 10)
-          const tiltY = Math.max(-10, Math.min(10, (e.beta - 40) / 4)); // pitch
-          document.documentElement.style.setProperty(
-            "--gyro-tilt-x",
-            `${tiltX.toFixed(2)}deg`,
-          );
-          document.documentElement.style.setProperty(
-            "--gyro-tilt-y",
-            `${tiltY.toFixed(2)}deg`,
-          );
+      resets.delete(reset);
+    };
+    card.addEventListener(
+      "pointermove",
+      (event) => {
+        if (reduced.matches || !fine.matches || event.pointerType === "touch")
+          return;
+        const box = card.getBoundingClientRect();
+        if (!box.width || !box.height) return;
+        const x = Math.max(
+          -1,
+          Math.min(1, ((event.clientX - box.left) / box.width) * 2 - 1),
+        );
+        const y = Math.max(
+          -1,
+          Math.min(1, ((event.clientY - box.top) / box.height) * 2 - 1),
+        );
+        cancelAnimationFrame(frame);
+        resets.add(reset);
+        frame = requestAnimationFrame(() => {
+          card.classList.add("is-tilting");
+          card.style.transform = `perspective(1000px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg) translateY(-4px)`;
+          card.style.setProperty("--glare-x", `${(x + 1) * 50}%`);
+          card.style.setProperty("--glare-y", `${(y + 1) * 50}%`);
         });
       },
       { passive: true },
     );
+    card.addEventListener("pointerleave", reset);
+    card.addEventListener("pointercancel", reset);
+    card.addEventListener("focusout", reset);
   }
-
-  // Bootstrapping
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
-      scanAndInit();
-      initGyroscope();
-    });
-  } else {
-    scanAndInit();
-    initGyroscope();
+  function scanAndInit(root = document) {
+    if (root.matches?.(selector)) initCard(root);
+    root.querySelectorAll(selector).forEach(initCard);
   }
-
-  // Observe dynamically added cards
-  if ("MutationObserver" in window) {
-    const observer = new MutationObserver((mutations) => {
-      for (const m of mutations) {
-        if (m.addedNodes.length) {
-          m.addedNodes.forEach((node) => {
-            if (node.nodeType === 1) {
-              if (node.matches && node.matches(CARD_SELECTOR)) {
-                initCard(node);
-              }
-              scanAndInit(node);
-            }
-          });
-        }
-      }
-    });
-
-    observer.observe(document.body || document.documentElement, {
-      childList: true,
-      subtree: true,
-    });
-  }
-
-  // Listen for reduced motion changes
-  reduced.addEventListener("change", () => {
-    if (reduced.matches) {
-      document.querySelectorAll(".tilt-card").forEach((card) => {
-        card.style.transform = "";
-      });
+  function boot() {
+    document.body.classList.add("spatial-portal");
+    const main = document.querySelector("main");
+    const hero =
+      main?.querySelector(
+        ".home-intro, .task-hero, .calendar-hero, .workspace-hero, header.hero",
+      ) || main?.querySelector("h1")?.parentElement;
+    const page = location.pathname.split("/").pop();
+    const captions = {
+      "courses.html": "เลือกวิชาที่อยากเรียน แล้วไปด้วยกัน",
+      "tasks.html": "ค่อย ๆ ทำไป ทีละงานก็เก่งแล้ว",
+      "calendar.html": "วางแผนอีกนิด แล้วมีเวลาพักด้วยนะ",
+      "liquid-glass.html": "หายใจลึก ๆ แล้วมาโฟกัสกัน",
+    };
+    if (hero && !hero.querySelector(".home-companion, .spatial-companion")) {
+      hero.classList.add("spatial-hero");
+      hero.setAttribute("data-tilt", "none");
+      hero.append(
+        companion(
+          captions[page] ||
+            (page.endsWith("_tasks.html")
+              ? "ทำทีละข้อ เราอยู่เป็นเพื่อน"
+              : "พร้อมเรียนรู้ไปด้วยกัน"),
+        ),
+      );
     }
-  });
-
-  window.PSU_Tilt3D = {
-    initCard,
-    scanAndInit,
-  };
+    document
+      .querySelectorAll(".home-action:first-child, .home-action:last-child")
+      .forEach((card) => {
+        card.classList.add("has-companion");
+        card.append(companion("", true));
+      });
+    scanAndInit();
+    new MutationObserver((records) => {
+      for (const record of records)
+        for (const node of record.addedNodes) {
+          if (node.nodeType === 1) scanAndInit(node);
+        }
+    }).observe(document.body, { childList: true, subtree: true });
+  }
+  const resetAll = () => resets.forEach((reset) => reset());
+  reduced.addEventListener("change", resetAll);
+  fine.addEventListener("change", resetAll);
+  window.addEventListener("blur", resetAll);
+  window.PSU_Tilt3D = { initCard, scanAndInit };
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", boot, { once: true });
+  else boot();
 })();
